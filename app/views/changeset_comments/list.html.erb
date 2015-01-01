@@ -1,0 +1,22 @@
+<% content_for :heading do %>
+  <h1><%= h(@title) %></h1>
+  <ul class='secondary-actions clearfix'>
+
+  </ul>
+<% end %>
+
+<%= render :partial => 'changeset_comments_paging_nav' %>
+
+<table id="changeset_comments_list" cellpadding="3">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'changeset_comment', :collection => @comments unless @comments.nil? %>
+  </tbody>
+</table>
+
+<%= render :partial => 'changeset_comments_paging_nav' %>

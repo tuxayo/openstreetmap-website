@@ -1,0 +1,18 @@
+<p>
+
+<% if @comments.size > 1 %>
+<% if @page > 1 %>
+<%= link_to t('changeset_comments.changeset_comments_paging_nav.newer'), params.merge({ :page => @page - 1 }) %>
+<% else %>
+<%= t('changeset_comments.changeset_comments_paging_nav.newer') %>
+<% end %>
+
+| <%= t('changeset_comments.changeset_comments_paging_nav.showing_page', :page => @page) %> |
+
+<% if @comments.size < @page_size %>
+<%= t('changeset_comments.changeset_comments_paging_nav.older') %>
+<% else %>
+<%= link_to t('changeset_comments.changeset_comments_paging_nav.older'), params.merge({ :page => @page + 1 }) %>
+<% end %>
+<% end %>
+</p>

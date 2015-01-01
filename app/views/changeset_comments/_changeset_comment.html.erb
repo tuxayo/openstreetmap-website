@@ -1,0 +1,12 @@
+<tr>
+  <% cl = cycle('table0', 'table1') %>
+  <td class="<%= cl %>">
+    <%= link_to "Changeset ##{changeset_comment.changeset_id}", changeset_path(changeset_comment.changeset) %>
+  </td>
+  <td class="<%= cl %>">
+    <%= changeset_comment.author.display_name %>
+  </td>
+  <td class="<%= cl %>">
+    <%= changeset_comment.body %>
+  </td>
+</tr>

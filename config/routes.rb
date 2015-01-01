@@ -78,7 +78,7 @@ OpenStreetMap::Application.routes.draw do
   match 'api/0.6/gpx/:id' => 'trace#api_delete', :via => :delete, :id => /\d+/
   match 'api/0.6/gpx/:id/details' => 'trace#api_read', :via => :get, :id => /\d+/
   match 'api/0.6/gpx/:id/data' => 'trace#api_data', :via => :get
-  
+
   # AMF (ActionScript) API
   match 'api/0.6/amf/read' => 'amf#amf_read', :via => :post
   match 'api/0.6/amf/write' => 'amf#amf_write', :via => :post
@@ -223,6 +223,15 @@ OpenStreetMap::Application.routes.draw do
   match '/user/:display_name/diary/:id/edit' => 'diary_entry#edit', :via => [:get, :post], :id => /\d+/
   match '/user/:display_name/diary/:id/hide' => 'diary_entry#hide', :via => :post, :id => /\d+/, :as => :hide_diary_entry
   match '/user/:display_name/diary/:id/hidecomment/:comment' => 'diary_entry#hidecomment', :via => :post, :id => /\d+/, :comment => /\d+/, :as => :hide_diary_comment
+
+  # changeset comments pages
+  match '/changeset_comments' => 'changeset_comments#list', :via => :get
+  match '/changeset_comments/page/:page' => 'changeset_comments#list', :via => :get
+  match '/user/:display_name/changeset_comments' => 'changeset_comments#list', :via => :get
+  match '/user/:display_name/changeset_comments/page/:page' => 'changeset_comments#list', :via => :get
+  match '/user/:display_name/changeset_comments/:type' => 'changeset_comments#list', :via => :get
+  match '/user/:display_name/changeset_comments/:type/page/:page' => 'changeset_comments#list', :via => :get
+
 
   # user pages
   match '/user/:display_name' => 'user#view', :via => :get, :as => "user"
