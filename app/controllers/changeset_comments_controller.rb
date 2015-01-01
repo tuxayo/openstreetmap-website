@@ -37,10 +37,15 @@ class ChangesetCommentsController < ApplicationController
     if target_user.nil? # all comments
       @comments = ChangesetComment.all
     else
-      if params[:type].blank? or (!params[:type].blank? and params[:type] == 'own')
-        @comments = target_user.changeset_comments
-      else !params[:type].blank? and params[:type] == 'received'
+      if current_user and current_user == target_user and params[:type] == 'received_subscribed'
+        @comments = ChangesetComment.joins(:changeset)
+        .joins('inner join changesets_subscribers on changesets.id = changesets_subscribers.changeset_id')
+        .where('changesets.user_id = ?', current_user.id)
+        .where('changesets_subscribers.subscriber_id = ?', current_user.id)
+      elsif !params[:type].blank? and params[:type] == 'received'
         @comments = ChangesetComment.joins(:changeset).where('changesets.user_id = ?', target_user.id)
+      else
+        @comments = target_user.changeset_comments
       end
     end
 
