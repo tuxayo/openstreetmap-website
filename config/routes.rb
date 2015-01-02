@@ -233,6 +233,7 @@ OpenStreetMap::Application.routes.draw do
   match '/user/:display_name/changeset_comments/:type/page/:page' => 'changeset_comments#list', :via => :get
   match '/changeset_comments/mine/page/:page' => 'changeset_comments#mine', :via => :get
   match '/changeset_comments/mine/:type/page/:page' => 'changeset_comments#mine', :via => :get
+  match '/changeset_comments/mine/:type' => 'changeset_comments#mine', :via => :get
   match '/changeset_comments/mine' => 'changeset_comments#mine', :via => :get
 
   # user pages
