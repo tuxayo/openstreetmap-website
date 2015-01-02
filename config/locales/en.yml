@@ -914,6 +914,7 @@ en:
     data: Data
     export_data: Export Data
     gps_traces: GPS Traces
+    changeset_comments: Changeset comments
     gps_traces_tooltip: Manage GPS traces
     user_diaries: User Diaries
     user_diaries_tooltip: View user diaries
@@ -1115,7 +1116,7 @@ en:
         title: Join the community
         explanation_html: |
           If you have noticed a problem with our map data, for example a road is missing or your address, the best way to
-          proceed is to join the OpenStreetMap community and add or repair the data yourself. 
+          proceed is to join the OpenStreetMap community and add or repair the data yourself.
       add_a_note:
         instructions_html: |
           Just click <a class='icon note'></a> or the same icon on the map display.
@@ -1125,8 +1126,8 @@ en:
       title: Other concerns
       explanation_html: |
         If you have concerns about how our data is being used or about the contents please consult our
-        <a href='/copyright'>copyright page</a> for more legal information, or contact the appropriate 
-        <a href='http://wiki.osmfoundation.org/wiki/Working_Groups'>OSMF working group</a>.  
+        <a href='/copyright'>copyright page</a> for more legal information, or contact the appropriate
+        <a href='http://wiki.osmfoundation.org/wiki/Working_Groups'>OSMF working group</a>.
   help_page:
     title: Getting Help
     introduction: |
@@ -1443,6 +1444,24 @@ en:
       image: Image
       alt: Alt text
       url: URL
+  changeset_comments:
+    changeset_comments_paging_nav:
+      showing_page: "Page %{page}"
+      older: "Older comments"
+      newer: "Newer comments"
+    list:
+      all_changesets_comments: All changeset comments
+      own_changesets_comments: Your changeset comments
+      subscribed_changesets_comments: Comments to the changesets you're subscribed to
+      received_changesets_comments: Comments to your changesets
+      user_changesets_comments: "%{name}'s changeset comments"
+    changeset_comments_header:
+      see_comments_to_your_changesets: See comments to your changesets
+      see_your_comments: See your comments
+      see_subscribed_changesets_comments: See subscribed changesets comments
+      see_all_comments: See all changeset comments
+    changeset_comment:
+      changeset: "Changeset #%{id} by %{author}"
   trace:
     visibility:
       private: "Private (only shared as anonymous, unordered points)"

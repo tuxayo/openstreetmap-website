@@ -1,7 +1,24 @@
 <% content_for :heading do %>
   <h1><%= h(@title) %></h1>
   <ul class='secondary-actions clearfix'>
-
+    <% if @type %>
+      <li><%= link_to t('changeset_comments.changeset_comments_header.see_all_comments'),
+        :controller => 'changeset_comments', :action => 'list', :type => nil, :display_name => nil, :page => nil %></li>
+    <% end %>
+    <% if @user %>
+      <% if @type != 'own' %>
+        <li><%= link_to t('changeset_comments.changeset_comments_header.see_your_comments'),
+          :controller => 'changeset_comments', :action => 'mine', :type => nil, :page => nil %></li>
+      <% end %>
+      <% if @type != 'received' %>
+      <li><%= link_to t('changeset_comments.changeset_comments_header.see_comments_to_your_changesets'),
+      :controller => 'changeset_comments', :action => 'mine', :type => 'received', :page => nil %></li>
+      <% end %>
+      <% if @type != 'subscribed' %>
+        <li><%= link_to t('changeset_comments.changeset_comments_header.see_subscribed_changesets_comments'),
+          :controller => 'changeset_comments', :action => 'mine', :type => 'subscribed', :page => nil %></li>
+      <% end %>
+    <% end %>
   </ul>
 <% end %>
 
@@ -10,6 +27,7 @@
 <table id="changeset_comments_list" cellpadding="3">
   <thead>
     <tr>
+      <th></th>
       <th></th>
       <th></th>
     </tr>

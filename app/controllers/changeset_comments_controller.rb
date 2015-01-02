@@ -1,16 +1,10 @@
 class ChangesetCommentsController < ApplicationController
-  layout 'site', :except => :rss
+  layout 'site'
 
   before_filter :authorize_web
   before_filter :set_locale
-  before_filter :require_user, :only => [:list, :new, :edit, :comment, :hide, :hidecomment]
-  before_filter :lookup_this_user, :only => [:view, :comments]
-  before_filter :check_database_readable
-  before_filter :check_database_writable, :only => [:new, :edit]
-  before_filter :require_administrator, :only => [:hide, :hidecomment]
+  before_filter :require_user, :only => [:mine]
 
-  # Counts and selects pages of GPX comments for various criteria (by user, tags, public etc.).
-  #  target_user - if set, specifies the user to fetch comments for.  if not set will fetch all comments
   def list
     # from display name, pick up user id if one user's comments only
     display_name = params[:display_name]
@@ -23,24 +17,29 @@ class ChangesetCommentsController < ApplicationController
     end
 
     # set title
-    if target_user.nil?
-      @title = t 'trace.list.public_comments'
-    elsif @user and @user == target_user
-      @title = t 'trace.list.your_comments'
+    if target_user.nil? # all comments
+      @title = t 'changeset_comments.list.all_changesets_comments'
     else
-      @title = t 'trace.list.public_comments_from', :user => target_user.display_name
+      if current_user and current_user == target_user and params[:type] == 'subscribed'
+        @title = t 'changeset_comments.list.subscribed_changesets_comments'
+        @type = 'subscribed'
+      elsif !params[:type].blank? and params[:type] == 'received'
+        @title = t 'changeset_comments.list.received_changesets_comments'
+        @type = 'received'
+      elsif current_user and current_user == target_user
+        @title = t 'changeset_comments.list.own_changesets_comments'
+        @type = 'own'
+      else
+        @title = t 'changeset_comments.list.user_changesets_comments', :name => target_user.display_name
+      end
     end
-
-    @title += t 'trace.list.tagged_with', :tags => params[:tag] if params[:tag]
-
 
     if target_user.nil? # all comments
       @comments = ChangesetComment.all
     else
-      if current_user and current_user == target_user and params[:type] == 'received_subscribed'
+      if current_user and current_user == target_user and params[:type] == 'subscribed'
         @comments = ChangesetComment.joins(:changeset)
         .joins('inner join changesets_subscribers on changesets.id = changesets_subscribers.changeset_id')
-        .where('changesets.user_id = ?', current_user.id)
         .where('changesets_subscribers.subscriber_id = ?', current_user.id)
       elsif !params[:type].blank? and params[:type] == 'received'
         @comments = ChangesetComment.joins(:changeset).where('changesets.user_id = ?', target_user.id)
@@ -62,4 +61,7 @@ class ChangesetCommentsController < ApplicationController
     @display_name = target_user.display_name if target_user
   end
 
+  def mine
+    redirect_to :action => :list, :display_name => @user.display_name, :type => params[:type]
+  end
 end

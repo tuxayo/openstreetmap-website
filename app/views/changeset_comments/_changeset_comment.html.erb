@@ -1,10 +1,12 @@
 <tr>
   <% cl = cycle('table0', 'table1') %>
   <td class="<%= cl %>">
-    <%= link_to "Changeset ##{changeset_comment.changeset_id}", changeset_path(changeset_comment.changeset) %>
+    <%= link_to t('changeset_comments.changeset_comment.changeset', :id => changeset_comment.changeset.id,
+      :author => changeset_comment.changeset.user.display_name), changeset_path(changeset_comment.changeset) %>
   </td>
   <td class="<%= cl %>">
-    <%= changeset_comment.author.display_name %>
+    <%= link_to(changeset_comment.author.display_name, {:controller => "user", :action => "view",
+      :display_name => changeset_comment.author.display_name}) %>
   </td>
   <td class="<%= cl %>">
     <%= changeset_comment.body %>
