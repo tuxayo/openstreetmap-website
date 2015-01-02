@@ -69,8 +69,8 @@ class ChangesetCommentsControllerTest < ActionController::TestCase
     check_changeset_comments_list users(:second_public_user).changeset_comments
 
     # Should be able to see own subscribed changesets comments
-    get :list, {:display_name => users(:public_user).display_name, :type => 'subscribed'}, {:user => users(:public_user).id}
-    check_changeset_comments_list ChangesetComment.where(changeset_id: users(:public_user).changeset_subscriptions.map(&:id))
+    get :list, {:display_name => users(:normal_user).display_name, :type => 'subscribed'}, {:user => users(:normal_user).id}
+    check_changeset_comments_list ChangesetComment.where(changeset_id: users(:normal_user).changeset_subscriptions.map(&:id))
   end
 
   # Check the list of changeset comments for a specific user
@@ -106,7 +106,7 @@ private
         assert_select "tr", :count => changeset_comments.visible.count do |rows|
           changeset_comments.visible.order("created_at DESC").zip(rows).each do |changeset_comment,row|
             assert_select row, "td", Regexp.new(Regexp.escape(changeset_comment.body))
-            assert_select row, "td", Regexp.new(Regexp.escape(changeset_comment.author.display_name))
+            assert_select row, "td", Regexp.new(Regexp.escape(changeset_comment.changeset.user.display_name))
           end
         end
       end

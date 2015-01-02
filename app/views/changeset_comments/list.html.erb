@@ -29,12 +29,12 @@
   <table id="changeset_comments_list" cellpadding="3">
     <thead>
       <tr>
-        <th></th>
-        <% if @user != @target_user %>
-          <th></th>
+        <th><%= t 'changeset_comments.list_table_headers.changeset' %> </th>
+        <th><%= t 'changeset_comments.list_table_headers.date' %></th>
+        <% unless @type == 'own' %>
+            <th><%= t 'changeset_comments.list_table_headers.author' %></th>
         <% end %>
-        <th></th>
-        <th></th>
+        <th><%= t 'changeset_comments.list_table_headers.text' %></th>
       </tr>
     </thead>
     <tbody>

@@ -1454,7 +1454,7 @@ en:
       own_changesets_comments: Your changeset comments
       subscribed_changesets_comments: Comments to the changesets you're subscribed to
       received_changesets_comments: Comments to your changesets
-      user_changesets_comments: "%{name}'s changeset comments"
+      user_changesets_comments: "Changeset comments by %{user}"
       empty: No comments to display
     changeset_comments_header:
       see_comments_to_your_changesets: See comments to your changesets
@@ -1464,6 +1464,11 @@ en:
     changeset_comment:
       changeset: "Changeset #%{id} by %{author}"
       date_html: "%{date} ago"
+    list_table_headers:
+      changeset: "Changeset"
+      author: "Author"
+      date: "Date"
+      text: "Text"
   trace:
     visibility:
       private: "Private (only shared as anonymous, unordered points)"

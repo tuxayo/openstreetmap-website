@@ -7,7 +7,7 @@
   <td class="<%= cl %>">
     <%= t('changeset_comments.changeset_comment.date_html', :date => friendly_date(changeset_comment.created_at)) %>
   </td>
-  <% if @user != @target_user %>
+  <% unless @type == 'own' %>
     <td class="<%= cl %>">
     <%= link_to(changeset_comment.author.display_name, {:controller => "user", :action => "view",
       :display_name => changeset_comment.author.display_name}) %>

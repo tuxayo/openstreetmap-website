@@ -30,7 +30,7 @@ class ChangesetCommentsController < ApplicationController
         @title = t 'changeset_comments.list.own_changesets_comments'
         @type = 'own'
       else
-        @title = t 'changeset_comments.list.user_changesets_comments', :name => target_user.display_name
+        @title = t 'changeset_comments.list.user_changesets_comments', :user => target_user.display_name
       end
     end
 

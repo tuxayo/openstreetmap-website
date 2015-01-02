@@ -3,4 +3,4 @@ t1:
   subscriber_id: 2
 t2:
   changeset_id: 3
-  subscriber_id: 2
+  subscriber_id: 1
