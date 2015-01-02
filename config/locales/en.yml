@@ -1463,6 +1463,7 @@ en:
       see_all_comments: See all changeset comments
     changeset_comment:
       changeset: "Changeset #%{id} by %{author}"
+      date_html: "%{date} ago"
   trace:
     visibility:
       private: "Private (only shared as anonymous, unordered points)"

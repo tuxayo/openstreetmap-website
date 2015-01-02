@@ -22,13 +22,17 @@
   </ul>
 <% end %>
 
-<%= render :partial => 'changeset_comments_paging_nav' %>
+
 
 <% if @comments.size > 0 %>
+  <%= render :partial => 'changeset_comments_paging_nav' %>
   <table id="changeset_comments_list" cellpadding="3">
     <thead>
       <tr>
         <th></th>
+        <% if @user != @target_user %>
+          <th></th>
+        <% end %>
         <th></th>
         <th></th>
       </tr>
