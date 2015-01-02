@@ -1455,6 +1455,7 @@ en:
       subscribed_changesets_comments: Comments to the changesets you're subscribed to
       received_changesets_comments: Comments to your changesets
       user_changesets_comments: "%{name}'s changeset comments"
+      empty: No comments to display
     changeset_comments_header:
       see_comments_to_your_changesets: See comments to your changesets
       see_your_comments: See your comments

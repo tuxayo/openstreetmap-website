@@ -51,10 +51,11 @@ class ChangesetCommentsController < ApplicationController
     @page = (params[:page] || 1).to_i
     @page_size = 20
 
-    @comments = @comments.order("created_at DESC")
+    @comments = @comments.visible
+    @comments = @comments.order("changeset_comments.created_at DESC")
     @comments = @comments.offset((@page - 1) * @page_size)
     @comments = @comments.limit(@page_size)
-    @comments = @comments.includes(:author)
+    @comments = @comments.includes(:author,:changeset, :changeset => :user)
 
     # final helper vars for view
     @target_user = target_user
