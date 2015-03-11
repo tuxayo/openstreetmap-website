@@ -1794,7 +1794,7 @@ en:
       my profile: My Profile
       my settings: My Settings
       my comments: My Comments
-      my discussions: My Discussions
+      my changeset comments: My Changeset Discussions
       oauth settings: oauth settings
       blocks on me: Blocks on Me
       blocks by me: Blocks by Me
@@ -1803,7 +1803,7 @@ en:
       edits: Edits
       traces: Traces
       notes: Map Notes
-      discussions: Discussions
+      changeset comments: Changeset Discussions
       remove as friend: Unfriend
       add as friend: Add Friend
       mapper since: "Mapper since:"

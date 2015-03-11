@@ -22,7 +22,7 @@
             <span class='count-number'><%= number_with_delimiter(@user.diary_entries.size) %></span>
           </li>
           <li>
-            <%= link_to t('user.view.my discussions' ), :controller => 'changeset_comments', :action => 'list', :display_name => @user.display_name %>
+            <%= link_to t('user.view.my changeset comments' ), :controller => 'changeset_comments', :action => 'list', :display_name => @user.display_name %>
             <span class='count-number'><%= number_with_delimiter(@user.changeset_comments.size) %></span>
           </li>
           <li>
@@ -74,7 +74,7 @@
             <span class='count-number'><%= number_with_delimiter(@this_user.diary_entries.size) %></span>
           </li>
           <li>
-            <%= link_to t('user.view.discussions' ), :controller => 'changeset_comments', :action => 'list', :display_name => @this_user.display_name %>
+            <%= link_to t('user.view.changeset comments' ), :controller => 'changeset_comments', :action => 'list', :display_name => @this_user.display_name %>
             <span class='count-number'><%= number_with_delimiter(@this_user.changeset_comments.size) %></span>
           </li>
           <li>
