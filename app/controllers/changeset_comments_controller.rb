@@ -23,14 +23,18 @@ class ChangesetCommentsController < ApplicationController
       if current_user and current_user == target_user and params[:type] == 'subscribed'
         @title = t 'changeset_comments.list.subscribed_changesets_comments'
         @type = 'subscribed'
-      elsif !params[:type].blank? and params[:type] == 'received'
+      elsif current_user == target_user and !params[:type].blank? and params[:type] == 'received'
         @title = t 'changeset_comments.list.received_changesets_comments'
         @type = 'received'
       elsif current_user and current_user == target_user
         @title = t 'changeset_comments.list.own_changesets_comments'
         @type = 'own'
+      elsif params[:type] == 'received'
+        @title = t 'changeset_comments.list.user_received_changesets_comments', :user => target_user.display_name
+        @type = 'received_by_sb'
       else
         @title = t 'changeset_comments.list.user_changesets_comments', :user => target_user.display_name
+        @type = 'owned_by_sb'
       end
     end
 

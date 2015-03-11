@@ -6,6 +6,14 @@
         :controller => 'changeset_comments', :action => 'list', :type => nil, :display_name => nil, :page => nil %></li>
     <% end %>
     <% if @user %>
+      <% if @type == 'received_by_sb' %>
+        <li><%= link_to t('changeset_comments.changeset_comments_header.see_user_comments'),
+          :controller => 'changeset_comments', :action => 'list', :type => nil, :page => nil, :display_name => @target_user.display_name %></li>
+      <% end %>
+      <% if @type == 'owned_by_sb' %>
+        <li><%= link_to t('changeset_comments.changeset_comments_header.see_user_received_comments'),
+          :controller => 'changeset_comments', :action => 'list', :type => 'received', :page => nil, :display_name => @target_user.display_name %></li>
+      <% end %>
       <% if @type != 'own' %>
         <li><%= link_to t('changeset_comments.changeset_comments_header.see_your_comments'),
           :controller => 'changeset_comments', :action => 'mine', :type => nil, :page => nil %></li>

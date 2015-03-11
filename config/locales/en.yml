@@ -914,7 +914,6 @@ en:
     data: Data
     export_data: Export Data
     gps_traces: GPS Traces
-    changeset_comments: Changeset comments
     gps_traces_tooltip: Manage GPS traces
     user_diaries: User Diaries
     user_diaries_tooltip: View user diaries
@@ -1447,20 +1446,23 @@ en:
   changeset_comments:
     changeset_comments_paging_nav:
       showing_page: "Page %{page}"
-      older: "Older comments"
-      newer: "Newer comments"
+      older: "Older discussions"
+      newer: "Newer discussions"
     list:
-      all_changesets_comments: All changeset comments
-      own_changesets_comments: Your changeset comments
-      subscribed_changesets_comments: Comments to the changesets you're subscribed to
-      received_changesets_comments: Comments to your changesets
-      user_changesets_comments: "Changeset comments by %{user}"
-      empty: No comments to display
+      all_changesets_comments: All discussions
+      own_changesets_comments: Your discussions
+      subscribed_changesets_comments: Discussions on the changesets you're subscribed to
+      received_changesets_comments: Discussions on your changesets
+      user_changesets_comments: "Discussions by %{user}"
+      empty: No discussions to display
+      user_received_changesets_comments: Discussions on %{user} changesets
     changeset_comments_header:
-      see_comments_to_your_changesets: See comments to your changesets
-      see_your_comments: See your comments
-      see_subscribed_changesets_comments: See subscribed changesets comments
-      see_all_comments: See all changeset comments
+      see_comments_to_your_changesets: See discussions on your changesets
+      see_your_comments: See your discussions
+      see_subscribed_changesets_comments: See subscribed discussions
+      see_all_comments: See all discussions
+      see_user_comments: See discussions by user
+      see_user_received_comments: See discussions on user changesets
     changeset_comment:
       changeset: "Changeset #%{id} by %{author}"
       date_html: "%{date} ago"
@@ -1792,6 +1794,7 @@ en:
       my profile: My Profile
       my settings: My Settings
       my comments: My Comments
+      my discussions: My Discussions
       oauth settings: oauth settings
       blocks on me: Blocks on Me
       blocks by me: Blocks by Me
@@ -1800,6 +1803,7 @@ en:
       edits: Edits
       traces: Traces
       notes: Map Notes
+      discussions: Discussions
       remove as friend: Unfriend
       add as friend: Add Friend
       mapper since: "Mapper since:"
