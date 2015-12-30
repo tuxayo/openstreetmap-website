@@ -11,12 +11,16 @@
 # Author: Majid Al-Dharrab
 # Author: Meno25
 # Author: Mutarjem horr
+# Author: Omda4wady
 # Author: OsamaK
+# Author: Ruila
 # Author: TTMTT
+# Author: Yahya Sakhnini
 # Author: Zaher kadour
 # Author: ترجمان05
 # Author: عباد ديرانية
 # Author: عبد الرحمان أيمن
+# Author: محمد أحمد عبد الفتاح
 ---
 ar:
   html:
@@ -126,11 +130,35 @@ ar:
     changeset:
       title: حزمة التغييرات %{id}
       belongs_to: الصانع
+      node: العقد (%{count})
+      node_paginated: العقد (%{x}-%{y} من %{count})
+      way: الطرق (%{count})
+      way_paginated: الطرق (%{x}-%{y} من %{count})
+      relation: الصلات (%{count})
+      relation_paginated: الصلات (%{x}-%{y} من %{count})
+      comment: التعليقات (%{count})
+      hidden_commented_by: تعليق مخفي من %{user} <abbr title='%{exact_time}'>%{when}
+        مضت</abbr>
+      commented_by: تعليق من %{user} <abbr title='%{exact_time}'>%{when} مضت</abbr>
       changesetxml: حزمة التغييرات إكس إم أل
       feed:
         title: حزمة التغييرات %{id}
         title_comment: حزمة التغييرات %{id} - %{comment}
+      join_discussion: ادخل للاشتراك في المناقشة
+      discussion: مناقشة
+    node:
+      title: 'عقدة: %{name}'
+      history_title: 'تاريخ العقدة: %{name}'
+    way:
+      title: 'طريق: %{name}'
+      history_title: 'تاريخ الطريق: %{name}'
+      nodes: العقد
+      also_part_of:
+        one: جزء من طريق %{related_ways}
+        other: جزء من طرق %{related_ways}
     relation:
+      title: 'صلة: %{name}'
+      history_title: 'تاريخ الصلة: %{name}'
       members: الأعضاء
     relation_member:
       entry_role: '%{type} %{name} كــ %{role}'
@@ -195,6 +223,11 @@ ar:
       reopened_by_anonymous: أعاد تنشيطه مجهول قبل <abbr title='%{exact_time}'>%{when}
         </abbr>
       hidden_by: أخفاه %{user} قبل <abbr title='%{exact_time}'>%{when} =</abbr>
+    query:
+      title: إشارات الاستفهام
+      introduction: اضغط على الخريطة لمعرفة النقاط القريبة
+      nearby: نقاط قريبة
+      enclosing: نقاط مرافقة
   changeset:
     changeset_paging_nav:
       showing_page: الصفحة %{page}
@@ -224,6 +257,8 @@ ar:
       load_more: حمِّل المزيد؟
     timeout:
       sorry: عذراً، لقد إستمرت لائحة حزم التغييرات اللتي طلبتها وقتاً طويلاً للسحب.
+    rss:
+      full: كامل النقاش
   diary_entry:
     new:
       title: مدخلة يومية جديدة
@@ -329,6 +364,8 @@ ar:
           title: تجاوز API
         geofabrik:
           title: تنزيلات موقع جيوفابريك
+        other:
+          title: مصادر أخرى
       options: خيارات
       format: الهيئة
       scale: القياس
@@ -365,11 +402,8 @@ ar:
           taxiway: مدرج المناورات
           terminal: صالة مطار
         amenity:
-          airport: مطار
           arts_centre: مركز فني/ثقافي
-          artwork: عمل فني
           atm: صراف آلي
-          auditorium: قاعة محاضرات
           bank: مصرف
           bar: حانة
           bbq: مشوى
@@ -388,7 +422,7 @@ ar:
           charging_station: محطة تعبئة
           cinema: سينما
           clinic: عيادة
-          club: نادي
+          clock: الساعة
           college: كلّية
           community_centre: مركز اجتماع
           courthouse: محكمة
@@ -409,22 +443,18 @@ ar:
           fuel: وقود
           grave_yard: مقبرة
           gym: مركز للرشاقة/الرياضة
-          hall: قاعة
           health_centre: مركز صحي
           hospital: مستشفى
-          hotel: فندق
           hunting_stand: مربط للصيد
           ice_cream: مثلجات
           kindergarten: حضانة أطفال
           library: مكتبة
           market: سوق
           marketplace: سوق
-          mountain_rescue: للإنقاذ في الجبل
           nightclub: نادي ليلي
           nursery: رعاية تمريضية
           nursing_home: دار رعاية مسنين/معاقين
           office: مكتب
-          park: منتزه
           parking: موقف سيارات
           pharmacy: صيدلية
           place_of_worship: معبد
@@ -435,7 +465,6 @@ ar:
           prison: سجن
           pub: حانة
           public_building: مبنى عام
-          public_market: سوق عمومي
           reception_area: منطقة استقبال
           recycling: نقطة إعادة تصنيع
           restaurant: مطعم
@@ -444,13 +473,11 @@ ar:
           school: مدرسة
           shelter: ملجأ
           shop: متجر/دكان/حانوت
-          shopping: التسوق
           shower: غسيل بالدش
           social_centre: مركز إجتماعي
           social_club: نادي اجتماعي
           social_facility: مرفق اجتماعي
           studio: ستوديو
-          supermarket: سوبرماركت
           swimming_pool: مسبح
           taxi: سيارة أجرة
           telephone: هاتف عمومي
@@ -462,8 +489,6 @@ ar:
           veterinary: جراحة بيطرية
           village_hall: مبنى/دار القرية
           waste_basket: سلة نفايات
-          wifi: نقطة إتصال لاسلكية
-          WLAN: نقطة إتصال لاسلكية
           youth_centre: مركز نشاطات للشباب
         boundary:
           administrative: حدود إدارية
@@ -478,22 +503,33 @@ ar:
           "yes": جسر
         building:
           "yes": مبنى
+        craft:
+          carpenter: نجار
+          electrician: اختصاصي كهرباء
+          gardener: بستاني
+          painter: رسام
+          photographer: مصور
+          plumber: سمكري
+          shoemaker: صانع أحذية
+          tailor: خياط
         emergency:
-          fire_hydrant: صنبور مياه الإطفاء
+          ambulance_station: محطة إسعاف
+          defibrillator: رجفان
+          landing_site: موقع هبوط طوارئ
           phone: هاتف طوارئ
         highway:
+          abandoned: طريق سريع مهجور
           bridleway: مسلك خيول
           bus_guideway: مسار خاص للحافلات
           bus_stop: موقف حافلات
-          byway: طريق فرعي
           construction: طريق سريع قيد الإنشاء
           cycleway: مسار دراجات
+          elevator: مصعد
           emergency_access_point: نقطة دخول طوارئ
           footway: ممر للمشاة
           ford: مخاضة
           living_street: شارع سكني
           milestone: معلم
-          minor: طريق غير هام
           motorway: طريق سريع
           motorway_junction: تقاطع طرقات سريعة
           motorway_link: طريق سريع
@@ -514,32 +550,37 @@ ar:
           speed_camera: كاميرا كشف السرعة
           steps: درج
           street_lamp: مصباح شارع
-          stile: مرقى لعبور جدار
           tertiary: طريق فرعي
           tertiary_link: طريق فرعي
           track: مسار
+          traffic_signals: إشارات مرور
           trail: درب
           trunk: طريق رئيسي
           trunk_link: طريق رئيسي
           unclassified: طريق غير مصنّف
           unsurfaced: طريق غير معبد
+          "yes": طريق
         historic:
           archaeological_site: موقع أثري
           battlefield: ساحة معركة
           boundary_stone: حجر/صخرة تعليم حدود
-          building: مبنى
+          building: مبنى تاريخي
+          bunker: برج دفاعي
           castle: قلعة
           church: كنيسة
+          city_gate: بوابة مدينة
           citywalls: أسوار المدينة
           fort: حصن
+          heritage: موقع تراثي
           house: منزل
           icon: أيقونة
           manor: عزبة
           memorial: نصب تذكاري
           mine: منجم
           monument: أثر
-          museum: متحف
+          roman_road: طريق روماني
           ruins: أطلال
+          stone: حجر
           tomb: قبر
           tower: برج
           wayside_cross: صليب تذكاري
@@ -566,9 +607,6 @@ ar:
           military: منطقة عسكرية
           mine: منجم
           orchard: بستان
-          nature_reserve: محمية طبيعية
-          park: منتزه
-          piste: منطقة تزحلق
           quarry: كسّارة
           railway: سكة حديدية
           recreation_ground: ميدان ألعاب
@@ -578,16 +616,19 @@ ar:
           road: منطقة الطريق
           village_green: أرض خضراء
           vineyard: كرم عنب
-          wetland: أرض رطبة
-          wood: حرج
+          "yes": استخدام الأرض
         leisure:
           beach_resort: شاطئ منتجع
           bird_hide: مخبئ طيور
+          club: نادي
           common: أرض مشاع
+          dog_park: حديقة كلاب
           fishing: منطقة صيد سمك
+          fitness_centre: مركز لياقة بدنية
           fitness_station: مركز اللياقة البدنية
           garden: حديقة
           golf_course: ملعب غولف
+          horse_riding: ركوب الخيل
           ice_rink: حلبة تزلج على الجليد
           marina: مارينا
           miniature_golf: جولف مصغر
@@ -596,6 +637,7 @@ ar:
           pitch: ملعب رياضي
           playground: ملعب
           recreation_ground: ميدان ألعاب
+          resort: منتجع
           sauna: حمّام بخاري حار
           slipway: مزلقة
           sports_centre: مركز رياضي
@@ -603,6 +645,11 @@ ar:
           swimming_pool: بركة سباحة
           track: مضمار سباق
           water_park: منتزه ألعاب مائية
+        man_made:
+          lighthouse: منارة
+          pipeline: خط أنابيب
+          tower: برج
+          works: مصنع
         military:
           airfield: منطقة عسكرية
           barracks: ثكنات
@@ -614,16 +661,15 @@ ar:
           beach: شاطئ
           cape: رأس (أرض داخلة في البحر(
           cave_entrance: مدخل كهف
-          channel: قناة
           cliff: جرف
           crater: فوهة بركان
           dune: كثيب
-          feature: ميزة
           fell: منحدر
           fjord: مضيق بحري
           forest: غابة
           geyser: نافورة ماء حار
           glacier: نهر/بحر جليدي
+          grassland: أرض عشبية
           heath: أرض بور
           hill: تلة
           island: جزيرة
@@ -635,11 +681,11 @@ ar:
           point: نقطة
           reef: سلسلة صخور قرب سطح الماء
           ridge: أرض مرتفعة
-          river: نهر
           rock: صخرة
+          saddle: سرج
+          sand: رمل
           scree: أرض حصاة
           scrub: أشجار منخفضة
-          shoal: مياه ضحلة
           spring: نبع
           stone: حجر
           strait: مضيق جبلي
@@ -648,10 +694,10 @@ ar:
           volcano: بركان
           water: ماء
           wetland: أرض رطبة
-          wetlands: أراضي رطبة
           wood: حرج
         office:
           accountant: محاسب
+          administrative: إدارة
           architect: مهندس معماري
           company: شركة
           employment_agency: وكالة توظيف
@@ -664,6 +710,7 @@ ar:
           travel_agent: وكيل سفريات
           "yes": مكتب
         place:
+          block: حظر
           airport: مطار
           city: مدينة
           country: دولة
@@ -688,6 +735,7 @@ ar:
           town: بلدة
           unincorporated_area: منطقة فردية
           village: قرية
+          "yes": مكان
         railway:
           abandoned: سكة حديد مهجورة
           construction: سكة حديدية تحت الإنشاء
@@ -713,7 +761,6 @@ ar:
           switch: مبدل السكة الحديدية
           tram: سكة ترام
           tram_stop: موقف ترام
-          yard: فناء سكة حديد
         shop:
           alcohol: متجر كحول للبيع الخارجي
           antiques: تحف
@@ -791,6 +838,7 @@ ar:
           "yes": متجر
         tourism:
           alpine_hut: كوخ جبلي
+          apartment: شقة
           artwork: عمل فني
           attraction: معلم سياحي
           bed_and_breakfast: سرير وفطار
@@ -798,16 +846,15 @@ ar:
           camp_site: موقع تخييم
           caravan_site: موقع قافلة
           chalet: شاليه
+          gallery: معرض
           guest_house: بيت ضيافة
           hostel: سكن شباب
           hotel: فندق
           information: معلومات
-          lean_to: كوخ منحدر
           motel: نُزل
           museum: متحف
           picnic_site: موقع بيك نيك
           theme_park: حديقة ملاهي
-          valley: وادي
           viewpoint: موقع كاشف
           zoo: حديقة حيوانات
         tunnel:
@@ -817,7 +864,6 @@ ar:
           artificial: مجرى ماء إصطناعي
           boatyard: حوض سفن
           canal: قناة
-          connector: قناة مائية
           dam: سدّ
           derelict_canal: قناة مهجورة
           ditch: خندق
@@ -825,15 +871,12 @@ ar:
           drain: مسرب
           lock: قفل
           lock_gate: هويس
-          mineral_spring: نبع مياه معدنية
           mooring: مرسى
           rapids: منحدرات نهرية
           river: نهر
-          riverbank: ضفة نهر
           stream: جدول
           wadi: وادي
           waterfall: شلال
-          water_point: نقطة ماء شفة
           weir: هدار (سدّ منخفض)
       admin_levels:
         level2: حدود قطرية
@@ -855,19 +898,6 @@ ar:
     results:
       no_results: لم يتم العثور على نتائج
       more_results: المزيد من النتائج
-    distance:
-      one: حوالي 1 كم
-      zero: أقل من 1 كم
-      other: حوالي %{count}كم
-    direction:
-      south_west: جنوب-غرب
-      south: جنوب
-      south_east: جنوب-شرق
-      east: شرق
-      north_east: شمال-شرق
-      north: شمال
-      north_west: شمال-غرب
-      west: غرب
   layouts:
     logo:
       alt_text: شعار خريطة الشارع المفتوحة
@@ -888,6 +918,9 @@ ar:
     user_diaries_tooltip: اعرض يوميات المستخدمين
     edit_with: حرر بإستعمال %{editor}
     tag_line: ويكي خريطة العالم الحرة
+    intro_header: مرحبا بكم في !OpenStreetMap
+    intro_text: إن OpenStreetMap هي خريطة العالم, أنشئت بواسطة أشخاص مثلك وحرة الاستخدام
+      برخصة مفتوحة.
     intro_2_create_account: أنشئ حساب مستخدم
     partners_html: الضيافة مدعومة من %{ucl}, %{ic} و %{bytemark}, و %{partners} آخرون.
     partners_ic: كلية امبراطورية لندن
@@ -900,6 +933,7 @@ ar:
     help: مساعدة
     about: حول
     copyright: حقوق النسخ
+    community: مجتمع
     community_blogs: مدونات المجتمع
     community_blogs_title: مدونات لأعضاء من مجتمع خريطة الشارع المفتوحة
     foundation: المؤسسة
@@ -908,9 +942,12 @@ ar:
       title: ادعم خريطة الشارع المفتوحة بهبة نقدية
       text: تبرع
     learn_more: التعرف على المزيد
+    more: المزيد
   license_page:
     foreign:
       title: حول هذه الترجمة
+      text: في حالة التعارض ما بين هذه الصفحة المترجمة و %{english_original_link},
+        يجب أن تأخذ الصفحة الإنجليزية الأفضلية
       english_link: النص الإنجليزي الأصلي
     native:
       title: حول هذه الصفحة
@@ -918,7 +955,30 @@ ar:
       mapping_link: إبدأ التخطيط
     legal_babble:
       title_html: حقوق النشر والترخيص
+      more_title_html: معرفة المزيد
+      contributors_title_html: المساهمين
+  welcome_page:
+    title: أهلاً بك.
+    questions:
+      title: هل هناك أسئلة ؟
+  fixthemap:
+    how_to_help:
+      title: كيف نساعدك ؟
+      join_the_community:
+        title: انضم لهذا المجتمع
+  help_page:
+    welcome:
+      title: مرحبا بك في خرائط الشوارع " المفتوحة المصدر"
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Ar:Beginners%27_guide
+      title: دليل المبتدئين
+    mailing_lists:
+      title: القوائم البريدية
+    forums:
+      title: المنتديات
   about_page:
+    next: التالي
+    open_data_title: البيانات المفتوحة
     partners_title: الشركاء
   notifier:
     diary_comment_notification:
@@ -978,6 +1038,8 @@ ar:
         كلمة المرور.
     note_comment_notification:
       greeting: أهلا,
+    changeset_comment_notification:
+      greeting: مرحبا ،
   message:
     inbox:
       title: الوارد
@@ -1029,6 +1091,7 @@ ar:
       date: التاريخ
       reply_button: رد
       unread_button: علّم كغير مقروءة
+      back: رجوع
       to: إلى
       wrong_user: "\uFEFFأنت مسجل دخول باسم '%{user}' ولكن الرسالة التي طلبت قراءتها
         لم تكن من أو إلى ذلك المستخدم. يرجى تسجيل الدخول كمستخدم صحيح للرد."
@@ -1045,6 +1108,7 @@ ar:
       js_2: خريطة الشارع المفتوحة تستخدم جافا سكريبت لخريطتها المنزلقة.
       permalink: وصلة دائمة
       shortlink: وصلة قصيرة
+      createnote: أضف ملاحظة
     edit:
       not_public: لم تقم بتعيين تعديلاتك لتظهر بشكل علني.
       not_public_description: أنت لم تعد قادر على تعديل الخريطة إلا إذا قمت بذلك.
@@ -1063,6 +1127,8 @@ ar:
       close: أغلق
     search:
       search: بحث
+      from: من
+      to: إلى
       where_am_i: أين أنا؟
       where_am_i_title: صِف الموقع الحالي باستخدام محرك البحث
       submit_text: اذهب
@@ -1074,9 +1140,7 @@ ar:
           primary: طريق رئيسي
           secondary: طريق ثانوي
           unclassified: طريق غير مصنّف
-          unsurfaced: طريق غير معبد
           track: مسار
-          byway: طريق فرعي
           bridleway: مسلك خيول
           cycleway: طريق دراجات
           footway: طريق مشاة
@@ -1100,7 +1164,6 @@ ar:
           golf: ملعب غولف
           park: منتزه
           resident: منطقة سكنية
-          tourist: مزار سياحي
           common:
           - شائع
           - مرج
@@ -1130,7 +1193,6 @@ ar:
           tunnel: غطاء متقطع = نفق
           bridge: غطاء أسود = جسر
           private: استخدام خصوصي
-          permissive: استخدام متسامح
           destination: استخدام إلى الوجهة
           construction: الطرق تحت الإنشاء
     richtext_area:
@@ -1476,7 +1538,6 @@ ar:
       new email address: 'عنوان البريد الإلكتروني الجديد:'
       email never displayed publicly: (لا يظهر علنًا)
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: ما هذا ؟
       public editing:
@@ -1521,9 +1582,10 @@ ar:
         بريدك الإلكتروني لمذكرة تأكيد العنوان الإلكتروني الجديد.
       flash update success: تم تحديث معلومات المستخدم بنجاح.
     confirm:
-      heading: أكّد حساب المستخدم
+      heading: تحقق من بريدك الإلكتروني
       press confirm button: اضغط على زر التأكيد أدناه لتنشيط حسابك.
       button: أكّد
+      success: تم تأكيد حسابك، شكرًا للاشتراك!
     confirm_email:
       heading: أكّد تغيير عنوان البريد الإلكتروني
       press confirm button: اضغط على زر تأكيد أدناه لتأكيد عنوان بريدك الإلكتروني
@@ -1541,6 +1603,7 @@ ar:
       failed: عفوًا، تعذر إضافة %{name} كصديق.
       already_a_friend: حاليًا أنت و %{name} أصدقاء.
     remove_friend:
+      button: الغاء الصداقة
       success: تم إزالة %{name} من قائمة أصدقائك.
       not_a_friend: '%{name} ليس من أحد أصدقائك.'
     filter:
@@ -1684,6 +1747,11 @@ ar:
       comment: تعليق
       full: ملاحظة كاملة
   javascripts:
+    close: أغلق
+    share:
+      title: شارك
+      cancel: ألغ
+      image: صورة
     map:
       base:
         cycle_map: خريطة للدراجات
@@ -1691,6 +1759,13 @@ ar:
     site:
       edit_tooltip: عدّل الخريطة
       edit_disabled_tooltip: قم بالتكبير لتحرير الخريطة
+    changesets:
+      show:
+        comment: التعليق
+        subscribe: اشترك
+        unsubscribe: إلغاء الاشتراك
+        hide_comment: إخفاء
+        unhide_comment: أظهر
   redaction:
     edit:
       description: الوصف

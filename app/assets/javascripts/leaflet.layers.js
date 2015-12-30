@@ -34,12 +34,12 @@ L.OSM.layers = function(options) {
       .attr('class', 'section base-layers')
       .appendTo($ui);
 
-    list = $('<ul>')
+    var baseLayers = $('<ul>')
       .appendTo(baseSection);
 
     layers.forEach(function(layer) {
       var item = $('<li>')
-        .appendTo(list);
+        .appendTo(baseLayers);
 
       if (map.hasLayer(layer)) {
         item.addClass('active');
@@ -101,13 +101,15 @@ L.OSM.layers = function(options) {
         map.fire('baselayerchange', {layer: layer});
       });
 
+      item.on('dblclick', toggle);
+
       map.on('layeradd layerremove', function() {
         item.toggleClass('active', map.hasLayer(layer));
         input.prop('checked', map.hasLayer(layer));
       });
     });
 
-    if (OSM.STATUS != 'api_offline' && OSM.STATUS != 'database_offline') {
+    if (OSM.STATUS !== 'api_offline' && OSM.STATUS !== 'database_offline') {
       var overlaySection = $('<div>')
         .attr('class', 'section overlay-layers')
         .appendTo($ui);
@@ -117,15 +119,15 @@ L.OSM.layers = function(options) {
         .attr("class", "deemphasize")
         .appendTo(overlaySection);
 
-      var list = $('<ul>')
+      var overlays = $('<ul>')
         .appendTo(overlaySection);
 
-      function addOverlay(layer, name, maxArea) {
+      var addOverlay = function (layer, name, maxArea) {
         var item = $('<li>')
           .tooltip({
             placement: 'top'
           })
-          .appendTo(list);
+          .appendTo(overlays);
 
         var label = $('<label>')
           .appendTo(item);
@@ -170,7 +172,7 @@ L.OSM.layers = function(options) {
           item.attr('data-original-title', disabled ?
             I18n.t('javascripts.site.map_' + name + '_zoom_in_tooltip') : '');
         });
-      }
+      };
 
       addOverlay(map.noteLayer, 'notes', OSM.MAX_NOTE_REQUEST_AREA);
       addOverlay(map.dataLayer, 'data', OSM.MAX_REQUEST_AREA);

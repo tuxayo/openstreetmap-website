@@ -5,6 +5,7 @@
 # Author: Chmee2
 # Author: Cvanca
 # Author: DemonioCZ
+# Author: H4nek
 # Author: JAn Dudík
 # Author: Jezevec
 # Author: Jkjk
@@ -179,6 +180,7 @@ cs:
         way: cesta
         relation: relace
         changeset: sada změn
+        note: poznámka
     timeout:
       sorry: Promiňte, ale načítání dat %{type} číslo %{id} trvalo příliš dlouho.
       type:
@@ -186,6 +188,7 @@ cs:
         way: cesty
         relation: relace
         changeset: sady změn
+        note: poznámka
     redacted:
       redaction: Redakce %{id}
       message_html: Verzi %{version} tohoto objektu %{type} nelze zobrazit, protože
@@ -270,6 +273,7 @@ cs:
   diary_entry:
     new:
       title: Nový záznam do deníčku
+      publish_button: Publikovat
     list:
       title: Deníčky uživatelů
       title_friends: Deníčky přátel
@@ -407,8 +411,10 @@ cs:
     search_osm_nominatim:
       prefix:
         aerialway:
+          cable_car: Kabinová lanovka
           chair_lift: Sedačková lanovka
           drag_lift: Vlek
+          gondola: Kabinková lanovka
           station: Stanice lanovky
         aeroway:
           aerodrome: Letiště
@@ -419,11 +425,9 @@ cs:
           taxiway: Pojezdová dráha
           terminal: Terminál
         amenity:
-          airport: Letiště
+          animal_shelter: Zvířecí útulek
           arts_centre: Kulturní centrum
-          artwork: Umělecké dílo
           atm: Bankomat
-          auditorium: Posluchárna
           bank: Banka
           bar: Bar
           bbq: Místo na grilování
@@ -431,6 +435,7 @@ cs:
           bicycle_parking: Parkoviště pro kola
           bicycle_rental: Půjčovna kol
           biergarten: Zahradní hospoda
+          boat_rental: Půjčovna lodí
           brothel: Nevěstinec
           bureau_de_change: Směnárna
           bus_station: Autobusové nádraží
@@ -440,9 +445,10 @@ cs:
           car_wash: Automyčka
           casino: Kasino
           charging_station: Nabíjecí stanice
+          childcare: Péče o děti
           cinema: Kino
           clinic: Klinika
-          club: Klub
+          clock: Hodiny
           college: Univerzita
           community_centre: Komunitní centrum
           courthouse: Soud
@@ -461,25 +467,25 @@ cs:
           food_court: Občerstvení
           fountain: Fontána
           fuel: Čerpací stanice
+          gambling: Hazardní hry
           grave_yard: Hřbitov
           gym: Fitness centrum / tělocvična
-          hall: Sál
           health_centre: Zdravotní středisko
           hospital: Nemocnice
-          hotel: Hotel
           hunting_stand: Posed
           ice_cream: Zmrzlinárna
           kindergarten: Mateřská škola
           library: Knihovna
           market: Tržiště
           marketplace: Tržnice
-          mountain_rescue: Horská služba
+          monastery: Klášter
+          motorcycle_parking: Parkoviště pro motocykly
           nightclub: Noční klub
           nursery: Jesle
           nursing_home: Pečovatelský dům
           office: Úřad
-          park: Park
           parking: Parkoviště
+          parking_entrance: Vjezd na parkoviště
           pharmacy: Lékárna
           place_of_worship: Náboženský objekt
           police: Policie
@@ -489,7 +495,6 @@ cs:
           prison: Věznice
           pub: Hospoda
           public_building: Veřejná budova
-          public_market: Veřejný trh
           reception_area: Recepce
           recycling: Tříděný odpad
           restaurant: Restaurace
@@ -498,13 +503,11 @@ cs:
           school: Škola
           shelter: Přístřeší
           shop: Obchod
-          shopping: Nákupní centrum
           shower: Sprchy
           social_centre: Společenské centrum
           social_club: Společenský klub
           social_facility: Zařízení sociálních služeb
           studio: Studio
-          supermarket: Supermarket
           swimming_pool: Bazén
           taxi: Taxi
           telephone: Telefonní automat
@@ -516,8 +519,7 @@ cs:
           veterinary: Veterinární ordinace
           village_hall: Společenský sál
           waste_basket: Odpadkový koš
-          wifi: Přístup k WiFi
-          WLAN: Přístup k WiFi
+          waste_disposal: Popelnice
           youth_centre: Centrum pro mládež
         boundary:
           administrative: Administrativní hranice
@@ -532,22 +534,35 @@ cs:
           "yes": Most
         building:
           "yes": Budova
+        craft:
+          brewery: Pivovar
+          carpenter: Tesařství
+          electrician: Elektrikář
+          gardener: Zahradník
+          painter: Malíř
+          photographer: Fotograf
+          plumber: Instalatérství
+          shoemaker: Ševcovství
+          tailor: Krejčovství
+          "yes": Řemeslná dílna
         emergency:
-          fire_hydrant: Požární hydrant
+          ambulance_station: Stanoviště záchranné služby
+          defibrillator: Defibrilátor
+          landing_site: Přistávací plocha záchranky
           phone: Nouzový telefon
         highway:
+          abandoned: Zrušená silnice
           bridleway: Koňská stezka
           bus_guideway: Autobusová dráha
           bus_stop: Autobusová zastávka
-          byway: Účelová komunikace
           construction: Silnice ve výstavbě
           cycleway: Cyklostezka
+          elevator: Výtah
           emergency_access_point: Nouzový lokalizační bod
           footway: Chodník
           ford: Brod
           living_street: Obytná zóna
           milestone: Kilometrovník
-          minor: Vedlejší silnice
           motorway: Dálnice
           motorway_junction: Dálniční křižovatka
           motorway_link: Dálnice
@@ -568,37 +583,44 @@ cs:
           speed_camera: Radar
           steps: Schody
           street_lamp: Pouliční lampa
-          stile: Schůdky přes ohradu
           tertiary: Silnice třetí třídy
           tertiary_link: Silnice třetí třídy
           track: Cesta
+          traffic_signals: Světelná signalizace
           trail: Stezka
           trunk: Významná silnice
           trunk_link: Významná silnice
           unclassified: Silnice
           unsurfaced: Nezpevněná cesta
+          "yes": Cesta
         historic:
           archaeological_site: Archeologické naleziště
           battlefield: Bojiště
           boundary_stone: Hraniční kámen
-          building: Budova
+          building: Historická budova
+          bunker: Bunkr
           castle: Hrad
           church: Kostel
+          city_gate: Městská brána
           citywalls: Městské hradby
           fort: Pevnost
+          heritage: Památka
           house: Dům
           icon: Ikona
           manor: Panství
           memorial: Památník
           mine: Důl
           monument: Pomník
-          museum: Muzeum
+          roman_road: Římská cesta
           ruins: Zřícenina
+          stone: Kámen
           tomb: Náhrobek
           tower: Věž
           wayside_cross: Boží muka
           wayside_shrine: Boží muka
           wreck: Vrak
+        junction:
+          "yes": Křižovatka
         landuse:
           allotments: Zahrádkářská kolonie
           basin: Vodní nádrž
@@ -620,9 +642,6 @@ cs:
           military: Vojenský prostor
           mine: Důl
           orchard: Ovocný sad
-          nature_reserve: Přírodní rezervace
-          park: Park
-          piste: Sjezdovka
           quarry: Lom
           railway: Železnice
           recreation_ground: Rekreační oblast
@@ -633,16 +652,19 @@ cs:
           road: Cesty
           village_green: Náves
           vineyard: Vinice
-          wetland: Mokřad
-          wood: Neudržovaný les
+          "yes": Využití krajiny
         leisure:
           beach_resort: Pobřežní letovisko
           bird_hide: Ptačí pozorovatelna
+          club: Klub
           common: Obecní půda
+          dog_park: Park pro psy
           fishing: Rybářská oblast
+          fitness_centre: Fitness centrum
           fitness_station: Fitness
           garden: Zahrada
           golf_course: Golfové hřiště
+          horse_riding: Jezdecká stáj
           ice_rink: Kluziště
           marina: Přístav
           miniature_golf: Minigolf
@@ -651,6 +673,7 @@ cs:
           pitch: Hřiště
           playground: Dětské hřiště
           recreation_ground: Rekreační oblast
+          resort: Hotelový komplex
           sauna: Sauna
           slipway: Skluzavka
           sports_centre: Sportovní centrum
@@ -658,6 +681,13 @@ cs:
           swimming_pool: Bazén
           track: Běžecká dráha
           water_park: Aquapark
+          "yes": Volný čas
+        man_made:
+          lighthouse: Maják
+          pipeline: Potrubí
+          tower: Věž
+          works: Továrna
+          "yes": Lidský výtvor
         military:
           airfield: Vojenské letiště
           barracks: Kasárna
@@ -669,16 +699,15 @@ cs:
           beach: Pláž
           cape: Mys
           cave_entrance: Vstup do jeskyně
-          channel: Kanál
           cliff: Útes
           crater: Kráter
           dune: Duna
-          feature: Prvek
           fell: Fjell
           fjord: Fjord
           forest: Les
           geyser: Gejzír
           glacier: Ledovec
+          grassland: Pastviny
           heath: Vřesoviště
           hill: Kopec
           island: Ostrov
@@ -690,11 +719,11 @@ cs:
           point: Bod
           reef: Útes
           ridge: Hřeben
-          river: Řeka
           rock: Skalisko
+          saddle: Horské sedlo
+          sand: Písčiny
           scree: Osyp
           scrub: Rumiště
-          shoal: Mělčina
           spring: Pramen
           stone: Kámen
           strait: Úžina
@@ -703,10 +732,10 @@ cs:
           volcano: Sopka
           water: Vodní plocha
           wetland: Mokřad
-          wetlands: Mokřad
           wood: Neudržovaný les
         office:
           accountant: Účetní
+          administrative: Správa
           architect: Architekt
           company: Firma
           employment_agency: Pracovní agentura
@@ -719,6 +748,8 @@ cs:
           travel_agent: Cestovní kancelář
           "yes": Kancelář
         place:
+          allotments: Zahrádkářská kolonie
+          block: Blok
           airport: Letiště
           city: Velkoměsto
           country: Stát
@@ -743,6 +774,7 @@ cs:
           town: Město
           unincorporated_area: Nezařazená oblast
           village: Vesnice
+          "yes": Místo
         railway:
           abandoned: Zrušená železniční trať
           construction: Železnice ve výstavbě
@@ -763,14 +795,11 @@ cs:
           spur: Železniční vlečka
           station: Železniční stanice
           stop: Železniční zastávka
-          subway: Stanice metra
+          subway: Metro
           subway_entrance: Vstup do metra
           switch: Výhybka
           tram: Tramvajová trať
           tram_stop: Tramvajová zastávka
-          yard: Přednádraží
-        route:
-          bus: Autobusová linka
         shop:
           alcohol: Prodej alkoholu
           antiques: Starožitnosti
@@ -848,6 +877,7 @@ cs:
           "yes": Obchod
         tourism:
           alpine_hut: Vysokohorská chata
+          apartment: Apartmán
           artwork: Umělecké dílo
           attraction: Turistická atrakce
           bed_and_breakfast: Ubytování Bed & Breakfast
@@ -855,16 +885,15 @@ cs:
           camp_site: Tábořiště, kemp
           caravan_site: Autokemping
           chalet: Chalupa
+          gallery: Galerie
           guest_house: Penzion
           hostel: Hostel
           hotel: Hotel
           information: Turistické informace
-          lean_to: Přístřešek
           motel: Motel
           museum: Muzeum
           picnic_site: Piknikové místo
           theme_park: Zábavní park
-          valley: Údolí
           viewpoint: Vyhlídka
           zoo: Zoo
         tunnel:
@@ -874,7 +903,6 @@ cs:
           artificial: Umělý vodní kanál/průplav
           boatyard: Loděnice
           canal: Kanál
-          connector: Propojení vodních cest
           dam: Přehrada
           derelict_canal: Opuštěný kanál
           ditch: Meliorační kanál
@@ -882,19 +910,17 @@ cs:
           drain: Odvodňovací kanál
           lock: Zdymadlo
           lock_gate: Vrata plavební komory
-          mineral_spring: Minerální pramen
           mooring: Kotviště
           rapids: Peřeje
           river: Řeka
-          riverbank: Břeh řeky
           stream: Potok
           wadi: Vádí
           waterfall: Vodopád
-          water_point: Vodní bod
           weir: Jez
+          "yes": Vodní cesta
       admin_levels:
         level2: Státní hranice
-        level4: Hranice státu
+        level4: Hranice země, provincie či regionu
         level5: Hranice regionu
         level6: Hranice okresu
         level8: Hranice obce
@@ -912,19 +938,6 @@ cs:
     results:
       no_results: Nenalezeny žádné výsledky
       more_results: Další výsledky
-    distance:
-      zero: méně než 1 km
-      one: asi 1 km
-      other: asi %{count} km
-    direction:
-      south_west: jihozápad
-      south: jih
-      south_east: jihovýchod
-      east: východ
-      north_east: severovýchod
-      north: sever
-      north_west: severozápad
-      west: západ
   layouts:
     logo:
       alt_text: Logo OpenStreetMap
@@ -989,9 +1002,10 @@ cs:
       mapping_link: začít mapovat
     legal_babble:
       title_html: Autorská práva a licence
-      intro_1_html: OpenStreetMap jsou <i>svobodná data</i>, nabízená za podmínek
-        <a href="http://opendatacommons.org/licenses/odbl/">Open Data Commons Open
-        Database License</a> (ODbL).
+      intro_1_html: OpenStreetMap<sup><a href="#trademarks">&reg;</a></sup> jsou <i>svobodná
+        data</i>, která za podmínek <a href="http://opendatacommons.org/licenses/odbl/">Open
+        Data Commons Open Database License</a> (ODbL) nabízí nadace <a href="http://osmfoundation.org/">OpenStreetMap
+        Foundation</a> (OSMF).
       intro_2_html: Smíte kopírovat, distribuovat, sdělovat veřejnosti a upravovat
         naše data, pokud jako zdroj uvedete OpenStreetMap a jeho přispěvatele. Pokud
         naše data budete upravovat nebo je použijete ve svém díle, musíte výsledek
@@ -1014,7 +1028,8 @@ cs:
         title: Příklad uvedení autorství
       more_title_html: Další informace
       more_1_html: O používání našich dat a způsobu uvádění autorství se můžete dočíst
-        více v našem <a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">Právním
+        více na <a href="http://osmfoundation.org/Licence">licenční stránce OSMF</a>
+        a v našem komunitním <a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">Právním
         FAQ</a>.
       more_2_html: |-
         Přestože OpenStreetMap tvoří svobodná data, nemůžeme zdarma poskytovat třetím stranám mapové API.
@@ -1042,6 +1057,9 @@ cs:
         2007 (<a href="http://www.and.com">www.and.com</a>)'
       contributors_nz_html: '<strong>Nový Zéland</strong>: Obsahuje data pocházející
         z Land Information New Zealand. Crown Copyright reserved.'
+      contributors_si_html: '<strong>Slovinsko</strong>: Obsahuje data <a href="http://www.gu.gov.si/">Zeměměřického
+        a mapovacího úřadu</a> a <a href="http://www.mkgp.gov.si/">Ministerstva zemědělství,
+        lesnictví a potravin</a> (veřejné informace o Slovinsku).'
       contributors_za_html: |-
         <strong>Jihoafrická republika</strong>: Obsahuje data pocházející z <a href="http://www.ngi.gov.za/">Chief Directorate:
         National Geo-Spatial Information</a>, State copyright reserved.
@@ -1062,6 +1080,11 @@ cs:
         podle našeho <a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">postupu
         pro odstranění</a> nebo přímo podejte výzvu pomocí <a href="http://dmca.openstreetmap.org/">on-line
         formuláře</a>.
+      trademarks_title_html: <span id="trademarks"></span>Ochranné známky
+      trademarks_1_html: OpenStreetMap a logo s lupou jsou zapsané ochranné známky
+        OpenStreetMap Foundation. Pokud máte dotazy ohledně vašeho používání těchto
+        známek, zašlete své dotazy <a href="http://wiki.osmfoundation.org/wiki/Licensing_Working_Group">pracovní
+        skupině pro licencování</a>.
   welcome_page:
     title: Vítejte!
     introduction_html: Vítejte v OpenStreetMap, svobodné a editovatelné mapě světa.
@@ -1087,6 +1110,14 @@ cs:
         jezero nebo budova.
       tag_html: <strong>Tag</strong> je troška dat o uzlu nebo cestě jako např. název
         restaurace nebo maximální povolená rychlost na silnici.
+    rules:
+      title: Pravidla!
+      paragraph_1_html: OpenStreetMap má jen málo formálních pravidel, ale od všech
+        účastníků očekáváme, že budou spolupracovat a komunikovat s komunitou. Pokud
+        zvažujete jakoukoli jinou činnost než ruční editování, přečtěte si prosím
+        a dodržujte pokyny na stránkách <a href='http://wiki.openstreetmap.org/wiki/Import/Guidelines'>Importy</a>
+        a <a href='http://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct'>Automatizované
+        editace</a>.
     questions:
       title: Nějaké dotazy?
       paragraph_1_html: |-
@@ -1128,11 +1159,30 @@ cs:
       url: /welcome
       title: Vítejte v OSM
       description: Začněte tímto rychlým průvodcem zahrnujícím základy OpenStreetMap.
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Cs:Beginners%27_guide
+      title: Průvodce začátečníka
+      description: Komunitou spravovaná příručka pro začátečníky.
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
       description: Položte dotaz nebo vyhledejte odpovědi na stránce otázek a odpovědí
         týkajících se OSM.
+    mailing_lists:
+      title: E-mailové konference
+      description: Položte dotaz nebo diskutujte o zajímavých věcech na některé ze
+        široké nabídky tematických či regionálních e-mailových konferencí.
+    forums:
+      title: Diskusní fóra
+      description: Otázky a diskuse pro ty, kteří preferují rozhraní v nástěnkovém
+        stylu.
+    irc:
+      title: IRC
+      description: Interaktivní chat v mnoha jazycích a na mnoho témat.
+    switch2osm:
+      title: switch2osm
+      description: Pomoc společnostem a organizacím s přechodem na mapy a další služby
+        založené na OpenStreetMap.
     wiki:
       url: http://wiki.openstreetmap.org/wiki/Cs:Main_Page?uselang=cs
       title: wiki.openstreetmap.org
@@ -1140,7 +1190,7 @@ cs:
   about_page:
     next: Další
     copyright_html: <span>&copy;</span>přispěvatelé<br>OpenStreetMap
-    used_by: Díky %{name} fungují mapová data na stovkách webových stránek, mobilních
+    used_by: Díky %{name} fungují mapová data na tisících webových stránek, mobilních
       aplikací a hardwarových zařízení
     lede_text: OpenStreetMap tvoří komunita uživatelů, kteří přidávají a udržují data
       o silnicích, cestách, kavárnách, železničních stanicích a mnohém dalším po celém
@@ -1159,6 +1209,11 @@ cs:
       data měníte nebo rozšiřujete jistými způsoby, smíte výsledek šířit jen pod stejnou
       licencí. Podrobnosti najdete na stránce <a href=''%{copyright_path}''>Autorská
       práva a licence</a>.'
+    legal_title: Právní informace
+    legal_html: |-
+      Tento web a mnoho dalších souvisejících služeb za komunitu oficiálně provozuje <a href='http://osmfoundation.org/'>OpenStreetMap Foundation</a> (OSMF).
+      <br>
+      Pokud máte problémy či dotazy týkající se licencování, autorských práv či jiných právních záležitostí, <a href='http://osmfoundation.org/Contact'>kontaktujte prosím OSMF</a>.
     partners_title: Partneři
   notifier:
     diary_comment_notification:
@@ -1386,6 +1441,10 @@ cs:
       close: Zavřít
     search:
       search: Hledat
+      get_directions: Najít trasu
+      get_directions_title: Najít trasu mezi dvěma body
+      from: Odkud
+      to: Kam
       where_am_i: Kde se nacházím?
       where_am_i_title: Popsat právě zobrazované místo pomocí vyhledávače
       submit_text: Hledat
@@ -1397,9 +1456,7 @@ cs:
           primary: Silnice první třídy
           secondary: Silnice druhé třídy
           unclassified: Silnice
-          unsurfaced: Nezpevněná cesta
           track: Lesní a polní cesta
-          byway: Cesta
           bridleway: Koňská stezka
           cycleway: Cyklostezka
           footway: Pěší cesta
@@ -1423,7 +1480,6 @@ cs:
           golf: Golfové hřiště
           park: Park
           resident: Obytná oblast
-          tourist: Turistická atrakce
           common:
           - Pastvina
           - louka
@@ -1453,7 +1509,6 @@ cs:
           tunnel: Čárkované obrysy = tunel
           bridge: Černé obrysy = most
           private: Soukromý pozemek
-          permissive: Přístup tolerován
           destination: Průjezd zakázán
           construction: Cesta ve výstavbě
     richtext_area:
@@ -1619,6 +1674,7 @@ cs:
       allow_read_gpx: číst vaše soukromé GPS stopy.
       allow_write_gpx: nahrávat GPS stopy.
       allow_write_notes: měnit poznámky.
+      grant_access: Udělit přístup
     oauthorize_success:
       title: Požadavek na autorizaci povolen
       allowed: Udělili jste aplikaci %{app_name} přístup k vašemu účtu.
@@ -1702,7 +1758,7 @@ cs:
       login_button: Přihlásit
       register now: Zaregistrujte se
       with username: 'Máte už na OpenStreetMap účet? Přihlaste se svým jménem a heslem:'
-      with openid: 'Nebo se můžete přihlásit svým OpenID:'
+      with external: 'Případně se přihlaste prostřednictvím třetí strany:'
       new to osm: Jste na OpenStreetMap noví?
       to make changes: Pokud chcete upravovat OpenStreetMap, musíte mít uživatelský
         účet.
@@ -1715,25 +1771,28 @@ cs:
         aktivitě.<br />Pokud to chcete řešit, kontaktujte <a href="%{webmaster}">správce
         serveru</a>.
       auth failure: Je mi líto, ale s uvedenými údaji se nemůžete přihlásit.
-      openid missing provider: Je nám líto, ale nepodařilo se kontaktovat vašeho poskytovatele
-        OpenID
-      openid invalid: Je nám líto, ale vaše OpenID vypadá chybně
       openid_logo_alt: Přihlášení pomocí OpenID
-      openid_providers:
+      auth_providers:
         openid:
-          title: Přihlášení pomocí OpenID
+          title: Přihlásit se pomocí OpenID
           alt: Přihlášení pomocí OpenID URL
         google:
-          title: Přihlášení pomocí Google
+          title: Přihlásit se prostřednictvím Google
           alt: Přihlášení pomocí Google OpenID
+        facebook:
+          title: Přihlásit se přes Facebook
+          alt: Přihlášení pomocí účtu na Facebooku
+        windowslive:
+          title: Přihlásit se přes Windows Live
+          alt: Přihlášení pomocí účtu služeb Windows Live
         yahoo:
-          title: Přihlášení pomocí Yahoo
+          title: Přihlásit se prostřednictvím Yahoo
           alt: Přihlášení pomocí Yahoo OpenID
         wordpress:
-          title: Přihlášení pomocí Wordpress
+          title: Přihlásit se prostřednictvím Wordpress
           alt: Přihlášení pomocí Wordpress OpenID
         aol:
-          title: Přihlášení pomocí AOL
+          title: Přihlásit se prostřednictvím AOL
           alt: Přihlášení pomocí AOL OpenID
     logout:
       title: Odhlásit se
@@ -1778,20 +1837,20 @@ cs:
       display name: 'Zobrazované jméno:'
       display name description: Vaše veřejně zobrazované uživatelské jméno. Můžete
         si ho později změnit ve svém nastavení.
-      openid: '%{logo} OpenID:'
+      external auth: 'Autentizace třetí stranou:'
       password: 'Heslo:'
       confirm password: 'Potvrdit heslo:'
-      use openid: Případně se můžete přihlásit pomocí %{logo} OpenID
-      openid no password: S OpenID není heslo potřeba, ale některé další nástroje
-        nebo servery je mohou přesto potřebovat.
-      openid association: |-
-        <p>Vaše OpenID dosud nebylo propojeno s účtem na OpenStreetMap.</p>
+      use external auth: Případně se přihlaste prostřednictvím třetí strany
+      auth no password: S autentizací třetí stranou není heslo potřeba, ale některé
+        další nástroje nebo servery je mohou přesto potřebovat.
+      auth association: |-
+        <p>Vaše ID dosud nebylo propojeno s účtem na OpenStreetMap.</p>
         <ul>
          <li>Pokud jste na OpenStreetMap noví, vytvořte si nový účet pomocí formuláře níže.</li>
          <li>
           Pokud již účet máte, můžete se k němu přihlásit
           pomocí uživatelského jména a hesla a poté ho
-          v uživatelském nastavení propojit s OpenID.
+          v uživatelském nastavení propojit se svým ID.
          </li>
         </ul>
       continue: Zaregistrovat se
@@ -1901,8 +1960,8 @@ cs:
       current email address: 'Stávající e-mailová adresa:'
       new email address: 'Nová e-mailová adresa:'
       email never displayed publicly: (nikde se veřejně nezobrazuje)
+      external auth: 'Externí autentizace:'
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/CS:OpenID
         link text: co to znamená?
       public editing:
@@ -1964,6 +2023,7 @@ cs:
         začít mapovat.
       press confirm button: Svůj účet aktivujte stisknutím níže zobrazeného tlačítka.
       button: Potvrdit
+      success: Účet potvrzen, děkujeme za registraci!
       already active: Tento uživatelský účet už byl potvrzen.
       unknown token: Zadaný potvrzovací kód vypršel nebo neexistuje.
       reconfirm_html: Pokud potřebujete, abychom vám poslali potvrzovací e-mail znovu,
@@ -1980,8 +2040,9 @@ cs:
       press confirm button: Pro potvrzení nové e-mailové adresy klikněte na níže zobrazené
         tlačítko.
       button: Potvrdit
-      success: Vaše e-mailová adresa byla potvrzena, děkujeme za registraci!
+      success: Změna vaší e-mailové adresy byla potvrzena!
       failure: Tento kód byl už pro potvrzení e-mailové adresy použit.
+      unknown_token: Zadaný potvrzovací kód vypršel nebo neexistuje.
     set_home:
       flash success: Pozice domova byla úspěšně uložena
     go_public:
@@ -2022,6 +2083,12 @@ cs:
          Toto rozhodnutí zanedlouho posoudí nějaký správce, případně
          můžete kontaktovat %{webmaster}.
         </p>
+    auth_failure:
+      connection_failed: Připojení k poskytovateli autentizace se nezdařilo
+      invalid_credentials: Neplatné autentizační údaje
+      no_authorization_code: Bez autorizačního kódu
+      unknown_signature_algorithm: Neznámý algoritmus podpisu
+      invalid_scope: Neplatný rozsah
   user_role:
     filter:
       not_an_administrator: Spravovat role mohou pouze administrátoři. Vy administrátor
@@ -2112,13 +2179,13 @@ cs:
       creator_name: Autor
       reason: Důvod pro blok
       status: Stav
-      revoker_name: Zrušno
+      revoker_name: Zrušil
       not_revoked: (nezrušeno)
       showing_page: Stránka %{page}
       next: Následující »
       previous: « Předchozí
     helper:
-      time_future: Končí v %{time}.
+      time_future: Končí za %{time}.
       until_login: Aktivní dokud se uživatel nepřihlásí.
       time_past: Ukončeno před %{time}.
     blocks_on:
@@ -2132,8 +2199,10 @@ cs:
     show:
       title: '%{block_on} zablokován uživatelem %{block_by}'
       heading: '%{block_on} zablokován uživatelem %{block_by}'
-      time_future: Končí v %{time}.
+      time_future: Končí za %{time}.
       time_past: Ukončeno před %{time}
+      created: Vytvořen
+      ago: před %{time}
       status: Stav
       show: Zobrazit
       edit: Upravit
@@ -2184,6 +2253,7 @@ cs:
       link: Odkaz nebo HTML
       long_link: Odkaz
       short_link: Krátký odkaz
+      geo_uri: Geo URI
       embed: HTML
       custom_dimensions: Nastavit vlastní rozměry
       format: 'Formát:'
@@ -2253,6 +2323,44 @@ cs:
         comment: Okomentovat
     edit_help: Posuňte si mapu a zvětšete si místo, které chcete editovat, a klikněte
       zde.
+    directions:
+      engines:
+        graphhopper_bicycle: Na kole (GraphHopper)
+        graphhopper_foot: Pěšky (GraphHopper)
+        mapquest_bicycle: Na kole (MapQuest)
+        mapquest_car: Autem (MapQuest)
+        mapquest_foot: Pěšky (MapQuest)
+        osrm_car: Autem (OSRM)
+        mapzen_bicycle: Na kole (Mapzen)
+        mapzen_car: Autem (Mapzen)
+        mapzen_foot: Pěšky (Mapzen)
+      directions: Pokyny
+      distance: Vzdálenost
+      errors:
+        no_route: Nepodařilo se nalézt trasu mezi zadanými místy.
+        no_place: Nepodařilo se nám najít zadané místo.
+      instructions:
+        continue_without_exit: Pokračujte na %{name}
+        slight_right_without_exit: Mírně vpravo na %{name}
+        turn_right_without_exit: Odbočte vpravo na %{name}
+        sharp_right_without_exit: Ostře vpravo na %{name}
+        uturn_without_exit: Otočte se na %{name}
+        sharp_left_without_exit: Ostře vlevo na %{name}
+        turn_left_without_exit: Odbočte vlevo na %{name}
+        slight_left_without_exit: Mírně vlevo na %{name}
+        via_point_without_exit: (zastávka)
+        follow_without_exit: Jeďte po %{name}
+        roundabout_without_exit: Na kruhovém objezdu použijte %{name}
+        leave_roundabout_without_exit: Vyjeďte z kruhového objezdu – %{name}
+        stay_roundabout_without_exit: Zůstaňte na kruhovém objezdu – %{name}
+        start_without_exit: Začněte na konci %{name}
+        destination_without_exit: Jste v cíli
+        against_oneway_without_exit: Jeďte protisměrem na %{name}
+        end_oneway_without_exit: Konec jednosměrky na %{name}
+        roundabout_with_exit: Na kruhovém objezdu vyjeďte %{exit}. výjezdem na %{name}
+        unnamed: nepojmenovaná cesta
+        courtesy: Trasa díky %{link}
+      time: Čas
     query:
       node: Uzel
       way: Cesta

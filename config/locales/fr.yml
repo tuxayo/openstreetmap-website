@@ -1,6 +1,7 @@
 # Messages for French (français)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: 0x010C
 # Author: Alno
 # Author: Boniface
 # Author: Cquoi
@@ -8,22 +9,30 @@
 # Author: Damouns
 # Author: DavidL
 # Author: Efred
+# Author: Eruedin
 # Author: EtienneChove
 # Author: F.rodrigo
+# Author: Framafan
+# Author: Freak2fast4u
 # Author: Gaspard
+# Author: Gileri
 # Author: Gomoko
 # Author: Hashar
 # Author: IAlex
 # Author: JB
 # Author: Jean-Frédéric
 # Author: Jiremek
+# Author: Linedwell
 # Author: Litlok
 # Author: Ljubinka
+# Author: Lucky
+# Author: Macofe
 # Author: McDutchie
 # Author: Metroitendo
 # Author: Momo50WM
 # Author: Mulcyber
 # Author: Nemo bis
+# Author: Nicolapps
 # Author: Od1n
 # Author: Olasd
 # Author: Orikrin1998
@@ -33,11 +42,15 @@
 # Author: Pipo
 # Author: Pyrog
 # Author: Quentinv57
+# Author: Ruila
 # Author: Seb35
 # Author: Sherbrooke
+# Author: Syl
 # Author: Urhixidur
 # Author: Vcalame
 # Author: Verdy p
+# Author: Wladek92
+# Author: Yodaspirine
 # Author: Yvecai
 ---
 fr:
@@ -141,7 +154,7 @@ fr:
     in_changeset: Groupe de modifications
     anonymous: anonyme
     no_comment: (aucun commentaire)
-    part_of: Partie de
+    part_of: Appartient à
     download_xml: Télécharger le XML
     view_history: Afficher l’historique
     view_details: Afficher les détails
@@ -158,7 +171,7 @@ fr:
       comment: Commentaires (%{count})
       hidden_commented_by: Commentaire masqué de %{user} <abbr title='%{exact_time}'>il
         y a %{when}</abbr>
-      commented_by: Commentaire de %{user} <abbr title='%{exact_time}'>%il y a %{when}</abbr>
+      commented_by: Commentaire de %{user} <abbr title='%{exact_time}'>il y a %{when}</abbr>
       changesetxml: XML du groupe de modifications
       osmchangexml: XML osmChange
       feed:
@@ -196,6 +209,7 @@ fr:
         way: chemin
         relation: relation
         changeset: groupe de modifications
+        note: note
     timeout:
       sorry: Désolé, les données pour le type %{type} avec l’id %{id} prennent trop
         de temps à être récupérées.
@@ -204,6 +218,7 @@ fr:
         way: chemin
         relation: relation
         changeset: groupe de modifications
+        note: note
     redacted:
       redaction: Masquage %{id}
       message_html: La version %{version} de ce(tte) %{type} ne peut être affichée
@@ -291,6 +306,7 @@ fr:
   diary_entry:
     new:
       title: Nouvelle entrée du journal
+      publish_button: Publier
     list:
       title: Journaux des utilisateurs
       title_friends: Journaux des amis
@@ -298,7 +314,7 @@ fr:
       user_title: Journal de %{user}
       in_language_title: Entrées du journal en %{language}
       new: Nouvelle entrée du journal
-      new_title: Écrire une nouvelle entrée dans votre journal
+      new_title: Écrire une nouvelle entrée dans votre journal utilisateur
       no_entries: Aucun article de journal
       recent_entries: Articles récents du journal
       older_entries: Entrées plus anciennes
@@ -430,8 +446,10 @@ fr:
     search_osm_nominatim:
       prefix:
         aerialway:
+          cable_car: Téléphérique
           chair_lift: Télésiège
           drag_lift: Téléski
+          gondola: Télécabine
           station: Gare de télécabine
         aeroway:
           aerodrome: Aérodrome
@@ -442,11 +460,9 @@ fr:
           taxiway: Voie de circulation (Taxiway)
           terminal: Terminal
         amenity:
-          airport: Aéroport
+          animal_shelter: Refuge pour animaux
           arts_centre: Centre artistique
-          artwork: Œuvre d’art
           atm: Distributeur automatique de billets
-          auditorium: Auditorium
           bank: Banque
           bar: Bar
           bbq: Barbecue
@@ -454,6 +470,7 @@ fr:
           bicycle_parking: Parking à vélos
           bicycle_rental: Location de vélos
           biergarten: Brasserie en plein air
+          boat_rental: Location de bateaux
           brothel: Bordel
           bureau_de_change: Bureau de change
           bus_station: Arrêt de bus
@@ -463,9 +480,10 @@ fr:
           car_wash: Lavage de voiture
           casino: Casino
           charging_station: Station de recharge
+          childcare: Garde d'enfants
           cinema: Cinéma
           clinic: Clinique
-          club: Club
+          clock: Horloge
           college: Établissement d’enseignement supérieur
           community_centre: Salle polyvalente
           courthouse: Palais de justice
@@ -484,25 +502,25 @@ fr:
           food_court: Aire de restauration
           fountain: Fontaine
           fuel: Carburant
+          gambling: Club de jeu
           grave_yard: Cimetière
           gym: Fitness / gymnastique
-          hall: Salle
           health_centre: Centre de santé / dispensaire
           hospital: Hôpital
-          hotel: Hôtel
           hunting_stand: Stand de tir
           ice_cream: Glacier
           kindergarten: Jardin d’enfant
           library: Bibliothèque
           market: Marché
           marketplace: Place de marché
-          mountain_rescue: Secours en montagne
+          monastery: Monastère
+          motorcycle_parking: Parking à motos
           nightclub: Boîte de nuit
           nursery: Nurserie
           nursing_home: Maison de retraite médicalisée
           office: Bureau
-          park: Parc
           parking: Parking
+          parking_entrance: Entrée d'un parking
           pharmacy: Pharmacie
           place_of_worship: Lieu de culte
           police: Police
@@ -512,7 +530,6 @@ fr:
           prison: Prison
           pub: Pub
           public_building: Bâtiment public
-          public_market: Marché public
           reception_area: Zone de livraison
           recycling: Point de recyclage
           restaurant: Restaurant
@@ -521,13 +538,11 @@ fr:
           school: École
           shelter: Abri
           shop: Boutique
-          shopping: Commerce
           shower: Douche
           social_centre: Centre social
           social_club: Club social
           social_facility: Service social
           studio: Studio
-          supermarket: Supermarché
           swimming_pool: Piscine
           taxi: Taxi
           telephone: Téléphone public
@@ -539,8 +554,7 @@ fr:
           veterinary: Chirurgie vétérinaire
           village_hall: Salle municipale
           waste_basket: Poubelle
-          wifi: Accès WiFi
-          WLAN: Accès WiFi
+          waste_disposal: Élimination des déchets
           youth_centre: Centre pour la jeunesse
         boundary:
           administrative: Limite administrative
@@ -555,22 +569,35 @@ fr:
           "yes": Pont
         building:
           "yes": Bâtiment
+        craft:
+          brewery: Brasserie
+          carpenter: Charpentier
+          electrician: Électricien
+          gardener: Jardinier
+          painter: Peintre
+          photographer: Photographe
+          plumber: Plombier
+          shoemaker: Cordonnier
+          tailor: Tailleur
+          "yes": Boutique d'artisanat
         emergency:
-          fire_hydrant: Bouche d’incendie
+          ambulance_station: Dépôt d'ambulances
+          defibrillator: Défibrillateur
+          landing_site: Terrain d'atterrissage d'urgence
           phone: Borne d’appel d’urgence
         highway:
+          abandoned: Autoroute abandonnée
           bridleway: Chemin pour cavaliers
           bus_guideway: Voie de bus guidé / trolley
           bus_stop: Arrêt de bus
-          byway: Route secondaire
           construction: Autoroute en construction
           cycleway: Piste cyclable
+          elevator: Ascenseur
           emergency_access_point: Point d’accès d’urgence
           footway: Chemin piéton
           ford: Gué
           living_street: Rue en zone de rencontre
           milestone: Borne kilométrique
-          minor: Route mineure
           motorway: Autoroute
           motorway_junction: Jonction d’autoroute
           motorway_link: Voie autoroutière
@@ -591,37 +618,44 @@ fr:
           speed_camera: Radar de vitesse
           steps: Escalier
           street_lamp: Lampadaire
-          stile: Échalier
           tertiary: Route tertiaire
           tertiary_link: Route tertiaire
           track: Chemin
+          traffic_signals: Feux de circulation
           trail: Sentier
           trunk: Voie express
           trunk_link: Voie express
           unclassified: Route mineure
           unsurfaced: Route non revêtue
+          "yes": Route
         historic:
           archaeological_site: Site archéologique
           battlefield: Champ de bataille
           boundary_stone: Borne frontière
-          building: Bâtiment
+          building: Bâtiment historique
+          bunker: Bunker
           castle: Château
           church: Église
+          city_gate: Porte de la ville
           citywalls: Remparts
           fort: Fort
+          heritage: Site du patrimoine
           house: Maison
           icon: Icône
           manor: Manoir
           memorial: Mémorial
           mine: Mine
           monument: Monument
-          museum: Musée
+          roman_road: Voie romaine
           ruins: Ruines
+          stone: Pierre
           tomb: Tombeau
           tower: Tour
           wayside_cross: Calvaire
           wayside_shrine: Oratoire
           wreck: Épave
+        junction:
+          "yes": Intersection / Carrefour
         landuse:
           allotments: Jardins familiaux
           basin: Bassin
@@ -643,9 +677,6 @@ fr:
           military: Zone militaire
           mine: Mine
           orchard: Verger
-          nature_reserve: Réserve naturelle
-          park: Parc
-          piste: Piste
           quarry: Carrière
           railway: Voie ferrée
           recreation_ground: Aire de jeux
@@ -656,16 +687,19 @@ fr:
           road: Zone routière
           village_green: Espace vert public
           vineyard: Vignoble
-          wetland: Zone humide
-          wood: Bois
+          "yes": Utilisation des terres
         leisure:
           beach_resort: Station balnéaire
           bird_hide: Observatoire ornithologique
+          club: Club
           common: Terrains communaux
+          dog_park: Parc à chiens
           fishing: Zone de pêche
+          fitness_centre: Centre de fitness
           fitness_station: Atelier de parcours de santé
           garden: Jardin
           golf_course: Terrain de golf
+          horse_riding: Équitation
           ice_rink: Patinoire
           marina: Port de plaisance
           miniature_golf: Golf miniature
@@ -674,6 +708,7 @@ fr:
           pitch: Terrain de sport
           playground: Aire de jeux
           recreation_ground: Terrain de jeux
+          resort: Resort
           sauna: Sauna
           slipway: Cale de lancement
           sports_centre: Centre sportif
@@ -681,6 +716,13 @@ fr:
           swimming_pool: Piscine
           track: Piste de course
           water_park: Parc aquatique
+          "yes": Loisirs
+        man_made:
+          lighthouse: Phare
+          pipeline: Pipeline
+          tower: Tour
+          works: Usine
+          "yes": Créé par l'homme
         military:
           airfield: Terrain d’aviation militaire
           barracks: Caserne
@@ -692,16 +734,15 @@ fr:
           beach: Plage
           cape: Cap
           cave_entrance: Entrée de grotte
-          channel: Canal
           cliff: Falaise
           crater: Cratère
           dune: Dune
-          feature: Élément
           fell: Lande
           fjord: Fjord
           forest: Forêt
           geyser: Geyser
           glacier: Glacier
+          grassland: Herbage
           heath: Bruyère
           hill: Colline
           island: Île
@@ -713,11 +754,11 @@ fr:
           point: Pointe
           reef: Récif
           ridge: Crête
-          river: Rivière
           rock: Roche
+          saddle: Selle
+          sand: Sable
           scree: Éboulis
           scrub: Broussailles
-          shoal: Haut-fond
           spring: Source
           stone: Pierre
           strait: Détroit
@@ -726,10 +767,10 @@ fr:
           volcano: Volcan
           water: Eau
           wetland: Zone humide
-          wetlands: Zones humides
           wood: Forêt
         office:
           accountant: Comptable
+          administrative: Administration
           architect: Architecte
           company: Entreprise
           employment_agency: Agence pour l’emploi
@@ -742,6 +783,8 @@ fr:
           travel_agent: Agence de voyage
           "yes": Bureau
         place:
+          allotments: Jardins familiaux
+          block: Bloc
           airport: Aéroport
           city: Ville
           country: Pays
@@ -766,6 +809,7 @@ fr:
           town: Ville
           unincorporated_area: Territoire non organisé
           village: Village
+          "yes": Lieu
         railway:
           abandoned: Voie ferrée abandonnée
           construction: Voie ferrée en construction
@@ -791,9 +835,6 @@ fr:
           switch: Aiguillage
           tram: Tramway
           tram_stop: Arrêt de tram
-          yard: Voie de triage
-        route:
-          bus: Trajet du bus
         shop:
           alcohol: Vendeur d’alcool à emporter / caviste
           antiques: Antiquaire
@@ -849,7 +890,7 @@ fr:
           mobile_phone: Boutique de téléphones mobiles
           motorcycle: Magasin de motos
           music: Boutique de musique / disquaire
-          newsagent: Marchand de journaux / maison de la presse
+          newsagent: Marchand de journaux
           optician: Opticien
           organic: Magasin d’alimentation bio
           outdoor: Magasin d’articles pour activité en plein air
@@ -871,6 +912,7 @@ fr:
           "yes": Boutique
         tourism:
           alpine_hut: Refuge
+          apartment: Appartement
           artwork: Œuvre d’art
           attraction: Attraction
           bed_and_breakfast: Gîte
@@ -878,16 +920,15 @@ fr:
           camp_site: Camping
           caravan_site: Site pour caravanes
           chalet: Chalet
+          gallery: Galerie
           guest_house: Maison d'hôte
           hostel: Auberge
           hotel: Hôtel
           information: Informations
-          lean_to: Abri ouvert
           motel: Motel
           museum: Musée
           picnic_site: Aire de pique-nique
           theme_park: Parc à thème
-          valley: Vallée
           viewpoint: Point de vue
           zoo: Zoo
         tunnel:
@@ -897,24 +938,21 @@ fr:
           artificial: Cours d’eau artificiel
           boatyard: Chantier naval
           canal: Canal
-          connector: Canal de connexion
-          dam: Digue
-          derelict_canal: Canal de délaissement
+          dam: Barrage
+          derelict_canal: Canal de décharge
           ditch: Fossé
           dock: Dock
           drain: Drain
           lock: Écluse
           lock_gate: Porte d’écluse
-          mineral_spring: Source d’eau minérale
           mooring: Mouillage
           rapids: Rapides
           river: Rivière
-          riverbank: Lit de rivière
           stream: Ruisseau
           wadi: Oued
           waterfall: Chute d’eau
-          water_point: Point d’eau
           weir: Barrage
+          "yes": Voie navigable
       admin_levels:
         level2: Frontière de pays
         level4: Limite d’État, province ou région
@@ -935,19 +973,6 @@ fr:
     results:
       no_results: Aucun résultat n’a été trouvé
       more_results: Plus de résultats
-    distance:
-      one: environ 1 km
-      zero: moins d’1 km
-      other: environ %{count} km
-    direction:
-      south_west: sud-ouest
-      south: sud
-      south_east: sud-est
-      east: est
-      north_east: nord-est
-      north: nord
-      north_west: nord-ouest
-      west: ouest
   layouts:
     logo:
       alt_text: Logo d’OpenStreetMap
@@ -1014,10 +1039,10 @@ fr:
     legal_babble:
       title_html: Droits d’auteur et licence
       intro_1_html: |-
-        OpenStreetMap est un ensemble de <i>données ouvertes</i>, disponibles sous la licence <a
+        OpenStreetMap est un ensemble de <i>données ouvertes</i>, disponibles sous licence libre <a
         href="http://opendatacommons.org/licenses/odbl/">Open Data Commons Open Database License</a> (ODbL).
       intro_2_html: Vous êtes libre de copier, distribuer, transmettre et adapter
-        nos données, à condition que vous créditiez OpenStreetMap et ses contributeurs.
+        nos données, à condition que vous créditiez, OpenStreetMap et ses contributeurs.
         Si vous modifiez ou utilisez nos données dans d’autres œuvres dérivées, vous
         ne pouvez distribuer celles-ci que sous la même licence. Le <a href="http://opendatacommons.org/licenses/odbl/1.0/">texte
         légal</a> complet détaille vos droits et responsabilités.
@@ -1038,9 +1063,10 @@ fr:
         alt: Exemple d’attribution d’OpenStreetMap sur une page internet
         title: Exemple d’attribution
       more_title_html: Pour trouver plus d’informations
-      more_1_html: Pour obtenir plus d’informations sur la façon de réutiliser nos
-        données et de nous créditer, veuillez lire la <a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">FAQ
-        légale</a>.
+      more_1_html: |-
+        Pour obtenir plus d’informations sur la façon de réutiliser nos données et de nous créditer, veuillez lire la <a
+        href="http://osmfoundation.org/Licence"> Licence OSMF</a> et le <a
+        href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">FAQ Légal</a>.
       more_2_html: |-
         Bien qu’OpenStreetMap soit un jeu de données libres et ouvertes, nous ne pouvons pas nous même fournir une API gratuite et en libre accès pour les développeurs tiers.
         Veuillez vous référer à notre <a href="http://wiki.openstreetmap.org/wiki/API_usage_policy">politique d’utilisation de l’API</a>, à notre <a href="http://wiki.openstreetmap.org/wiki/Tile_usage_policy">politique d’utilisation des tuiles</a>, et à la <a href="http://wiki.openstreetmap.org/wiki/Nominatim#Usage_Policy">politique d’utilisation de Nominatim</a>.
@@ -1070,6 +1096,10 @@ fr:
       contributors_nz_html: '<strong>Nouvelle-Zélande</strong> : contient des données
         provenant du <em>Land Information New Zealand</em>. Copyright de la Couronne
         réservé.'
+      contributors_si_html: |-
+        <strong>Slovénie</strong> : Contient des données de l’<a href="http://www.gu.gov.si/en/">Autorité de Planification et de Cartographie</a> et du
+        <a href="http://www.mkgp.gov.si/en/">Ministère de l’Agriculture, de la Forêt et de l’Alimentation</a>
+        (information publique de la Slovénie).
       contributors_za_html: |-
         <strong>Afrique du Sud</strong> : contient des données issues de la <a href="http://www.ngi.gov.za/">Direction principale des
         Informations Géospatiales Nationales</a>, copyright de l’État réservé.
@@ -1093,6 +1123,11 @@ fr:
         vous référer à notre <a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">procédure
         de retrait de données</a> ou notifiez-nous directement à travers notre <a
         href="http://dmca.openstreetmap.org/">formulaire en ligne</a>.
+      trademarks_title_html: <span id="marques"></span>Marques
+      trademarks_1_html: OpenStreetMap et le logo loupe sont des marques déposées
+        de la OpenStreetMap Foundation. Si vous avez des questions à propos de l'utilisation
+        de ces marques, merci de prendre contact avec le <a href="http://wiki.osmfoundation.org/wiki/Licensing_Working_Group">Licence
+        Working Group</a>.
   welcome_page:
     title: Bienvenue !
     introduction_html: Bienvenue à OpenStreetMap, la carte du monde libre et éditable.
@@ -1123,6 +1158,14 @@ fr:
       tag_html: Un <strong>attribut</strong> (ou <em>tag</em>) est une information
         à propos d’un nœud ou d’un chemin, comme le nom d’un restaurant ou la limite
         de vitesse d’une route.
+    rules:
+      title: Règles !
+      paragraph_1_html: "OpenStreetMap a quelques règles formelles, mais nous attendons
+        de tous les participants une collaboration et une communication avec la communauté.
+        Si vous envisagez\nd’autres activités que la modification à la main, veuillez
+        lire et suivre les directives sur \n<a href='http://wiki.openstreetmap.org/wiki/Import/Guidelines'>les
+        importations</a> et \n<a href='http://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct'>les
+        modifications automatiques</a>."
     questions:
       title: Des questions ?
       paragraph_1_html: |-
@@ -1166,11 +1209,31 @@ fr:
       url: /welcome
       title: Bienvenue à OSM
       description: Commencer avec ce guide rapide couvrant les bases d’OpenStreetMap.
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/FR:Guide_du_d%C3%A9butant
+      title: Guide pour débutants
+      description: Guide pour les débutants maintenu par la communauté.
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
       description: Poser une question ou chercher des réponses sur le site de questions-et-réponses
         d’OSM.
+    mailing_lists:
+      title: Listes de diffusion
+      description: Poser une question ou discuter de questions intéressantes sur un
+        large éventail de thématiques ou des listes de diffusion régionaux.
+    forums:
+      title: Forums
+      description: Des questions et des discussions pour ceux qui préfèrent un interface
+        en style de tableau d'affichage.
+    irc:
+      title: IRC
+      description: Chat interactif dans de nombreuses langues différentes et sur de
+        nombreux sujets.
+    switch2osm:
+      title: switch2osm
+      description: Aide pour les entreprises et les organisations de commutation à
+        OpenStreetMap, en fonction des cartes et d'autres services.
     wiki:
       url: http://wiki.openstreetmap.org/
       title: wiki.openstreetmap.org
@@ -1178,8 +1241,8 @@ fr:
   about_page:
     next: Suivant
     copyright_html: <span>&copy;</span>Contributeurs<br /> d’OpenStreetMap
-    used_by: '%{name} fournit des données cartographie sur des centaines de sites
-      web, applications mobiles et appareils'
+    used_by: '%{name} fournit des données cartographie sur des milliers de sites web,
+      applications mobiles et appareils'
     lede_text: OpenStreetMap est bâti par une communauté de cartographes bénévoles
       qui contribuent et maintiennent les données des routes, sentiers, cafés, stations
       ferroviaires et bien plus encore, partout dans le monde.
@@ -1190,7 +1253,7 @@ fr:
       jour.
     community_driven_title: Conduit par la communauté
     community_driven_html: |-
-      La communauté d’OpenStreetMap est diverse, passionée et grossit chaque jour. Nos contributeurs incluent des cartographes enthousiastes, des professionnels du GIS, des ingénieurs qui conduisent les serveurs OSM, des humanitaires cartographiant les zones dévastées par une catastrophe et bien d’autres.
+      La communauté d’OpenStreetMap est diverse, passionnée et grossit chaque jour. Nos contributeurs incluent des cartographes enthousiastes, des professionnels du GIS, des ingénieurs qui font marcher les serveurs OSM, des humanitaires cartographiant les zones dévastées par une catastrophe et bien d’autres.
       Pour en savoir plus sur la communauté, consultez les <a href='%{diary_path}'>annuaires d’utilisateurs</a>, <a href='http://blogs.openstreetmap.org/'>les blogues communautaires</a> et le site web de la <a href='http://www.osmfoundation.org/'>Fondation OSM</a>.
     open_data_title: Données libres
     open_data_html: 'OpenStreetMap est en <i>open data</i> : vous êtes libre de l’utiliser
@@ -1199,6 +1262,12 @@ fr:
       pouvez distribuez le résultat seulement suivant la même licence. Consultez la
       page sur les <a href=''%{copyright_path}''>droits d’auteur et licence</a> pour
       plus de détails.'
+    legal_title: Juridique
+    legal_html: "Ce site et de nombreux autres services connexes sont formellement
+      exploités par la \n<a href=\"http://osmfoundation.org/\">Fondation OpenStreetMap</a>
+      (OSMF) \nau nom de la communauté.\n<br> \nVeuillez <a href=\"http://osmfoundation.org/Contact\">contacter
+      l'OSMF</a> \nsi vous avez les questions à propos des licences, droits d'auteur
+      ou d'autres questions juridiques."
     partners_title: Partenaires
   notifier:
     diary_comment_notification:
@@ -1428,6 +1497,10 @@ fr:
       close: Fermer
     search:
       search: Recherche
+      get_directions: Obtenir les directions
+      get_directions_title: Trouvez des itinéraires entre deux points
+      from: Depuis
+      to: À
       where_am_i: Où suis-je ?
       where_am_i_title: Décrit la position actuelle en utilisant le moteur de recherche
       submit_text: Ok
@@ -1439,9 +1512,7 @@ fr:
           primary: Route principale
           secondary: Route secondaire
           unclassified: Route non classifiée
-          unsurfaced: Route non revêtue
           track: Piste
-          byway: Chemin
           bridleway: Sentier pour chevaux
           cycleway: Voie cyclable
           footway: Voie piétonne
@@ -1465,7 +1536,6 @@ fr:
           golf: Parcours de golf
           park: Parc
           resident: Zone résidentielle
-          tourist: Attraction touristique
           common:
           - Espace commun
           - prairie
@@ -1495,7 +1565,6 @@ fr:
           tunnel: Bord en pointillés = tunnel
           bridge: Bord noir = pont
           private: Accès privé
-          permissive: Accès toléré
           destination: Réservé aux riverains
           construction: Routes en construction
     richtext_area:
@@ -1658,6 +1727,7 @@ fr:
       allow_read_gpx: lire vos traces GPS privées.
       allow_write_gpx: envoyer des traces GPS.
       allow_write_notes: modifier les notes.
+      grant_access: Accorder l’accès
     oauthorize_success:
       title: La demande d’autorisation a été acceptée
       allowed: Vous avez accordé à l’application %{app_name} l’accès à votre compte.
@@ -1746,7 +1816,7 @@ fr:
       register now: S'inscrire maintenant
       with username: 'Vous avez déjà un compte sur OpenStreetMap ? Connectez-vous
         avec votre identifiant et votre mot de passe :'
-      with openid: 'Vous pouvez également utiliser OpenID pour vous connecter :'
+      with external: 'À la place, utilisez un tiers pour vous connecter :'
       new to osm: Nouveau sur OpenStreetMap ?
       to make changes: Pour apporter des modifications aux données OpenStreetMap,
         vous devez posséder un compte.
@@ -1760,25 +1830,29 @@ fr:
         si vous voulez en discuter.
       auth failure: Désolé, mais les informations fournies n’ont pas permis de vous
         identifier.
-      openid missing provider: Désolé, impossible de contacter votre fournisseur OpenID
-      openid invalid: Désolé, votre OpenID semble malformé
       openid_logo_alt: Se connecter avec un OpenID
-      openid_providers:
+      auth_providers:
         openid:
-          title: Connexion avec OpenID
-          alt: Connexion avec une URL OpenID
+          title: Se connecter avec OpenID
+          alt: Se connecter avec une URL OpenID
         google:
-          title: Connexion avec Google
-          alt: Connexion avec un OpenID Google
+          title: Se connecter avec Google
+          alt: Se connecter avec l’OpenID de Google
+        facebook:
+          title: Se connecter avec Facebook
+          alt: Se connecter avec un compte Facebook
+        windowslive:
+          title: Connexion avec Windows Live
+          alt: Se connecter avec un compte Windows Live
         yahoo:
-          title: Connexion avec Yahoo
-          alt: Connexion avec un OpenID Yahoo
+          title: Se connecter avec Yahoo
+          alt: Se connecter avec l’OpenID de Yahoo
         wordpress:
-          title: Connexion avec Wordpress
-          alt: Connexion avec un OpenID Wordpress
+          title: Se connecter avec Wordpress
+          alt: Se connecter avec l’OpenID de Wordpress
         aol:
-          title: Connexion avec AOL
-          alt: Connexion avec un OpenID AOL
+          title: Se connecter avec AOL
+          alt: Se connecter avec l’OpenID d’AOL
     logout:
       title: Déconnexion
       heading: Déconnexion d'OpenStreetMap
@@ -1824,21 +1898,21 @@ fr:
       display name: 'Nom affiché :'
       display name description: Votre nom d'utilisateur affiché publiquement. Vous
         pouvez changer ceci ultérieurement dans les préférences.
-      openid: '%{logo} OpenID :'
+      external auth: 'Authentification tierce :'
       password: 'Mot de passe :'
       confirm password: 'Confirmez le mot de passe :'
-      use openid: Vous pouvez également utiliser %{logo} OpenID pour vous identifier
-      openid no password: En utilisant OpenID, il n'est pas nécessaire d'utiliser
-        un mot de passe. Toutefois, certains outils ou serveurs tierces peuvent en
-        demander un.
-      openid association: |-
-        <p>Votre OpenID n'est pas encore associé à un compte OpenStreetMap.</p>
+      use external auth: À la place, utilisez un tiers pour vous connecter
+      auth no password: Avec l’authentification par tiers, un mot de passe n’est pas
+        nécessaire, mais des outils supplémentaires ou un serveur peuvent toujours
+        en nécessiter un.
+      auth association: |-
+        <p>Votre ID n’est pas encore associé avec un compte de OpenStreetMap.</p>
         <ul>
-          <li>Si vous êtes nouveau sur OpenStreetMap, veuillez créer un compte en utilisant le formulaire ci-dessous.</li>
+          <li>Si vous êtes nouveau sur OpenStreetMap, veuillez créer un nouveau compte avec le formulaire ci-dessous.</li>
           <li>
-           Si vous avez déjà un compte, vous pouvez vous connecter à votre compte
-           en utilisant votre identifiant et votre mot de passe, puis associer le compte
-           à votre OpenID dans vos préférences utilisateur.
+            Si vous avez déjà un compte, vous pouvez vous y connecter
+            en utilisant votre nom d’utilisateur et votre mot de passe, puis associer le compte
+            à votre ID dans vos préférences utilisateur.
           </li>
         </ul>
       continue: S’inscrire
@@ -1948,8 +2022,8 @@ fr:
       current email address: 'Adresse de courriel actuelle :'
       new email address: 'Nouvelle adresse de courriel :'
       email never displayed publicly: (jamais affiché publiquement)
+      external auth: 'Authentification externe :'
       openid:
-        openid: 'OpenID :'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: qu’est-ce que ceci ?
       public editing:
@@ -2017,6 +2091,7 @@ fr:
       press confirm button: Appuyer le bouton confirmer ci-dessous pour activer votre
         compte.
       button: Confirmer
+      success: Compte confirmé, merci de vous être enregistré !
       already active: Ce compte a déjà été confirmé.
       unknown token: Le code de confirmation a expiré ou n’existe pas.
       reconfirm_html: Si vous avez besoin que nous vous renvoyions un courriel de
@@ -2033,8 +2108,9 @@ fr:
       press confirm button: Appuyer sur le bouton confirmer pour confirmer votre nouvelle
         adresse e-mail.
       button: Confirmer
-      success: Adresse email confirmée, merci de vous être enregistré !
+      success: Modification de votre adresse de courriel confirmée !
       failure: Une adresse email a déjà été confirmée avec ce jeton d'authentification.
+      unknown_token: Ce code de confirmation a expiré ou n’existe pas.
     set_home:
       flash success: Emplacement de mon domicile sauvegardé avec succès
     go_public:
@@ -2076,6 +2152,12 @@ fr:
           Cette décision sera vérifiée prochainement par un administrateur. Vous
           pouvez contacter le %{webmaster} si vous souhaitez en discuter.
         </p>
+    auth_failure:
+      connection_failed: Échec de la connexion au fournisseur d’authentification
+      invalid_credentials: Informations d’authentification non valides
+      no_authorization_code: Pas de code d'autorisation
+      unknown_signature_algorithm: Algorithme de signature inconnu
+      invalid_scope: Étendue invalide
   user_role:
     filter:
       not_an_administrator: Seuls les administrateurs peuvent gérer les rôles mais
@@ -2194,6 +2276,8 @@ fr:
       heading: '%{block_on} bloqué par %{block_by}'
       time_future: Se termine dans %{time}
       time_past: S'est terminé il y a %{time}
+      created: Créé
+      ago: il y a %{time}
       status: Statut
       show: Afficher
       edit: Modifier
@@ -2244,6 +2328,7 @@ fr:
       link: Lien ou HTML
       long_link: Lien
       short_link: Lien abrégé
+      geo_uri: URI géo
       embed: HTML
       custom_dimensions: Définir les dimensions personnalisées
       format: 'Format :'
@@ -2293,7 +2378,7 @@ fr:
       show:
         comment: Commentaire
         subscribe: S’inscrire
-        unsubscribe: De désinscrire
+        unsubscribe: Se désabonner
         hide_comment: masquer
         unhide_comment: démasquer
     notes:
@@ -2314,6 +2399,44 @@ fr:
         comment: Commentaire
     edit_help: Déplacez la carte et zoomer sur un emplacement que vous voulez modifier,
       puis cliquez là.
+    directions:
+      engines:
+        graphhopper_bicycle: Vélo (GraphHopper)
+        graphhopper_foot: Pied (GraphHopper)
+        mapquest_bicycle: Vélo (MapQuest)
+        mapquest_car: Voiture (MapQuest)
+        mapquest_foot: Pied (MapQuest)
+        osrm_car: Voiture (OSRM)
+        mapzen_bicycle: Vélo (Mapzen)
+        mapzen_car: Voiture (Mapzen)
+        mapzen_foot: À pied (Mapzen)
+      directions: Itinéraire
+      distance: Distance
+      errors:
+        no_route: Impossible de trouver une route entre ces deux lieux.
+        no_place: Désolé, impossible de trouver ce lieu.
+      instructions:
+        continue_without_exit: Continuer sur %{name}
+        slight_right_without_exit: Tourner légèrement à droite sur %{name}
+        turn_right_without_exit: Tourner à droite sur %{name}
+        sharp_right_without_exit: Tournez vivement à droite sur %{name}
+        uturn_without_exit: Faites demi-tour sur %{name}
+        sharp_left_without_exit: Tournez vivement à gauche sur %{name}
+        turn_left_without_exit: Tourner à gauche sur %{name}
+        slight_left_without_exit: Tourner légèrement à gauche sur %{name}
+        via_point_without_exit: (par le point)
+        follow_without_exit: Suivre %{name}
+        roundabout_without_exit: Au rond-point, prendre %{name}
+        leave_roundabout_without_exit: Quitter le rond-point - %{name}
+        stay_roundabout_without_exit: Rester sur le rond-point - %{name}
+        start_without_exit: Démarrer à la fin de %{name}
+        destination_without_exit: Atteignez la destination
+        against_oneway_without_exit: Remonter le sens unique sur %{name}
+        end_oneway_without_exit: Fin du passage à sens unique sur %{name}
+        roundabout_with_exit: Au rond-point prendre la sortie %{exit} sur %{name}
+        unnamed: sans nom
+        courtesy: Itinéraire de la part de %{link}
+      time: Temps
     query:
       node: Nœud
       way: Chemin
@@ -2338,7 +2461,7 @@ fr:
       title: Créer unn nouveau masquage
     show:
       description: 'Description :'
-      heading: Masquage "%{title}"
+      heading: Démasquage "%{title}"
       title: Affichage du masquage
       user: 'Créateur :'
       edit: Modifier ce masquage

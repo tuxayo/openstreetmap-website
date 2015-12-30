@@ -19,8 +19,7 @@
             "description": "Անջատել գծերը/տարածքները իրարից։"
         },
         "merge": {
-            "title": "Միացնել",
-            "description": "Միացնել այս գծերը։"
+            "title": "Միացնել"
         }
     },
     "translate": {
@@ -40,14 +39,11 @@
             }
         },
         "fields": {
-            "access": {
-                "label": "Մատչելիություն"
-            },
             "address": {
                 "label": "Հասցե",
                 "placeholders": {
-                    "street": "Փողոց",
-                    "city": "Քաղաք"
+                    "city": "Քաղաք",
+                    "street": "Փողոց"
                 }
             },
             "atm": {
@@ -114,9 +110,6 @@
             },
             "highway/bus_stop": {
                 "name": "Ավտոբուսի կանգառ"
-            },
-            "highway/crossing": {
-                "name": "Անցում (հետիոտնի)"
             },
             "highway/steps": {
                 "name": "Աստիճաններ"

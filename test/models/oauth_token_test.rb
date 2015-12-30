@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class OauthTokenTest < ActiveSupport::TestCase
   api_fixtures
@@ -22,5 +22,4 @@ class OauthTokenTest < ActiveSupport::TestCase
     tok.invalidate!
     assert_equal false, tok.authorized?, "Token should now be invalid."
   end
-
 end

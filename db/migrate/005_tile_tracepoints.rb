@@ -1,8 +1,8 @@
-require 'migrate'
+require "migrate"
 
 class TileTracepoints < ActiveRecord::Migration
   def self.up
-    add_column "gps_points", "tile", :four_byte_unsigned
+    add_column "gps_points", "tile", :bigint
     add_index "gps_points", ["tile"], :name => "points_tile_idx"
     remove_index "gps_points", :name => "points_idx"
 
@@ -20,7 +20,7 @@ class TileTracepoints < ActiveRecord::Migration
   def self.down
     Tracepoint.update_all("latitude = latitude / 10, longitude = longitude / 10")
 
-    add_index "gps_points", ["latitude", "longitude"], :name => "points_idx"
+    add_index "gps_points", %w(latitude longitude), :name => "points_idx"
     remove_index "gps_points", :name => "points_tile_idx"
     remove_column "gps_points", "tile"
   end

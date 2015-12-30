@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class SiteControllerTest < ActionController::TestCase
   api_fixtures
@@ -86,56 +86,71 @@ class SiteControllerTest < ActionController::TestCase
   def test_index
     get :index
     assert_response :success
-    assert_template 'index'
+    assert_template "index"
   end
 
   # Test the index page redirects
   def test_index_redirect
+    get :index, :node => 123
+    assert_redirected_to :controller => :browse, :action => :node, :id => 123
+
+    get :index, :way => 123
+    assert_redirected_to :controller => :browse, :action => :way, :id => 123
+
+    get :index, :relation => 123
+    assert_redirected_to :controller => :browse, :action => :relation, :id => 123
+
+    get :index, :note => 123
+    assert_redirected_to :controller => :browse, :action => :note, :id => 123
+
+    get :index, :query => "test"
+    assert_redirected_to :controller => :geocoder, :action => :search, :query => "test"
+
     get :index, :lat => 4, :lon => 5
-    assert_redirected_to :controller => :site, :action => :index, :anchor => 'map=5/4/5'
+    assert_redirected_to :controller => :site, :action => :index, :anchor => "map=5/4/5"
 
     get :index, :lat => 4, :lon => 5, :zoom => 3
-    assert_redirected_to :controller => :site, :action => :index, :anchor => 'map=3/4/5'
+    assert_redirected_to :controller => :site, :action => :index, :anchor => "map=3/4/5"
 
-    get :index, :layers => 'T'
-    assert_redirected_to :controller => :site, :action => :index, :anchor => 'layers=T'
+    get :index, :layers => "T"
+    assert_redirected_to :controller => :site, :action => :index, :anchor => "layers=T"
 
-    get :index, :notes => 'yes'
-    assert_redirected_to :controller => :site, :action => :index, :anchor => 'layers=N'
+    get :index, :notes => "yes"
+    assert_redirected_to :controller => :site, :action => :index, :anchor => "layers=N"
 
-    get :index, :lat => 4, :lon => 5, :zoom => 3, :layers => 'T'
-    assert_redirected_to :controller => :site, :action => :index, :anchor => 'map=3/4/5&layers=T'
+    get :index, :lat => 4, :lon => 5, :zoom => 3, :layers => "T"
+    assert_redirected_to :controller => :site, :action => :index, :anchor => "map=3/4/5&layers=T"
   end
 
   # Test the permalink redirect
   def test_permalink
-    get :permalink, :code => 'wBz3--'
+    get :permalink, :code => "wBz3--"
     assert_response :redirect
-    assert_redirected_to :controller => :site, :action => :index, :anchor => 'map=3/4.8779296875/3.955078125'
+    assert_redirected_to :controller => :site, :action => :index, :anchor => "map=3/4.8779296875/3.955078125"
 
-    get :permalink, :code => 'wBz3--', :m => ''
+    get :permalink, :code => "wBz3--", :m => ""
     assert_response :redirect
-    assert_redirected_to :controller => :site, :action => :index, :mlat => '4.8779296875', :mlon => '3.955078125', :anchor => 'map=3/4.8779296875/3.955078125'
+    assert_redirected_to :controller => :site, :action => :index, :mlat => "4.8779296875", :mlon => "3.955078125", :anchor => "map=3/4.8779296875/3.955078125"
 
-    get :permalink, :code => 'wBz3--', :layers => 'T'
+    get :permalink, :code => "wBz3--", :layers => "T"
     assert_response :redirect
-    assert_redirected_to :controller => :site, :action => :index, :anchor => 'map=3/4.8779296875/3.955078125&layers=T'
+    assert_redirected_to :controller => :site, :action => :index, :anchor => "map=3/4.8779296875/3.955078125&layers=T"
 
-    get :permalink, :code => 'wBz3--', :node => 1
+    get :permalink, :code => "wBz3--", :node => 1
     assert_response :redirect
-    assert_redirected_to :controller => :browse, :action => :node, :id => 1, :anchor => 'map=3/4.8779296875/3.955078125'
+    assert_redirected_to :controller => :browse, :action => :node, :id => 1, :anchor => "map=3/4.8779296875/3.955078125"
 
-    get :permalink, :code => 'wBz3--', :way => 2
+    get :permalink, :code => "wBz3--", :way => 2
     assert_response :redirect
-    assert_redirected_to :controller => :browse, :action => :way, :id => 2, :anchor => 'map=3/4.8779296875/3.955078125'
+    assert_redirected_to :controller => :browse, :action => :way, :id => 2, :anchor => "map=3/4.8779296875/3.955078125"
 
-    get :permalink, :code => 'wBz3--', :relation => 3
+    get :permalink, :code => "wBz3--", :relation => 3
     assert_response :redirect
-    assert_redirected_to :controller => :browse, :action => :relation, :id => 3, :anchor => 'map=3/4.8779296875/3.955078125'
+    assert_redirected_to :controller => :browse, :action => :relation, :id => 3, :anchor => "map=3/4.8779296875/3.955078125"
 
-    get :permalink, :code => 'wBz3--', :changeset => 4
+    get :permalink, :code => "wBz3--", :changeset => 4
     assert_response :redirect
-    assert_redirected_to :controller => :browse, :action => :changeset, :id => 4, :anchor => 'map=3/4.8779296875/3.955078125'
+    assert_redirected_to :controller => :browse, :action => :changeset, :id => 4, :anchor => "map=3/4.8779296875/3.955078125"
   end
 
   # Test the key page
@@ -155,7 +170,7 @@ class SiteControllerTest < ActionController::TestCase
 
   # Test the right editor gets used when the user hasn't set a preference
   def test_edit_without_preference
-    get :edit, nil, { :user => users(:public_user).id }
+    get :edit, nil, :user => users(:public_user).id
     assert_response :success
     assert_template "edit"
     assert_template :partial => "_#{DEFAULT_EDITOR}", :count => 1
@@ -167,7 +182,7 @@ class SiteControllerTest < ActionController::TestCase
     user.preferred_editor = "id"
     user.save!
 
-    get :edit, nil, { :user => user.id }
+    get :edit, nil, :user => user.id
     assert_response :success
     assert_template "edit"
     assert_template :partial => "_id", :count => 1
@@ -176,7 +191,7 @@ class SiteControllerTest < ActionController::TestCase
     user.preferred_editor = "potlatch2"
     user.save!
 
-    get :edit, nil, { :user => user.id }
+    get :edit, nil, :user => user.id
     assert_response :success
     assert_template "edit"
     assert_template :partial => "_potlatch2", :count => 1
@@ -185,7 +200,7 @@ class SiteControllerTest < ActionController::TestCase
     user.preferred_editor = "potlatch"
     user.save!
 
-    get :edit, nil, { :user => user.id }
+    get :edit, nil, :user => user.id
     assert_response :success
     assert_template "edit"
     assert_template :partial => "_potlatch", :count => 1
@@ -194,7 +209,29 @@ class SiteControllerTest < ActionController::TestCase
     user.preferred_editor = "remote"
     user.save!
 
-    get :edit, nil, { :user => user.id }
+    get :edit, nil, :user => user.id
+    assert_response :success
+    assert_template "index"
+  end
+
+  # Test the right editor gets used when the URL has an override
+  def test_edit_with_override
+    get :edit, { :editor => "id" }, { :user => users(:public_user).id }
+    assert_response :success
+    assert_template "edit"
+    assert_template :partial => "_id", :count => 1
+
+    get :edit, { :editor => "potlatch2" }, { :user => users(:public_user).id }
+    assert_response :success
+    assert_template "edit"
+    assert_template :partial => "_potlatch2", :count => 1
+
+    get :edit, { :editor => "potlatch" }, { :user => users(:public_user).id }
+    assert_response :success
+    assert_template "edit"
+    assert_template :partial => "_potlatch", :count => 1
+
+    get :edit, { :editor => "remote" }, { :user => users(:public_user).id }
     assert_response :success
     assert_template "index"
   end
@@ -228,7 +265,7 @@ class SiteControllerTest < ActionController::TestCase
   # Test editing a specific note
   def test_edit_with_note
     user = users(:public_user)
-    note  = notes(:open_note)
+    note = notes(:open_note)
 
     get :edit, { :note => note.id }, { :user => user.id }
     assert_response :success
@@ -254,13 +291,13 @@ class SiteControllerTest < ActionController::TestCase
   # Test the edit page redirects
   def test_edit_redirect
     get :edit, :lat => 4, :lon => 5
-    assert_redirected_to :controller => :site, :action => :edit, :anchor => 'map=5/4/5'
+    assert_redirected_to :controller => :site, :action => :edit, :anchor => "map=5/4/5"
 
     get :edit, :lat => 4, :lon => 5, :zoom => 3
-    assert_redirected_to :controller => :site, :action => :edit, :anchor => 'map=3/4/5'
+    assert_redirected_to :controller => :site, :action => :edit, :anchor => "map=3/4/5"
 
-    get :edit, :lat => 4, :lon => 5, :zoom => 3, :editor => 'id'
-    assert_redirected_to :controller => :site, :action => :edit, :editor => 'id', :anchor => 'map=3/4/5'
+    get :edit, :lat => 4, :lon => 5, :zoom => 3, :editor => "id"
+    assert_redirected_to :controller => :site, :action => :edit, :editor => "id", :anchor => "map=3/4/5"
   end
 
   # Test the copyright page
@@ -276,7 +313,7 @@ class SiteControllerTest < ActionController::TestCase
     assert_response :redirect
     assert_redirected_to :controller => :user, :action => :login, :referer => "/welcome"
 
-    get :welcome, nil, { :user => users(:public_user).id }
+    get :welcome, nil, :user => users(:public_user).id
     assert_response :success
     assert_template "welcome"
   end
@@ -336,7 +373,7 @@ class SiteControllerTest < ActionController::TestCase
 
   # Test the id frame
   def test_id
-    get :id, nil, { :user => users(:public_user).id }
+    get :id, nil, :user => users(:public_user).id
     assert_response :success
     assert_template "id"
     assert_template :layout => false

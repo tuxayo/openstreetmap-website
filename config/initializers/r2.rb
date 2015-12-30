@@ -1,5 +1,5 @@
 class R2Template < Tilt::Template
-  self.default_mime_type = 'text/css'
+  self.default_mime_type = "text/css"
 
   def self.engine_initialized?
     defined? ::R2
@@ -12,8 +12,8 @@ class R2Template < Tilt::Template
   def prepare
     @output = R2.r2(data)
   end
-  
-  def evaluate(scope, locals, &block)
+
+  def evaluate(_scope, _locals, &_block)
     @output
   end
 end

@@ -11,9 +11,8 @@ def add_translation(hash, keys, value)
   if keys.empty?
     hash[key] = value
   else
-    unless hash.has_key? key
-      hash[key] = {}
-    end
+    hash[key] ||= {}
+
     add_translation(hash[key], keys, value)
   end
   hash
@@ -22,29 +21,29 @@ end
 def po2hash(f)
   trs = {}
   path = []
-  msgstr = ''
-  f.each_line { |line|
+  msgstr = ""
+  f.each_line do |line|
     line.strip!
     if line[0..8] == 'msgctxt "'
-      path = line[9..-2].split(':')
+      path = line[9..-2].split(":")
     elsif line[0..7] == 'msgstr "'
       msgstr = line[8..-2]
     end
-    
-    if !path.empty? and !msgstr.empty?
-      add_translation(trs, path, msgstr)
-      path = []
-      msgstr = ''
-    end
-  }
+
+    next if path.empty? || msgstr.empty?
+
+    add_translation(trs, path, msgstr)
+    path = []
+    msgstr = ""
+  end
   trs
 end
 
 filename = ARGV[0]
 pofile = File.open(filename, "r")
 
-langcode = File.basename(filename, '.po')
+langcode = File.basename(filename, ".po")
 
-tr = {langcode => po2hash(pofile)}
+tr = { langcode => po2hash(pofile) }
 
 print tr.to_yaml

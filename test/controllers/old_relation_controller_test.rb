@@ -1,5 +1,5 @@
-require 'test_helper'
-require 'old_relation_controller'
+require "test_helper"
+require "old_relation_controller"
 
 class OldRelationControllerTest < ActionController::TestCase
   api_fixtures
@@ -43,8 +43,8 @@ class OldRelationControllerTest < ActionController::TestCase
     assert_response :unauthorized, "should need to be authenticated to redact."
   end
 
-    ##
-  # test the redaction of an old version of a relation, while being 
+  ##
+  # test the redaction of an old version of a relation, while being
   # authorised as a normal user.
   def test_redact_relation_normal_user
     basic_authorization(users(:public_user).email, "test")
@@ -63,10 +63,10 @@ class OldRelationControllerTest < ActionController::TestCase
     do_redact_relation(relations(:relation_with_versions_v4),
                        redactions(:example))
     assert_response :bad_request, "shouldn't be OK to redact current version as moderator."
-  end    
+  end
 
   ##
-  # test that redacted relations aren't visible, regardless of 
+  # test that redacted relations aren't visible, regardless of
   # authorisation except as moderator...
   def test_version_redacted
     relation = relations(:relation_with_redacted_versions_v2)
@@ -87,18 +87,18 @@ class OldRelationControllerTest < ActionController::TestCase
 
     get :history, :id => relation.relation_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm relation[id=#{relation.relation_id}][version=#{relation.version}]", 0, "redacted relation #{relation.relation_id} version #{relation.version} shouldn't be present in the history."
+    assert_select "osm relation[id='#{relation.relation_id}'][version='#{relation.version}']", 0, "redacted relation #{relation.relation_id} version #{relation.version} shouldn't be present in the history."
 
     # not even to a logged-in user
     basic_authorization(users(:public_user).email, "test")
     get :version, :id => relation.relation_id, :version => relation.version
     get :history, :id => relation.relation_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm relation[id=#{relation.relation_id}][version=#{relation.version}]", 0, "redacted node #{relation.relation_id} version #{relation.version} shouldn't be present in the history, even when logged in."
+    assert_select "osm relation[id='#{relation.relation_id}'][version='#{relation.version}']", 0, "redacted node #{relation.relation_id} version #{relation.version} shouldn't be present in the history, even when logged in."
   end
 
   ##
-  # test the redaction of an old version of a relation, while being 
+  # test the redaction of an old version of a relation, while being
   # authorised as a moderator.
   def test_redact_relation_moderator
     relation = relations(:relation_with_versions_v3)
@@ -111,16 +111,16 @@ class OldRelationControllerTest < ActionController::TestCase
     # the appropriate flag
     get :version, :id => relation.relation_id, :version => relation.version
     assert_response :forbidden, "After redaction, node should be gone for moderator, when flag not passed."
-    get :version, :id => relation.relation_id, :version => relation.version, :show_redactions => 'true'
+    get :version, :id => relation.relation_id, :version => relation.version, :show_redactions => "true"
     assert_response :success, "After redaction, node should not be gone for moderator, when flag passed."
-    
+
     # and when accessed via history
     get :history, :id => relation.relation_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm relation[id=#{relation.relation_id}][version=#{relation.version}]", 0, "relation #{relation.relation_id} version #{relation.version} should not be present in the history for moderators when not passing flag."
-    get :history, :id => relation.relation_id, :show_redactions => 'true'
+    assert_select "osm relation[id='#{relation.relation_id}'][version='#{relation.version}']", 0, "relation #{relation.relation_id} version #{relation.version} should not be present in the history for moderators when not passing flag."
+    get :history, :id => relation.relation_id, :show_redactions => "true"
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm relation[id=#{relation.relation_id}][version=#{relation.version}]", 1, "relation #{relation.relation_id} version #{relation.version} should still be present in the history for moderators when passing flag."
+    assert_select "osm relation[id='#{relation.relation_id}'][version='#{relation.version}']", 1, "relation #{relation.relation_id} version #{relation.version} should still be present in the history for moderators when passing flag."
   end
 
   # testing that if the moderator drops auth, he can't see the
@@ -138,12 +138,67 @@ class OldRelationControllerTest < ActionController::TestCase
     # check can't see the redacted data
     get :version, :id => relation.relation_id, :version => relation.version
     assert_response :forbidden, "Redacted node shouldn't be visible via the version API."
-    
+
     # and when accessed via history
     get :history, :id => relation.relation_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm relation[id=#{relation.relation_id}][version=#{relation.version}]", 0, "redacted relation #{relation.relation_id} version #{relation.version} shouldn't be present in the history."
+    assert_select "osm relation[id='#{relation.relation_id}'][version='#{relation.version}']", 0, "redacted relation #{relation.relation_id} version #{relation.version} shouldn't be present in the history."
   end
+
+  ##
+  # test the unredaction of an old version of a relation, while not being
+  # authorised.
+  def test_unredact_relation_unauthorised
+    relation = relations(:relation_with_redacted_versions_v3)
+
+    post :redact, :id => relation.relation_id, :version => relation.version
+    assert_response :unauthorized, "should need to be authenticated to unredact."
+  end
+
+  ##
+  # test the unredaction of an old version of a relation, while being
+  # authorised as a normal user.
+  def test_unredact_relation_normal_user
+    relation = relations(:relation_with_redacted_versions_v3)
+    basic_authorization(users(:public_user).email, "test")
+
+    post :redact, :id => relation.relation_id, :version => relation.version
+    assert_response :forbidden, "should need to be moderator to unredact."
+  end
+
+  ##
+  # test the unredaction of an old version of a relation, while being
+  # authorised as a moderator.
+  def test_unredact_relation_moderator
+    relation = relations(:relation_with_redacted_versions_v3)
+    basic_authorization(users(:moderator_user).email, "test")
+
+    post :redact, :id => relation.relation_id, :version => relation.version
+    assert_response :success, "should be OK to unredact old version as moderator."
+
+    # check moderator can still see the redacted data, without passing
+    # the appropriate flag
+    get :version, :id => relation.relation_id, :version => relation.version
+    assert_response :success, "After redaction, node should not be gone for moderator, when flag passed."
+
+    # and when accessed via history
+    get :history, :id => relation.relation_id
+    assert_response :success, "Redaction shouldn't have stopped history working."
+    assert_select "osm relation[id='#{relation.relation_id}'][version='#{relation.version}']", 1, "relation #{relation.relation_id} version #{relation.version} should still be present in the history for moderators when passing flag."
+
+    basic_authorization(users(:normal_user).email, "test")
+
+    # check normal user can now see the redacted data
+    get :version, :id => relation.relation_id, :version => relation.version
+    assert_response :success, "After redaction, node should not be gone for moderator, when flag passed."
+
+    # and when accessed via history
+    get :history, :id => relation.relation_id
+    assert_response :success, "Redaction shouldn't have stopped history working."
+    assert_select "osm relation[id='#{relation.relation_id}'][version='#{relation.version}']", 1, "relation #{relation.relation_id} version #{relation.version} should still be present in the history for moderators when passing flag."
+  end
+
+  private
 
   ##
   # check that the current version of a relation is equivalent to the
@@ -183,7 +238,7 @@ class OldRelationControllerTest < ActionController::TestCase
       assert_response :success, "couldn't get relation #{relation_id}, v#{history_relation.version}"
       version_relation = Relation.from_xml(@response.body)
       assert_not_nil version_relation, "failed to parse #{relation_id}, v#{history_relation.version}"
-      
+
       assert_relations_are_equal history_relation, version_relation
     end
   end
@@ -191,7 +246,7 @@ class OldRelationControllerTest < ActionController::TestCase
   def do_redact_relation(relation, redaction)
     get :version, :id => relation.relation_id, :version => relation.version
     assert_response :success, "should be able to get version #{relation.version} of node #{relation.relation_id}."
-    
+
     # now redact it
     post :redact, :id => relation.relation_id, :version => relation.version, :redaction => redaction.id
   end

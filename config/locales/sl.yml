@@ -6,6 +6,8 @@
 # Author: Eleassar
 # Author: Lesko987
 # Author: Mateju
+# Author: Ruila
+# Author: Skalcaa
 # Author: Stefanb
 ---
 sl:
@@ -74,7 +76,7 @@ sl:
         body: Besedilo
         recipient: Prejemnik
       user:
-        email: Naslov e-pošte
+        email: Elektronski naslov
         active: Aktiven
         display_name: Prikazno ime
         description: Opis
@@ -166,7 +168,7 @@ sl:
         relation: zveza
         changeset: Paket sprememb
     timeout:
-      sorry: Oprostite, podatki za %{type}, ID %{id}, ID se predolgo prenašajo.
+      sorry: Oprostite, podatki za %{type} z ID-jem %{id} se predolgo prenašajo.
       type:
         node: vozlišče
         way: pot
@@ -209,6 +211,8 @@ sl:
       reopened_by_anonymous: Ponovno aktiviral anonimni <abbr title='%{exact_time}'>%{when}
         nazaj</abbr>
       hidden_by: Skril %{user} <abbr title='%{exact_time}'>%{when} nazaj</abbr>
+    query:
+      nearby: Značilnosti v neposredni bližini
   changeset:
     changeset_paging_nav:
       showing_page: Stran %{page}
@@ -229,10 +233,14 @@ sl:
       title_user: Paketi sprememb uporabnika %{user}
       title_friend: Paket sprememb vaših prijateljev
       title_nearby: Paketi sprememb bližnjih uporabnikov
+      empty: Ni najdenih množic sprememb.
+      empty_area: Na tem področju ni množic sprememb.
       load_more: Naloži več
     timeout:
       sorry: Žal je seznam zahtevanih sprememb predolg za prenos.
     rss:
+      commented_at_html: Posodobljeno %{when} nazaj
+      commented_at_by_html: Posodobil %{user} %{when} nazaj
       full: Celoten pogovor
   diary_entry:
     new:
@@ -368,8 +376,10 @@ sl:
     search_osm_nominatim:
       prefix:
         aerialway:
+          cable_car: Nihalka
           chair_lift: Sedežnica
           drag_lift: Vlečnica
+          gondola: Kabinska žičnica
           station: Žičniška postaja
         aeroway:
           aerodrome: Aerodrom
@@ -380,11 +390,9 @@ sl:
           taxiway: Vozna steza
           terminal: Terminal
         amenity:
-          airport: Letališče
+          animal_shelter: Zavetišče za živali
           arts_centre: Umetnostni center
-          artwork: Umetnina
           atm: Bankomat
-          auditorium: Avditorij
           bank: Banka
           bar: Bar
           bbq: Žar
@@ -392,6 +400,7 @@ sl:
           bicycle_parking: Parkirišče za kolesa
           bicycle_rental: Izposoja koles
           biergarten: Pivski vrt
+          boat_rental: Najem čolna
           brothel: Javna hiša
           bureau_de_change: Menjalnica
           bus_station: Avtobusna postaja
@@ -401,9 +410,10 @@ sl:
           car_wash: Avtopralnica
           casino: Kazino
           charging_station: Polnilna postaja
+          childcare: Varstvo otrok
           cinema: Kinematograf
           clinic: Klinika
-          club: Klub
+          clock: Ura
           college: Srednja šola
           community_centre: Center skupnosti
           courthouse: Sodišče
@@ -421,25 +431,25 @@ sl:
           fire_station: Gasilska postaja
           fountain: Vodomet
           fuel: Bencinska črpalka
+          gambling: Igre na srečo
           grave_yard: Pokopališče
           gym: Fitnes / Telovadnica
-          hall: Dvorana
           health_centre: Dom zdravja
           hospital: Bolnišnica
-          hotel: Hotel
           hunting_stand: Lovska opazovalnica
           ice_cream: Sladoled
           kindergarten: Vrtec
           library: Knjižnica
           market: Trg
           marketplace: Tržnica
-          mountain_rescue: GRS - Gorska reševalna služba
+          monastery: Samostan
+          motorcycle_parking: Parkirišče motornih koles
           nightclub: Nočni klub
           nursery: Vrtec
           nursing_home: Dom za ostarele
           office: Pisarne
-          park: Park
           parking: Parkirišče
+          parking_entrance: Vhod v parkirišče
           pharmacy: Lekarna
           place_of_worship: Cerkev
           police: Policija
@@ -449,7 +459,6 @@ sl:
           prison: Zapor
           pub: Pivnica
           public_building: Javne zgradba
-          public_market: Javni trg
           reception_area: Recepcija
           recycling: Reciklirna točka
           restaurant: Restavracija
@@ -458,13 +467,11 @@ sl:
           school: Šola
           shelter: Zaklonišče
           shop: Trgovina
-          shopping: Nakupovanje
           shower: Tuš
           social_centre: Socialni center
           social_club: Društveni klub
           social_facility: Socialni objekt
           studio: Studio
-          supermarket: Supermarket
           swimming_pool: Bazen
           taxi: Taksi
           telephone: Telefonska govorilnica
@@ -476,8 +483,6 @@ sl:
           veterinary: Veterinarska klinika
           village_hall: Vaško središče
           waste_basket: Koš za odpadke
-          wifi: Dostop WiFi
-          WLAN: WiFi dostop
           youth_centre: Mladinski center
         boundary:
           administrative: Upravne meje
@@ -492,22 +497,34 @@ sl:
           "yes": Most
         building:
           "yes": Zgradba
+        craft:
+          brewery: Pivovarna
+          carpenter: Mizarstvo
+          electrician: Elektrikar
+          gardener: Vrtnar
+          painter: Soboslikar
+          photographer: Fotograf
+          plumber: Vodovodar
+          shoemaker: Čevljar
+          tailor: Krojač
+          "yes": Obrtnik
         emergency:
-          fire_hydrant: Hidrant
+          ambulance_station: Reševalna postaja
+          defibrillator: Defibrilator
           phone: Klic v sili
         highway:
+          abandoned: Opuščena cesta
           bridleway: Jahalna pot
           bus_guideway: Turistični avtobus
           bus_stop: Avtobusna postaja
-          byway: Obvoz
           construction: Autocesta v izgradnji
           cycleway: Kolesarska steza
+          elevator: Dvigalo
           emergency_access_point: Dostop za interventna vozila
           footway: Pešpot
           ford: Prehod
           living_street: Ulica z umirjenim prometom
           milestone: Kilometerski kamen
-          minor: Manjša cesta
           motorway: Avtocesta
           motorway_junction: Avtocestno križišče
           motorway_link: Avtocestni priključek
@@ -528,7 +545,6 @@ sl:
           speed_camera: Hitrostna kamera
           steps: Stopnice
           street_lamp: Ulična svetilka
-          stile: Prehod preko ograje
           tertiary: Lokalna cesta
           tertiary_link: Terciarna cesta
           track: Kolovoz
@@ -537,13 +553,16 @@ sl:
           trunk_link: Priključek na hitro cesto
           unclassified: Neopredeljena cesta
           unsurfaced: Makadamska pot
+          "yes": Cesta
         historic:
           archaeological_site: Arheološko najdbišče
           battlefield: Bojišče
           boundary_stone: Mejni kamen
-          building: Zgradba
+          building: Zgodovinska stavba
+          bunker: Bunker
           castle: Grad
           church: Cerkev
+          city_gate: Mestna vrata
           citywalls: Mestno obzidje
           fort: Trdnjava
           house: Hiša
@@ -552,13 +571,16 @@ sl:
           memorial: Spomenik
           mine: Rudnik
           monument: Spomenik
-          museum: Muzej
+          roman_road: Rimska cesta
           ruins: Ruševine
+          stone: Skala
           tomb: Grobnica
           tower: Stolp
           wayside_cross: Križ
           wayside_shrine: Kapelica
           wreck: Razbitina
+        junction:
+          "yes": Križišče
         landuse:
           allotments: Vrtički
           basin: Čistilni bazen
@@ -580,9 +602,6 @@ sl:
           military: Vojaško območje
           mine: Minsko polje
           orchard: Sadovnjak
-          nature_reserve: Naravni rezervat
-          park: Park
-          piste: Proga
           quarry: Dnevni kop
           railway: Železnica
           recreation_ground: Rekreacijsko območje
@@ -592,16 +611,18 @@ sl:
           road: Območje ceste
           village_green: Zelenica
           vineyard: Vinograd
-          wetland: Mokrišče
-          wood: Pragozd
+          "yes": Raba tal
         leisure:
           beach_resort: kopališče
           bird_hide: Ptičja opazovalnica
+          club: Klub
           common: Javno zemljišče
           fishing: Ribolovno območje
+          fitness_centre: Fitnes center
           fitness_station: Fitnes center
           garden: Vrt
           golf_course: Igrišče za Golf
+          horse_riding: Jahanje
           ice_rink: Drsališče
           marina: Marina
           miniature_golf: Mini golf
@@ -617,6 +638,12 @@ sl:
           swimming_pool: Bazen
           track: Tekaška proga
           water_park: Vodni park
+          "yes": Prosti čas
+        man_made:
+          lighthouse: Svetilnik
+          pipeline: Cevovod
+          tower: Stolp
+          works: Tovarna
         military:
           airfield: Vojaško letališče
           barracks: Vojašnica
@@ -628,11 +655,9 @@ sl:
           beach: Obala
           cape: Rt
           cave_entrance: Vhod v jamo
-          channel: Kanal
           cliff: Klif
           crater: Krater
           dune: Peščina
-          feature: Znamenitost
           fell: Višinski travnik
           fjord: Fjord
           forest: Gozd
@@ -649,11 +674,11 @@ sl:
           point: Točka
           reef: Greben
           ridge: Greben
-          river: Reka
           rock: Skala
+          saddle: Sedlo
+          sand: Pesek
           scree: Melišče
           scrub: Grmovje
-          shoal: Peščena plaža
           spring: Izvir
           stone: Skala
           strait: Ožina
@@ -662,10 +687,10 @@ sl:
           volcano: Vulkan
           water: Vodovje
           wetland: Mokrišče
-          wetlands: Mokrišča
           wood: Pragozd
         office:
           accountant: Računovodja
+          administrative: Administracija
           architect: Arhitekt
           company: Podjetje
           employment_agency: Agencija za zaposlovanje
@@ -678,6 +703,7 @@ sl:
           travel_agent: Potovalna agencija
           "yes": Pisarne
         place:
+          allotments: Vrtički
           airport: Letališče
           city: Mesto
           country: Država
@@ -722,12 +748,11 @@ sl:
           spur: Tir
           station: Železniška postaja
           stop: Železniško postajališče
-          subway: Podzemna postaja
+          subway: Podzemna železnica
           subway_entrance: Vhod na podzemno
           switch: Kretnica
           tram: Tramvaj
           tram_stop: Tramvajska postaja
-          yard: Železniško dvorišče
         shop:
           alcohol: Trgovina alkoholnih pijač
           antiques: Starinarna
@@ -805,6 +830,7 @@ sl:
           "yes": Trgovina
         tourism:
           alpine_hut: Koča
+          apartment: Apartma
           artwork: Umetnina
           attraction: Zanimivost
           bed_and_breakfast: Nočitev z zajtrkom
@@ -812,16 +838,15 @@ sl:
           camp_site: Kamp
           caravan_site: Kamp
           chalet: Apartma
+          gallery: Galerija
           guest_house: Penzion
           hostel: Hostel
           hotel: Hotel
           information: Informacije
-          lean_to: Bivak
           motel: Motel
           museum: Muzej
           picnic_site: Prostor za piknike
           theme_park: Zabaviščni park
-          valley: Dolina
           viewpoint: Razgledna točka
           zoo: Živalski vrt
         tunnel:
@@ -831,7 +856,6 @@ sl:
           artificial: Umetni vodotok
           boatyard: Ladjedelnica
           canal: Prekop
-          connector: Vodne povezave
           dam: Jez
           derelict_canal: Zapuščen prekop
           ditch: Jarek
@@ -839,16 +863,14 @@ sl:
           drain: Jarek
           lock: Zapornica
           lock_gate: Velika zapornica
-          mineral_spring: Mineral vrelec
           mooring: Sidrišče
           rapids: Brzice
           river: Reka
-          riverbank: Breg
           stream: Potok
           wadi: Vadi
           waterfall: Slap
-          water_point: Pitna voda
           weir: Zapornica
+          "yes": Vodotok
       admin_levels:
         level2: Državna meja
         level4: Meja pokrajine
@@ -869,18 +891,6 @@ sl:
     results:
       no_results: Ni zadetkov
       more_results: Več zadetkov
-    distance:
-      zero: manj kot en km
-      other: približno %{count} km
-    direction:
-      south_west: jugozahodno
-      south: južno
-      south_east: jugovzhodno
-      east: vzhodno
-      north_east: severovzhodno
-      north: severno
-      north_west: severozahodno
-      west: zahodno
   layouts:
     logo:
       alt_text: OpenStreetMap logotip
@@ -943,9 +953,15 @@ sl:
       mapping_link: začnete kartirati
     legal_babble:
       title_html: Avtorske pravice in licenca
-      intro_1_html: OpenStreetMap so <i>prosti podatki</i> z <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open
-        Data Commons Open Database License</a> (ODbL) licenco.
+      intro_1_html: OpenStreetMap<sup><a href="#trademarks">&reg;</a></sup> so <i>prosti
+        podatki</i> z dovoljenjem <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open
+        Data Commons Open Database License</a> (ODbL) <a href="http://osmfoundation.org/">Fundacije
+        OpenStreetMap</a> (OSMF).
       contributors_title_html: Naši sodelavci
+      contributors_si_html: |-
+        <strong>Slovenija</strong>: Vsebuje javne podatke
+        <a href="http://www.gu.gov.si">Geodetske uprave republike slovenije</a> in
+        <a href="http://www.mkgp.gov.si">Ministrstva za kmetijsktvo, gozdarstvo in prehrano</a>.
       infringement_title_html: Kršitev avtorskih pravic
   welcome_page:
     title: Dobrodošli!
@@ -1004,6 +1020,8 @@ sl:
     welcome:
       title: Dobrodošli v OSM
       description: Začnite s tem hitrim vodičem, ki zajema osnove OpenStreetMap.
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Sl:Beginners%27_guide
     help:
       description: Zastavite vprašanje ali poiščete odgovore v OSM zbirki vprašanj
         in odgovorov.
@@ -1243,6 +1261,10 @@ sl:
       close: Zapri
     search:
       search: Iskanje
+      get_directions: Pridobite navodila za pot
+      get_directions_title: Navodila za pot med dvema točkama
+      from: Od
+      to: Do
       where_am_i: Kje sem?
       where_am_i_title: Opišite trenutno lokacijo z uporabo iskalnika
       submit_text: Išči
@@ -1254,9 +1276,7 @@ sl:
           primary: Glavna cesta
           secondary: Regionalna cesta
           unclassified: Ostale ceste izven naselij
-          unsurfaced: Neasfaltirana cesta
           track: Kolovoz
-          byway: Obvoz
           bridleway: Jahalna pot
           cycleway: Kolesarska steza
           footway: Pešpot
@@ -1280,7 +1300,6 @@ sl:
           golf: Igrišče za Golf
           park: Park
           resident: Naselje
-          tourist: Turistična znamenitost
           common:
           - Travniki
           - travnik
@@ -1310,7 +1329,6 @@ sl:
           tunnel: Črtkana obroba = predor
           bridge: Krepka obroba = most
           private: Zasebni dostop
-          permissive: Dostopno z dovolilnico
           destination: Dovoljeno za dostavo
           construction: Ceste v gradnji
     richtext_area:
@@ -1557,7 +1575,6 @@ sl:
       register now: Registriraj se
       with username: 'Že imate OpenStreetMap račun? Prosim, prijavite se s svojim
         uporabniškim imenom in geslom:'
-      with openid: 'Lahko se prijavite tudi s svojim OpenID-jrm:'
       new to osm: Ste novi na OpenStreetMap?
       to make changes: Če želite spreminjati podatke na OpenStreetMap, morate imeti
         račun.
@@ -1570,25 +1587,20 @@ sl:
       account is suspended: Žal je bil vaš račun ustavljen zaradi sumljive aktivnosti.<br>Prosimo,
         obrnite se na <a href="%{webmaster}">webmaster</a>, če želite o tem razpravljati.
       auth failure: Oprostite, prijava s temi podatki ni uspela.
-      openid missing provider: Žal se ni bilo mogoče obrniti na ponudnika OpenID
-      openid invalid: Oprostite, vaš OpenID ni pravilen
       openid_logo_alt: Prijavite se z OpenID
-      openid_providers:
+      auth_providers:
         openid:
           title: Prijava z OpenID
-          alt: Prijavite se z OpenID povezavo
+          alt: Prijava s povezavo OpenID
         google:
           title: Prijava z Googlom
-          alt: Prijava z Google OpenID
+          alt: Prijava z Google OpenID-jem
         yahoo:
-          title: Prijavite se z Yahoo
+          title: Prijava z Yahoo
           alt: Prijava z Yahoo OpenID
         wordpress:
-          title: Prijava z Wordpress
-          alt: Prijava z Wordpress OpenID
-        aol:
-          title: Prijava z AOL
-          alt: Prijava z AOL OpenID
+          title: Prijava z Wordpressom
+          alt: Prijava z Wordpress OpenID-jem
     logout:
       title: Odjava
       heading: Odjava iz OpenStreetMap
@@ -1636,18 +1648,8 @@ sl:
       display name: 'Prikazno ime:'
       display name description: Javno prikazano uporabniško ime. To lahko spremenite
         kasneje v nastavitvah.
-      openid: '%{logo} OpenID:'
       password: 'Geslo:'
       confirm password: 'Potrdite geslo:'
-      use openid: Lahko pa uporabite %{logo} OpenID za prijavo
-      openid no password: Z OpenID geslo ni potrebno, vendar pa nekaj dodatnih orodij
-        ali strežnikov še vedno potrebujete geslo.
-      openid association: |-
-        <p>Vaš OpenID še ni povezan z OpenStreetMap računom.</p>
-        <ul>
-          <li>Če ste novi v OpenStreetMap, ustvarite nov račun s pomočjo spodnjega obrazca.</li>
-          <li>Če že imate račun, se prijavite na svoj račun z vašim uporabniškim imenom in geslom in nato povežete račun z OpenID-jem v uporabniških nastavitvah.</li>
-        </ul>
       continue: Prijavite se
       terms accepted: Hvala za sprejem novih pogojev prispevanja!
       terms declined: Žal nam je, da ste se odločili, da ne sprejmete novih "contributor
@@ -1754,8 +1756,8 @@ sl:
       current email address: 'E-poštni naslov:'
       new email address: 'Nov e-poštni naslov:'
       email never displayed publicly: (nikoli javno objavljen)
+      external auth: 'Zunanje preverjanje pristnosti:'
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: kaj je to?
       public editing:
@@ -1815,6 +1817,7 @@ sl:
       press confirm button: Za aktivacijo vašega uporabniškega računa pritisnite na
         gumb Potrdi spodaj.
       button: Potrdi
+      success: Vaš uporabniški račun je potrjen. Hvala, da ste se vpisali!
       already active: Ta račun je že bil potrjen.
       unknown token: Ta potrditvena koda je potekla ali ne obstaja.
       reconfirm_html: Če hočete da vam znova pošljemo potrditveno e-pošto, <a href="%{reconfirm}">kliknite
@@ -1832,8 +1835,9 @@ sl:
       press confirm button: Za potrditev spremembe vašega naslova elektronske pošte
         pritisnite na gumb Potrdi spodaj.
       button: Potrdi
-      success: Vaš naslov elektronske pošte je potrjen. Hvala, da ste se vpisali!
+      success: Potrdili smo vašo spremembo e-poštnega naslova!
       failure: Naslov elektronske pošte je že bil potrjen s tem žetonom.
+      unknown_token: Ta potrditvena koda je potekla ali pa ne obstaja.
     set_home:
       flash success: Domača lokacija uspešno shranjena
     go_public:
@@ -1869,6 +1873,9 @@ sl:
       body: |-
         <p>Žal je bil vaš račun avtomatično začasno ustavljen zaradi sumljivih dejavnosti.</p>
         <p>To odločitev bo pregledal administrator v kratkem ali pa se obrnete na %{webmaster}, če imate pripombe.</p>
+    auth_failure:
+      connection_failed: Povezava do storitve za preverjanje pristnosti ni uspela
+      invalid_credentials: Neveljavne poverilnice za preverjanje pristnosti
   user_role:
     filter:
       not_an_administrator: Samo skrbniki lahko upravljajo vlogo uporabnika, vi pa
@@ -2081,8 +2088,14 @@ sl:
         subscribe: Naroči me
         unsubscribe: Odjavi me
         hide_comment: skrij
+        unhide_comment: razkrij
     notes:
       new:
+        intro: Ste opazili napako ali pa kaj manjka? Obvestite ostale kartografe o
+          tem, da lahko to popravijo. Premaknite oznako na pravilno lokacijo in vpišite
+          opombo, kjer pojasnite problem. (Prosimo, ne vnašajte osebnih podatkov ali
+          informacij pridobljenih iz zemljevidov zaščitenih z avtorskimi pravicami
+          ali imeniških seznamov.)
         add: Dodaj opombo
       show:
         anonymous_warning: To opomba vključuje pripombe anonimnih uporabnikov, ki
@@ -2092,6 +2105,24 @@ sl:
         reactivate: Znova aktiviraj
         comment_and_resolve: Komentiraj in razreši
         comment: Komentar
+    edit_help: Premaknite zemljevid in približajte lokacijo, ki jo želite urediti,
+      nato pa kliknite tukaj.
+    directions:
+      engines:
+        graphhopper_bicycle: Kolo (GraphHopper)
+        graphhopper_foot: Peš (GraphHopper)
+        mapquest_bicycle: Kolo (MapQuest)
+        mapquest_car: Avto (MapQuest)
+        mapquest_foot: Peš (MapQuest)
+        osrm_car: Avto (OSRM)
+      directions: Navodila
+      distance: Razdalja
+      errors:
+        no_route: Ni mogoče najti poti med tema dvema položajema.
+      instructions:
+        unnamed: neimenovano
+        courtesy: Navodila je ponudil %{link}
+      time: Čas
     query:
       node: Vozlišče
       way: Pot

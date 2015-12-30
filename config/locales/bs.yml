@@ -7,6 +7,9 @@
 # Author: Edinwiki
 # Author: KWiki
 # Author: Maxmus
+# Author: Palapa
+# Author: Ruila
+# Author: Srdjan m
 ---
 bs:
   time:
@@ -97,23 +100,39 @@ bs:
   browse:
     created: Napravljeno
     closed: Zatvoreno
+    created_html: Kreirano <abbr title='%{title}'>%{time} prije</abbr>
+    closed_html: Zatvoreno <abbr title='%{title}'>%{time} prije</abbr>
     version: Verzija
     in_changeset: Skup promijena
     anonymous: anonimno
     no_comment: (bez komentara)
     part_of: Dio od
     download_xml: Preuzmi XML
-    view_history: Prikaži historiju
+    view_history: Historija
     view_details: Prikaži detalje
     location: 'Lokacija:'
     changeset:
       title: 'Skup promjena: %{id}'
       belongs_to: Autor
+      node: Čvorovi (%{count})
+      node_paginated: Čvorovi (%{x}-%{y} of %{count})
+      way: Putevi (%{count})
+      way_paginated: Putevi (%{x}-%{y} of %{count})
+      relation: Relacije (%{count})
+      relation_paginated: Relacije (%{x}-%{y} of %{count})
+      comment: Komentari (%{count})
+      hidden_commented_by: Skriveni komentar korisnika %{user} <abbr title='%{exact_time}'>%{when}
+        ago</abbr>
+      commented_by: Komentar korisnika %{user} <abbr title='%{exact_time}'>%{when}
+        ago</abbr>
       changesetxml: XML seta promjena
       osmchangexml: osmChange XML
       feed:
         title: Set promjena %{id}
         title_comment: Set promjena %{id} - %{comment}
+      discussion: Diskusija
+    node:
+      title: 'Čvor: %{name}'
     way:
       nodes: Tačke
     relation:
@@ -161,6 +180,10 @@ bs:
       wikipedia_link: Članak o %{page} na Wikipediji
     note:
       new_note: Nova bilješka
+      description: Opis
+    query:
+      nearby: Obližnje značajke
+      enclosing: Značajke okruženja
   changeset:
     changeset_paging_nav:
       showing_page: Stranica %{page}
@@ -185,6 +208,8 @@ bs:
     timeout:
       sorry: Žao nam je, listi seta promjena koju ste tražili je predugo trajalo za
         preuzimanje.
+    rss:
+      full: Cijela diskusija
   diary_entry:
     new:
       title: Novi unos u dnevnik
@@ -314,11 +339,8 @@ bs:
           taxiway: Rulna staza
           terminal: Terminal
         amenity:
-          airport: Aerodrom
           arts_centre: Centar umjetnosti
-          artwork: Umjetnine
           atm: Bankomat
-          auditorium: Auditorij
           bank: Banka
           bar: Bar
           bbq: Gril
@@ -337,7 +359,7 @@ bs:
           charging_station: Stanica za punjenje
           cinema: Kino
           clinic: Klinika
-          club: Klub
+          clock: Sat
           college: Koledž
           community_centre: Društveni centar
           courthouse: Sud
@@ -356,25 +378,25 @@ bs:
           food_court: Dvorište restorana
           fountain: Fontana
           fuel: Benzinska pumpa
+          gambling: Kockanje
           grave_yard: Groblje
           gym: Fitness centar
-          hall: Dvorana
           health_centre: Zdravstveni centar
           hospital: Bolnica
-          hotel: Hotel
           hunting_stand: Lovačka čeka
           ice_cream: Sladoled
           kindergarten: Dječiji vrtić
           library: Biblioteka
           market: Tržnica
           marketplace: Tržnica
-          mountain_rescue: Gorska služba spašavanja
+          monastery: Manastir
+          motorcycle_parking: Parking za motore
           nightclub: Noćni klub
           nursery: Čuvanje djece
           nursing_home: Starački dom
           office: Kancelarija
-          park: Park
           parking: Parking
+          parking_entrance: Ulaz u parking
           pharmacy: Apoteka
           place_of_worship: Bogomolja
           police: Policija
@@ -384,7 +406,6 @@ bs:
           prison: Zatvor
           pub: Pub
           public_building: Ustanova
-          public_market: Javna tržnica
           reception_area: Recepcija
           recycling: Reciklažna stanica
           restaurant: Restoran
@@ -393,13 +414,11 @@ bs:
           school: Škola
           shelter: Sklonište
           shop: Trgovina
-          shopping: Trgovački centar
           shower: Tuš
           social_centre: Društveni centar
           social_club: Društveni klub
           social_facility: Socialne ustanove
           studio: Studio
-          supermarket: Supermarket
           swimming_pool: Bazen
           taxi: Taxi
           telephone: Telefonska govornica
@@ -411,8 +430,7 @@ bs:
           veterinary: Veterinar
           village_hall: Seoski Dom
           waste_basket: Kanta za otpatke
-          wifi: WiFi pristup
-          WLAN: WiFi pristup
+          waste_disposal: Odlaganje otpada
           youth_centre: Centar za omladinu
         boundary:
           administrative: Administrativna granica
@@ -427,14 +445,21 @@ bs:
           "yes": Most
         building:
           "yes": Građevina
+        craft:
+          carpenter: Stolar
+          electrician: Električar
+          gardener: Vrtlar
+          painter: Slikar
+          photographer: Fotograf
+          plumber: Vodoinstalater
+          shoemaker: Obućar
+          tailor: Krojač
         emergency:
-          fire_hydrant: Hidrant
           phone: S.O.S. Telefon
         highway:
           bridleway: Konjička staza
           bus_guideway: Autobuska traka
           bus_stop: Autobusko stajalište
-          byway: Prečica
           construction: Autoput u izgradnji
           cycleway: Biciklistička staza
           emergency_access_point: S.O.S. tačka pristupa
@@ -442,7 +467,6 @@ bs:
           ford: Gaz
           living_street: Ulica smirenog prometa
           milestone: Miljokaz
-          minor: Drugorazredna cesta
           motorway: Autocesta
           motorway_junction: Čvor (autoputa)
           motorway_link: Autoput (pristupna cesta)
@@ -463,7 +487,6 @@ bs:
           speed_camera: Kamera za kontrolu brzine
           steps: Stepenice
           street_lamp: Ulična svjetiljka
-          stile: Prijelaz preko ograde
           tertiary: Lokalna cesta
           tertiary_link: Lokalna cesta
           track: Makadam
@@ -476,7 +499,8 @@ bs:
           archaeological_site: Arheološko nalazište
           battlefield: Bojno polje
           boundary_stone: Granični kamen
-          building: Građevina
+          building: Historijska građevina
+          bunker: Bunker
           castle: Dvorac
           church: Crkva
           citywalls: Gradski zidovi
@@ -487,13 +511,15 @@ bs:
           memorial: Memorijal
           mine: Rudnik
           monument: Spomenik
-          museum: Muzej
           ruins: Ruševine
+          stone: Kamen
           tomb: Grobnica
           tower: Toranj
           wayside_cross: Krajputaš
           wayside_shrine: Usputni hram
           wreck: Olupina
+        junction:
+          "yes": Raskršće
         landuse:
           allotments: Vrtovi
           basin: Bazen
@@ -515,9 +541,6 @@ bs:
           military: Vojno područje
           mine: Rudnik
           orchard: Voćnjak
-          nature_reserve: Rezervat prirode
-          park: Park
-          piste: Ski staza
           quarry: Kamenolom
           railway: Željeznica
           recreation_ground: Rekreacijsko područje
@@ -528,11 +551,10 @@ bs:
           road: Područje ceste
           village_green: Seoski travnjak
           vineyard: Vinograd
-          wetland: Močvara
-          wood: Šuma
         leisure:
           beach_resort: Odmaralište - plaža
           bird_hide: Posmatračnica ptica
+          club: Klub
           common: Općinsko zemljište
           fishing: Ribolovno područje
           fitness_station: Fitnes centar
@@ -546,6 +568,7 @@ bs:
           pitch: Sportski teren
           playground: Igralište
           recreation_ground: Teren za rekreaciju
+          resort: Boravište
           sauna: Sauna
           slipway: Navoz
           sports_centre: Sportski centar
@@ -564,11 +587,9 @@ bs:
           beach: Plaža
           cape: Rt
           cave_entrance: Pećina (ulaz)
-          channel: Kanal
           cliff: Litica
           crater: Krater
           dune: Dina
-          feature: Značajka
           fell: Brdo
           fjord: Fjord
           forest: Šuma
@@ -585,11 +606,9 @@ bs:
           point: Tačka
           reef: Greben
           ridge: Greben
-          river: Rijeka
           rock: Stijena
           scree: Krš
           scrub: Šikara
-          shoal: Sprud
           spring: Izvor
           stone: Kamen
           strait: Tjesnac
@@ -598,7 +617,6 @@ bs:
           volcano: Vulkan
           water: Voda
           wetland: Močvara
-          wetlands: Močvare
           wood: Šuma
         office:
           accountant: Računovođa
@@ -660,7 +678,6 @@ bs:
           switch: Skretnica
           tram: Tramvaj
           tram_stop: Tramvajska stanica
-          yard: Ranžirni kolodvor
         shop:
           alcohol: Trgovina pićem
           antiques: Antikviteti
@@ -740,16 +757,15 @@ bs:
           camp_site: Kamp
           caravan_site: Kamp-kućice (mjesto)
           chalet: Planinska kuća
+          gallery: Galerija
           guest_house: Apartman
           hostel: Hostel
           hotel: Hotel
           information: Informacije
-          lean_to: Nadstrešnica
           motel: Motel
           museum: Muzej
           picnic_site: Piknik-mjesto
           theme_park: Tematski park
-          valley: Dolina
           viewpoint: Vidikovac
           zoo: Zoološki vrt
         tunnel:
@@ -758,7 +774,6 @@ bs:
           artificial: Vještački vodotok
           boatyard: Brodogradilište
           canal: Kanal
-          connector: Spoj vodnih puteva
           dam: Brana
           derelict_canal: Zanemaren kanal
           ditch: Jarak
@@ -766,15 +781,12 @@ bs:
           drain: Odvod
           lock: Ustava
           lock_gate: Ustava (vrata)
-          mineral_spring: Mineralni izvor
           mooring: Sidrište
           rapids: Brzaci
           river: Rijeka
-          riverbank: Riječna obala
           stream: Potok
           wadi: Suho korito rijeke
           waterfall: Vodopad
-          water_point: Tačka vodotoka
           weir: Brana
       admin_levels:
         level2: Granica države
@@ -796,19 +808,6 @@ bs:
     results:
       no_results: Nema pronađenih rezultata
       more_results: Više rezultata
-    distance:
-      one: oko 1km
-      zero: manje od 1km
-      other: oko %{count}km
-    direction:
-      south_west: jugozapadno
-      south: južno
-      south_east: jugoistočno
-      east: istočno
-      north_east: sjeveroistočno
-      north: sjeverno
-      north_west: sjeverozapadno
-      west: zapadno
   layouts:
     logo:
       alt_text: OpenStreetMap logotip
@@ -876,10 +875,10 @@ bs:
         href="http://opendatacommons.org/licenses/odbl/">Open Data
         Commons Open Database License dozvolom</a> (ODbL).
       intro_2_html: Slobodni ste kopirati, distribuirati, prenositi i adaptirati naše
-        podatke, sve dok navodite OpenStreetMap i njegove doprinositelje kao izvor.
-        Ukoliko izmijenite ili nadogradite naše podatke, možete distribuirati rezultate
-        samo pod istom licencom. Puni <a href="http://opendatacommons.org/licenses/odbl/1.0/">pravni
-        tekst</a> objašnjava vaša prava i odgovornosti.
+        podatke sve dok navodite OpenStreetMap i njegove doprinosioce kao izvor. Ako
+        izmijenite ili nadogradite naše podatke, možete distribuirati rezultate samo
+        pod istom licencom. Puni <a href="http://opendatacommons.org/licenses/odbl/1.0/">pravni
+        tekst</a> objašnjava Vaša prava i odgovornosti.
       intro_3_html: |-
         Kartografija u našim dijelovima karte, i naša dokumentacija, su licencirani pod <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative
         Commons Attribution-ShareAlike 2.0</a> licencom (CC-BY-SA).
@@ -944,10 +943,10 @@ bs:
       infringement_1_html: OSM doprinosioci se podsjećaju da nikada ne dodaju podatke
         sa bilo kojeg izvora koji zadržava autorska prava (npr. Google Maps ili printane
         karte) bez eksplicitne dozvole od strane autora.
-      infringement_2_html: Ukoliko vjerujete da je zaštićeni materijal bio dodan bazi
-        podataka OpenStreetMap ili ovom web sajtu, molimo da pogledate našu <a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">proceduru
-        skidanja</a> ili uložite prigovor direktno na našu <a href="http://dmca.openstreetmap.org/">online
-        stranicu</a>.
+      infringement_2_html: Ako vjerujete da je zaštićeni materijal bio dodan bazi
+        podataka OpenStreetMapa ili ovoj veb-stranici, molimo da pogledate našu <a
+        href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">proceduru
+        skidanja</a> ili uložite prigovor direktno na našu <a href="http://dmca.openstreetmap.org/">stranicu</a>.
   welcome_page:
     title: Dobrodošli!
     whats_on_the_map:
@@ -966,8 +965,13 @@ bs:
   help_page:
     welcome:
       url: /dobrodošlica
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Bs:Beginners%27_guide
+    irc:
+      title: IRC
   about_page:
     next: Slijedeće
+    open_data_title: Open Data
   notifier:
     diary_comment_notification:
       subject: '[OpenStreetMap] %{user} je komentirao tvoj unos u dnevnik'
@@ -1025,14 +1029,21 @@ bs:
       subject: '[OpenStreetMap] Zahtjev za ponovnim postavljanjem lozinke'
     lost_password_plain:
       greeting: Zdravo,
-      click_the_link: Ukoliko ste ovo Vi, kliknite na link ispod za ponovno postavljanje
+      click_the_link: Ako ste ovo Vi, kliknite na link ispod za ponovno postavljanje
         lozinke.
     lost_password_html:
       greeting: Zdravo,
       hopefully_you: Neko (moguće, Vi) je pitao za ponovno postavljanje lozinke na
         njihovim e-mail adresama openstreetmap.org računa.
-      click_the_link: Ukoliko ste ovo Vi, kliknite na link ispod za ponovno postavljanje
+      click_the_link: Ako ste ovo Vi, kliknite na link ispod za ponovno postavljanje
         lozinke.
+    note_comment_notification:
+      greeting: Zdravo,
+      commented:
+        subject_own: '[OpenStreetMap] %{commenter} je dao komentar na jednu od tvojih
+          bilješki.'
+    changeset_comment_notification:
+      greeting: Zdravo,
   message:
     inbox:
       title: Dolazna pošta
@@ -1142,6 +1153,8 @@ bs:
       close: Zatvoriti
     search:
       search: Pretraga
+      from: Od
+      to: Za
       where_am_i: Gdje sam?
       where_am_i_title: Opišite trenutnu lokaciju koristeći pretraživač
       submit_text: Idi
@@ -1153,9 +1166,7 @@ bs:
           primary: Državna cesta
           secondary: Sekundarna cesta
           unclassified: Neklasificirana cesta
-          unsurfaced: Neasfaltirana cesta
           track: Staza
-          byway: Prečica
           bridleway: Konjička staza
           cycleway: Biciklistička staza
           footway: Pješačka staza
@@ -1179,7 +1190,6 @@ bs:
           golf: Golf teren
           park: Park
           resident: Stambeno područje
-          tourist: Turistička atrakcija
           common:
           - Travnjaci
           - Livada
@@ -1209,7 +1219,6 @@ bs:
           tunnel: Iscrtkani rubovi = tunel
           bridge: Crni rubovi = most
           private: Privatni pristup
-          permissive: Pristup uz dozvolu
           destination: Pristup odredištu
           construction: Ceste u izgradnji
     richtext_area:
@@ -1323,6 +1332,7 @@ bs:
       public_traces: Javne GPS trase
       your_traces: Vaše GPS trase
       public_traces_from: Javne GPS trase korisnika %{user}
+      description: Pretraži nedavno objavljene GPS tragove
       tagged_with: ' označeno sa %{tags}'
       empty_html: JNoš uvijek nema ništa ovdje. <a href='%{upload_link}'>Postavite
         novu trasu</a> ili naučite više o GPS trasiranju na <a href='http://wiki.openstreetmap.org/wiki/Bs:Beginners'_guide'>wiki
@@ -1387,6 +1397,7 @@ bs:
       allow_write_api: Izmijenite kartu.
       allow_read_gpx: Pročitajte njihove privatne GPS trase.
       allow_write_gpx: Postaviti GPS trase.
+      allow_write_notes: izmijeni bilješke.
     index:
       title: Moji OAuth detalji
       my_tokens: Moje ovlaštene aplikacije
@@ -1413,6 +1424,7 @@ bs:
       allow_write_api: Izmijenite kartu.
       allow_read_gpx: Pročitajte njihove privatne GPS trase.
       allow_write_gpx: Postaviti GPS trase.
+      allow_write_notes: izmijeni bilješke.
     not_found:
       sorry: Žao mi je, taj se %{type} ne može naći.
     create:
@@ -1434,7 +1446,6 @@ bs:
       register now: Registrirajte se sada
       with username: 'Već imate račun na OpenStreetMapu? Molimo da se prijavite s
         Vašim korisničkim imenom i lozinkom:'
-      with openid: 'Alternativno molimo koristite Vaš OtvoreniID da se prijavite:'
       new to osm: Novi na OpenStreetMap?
       to make changes: Da bi ste mijenjali OpenStreetMap podatke, morate imati korisnički
         račun.
@@ -1447,26 +1458,14 @@ bs:
         />Molimo kontaktirajte <a href="%{webmaster}">webmastera</a> uoliko želite
         da diskutujete o ovome.
       auth failure: Žao mi je, ne možemo Vas prijaviti s ovim detaljima.
-      openid missing provider: Žao nam je, ne možemo kontaktirati Vaš provider za
-        OtvoreniID
-      openid invalid: Žao nam je, čini se da je Vaš OpenID zlonamjeran
       openid_logo_alt: Prijavite se sa OtvorenimID
-      openid_providers:
-        openid:
-          title: Prijavite se sa otvorenimID
-          alt: Prijavite se sa URL OtvorenogID
-        google:
-          title: Prijavite se sa Google računom
-          alt: Prijavite se sa Google OtvorenimID
+      auth_providers:
         yahoo:
-          title: Prijavite se sa Yahoo računom
-          alt: Prijavite se sa Yahoo OtvorenimID
+          title: Prijavite se sa Yahoo nalogom
+          alt: Prijavite se sa Yahoo OpenID
         wordpress:
-          title: Prijavite se sa Wordpress računom
-          alt: Prijavite se sa Wordpress OtvorenimID
-        aol:
-          title: Prijavite se sa AOL računom
-          alt: Prijavite se sa AOL OtvorenimID
+          title: Prijavite se sa Wordpress nalogom
+          alt: Prijavite se sa Wordpress OpenID
     logout:
       title: Odjava
       heading: Odjava iz OpenStreetMap
@@ -1474,7 +1473,7 @@ bs:
     lost_password:
       title: Izgubljena lozinka
       heading: Zaboravljena lozinka?
-      email address: 'E-mail adresa:'
+      email address: 'Adresa e-pošte:'
       new password button: Ponovno postavljanje lozinke
       help_text: Unesite e-mail adresu koju ste koristili za otvaranje računa i poslaćemo
         Vam link kojim možete ponovo postaviti lozinku.
@@ -1498,7 +1497,7 @@ bs:
         u najkraćem mogućem vremenu.
       license_agreement: Kada potvrdite Vaš račun moraćete pristati na <a href="http://www.osmfoundation.org/wiki/License/Contributor_Terms">Uslove
         doprinosioca</a> .
-      email address: 'E-mail adresa:'
+      email address: 'Adresa e-pošte:'
       confirm email address: 'Potvrditi e-mail adresu:'
       not displayed publicly: Nije javno prikazano (vidi <a href="http://wiki.openstreetmap.org/wiki/Privacy_Policy"
         title="wiki privacy policy including section on email addresses">politiku
@@ -1506,20 +1505,8 @@ bs:
       display name: 'Ime za prikaz:'
       display name description: Vaše javno prikazano korisničko ime. Možete ga promjeniti
         kasnije u postavkama.
-      openid: '%{logo} OtvoreniID:'
       password: 'Lozinka:'
       confirm password: 'Potvrditi lozinku:'
-      use openid: Kao alternativu, koristite %{logo} OtvoreniID za prijavu
-      openid no password: Lozinka nije potrebna sa OtvorenimID, ali neki ekstra alati
-        ili server je još uvijek mogu trebati.
-      openid association: |-
-        <p>Vaš OtvoreniID još nije povezan sa OpenStreetMap računom.</p>
-        <ul>
-          <li>Ukoliko ste novi na projektu OpenStreetMap, molimo napravite novi račun korištenjem formulara ispod.</li>
-          <li>
-            Ukoliko već imate račun, možete se prijaviti na Vaš račun korištenjem Vašeg korisničkog imena i lozinke i onda uvezati račun sa Vašim OtvorenimID u Vašim korisničkim podešavanjima.
-          </li>
-        </ul>
       continue: Otvorite račun
       terms accepted: Hvala za prihvatanje novih uslova za doprinosioce!
       terms declined: Žao nam je da ste odlučili ne prihvatiti nove Uslove za doprinosioce.
@@ -1554,6 +1541,7 @@ bs:
       new diary entry: Novi unos u dnevnik
       my edits: Moje promjene
       my traces: Moje trase
+      my profile: Moj profil
       my settings: Moja podešavanja
       my comments: Moji komentari
       oauth settings: Oauth podešavanja
@@ -1572,7 +1560,7 @@ bs:
       ct declined: Odbijeno
       ct accepted: Prihvaćeno prije %{ago}
       latest edit: 'Najnovija izmjena %{ago}:'
-      email address: 'E-mail adresa:'
+      email address: 'Adresa e-pošte:'
       created from: 'Napravljeno iz:'
       status: 'Stanje:'
       spam score: 'Spam ocjena:'
@@ -1623,7 +1611,6 @@ bs:
       new email address: 'Nova e-mail adresa:'
       email never displayed publicly: (nikada se ne prikazuje javno)
       openid:
-        openid: OtvoreniID
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: Šta je ovo?
       public editing:
@@ -1678,6 +1665,7 @@ bs:
       heading: Provjerite vaš email!
       press confirm button: Pritisnuti potvrditi da bi aktivirali Vaš korisnički račun.
       button: Potvrditi
+      success: Vaš račun je potvrđen, hvala na uključenju!
       already active: Ovaj račun je već potvrđen.
       unknown token: Taj kod za potvrdu je istekao ili ne postoji.
     confirm_resend:
@@ -1841,6 +1829,8 @@ bs:
       heading: '%{block_on} blokiran od strane %{block_by}'
       time_future: Završava u %{time}
       time_past: Završeno prije %{time}
+      created: Napravljeno
+      ago: '%{time} prije'
       status: Stanje
       show: Pokazati
       edit: Urediti
@@ -1851,8 +1841,11 @@ bs:
       revoker: 'Opozivalac:'
       needs_view: Korisnik se mora prijaviti prije nego se blokada očisti.
   note:
+    description:
+      opened_at_html: Kreirano prije %{when}
     mine:
       id: Id
+      creator: Izradio
       description: Opis
       created_at: 'Napravljeno:'
       last_changed: Posljednji put promijenjeno
@@ -1866,9 +1859,11 @@ bs:
       link: Veza ili HTML
       long_link: Veza
       short_link: Kratki link
+      geo_uri: Geo URI
       embed: HTML
       custom_dimensions: Postavi prilagođene dimenzije
       format: 'Format:'
+      scale: 'Mjerilo:'
       download: Preuzmi
       short_url: Kratki URL
       include_marker: Uključi oznaku

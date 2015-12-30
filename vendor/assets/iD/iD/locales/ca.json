@@ -72,7 +72,8 @@
                 "area": "Heu fet una àrea circular."
             },
             "not_closed": "Això no es pot fer circular perquè no té els extrems units.",
-            "too_large": "Això no es pot fer circular perquè no hi ha suficient superfície visble."
+            "too_large": "Això no es pot fer circular perquè no hi ha suficient superfície visble.",
+            "connected_to_hidden": "No es pot fer circular perquè està connectat a una característica oculta."
         },
         "orthogonalize": {
             "title": "Quadrar",
@@ -86,14 +87,16 @@
                 "area": "Heu quadrat les cantonades d'una àrea."
             },
             "not_squarish": "Això no es pot quadrar perquè no té forma quadrada",
-            "too_large": "Això no es pot quadrar perquè no hi ha suficient superfície visible."
+            "too_large": "Això no es pot quadrar perquè no hi ha suficient superfície visible.",
+            "connected_to_hidden": "No es pot quadrar perquè està connectat a una característica oculta."
         },
         "straighten": {
             "title": "Fer recte",
             "description": "Feu aquesta línia recte",
             "key": "S",
             "annotation": "Quadrar una línia",
-            "too_bendy": "Això no es pot quadrar perquè és massa sinuós."
+            "too_bendy": "Això no es pot quadrar perquè és massa sinuós.",
+            "connected_to_hidden": "Aquesta línia no es pot posar recta perquè està connectada a una característica oculta."
         },
         "delete": {
             "title": "Eliminar",
@@ -106,7 +109,9 @@
                 "relation": "Heu eliminat una relació.",
                 "multiple": "Heu eliminat {n} objectes."
             },
-            "incomplete_relation": "No es pot eliminar aquesta característica ja que no s'ha baixat completament."
+            "incomplete_relation": "No es pot eliminar aquesta característica ja que no s'ha baixat completament.",
+            "part_of_relation": "Aquesta característica no es pot eliminar perquè forma part d'una relació més extensa. Heu d'eliminar-la de la relació primer.",
+            "connected_to_hidden": "No es pot esborrar perquè està connectat a una característica oculta."
         },
         "add_member": {
             "annotation": "Heu afegit un membre a la relació."
@@ -127,17 +132,19 @@
             "description": "Desconnecteu aquestes línies/àrees entre elles.",
             "key": "D",
             "annotation": "Heu desconnectat línies/àrees.",
-            "not_connected": "Aquí no hi han suficients línies/àrees a desconnectar."
+            "not_connected": "Aquí no hi han suficients línies/àrees a desconnectar.",
+            "connected_to_hidden": "No es pot desconnectar perquè està connectat a una característica oculta."
         },
         "merge": {
             "title": "Fusionar",
-            "description": "Fusioneu aquestes línies.",
+            "description": "Fusionar aquestes característiques",
             "key": "C",
-            "annotation": "Heu fusionat {n} línies.",
+            "annotation": "S'han fusionat {n} característiques.",
             "not_eligible": "Aquestes característiques no poden ser fusionades.",
-            "not_adjacent": "Aquestes línies no poden ser com fusionades ja que no estan connectades.",
-            "restriction": "Aquestes línies no poden ser fusionades perquè com a mínim una d'elles és membre de la relació \"{relation}\"",
-            "incomplete_relation": "Aquestes característiques no poden ser fusionades perquè com a mínim una d'elles no s'ha descarregat del tot."
+            "not_adjacent": "Aquestes característiques no poden ser fusionades ja que no estan connectades.",
+            "restriction": "Aquestes característiques no poden ser fusionades ja que com a mínim una d'elles és membre de la relació \"{relation}\".",
+            "incomplete_relation": "Aquestes característiques no poden ser fusionades perquè com a mínim una d'elles no s'ha descarregat del tot.",
+            "conflicting_tags": "Aquestes característiques no poden ser fusionades ja que algunes de les seves etiquetes tenen valors en conflicte."
         },
         "move": {
             "title": "Moure",
@@ -151,7 +158,8 @@
                 "multiple": "Heu mogut múltiples objectes."
             },
             "incomplete_relation": "Aquesta característica no es pot desplaçar ja que no s'ha descarregat completament.",
-            "too_large": "Això no es pot desplaçar perquè no hi ha la suficient superfície visible."
+            "too_large": "Això no es pot desplaçar perquè no hi ha la suficient superfície visible.",
+            "connected_to_hidden": "No es pot moure perquè està connectat a una característica oculta."
         },
         "rotate": {
             "title": "Girar-ho",
@@ -161,7 +169,8 @@
                 "line": "Heu girat una línia.",
                 "area": "Heu girat una àrea."
             },
-            "too_large": "Això no es pot girar perquè no hi ha la suficient superfície visible."
+            "too_large": "Això no es pot girar perquè no hi ha la suficient superfície visible.",
+            "connected_to_hidden": "No es pot rotar perquè està connectat a una característica oculta."
         },
         "reverse": {
             "title": "Revertir",
@@ -183,7 +192,8 @@
                 "multiple": "Dividiu els límits de {n} línies/àrea."
             },
             "not_eligible": "Les línies no es poden dividir al seu inici o al seu final.",
-            "multiple_ways": "Aquí hi ha masses línies a dividir."
+            "multiple_ways": "Aquí hi ha masses línies a dividir.",
+            "connected_to_hidden": "No es pot dividir perquè està connectat a una característica oculta."
         },
         "restriction": {
             "help": {
@@ -207,7 +217,7 @@
         "nothing": "Res a refer."
     },
     "tooltip_keyhint": "Drecera:",
-    "browser_notice": "Aquest editor és compatible amb Firefox, Chrome, Safari, Opera i Internet Explorer 9 o superior.\nSi us plau actualitzeu el vostre navegador o bé feu servir Potlach 2 per editar el mapa.",
+    "browser_notice": "Aquest editor és compatible a Firefox, Chrome, Safari, Opera i Internet Explorer 11 i superior. Actualitzeu el vostre navegador o bé feu ús del Potlatch 2 per tal d'editar el mapa.",
     "translate": {
         "translate": "Traduïu",
         "localized_translation_label": "Nom multilingüe",
@@ -217,20 +227,26 @@
     "zoom_in_edit": "Apropeu-vos més per editar",
     "logout": "Tancar la sessió",
     "loading_auth": "Connectant a OpenStreetMap...",
-    "report_a_bug": "Reportar un error",
+    "report_a_bug": "Informa d'un error",
+    "help_translate": "Ajuda a traduir-lo",
+    "feature_info": {
+        "hidden_warning": "{count} característiques ocultes",
+        "hidden_details": "S'han ocultat aquestes característiques: {details}"
+    },
     "status": {
         "error": "No es pot connectar amb l'API.",
         "offline": "l'API està fora de línia. Si us plau proveu d'editar més tard.",
         "readonly": "L'API es troba en mode només lectura. Us haureu d'esperar per desar els vostres canvis."
     },
     "commit": {
-        "title": "Desar els canvis",
+        "title": "Desa els canvis",
         "description_placeholder": "Breu descripció de les vostres contribucions",
-        "message_label": "Afegiu un comentari",
+        "message_label": "Comentari de conjunt de canvis",
         "upload_explanation": "Els canvis que deseu seran visibles a tots els mapes que utilitzin dades d'OpenStreetMap.",
         "upload_explanation_with_user": "Els canvis que deseu com a {user} seran visibles en tots els mapes que utilitzin dades d'OpenStreetMap.",
-        "save": "Desar",
+        "save": "Desa",
         "cancel": "Cancel·lar",
+        "changes": "{count} canvis",
         "warnings": "Avisos",
         "modified": "Modificat",
         "deleted": "Eliminat",
@@ -240,19 +256,39 @@
         "list": "Edicions fetes per {users}",
         "truncated_list": "Edicions fetes per {users} i {count} més"
     },
+    "infobox": {
+        "selected": "{n} seleccionats",
+        "geometry": "Geometria",
+        "closed": "tancat",
+        "center": "Centre",
+        "perimeter": "Perímetre",
+        "length": "Llargària",
+        "area": "Àrea",
+        "centroid": "Centroide",
+        "location": "Ubicació",
+        "metric": "Mètric",
+        "imperial": "Imperial"
+    },
+    "geometry": {
+        "point": "punt",
+        "vertex": "vèrtex",
+        "line": "línia",
+        "area": "àrea",
+        "relation": "relació"
+    },
     "geocoder": {
         "search": "Cerca mundialment...",
         "no_results_visible": "No s'han trobat resultats a l'àrea visible del mapa",
         "no_results_worldwide": "No s'han trobat resultats"
     },
     "geolocate": {
-        "title": "Mostrar la meva ubicació"
+        "title": "Mostra la meva ubicació"
     },
     "inspector": {
         "no_documentation_combination": "No hi ha documentació per a aquesta combinació d'etiquetes",
         "no_documentation_key": "No hi ha documentació per a aquesta clau",
-        "show_more": "Mostrar-ne més",
-        "view_on_osm": "Mostrar-ho a openstreetmap.org",
+        "show_more": "Mostra'n més",
+        "view_on_osm": "Mostra-ho a openstreetmap.org",
         "all_tags": "Totes les etiquetes",
         "all_members": "Tots els membres",
         "all_relations": "Totes les relacions",
@@ -260,7 +296,7 @@
         "role": "Rol",
         "choose": "Seleccioneu un tipus de característica",
         "results": "{n} resultats per {search}",
-        "reference": "Mostrar-ho al wiki de l'OpenStreetMap",
+        "reference": "Mostra-ho al wiki de l'OpenStreetMap",
         "back_tooltip": "Canviar la característica",
         "remove": "Eliminar",
         "search": "Cercar",
@@ -269,11 +305,16 @@
         "incomplete": "<no baixat>",
         "feature_list": "Cercar característiques",
         "edit": "Editar la característica",
+        "check": {
+            "yes": "Sí",
+            "no": "No"
+        },
         "none": "Cap",
         "node": "Node",
         "way": "Via",
         "relation": "Relació",
-        "location": "Ubicació"
+        "location": "Ubicació",
+        "add_fields": "Afegir camp:"
     },
     "background": {
         "title": "Fons",
@@ -284,7 +325,83 @@
         "custom_button": "Editar el fons personalitzat",
         "custom_prompt": "Introduïu una plantilla d'URL de casella. Els paràmetres vàlids són {z}, {x}, {y} per a l'esquema Z/X/Y i  {u} per a l'esquema quadtile.",
         "fix_misalignment": "Corregir la alineació",
-        "reset": "reiniciar"
+        "reset": "reiniciar",
+        "minimap": {
+            "description": "Miniatura del mapa",
+            "tooltip": "Mostrar un mapa amb menys zoom per ajudar a localitzar l'àrea que es mostra actualment."
+        }
+    },
+    "map_data": {
+        "title": "Dades del mapa",
+        "description": "Dades del mapa",
+        "data_layers": "Capes de dades",
+        "fill_area": "Emplenat d'àrees",
+        "map_features": "Característiques del mapa",
+        "autohidden": "Aquestes característiques s'han amagat automàticament perquè n'haurien aparegut massa a la pantalla. Podeu acostar el zoom per editar-les."
+    },
+    "feature": {
+        "points": {
+            "description": "Punts",
+            "tooltip": "Punts d'Interès"
+        },
+        "major_roads": {
+            "description": "Carreteres bàsiques",
+            "tooltip": "Autopistes, carrers, etc."
+        },
+        "minor_roads": {
+            "description": "Carreteres menors",
+            "tooltip": "Carreteres de servei, carrils d'aparcament, pistes, etc."
+        },
+        "paths": {
+            "description": "Camins",
+            "tooltip": "Voreres, camins per vianants, carrils bici, etc."
+        },
+        "buildings": {
+            "description": "Edificis",
+            "tooltip": "Edificis, refugis, garatges, etc."
+        },
+        "landuse": {
+            "description": "Ús del terreny",
+            "tooltip": "Boscos, camps, parcs, residencial, comercial, etc."
+        },
+        "boundaries": {
+            "description": "Límits",
+            "tooltip": "Límits administratius"
+        },
+        "water": {
+            "description": "Cossos d'aigua",
+            "tooltip": "Rius, llacs, basses, conques, etc."
+        },
+        "rail": {
+            "description": "Ferrocarril",
+            "tooltip": "Vies fèrries"
+        },
+        "power": {
+            "description": "Electricitat",
+            "tooltip": "Línies elèctriques, centrals, subestacions, etc."
+        },
+        "past_future": {
+            "description": "Passat/futur",
+            "tooltip": "Proposat, en construcció, abandonat, enderrocat, etc."
+        },
+        "others": {
+            "description": "Altres",
+            "tooltip": "Tota la resta"
+        }
+    },
+    "area_fill": {
+        "wireframe": {
+            "description": "Sense emplenat (esquelet)",
+            "tooltip": "El mode d'esquelet fa més fàcil veure la imatgeria de fons."
+        },
+        "partial": {
+            "description": "Emplenat parcial",
+            "tooltip": "Les àrees només s'omplen al voltant de la seva vora interior. (Recomanat per principiants)"
+        },
+        "full": {
+            "description": "Emplenat total",
+            "tooltip": "Les àrees es dibuixen totalment plenes."
+        }
     },
     "restore": {
         "heading": "Teniu canvis sense desar",
@@ -293,12 +410,36 @@
         "reset": "Reiniciar"
     },
     "save": {
-        "title": "Desar",
-        "help": "Deseu els canvis a OpenStreetMap, fent-los visibles per als altres usuaris.",
+        "title": "Desa",
+        "help": "Desa els canvis a l'OpenStreetMap, fent-los visibles per als altres usuaris.",
         "no_changes": "No hi ha canvis a desar.",
-        "error": "Hi ha hagut un error en intentar desar",
+        "error": "Ha hagut un error en intentar desar",
+        "status_code": "El servidor ha expedit el codi d'estat {code}",
+        "unknown_error_details": "Assegureu-vos d'estar connectats a Internet",
         "uploading": "Pujant els canvis a l'OpenStreetMap.",
-        "unsaved_changes": "Teniu canvis sense desar."
+        "unsaved_changes": "Teniu canvis sense desar.",
+        "conflict": {
+            "header": "Resoldre les edicions conflictives",
+            "count": "Conflicte {num} de {total}",
+            "previous": "< Anterior",
+            "next": "Següent >",
+            "keep_local": "Mantenir els meus",
+            "keep_remote": "Utilitzar els seus",
+            "restore": "Restaurar",
+            "delete": "Deixar eliminat",
+            "download_changes": "O bé descarregueu els vostres canvis.",
+            "done": "Tots els conflictes resolts!",
+            "help": "Un altre usuari ha canviat algunes característiques del mapa que també heu canviat.\nCliqueu a cada ítem dels d'aquí sota per saber més detalls dels conflictes, i escolliu si manteniu\nels vostres canvis o bé els canvis de l'altre usuari.\n"
+        }
+    },
+    "merge_remote_changes": {
+        "conflict": {
+            "deleted": "Aquest objecte ha estat eliminat per {user}.",
+            "location": "Tant tu com {user} vau moure aquest objecte.",
+            "nodelist": "Tant tu com {user} vau canviar els nodes.",
+            "memberlist": "Tant tu com {user} vau canviar els membres de la relació.",
+            "tags": "Heu canviat l'etiqueta <b>{tag}</b> a \"{local}\" i {user} ho ha canviat  a \"{remote}\"."
+        }
     },
     "success": {
         "edited_osm": "Heu editat l'OSM!",
@@ -307,10 +448,11 @@
         "facebook": "Compartiu-ho a Facebook",
         "twitter": "Compartiu-ho al Twitter",
         "google": "Compartiu-ho a Google+",
-        "help_html": "Els canvis haurien d'aparèxier a la capa \"Estàndard\" en pocs minuts. Altres capes i algunes característiques, poden trigar més temps.\n(<a href='https://help.openstreetmap.org/questions/4705/why-havent-my-changes-appeared-on-the-map'>detalls</a>).\n"
+        "help_html": "Els canvis haurien d'aparèixer a la capa \"Estàndard\" en pocs minuts. Altres capes i algunes característiques, poden trigar més temps.\n(<a href='https://help.openstreetmap.org/questions/4705/why-havent-my-changes-appeared-on-the-map'>detalls</a>).\n"
     },
     "confirm": {
-        "okay": "D'acord"
+        "okay": "D'acord",
+        "cancel": "Cancel·lar"
     },
     "splash": {
         "welcome": "Benvinguts a l'editor iD per a l'OpenStreetMap",
@@ -320,7 +462,7 @@
     },
     "source_switch": {
         "live": "directe",
-        "lose_changes": "Teniu canvis sense desar. Canviant el servidor del mapa els descartarà. Esteu segurs que voleu canviar els sevidors?",
+        "lose_changes": "Teniu canvis sense desar. Si canvieu el servidor del mapa els descartarà. Esteu segurs que voleu canviar els sevidors?",
         "dev": "dev"
     },
     "tag_reference": {
@@ -340,14 +482,15 @@
         "deprecated_tags": "Etiquetes obsoletes : {tags}"
     },
     "zoom": {
-        "in": "Apropar-se",
-        "out": "Allunyar-se"
+        "in": "Apropa't",
+        "out": "Allunya't"
     },
     "cannot_zoom": "No es pot allunyar més la vista al mode actual.",
+    "full_screen": "Passar a pantalla completa",
     "gpx": {
         "local_layer": "Fitxer GPX local",
         "drag_drop": "Arrosegueu i deixeu un fitxer .gpx a la pàgina, o bé cliqueu el botó que es troba a la dreta per navegar pel vostre sistema.",
-        "zoom": "Ajusteu la vista a la traça GPX",
+        "zoom": "Ajusta la vista a la traça GPX",
         "browse": "Buscar el fitxer .gpx"
     },
     "mapillary": {
@@ -357,13 +500,13 @@
     },
     "help": {
         "title": "Ajuda",
-        "help": "# Ajuda\n\nAixò és un editor per al [OpenStreetMap](http://www.openstreetmap.org/), el mapa lliure i editable del món. Podeu utilitzar-lo per afegir i actualitzar\nles dades a la vostra àrea, contibuint així a fer un mapa de codi obert i amb dades lliures del món\nmillor per a tothom.\n\nLes edicions que feu en aquest mapa seran visibles per tothom que faci servir OpenStreetMap. per tal de començar a editar, necessitareu un\n[compte gratuït d'OpenStreetMap](https://www.openstreetmap.org/user/new).\n\n L'[Editor iD](http://ideditor.com/) iés un projecte cooperatiu que té el [codi font\ndisponible a GitHub](https://github.com/openstreetmap/iD).\n",
-        "editing_saving": "# Edició i desat\n\nAquest editor està dissenyat per treballar principalment en línia, i hi heu accedit mitjançant una pàgina web.\n\n### Selecció de característiques\n\nPer selecionar una característica del mapa, com ara una carretera o un punt d'interès, cliqueu-hi a sobre. Això ressaltarà la característica, obrirà un panell amb els detalls sobre aquesta, i un menú amb les coses que hi podeu fer .\n\nPodeu seleccionar múltiples característiques, prement la tecla 'Shift' i clicant-les per separat, o bé clicant i arrossegant el cursor. Això seleccionarà totes les característiques que englobi el requadre que es dibuixarà i permetrà modificar totes les característiques seleccionades en un sol cop.\n\n### Desant les edicions\n\nQuan feu canvis com ara editar carreteres, edificis, o llocs, aquests canvis es desen localment fins que els deseu al servidor. No us preocupeu si cometeu algun error- podeu desfer els canvis clicant el botó de desfer, i podeu refer els canvis clicant el botó de refer.\n\nCliqueu 'Desa' per acabar un grup d'edicions - per exemple, si heu acabat de delimitar l'àrea d'una ciutat i voleu començar a fer-ne una altra. Tindreu la oportunitat de revisar la feina feta,\ni l'editor proporcionarà suggeriments que us podran ajudar\ni també mostrarà alertes si alguna cosa no està del tot bé als vostres canvis.\n\nSi tot sembla correcte, podeu escriure un breu comentari explicant el canvis\nque heu fet, i clicar desa un altre cop per publicar els canvis\na [OpenStreetMap.org](http://www.openstreetmap.org/), on seran visibles\nper a tots els altres usuaris i disponibles per a altres editors per refer-los o bé millorar-los.\n\nSi no podeu acabar les vostres edicions en una sessió, podeu sortir de la finestra d'edició i tornar més tard (al mateix navegador i ordinador), i l'aplicació d'edició\npreguntarà si voleu restaurar els canvis anteriors.\n",
+        "help": "# Ajuda\n\nAixò és un editor per al [OpenStreetMap](http://www.openstreetmap.org/), el mapa lliure i editable del món. Podeu utilitzar-lo per afegir i actualitzar\nles dades a la vostra àrea, contibuint així a fer un mapa de codi obert i amb dades lliures del món\nmillor per a tothom.\n\nLes edicions que feu en aquest mapa seran visibles per tothom que faci servir OpenStreetMap. per tal de començar a editar, necessitareu\n[iniciar sessió](https://www.openstreetmap.org/login).\n\n L'[Editor iD](http://ideditor.com/) és un projecte cooperatiu que té el [codi font\ndisponible a GitHub](https://github.com/openstreetmap/iD).\n",
+        "editing_saving": "# Edició i desat \n\nAquest editor està dissenyat per treballar principalment en línia, i hi heu accedit mitjançant una pàgina web. \n\n### Selecció de característiques \n\nPer selecionar una característica del mapa, com ara una carretera o un punt d'interès, cliqueu-hi a sobre. \nAixò ressaltarà la característica seleccionada, obrirà un panell amb els detalls sobre aquesta, i un menú amb les coses que hi podeu fer. \n\nPer seleccionar múltiples característiques, premeu la tecla 'Shift' i cliqueu-les per separat, o bé clicant i arrossegant el cursor dibuixeu un rectangle per sobre de totes. Això seleccionarà totes les característiques que englobi el rectangle que es dibuixarà i permetrà modificar totes les característiques seleccionades en un sol cop. \n\n### Desant les edicions \n\nQuan feu canvis com ara editar carreteres, edificis, o llocs, aquests canvis es desen localment fins que els deseu al servidor. No us preocupeu si cometeu algun error- podeu desfer els canvis clicant el botó de desfer, i podeu refer els canvis clicant el botó de refer. \n\nCliqueu 'Desa' per acabar un grup d'edicions - per exemple, si heu acabat de delimitar l'àrea d'una ciutat i voleu començar a fer-ne una altra. Tindreu la oportunitat de revisar la feina feta, i l'editor proporcionarà suggeriments que us podran ajudar com també mostrarà alertes si alguna cosa no està del tot bé als vostres canvis.\n\n Si tot sembla correcte, podeu escriure un breu comentari explicant el canvis que heu fet, i clicar desa un altre cop per publicar els canvis a [OpenStreetMap.org](http://www.openstreetmap.org/), on seran visibles per a tots els altres usuaris i disponibles per a altres per refer-los o bé millorar-los. Si no podeu acabar les vostres edicions en una sessió, podeu sortir de la finestra d'edició i tornar més tard (al mateix navegador i ordinador), i l'aplicació d'edició preguntarà si voleu restaurar els canvis anteriors. \n\n### Fent servir l'editor\n\nHi ha una llista de dreceres de teclat disponible [aquí](http://wiki.openstreetmap.org/wiki/ID/Shortcuts).\n",
         "roads": "# Carreteres\n\nPodeu crear, ajustar i eliminar carreteres amb aquest editor. Les carreteres poden ser\nde molts tipus: pistes, autovies, camins, carrils bici, i molts més - tots els segments\nmés comuns han de ser cartografiables.\n\n### Selecció\n\nCliqueu a la carretera per seleccionar-la. Al fer això els seus contorns es faran visibles, \ncom també un petit menú d'eines i una barra lateral que mostrarà més informació\nsobre la carretera.\n\n### Modificació\n\nDe vegades veureu carreteres que no estan alineades amb la imatge del darrere \no amb una traça de GPS. Podeu ajustar aquestes carreteres per tal que estiguin al lloc\ncorrecte.\n\nPrimer cliqueu a la carretera que voleu canviar. Això la ressaltarà i mostrarà els punts de control\nque podeu arrossegar a les ubicacions desitjades. Si el que\nvoleu és afegir nous punts per obtenir un grau de detall més alt, feu doble clic en una part de la carretera sense cap punt, i se'n afegirà un.\n\nSi la carretera es connecta amb una altra, però no es reflecteix al mapa, \npodeu arrossegar un dels punts de control cap a l'altra carretera \nper tal d'unir-les. Fer que les carreteres es connectin és molt important \nper al mapa i essencial per proveir direccions per a la conducció.\n\nTambé podeu clicar l'eina «Moure» o prémer la tecla «M» per moure la carretera sencera, tota de cop, i llavors clicar altra vegada per guardar aquest moviment.\n\n### Eliminació\n\nSi una carretera està totalment malament -podeu apreciar que no existeix a la imatge per satèl·lit\ni a més a més, els veïns ens han confirmat que no existeix - la podeu eliminar, cosa que la treurà del mapa. Aneu amb molt de compte a l'hora d'eliminar característiques -\ncom ara altres edicions; els resultats podran ser vistos per tothom i moltes vegades la imatgeria per satèl·lit no està actualitzada, per tant la carretera es pot haver estat construida recentment.\n\nPodeu eliminar una carretera clicant-la, i llavors clicant la icona de la paperera o bé prement la tecla «Suprimir».\n\n### Creació\n\nHeu trobat que en algun lloc hi hauria d'haver una carretera però no hi és? Cliqueu la icona «Línia»\nal marge superior esquerre de la zona del mapa o bé prem la tecla «2» per començar a dibuixar\nuna línia.\n\nCliqueu a l'inici de la carretera al mapa per començar a dibuixar. Si la carretera comença amb una bifurcació en una carretera existent, cliqueu al lloc a on connecten.\n\nA continuació cliqueu a diferents punts al llarg de la carretera per tal que segueixi el traçat correcte, d'acord  amb la imatge del satèl·lit o la traça del GPS. Si la carretera que esteu dibuixant s'encreua amb una altra carretera, connecteu-les clicant al punt d'intersecció. Quan acabeu el dibuix, feu doble clic o premeu «Retorn» del teclat.\n",
-        "gps": "# GPS\n\nLes dades de GPS són la font més fiable de dades per a l'OpenStreetMap. Aquest editor és compatible amb les taces locals - fitxers`.gpx`al vostre ordinador local. Podeu recollir \naquest tipus de traça GPS amb algunes aplicacions per a smartphones com també \ndispositius personals de GPS.\n\nPer a més informació sobre com recollir dades amb GPS, llegiu\n[Recollir dades amb GPS](http://learnosm.org/en/beginner/using-gps/).\n\nper fer servir una traça GPX per editar el mapa, arrossegueu i deixeu el fitxer GPX a l'editor. \nSi es detecta, s'afegirà el mapa com una línia verda llampant. \nCliqueu a 'Paràmetres de configuració del fons'  al cantó esquerre per activar,\ndesactivar, o per ajustar la vista a aquesta capa GPX.\n\nLa traça GPX no és pujada directament a OpenStreetMap - la millor manera de \nfer-la servir és dibuixar vosaltres el mapa, fent-la servir com a guia per a les noves característiques que afegireu. També les podeu [pujar a l'OpenStreetMap] \n(http://www.openstreetmap.org/trace/create)\nperquè d'altres persones les utilitzin.\n",
+        "gps": "# GPS \n\nLes dades de GPS són una font fiable de dades per a l'OpenStreetMap. Aquest editor és compatible amb les traces locals - fitxers`.gpx`al vostre ordinador. Pots recollir aquest tipus de traça GPS amb algunes aplicacions per a smartphones com també dispositius personals de GPS.\n\n Per a més informació sobre com recollir dades amb GPS, llegeix [Recollir dades amb GPS](http://learnosm.org/en/mobile-mapping/).\n\n Per fer servir una traça GPX per editar el mapa, arrossega i deixa el fitxer GPX a l'editor. Si es detecta, s'afegirà el mapa com una línia lila llampant. Clica al menú 'Dades del mapa' al cantó dret per activar, desactivar, o per ajustar la vista a aquesta capa GPX. \n\nLa traça GPX no és pujada directament a OpenStreetMap - la millor manera de fer-la servir és dibuixar tu el mapa, fent-la servir com a guia per a les noves característiques que afegiràs. També les pots [pujar a l'OpenStreetMap] (http://www.openstreetmap.org/trace/create) perquè d'altres persones les utilitzin.\n",
         "imagery": "# Imatgeria\n\nLa imatgeria aèria és un recurs important per a l'edició de mapes. Una combinació de\nvols d'aeronaus, fotografies de satèl·lit, i d'altres fonts compilades gratuïtament \nestan disponibles a l'editor dins del menú de l'esquerra 'Paràmetres de configuració del fons'.\n\nPer defecte, l'editor mostra la capa de satèl·lit de [Bing Maps](http://www.bing.com/maps/), però a mesura que us moveu i ajusteu la vista del mapa a noves àrees geogràfiques, noves fonts estaran disponibles. En alguns països, com ara els Estats Units, França, i Dinamarca tenen\n una imatgeria d'alta qualitat disponible per a determinades àrees.\n\nLa imatgeria a vegades no es correspon amb les dades del mapa, això és degut a un error\nper part del proveïdor de la imatge. Si observeu moltes carreteres mogudes del seu lloc a la imatge,\nno les mogueu per tal que encaixin amb aquesta. Ja que podeu ajustar la imatgeria per tal de que quadri amb les dades existents clicant a 'Corregeix la desalineació' al capdevall de la pestanya dels\n'Paràmetres de configuració del fons'.\n",
         "addresses": "# Adreçes\n\nLes adreçes són una de les informacions més útils per al mapa.\n\nTot i que les adreces sovint es representen com a part del carrer, a l'OpenStreetMap\nes desen com a atributs dels edificis i llocs al llarg dels carrers\n\nPodeu afegir la informació de l'adreça a llocs cartografiats com a edificis com també\na aquells llocs cartografiats com a simples punts. La forma òptima d'obtenir dades \nde les adreces és a partir d'un estudi al carrer o bé el coneixement propi - com a qualsevol altra característica, la còpia de fonts comercials com ara el Google Maps és estrictament prohibida.\n",
-        "inspector": "# Utilitzant l'inspector\n\nL'Inspector és l'element de l'interfície d'usuari que es troba al cantó dret de la pàgina i que+\napareix quan una característica és seleccionada i permet editar-ne els detalls.\n\n### Selecció del tipus de característica\n\nDesprés d'afegir un punt, línia, o àrea, podeu escollir quin tipus de característica és,\nTant si és una autopista com un carrer residencial, un supermercat o un cafè.\nL'inspector mostrarà botons per els tipus de característica més comuns, i en podeu trobar d'altres escrivint el que esteu buscant al quadre de cerca.\n\nCliqueu la 'i' al cantó inferior dret del botó  del tipus de característica per saber-ne més. Cliqueu el botó per seleccionar-la.\n\n### Utilització dels camps i les etiquetes d'edició\n\nDesprés d'escollir la característica, o quan seleccioneu una característica que ja té\nun tipus assignat, l'inspector mostrarà uns camps amb detalls de la característica \ncom ara el seu nom o la seva adreça .\n\nA sota dels camps que veieu, podeu clicar algunes icones per afegir altres detalls,\ncom ara infrmació de la [Viquipèdia](http://www.wikipedia.org/), l'accés per a cadires de rodes,\ni alguna cosa més.\n\nAl capdavall de l'inspector, cliqueu 'Etiquetes adicionals' per afegir altres etiquetes arbitràries a l'element. [Taginfo](http://taginfo.openstreetmap.org/) és una gran eina per aprendre'n més sobre les combinacions d'etiquetes més populars.\n\nEls canvis que feu a l'inspector s'aplicaran automàticament al mapa.\nEls podeu desfer en qualsevol moment clicant al botó de 'Desfer' .\n\n",
+        "inspector": "# Utilitzant l'inspector \n\nL'Inspector és la secció de l'interfície d'usuari que es troba al cantó esquerra de la pàgina i que permet editar els detalls de la cracterística seleccionada.\n\n ### Selecció del tipus de característica\n\n Després d'afegir un punt, línia, o àrea, pots escollir quin tipus de característica és, Tant si és una autopista com un carrer residencial, un supermercat o un cafè. L'inspector mostrarà botons per els tipus de característica més comuns, i en pots trobar d'altres escrivint el que estàs buscant al quadre de cerca.\n\nCliqueu la 'i' al cantó inferior dret del botó del tipus de característica per saber-ne més. Cliqueu el botó per seleccionar-la.\n\n ### Utilització dels camps i les etiquetes d'edició\n\n Després d'escollir el tipus característica, o quan seleccionis una característica que ja té un tipus assignat, l'inspector mostrarà uns camps amb detalls de la característica com ara el seu nom o la seva adreça.\n\n A sota dels camps que veus, pots clicar a 'Afegir camp' per afegir altres detalls, com ara un enllaç amb la Viquipèdia, l'accés per a cadires de rodes, i alguna cosa més. \n\nAl capdavall de l'inspector, clica 'Etiquetes adicionals' per afegir altres etiquetes arbitràries a l'element. [Taginfo](http://taginfo.openstreetmap.org/) és una gran eina per aprendre'n més sobre les combinacions d'etiquetes més populars. \n\nEls canvis que facis a l'inspector s'aplicaran automàticament al mapa. Els pots desfer en qualsevol moment clicant al botó 'Desfer'.\n",
         "buildings": "# Edificis\n\nL'OpenStreetMap és la base de dades d'edificis més gran del món. Podeu ampliar \ni millorar aquesta base de dades.\n\n### Selecció\n\nPodeu seleccionar un edifici clicant al seu marge. Això farà ressaltar\nl'edifici i obrirà un petit menú d'eines i una barra lateral mostrant més informació\nsobre l'edifici.\n\n### Modificació\n\nA vegades els edificis estan mal col·locats o tenen etiquetes incorrectes.\n\nPer moure l'edifici sencer, seleccioneu-lo, tot seguit cliqueu l'eina 'Mou'. Desplaceu el\ncursor per desplaçar l'edifici, i torneu a clicar quan estigui posicionat correctament.\n\nPer ajustar la forma específica d'un edifici, cliqueu i arrossegueu els nodes que componen \nel seu marge als llocs desitjats.\n\n### Creació\n\nUn dels principals temes sobre l'addició d'edificis al mapa és que\nl'OpenStreetMap pot desar edificis com a punts però també com a figures. La norma general\nper a cartografiar un edifici diu que _aquest s'ha d'expressar, sempre que sigui possible, com a una figura_, i les companyies, empreses,\nequipaments, i d'altres coses que operen als edificis, s'han de cartografiar com a punts \ncol·locats dins de la figura de l'edifici.\n\n\nComenceu a dibuixar un edifici com a figura clicant el botó 'Àrea' a la zona superior esquerra de la interfície, i finalitzeu-lo bé prement la tecla 'Retorn' del teclat\no bé clicant al primer node que heu col·locat per tancar la figura.\n\n### Eliminació\n\nSi un edifici està totalment malament - podeu apreciar que no existeix a la imatge per satèl·lit\ni a més a més, els veïns us han confirmat que no existeix - el podeu eliminar, cosa que el treurà del mapa. S'ha d'anar amb molt de compte a l'hora d'eliminar característiques -\ncom totes les altres edicions, els resultats podran ser vistos per tothom i moltes vegades la imatgeria per satèl·lit no està actualitzada, per tant l'edifici pot haver estat construït recentment.\n\nPodeu eliminar un edifici clicant-lo, i llavors clicant la icona de la paperera o bé prement la tecla 'Suprimir'.\n",
         "relations": "# Relacions\n\nUna relació és un tipus especial de característica a l'OpenStreetMap que reuneix altres característiques. Per exemple, dos tipus comuns de relacions són les *relacions de ruta*,\nque reuneixen seccions de carreteres que pertanyen a una autovia o autopista en concret, i els *multipolígons*, que reuneixen diferents línies que defineixen una àrea complexa (amb vàris segments o amb forats, com un donut).\n\nEl grup de característiques en una relació s'anomena *els membres*. A la barra lateral, podeu veure a quines relacions n'és membre una característica, i clicar una relació des d'un membre per seleccionar-la i entrar-hi. Quan seleccioneu i entreu a la relació, podeu veure tots els seus membres llistats a la barra lateral i subratllats al mapa .\n\nLa majoria de vegades, l'iD s'encarregarà de mantenir les relacions automàticament\nmentre editeu. L'única cosa que heu de procurar és de reconnectar la relació si esborreu algun tram de l'original, és a dir si esborreu un tram d'una relació per refer-lo amb més precisió, heu d'incloure el nou tram a la relació, igual que ho era el tram original.\n\n## Edició de les relacions\n\nSi el que voleu és editar relacions, aquí hi han les pautes bàsiques.\n\nPer afegir una característica a una relació, seleccioneu la característica, cliqueu el botó \"+\" a la secció \"Totes les relacions\" de la barra lateral, i seleccioneu o escriviu el nom de la relació.\n\nPer crear una nova relació, seleccioneu la primera característica que n'hauria de ser membre, cliqueu el botó \"+\" a la secció \"Totes les relacions\", i seleccioneu \"Nova relació...\".\n\nPer eliminar una característica d'una relació, seleccioneu la característica i cliqueu el botó de la paperera que es troba al costat de la relació que voleu eliminar.\n\nPodeu crear multipolígons amb forats utilitzant l'eina \"Fusionar\". Dibuixeu dues àrees (la interior i la exterior), mantingueu premuda la tecla Shift i cliqueu a les dues àrees per seleccionar-les alhora, llavors cliqueu el botó \"Fusiona\" (+).\n"
     },
@@ -451,44 +594,48 @@
         },
         "fields": {
             "access": {
-                "label": "Accés",
-                "placeholder": "Desconegut",
-                "types": {
-                    "access": "General",
-                    "foot": "A peu",
-                    "motor_vehicle": "Vehicles de motor",
-                    "bicycle": "Bicicletes",
-                    "horse": "Cavalls"
-                },
+                "label": "Accés permès",
                 "options": {
-                    "yes": {
-                        "title": "Permès",
-                        "description": "Accés garantit per llei; us dona dret de pas"
-                    },
-                    "no": {
-                        "title": "Prohibit",
-                        "description": "No es permet l'accés al públic en general"
-                    },
-                    "permissive": {
-                        "title": "Permissiu",
-                        "description": "Accés garantit fins que el propietari ho prohibeixi."
-                    },
-                    "private": {
-                        "title": "Privat",
-                        "description": "Accés permès només amb autorització individualitzada del propietari"
-                    },
                     "designated": {
-                        "title": "Específic",
-                        "description": "Accés garantit seguint les normes de les senyals o les normes locals específiques."
+                        "description": "Accés garantit seguint les normes de les senyals o les normes locals específiques.",
+                        "title": "Específic"
                     },
                     "destination": {
-                        "title": "Destinació",
-                        "description": "Accés permès només per arribar a un destí"
+                        "description": "Accés permès només per arribar a un destí",
+                        "title": "Destinació"
+                    },
+                    "dismount": {
+                        "description": "Accés permès però el pilot ha de baixar del mitjà ",
+                        "title": "Baixar del mitjà de transport"
+                    },
+                    "no": {
+                        "description": "No es permet l'accés al públic en general",
+                        "title": "Prohibit"
+                    },
+                    "permissive": {
+                        "description": "Accés garantit fins que el propietari ho prohibeixi.",
+                        "title": "Permissiu"
+                    },
+                    "private": {
+                        "description": "Accés permès només amb autorització individualitzada del propietari",
+                        "title": "Privat"
+                    },
+                    "yes": {
+                        "description": "Accés garantit per llei; us dona dret de pas",
+                        "title": "Permès"
                     }
+                },
+                "placeholder": "Sense especificar",
+                "types": {
+                    "access": "Tots",
+                    "bicycle": "Bicicletes",
+                    "foot": "A peu",
+                    "horse": "Cavalls",
+                    "motor_vehicle": "Vehicles de motor"
                 }
             },
             "access_simple": {
-                "label": "Accés",
+                "label": "Accés permès",
                 "placeholder": "sí"
             },
             "access_toilets": {
@@ -497,19 +644,20 @@
             "address": {
                 "label": "Adreça",
                 "placeholders": {
+                    "city": "Ciutat ",
+                    "conscriptionnumber": "123",
+                    "country": "País",
+                    "district": "Districte",
+                    "hamlet": "Llogaret",
                     "housename": "Nom de la casa",
                     "housenumber": "123",
-                    "street": "Carrer",
-                    "city": "Ciutat ",
-                    "postcode": "Codi postal",
                     "place": "Lloc",
-                    "hamlet": "Llogaret",
-                    "suburb": "Sector",
-                    "subdistrict": "Subdistricte",
-                    "district": "Districte",
+                    "postcode": "Codi postal",
                     "province": "Província",
                     "state": "Estat",
-                    "country": "País"
+                    "street": "Carrer",
+                    "subdistrict": "Subdistricte",
+                    "suburb": "Sector"
                 }
             },
             "admin_level": {
@@ -521,9 +669,9 @@
             "aerialway/access": {
                 "label": "Accés",
                 "options": {
+                    "both": "Ambdues",
                     "entry": "Entrada",
-                    "exit": "Sortida",
-                    "both": "Ambdues"
+                    "exit": "Sortida"
                 }
             },
             "aerialway/bubble": {
@@ -547,15 +695,18 @@
             "aerialway/summer/access": {
                 "label": "Accés (estival)",
                 "options": {
+                    "both": "Ambdues",
                     "entry": "Entrada",
-                    "exit": "Sortida",
-                    "both": "Ambdues"
+                    "exit": "Sortida"
                 }
             },
             "aeroway": {
                 "label": "Tipus"
             },
             "amenity": {
+                "label": "Tipus"
+            },
+            "area/highway": {
                 "label": "Tipus"
             },
             "artist": {
@@ -573,11 +724,17 @@
             "barrier": {
                 "label": "Tipus"
             },
+            "bench": {
+                "label": "Banc per a asseure's"
+            },
             "bicycle_parking": {
                 "label": "Tipus"
             },
             "boundary": {
                 "label": "Tipus"
+            },
+            "brand": {
+                "label": "Marca"
             },
             "building": {
                 "label": "Edifici"
@@ -592,29 +749,29 @@
             "cardinal_direction": {
                 "label": "Direcció",
                 "options": {
-                    "N": "Nord",
                     "E": "Est",
-                    "S": "Sud",
-                    "W": "Oest",
-                    "NE": "Nord-est",
-                    "SE": "Sud-est",
-                    "SW": "Sud-oest",
-                    "NW": "Nord-oest",
-                    "NNE": "Nord-nord-est",
                     "ENE": "Est-nord-est",
                     "ESE": "Est-sud-est",
+                    "N": "Nord",
+                    "NE": "Nord-est",
+                    "NNE": "Nord-nord-est",
+                    "NNW": "Nord-nord-oest",
+                    "NW": "Nord-oest",
+                    "S": "Sud",
+                    "SE": "Sud-est",
                     "SSE": "Sud-sud-est",
                     "SSW": "Sud-sud-oest",
-                    "WSW": "Oest-sud-oest",
+                    "SW": "Sud-oest",
+                    "W": "Oest",
                     "WNW": "Oest-nord-oest",
-                    "NNW": "Nord-nord-oest"
+                    "WSW": "Oest-sud-oest"
                 }
             },
             "clock_direction": {
                 "label": "Direcció",
                 "options": {
-                    "clockwise": "en sentit de les agulles del rellotge",
-                    "anticlockwise": "en sentit contrari al de les agulles del rellotge"
+                    "anticlockwise": "en sentit contrari al de les agulles del rellotge",
+                    "clockwise": "en sentit de les agulles del rellotge"
                 }
             },
             "collection_times": {
@@ -622,6 +779,9 @@
             },
             "construction": {
                 "label": "Tipus"
+            },
+            "content": {
+                "label": "Continguts"
             },
             "country": {
                 "label": "País"
@@ -641,6 +801,47 @@
             "cuisine": {
                 "label": "Tipus de cuina"
             },
+            "cycleway": {
+                "label": "Carrils Bici",
+                "options": {
+                    "lane": {
+                        "description": "Un Carril Bici separat de la circulació per una línia pintada",
+                        "title": "Carril Bici estàndard"
+                    },
+                    "none": {
+                        "description": "Cap Carril Bici",
+                        "title": "Cap"
+                    },
+                    "opposite": {
+                        "description": "Un Carril Bici que discorre en ambdós sentits en un carrer d'un sol sentit",
+                        "title": "Carril Bici en sentit contrari"
+                    },
+                    "opposite_lane": {
+                        "description": "Un Carril Bici que discorre contrari al sentit de circulació",
+                        "title": "Carril Bici contrari"
+                    },
+                    "share_busway": {
+                        "description": "Un Carril Bici compartit amb un Carril Bus",
+                        "title": "Carril Bici amb Carril Bus"
+                    },
+                    "shared_lane": {
+                        "description": "Carril Bici sense cap separació de la circulació",
+                        "title": "Carril Bici compartit"
+                    },
+                    "track": {
+                        "description": "Un Carril Bici separat de la circulació per una barrera física",
+                        "title": "Camí ciclable"
+                    }
+                },
+                "placeholder": "cap",
+                "types": {
+                    "cycleway:left": "a la banda esquerre",
+                    "cycleway:right": "a la banda dreta"
+                }
+            },
+            "delivery": {
+                "label": "Entrega"
+            },
             "denomination": {
                 "label": "Denominació"
             },
@@ -650,15 +851,18 @@
             "description": {
                 "label": "Descripció"
             },
+            "drive_through": {
+                "label": "Via dins una propietat."
+            },
             "electrified": {
                 "label": "Electrificació",
-                "placeholder": "Catenària, 3r rail...",
                 "options": {
                     "contact_line": "Catenària",
+                    "no": "No",
                     "rail": "3r rail",
-                    "yes": "Sí (no especificat)",
-                    "no": "No"
-                }
+                    "yes": "Sí (no especificat)"
+                },
+                "placeholder": "Catenària, 3r rail..."
             },
             "elevation": {
                 "label": "Elevació"
@@ -683,9 +887,9 @@
                 "label": "Tipus",
                 "options": {
                     "pillar": "Pilona/visible",
+                    "pond": "Bassa",
                     "underground": "Subterrani",
-                    "wall": "Mur",
-                    "pond": "Bassa"
+                    "wall": "Mur"
                 }
             },
             "fixme": {
@@ -724,6 +928,15 @@
             "gauge": {
                 "label": "Ample"
             },
+            "gender": {
+                "label": "Gènere",
+                "options": {
+                    "female": "Femení",
+                    "male": "Masculí",
+                    "unisex": "Unisex"
+                },
+                "placeholder": "Desconegut"
+            },
             "generator/method": {
                 "label": "Mètode"
             },
@@ -740,6 +953,9 @@
             "handicap": {
                 "label": "Handicap",
                 "placeholder": "1-18"
+            },
+            "handrail": {
+                "label": "Barana"
             },
             "highway": {
                 "label": "Tipus"
@@ -760,17 +976,24 @@
             "incline": {
                 "label": "Pendent"
             },
+            "incline_steps": {
+                "label": "Inclinar",
+                "options": {
+                    "down": "Avall",
+                    "up": "Amunt"
+                }
+            },
             "information": {
                 "label": "Tipus"
             },
             "internet_access": {
                 "label": "Accés a Internet",
                 "options": {
-                    "yes": "Sí",
                     "no": "No",
-                    "wlan": "WiFi",
+                    "terminal": "Mitjançant un terminal",
                     "wired": "Per cable",
-                    "terminal": "Mitjançant un terminal"
+                    "wlan": "WiFi",
+                    "yes": "Sí"
                 }
             },
             "lamp_type": {
@@ -786,11 +1009,50 @@
             "layer": {
                 "label": "Capa"
             },
+            "leaf_cycle": {
+                "label": "Cicle del fullatge",
+                "options": {
+                    "deciduous": "Caducifoli",
+                    "evergreen": "Perenne",
+                    "mixed": "Barrejat",
+                    "semi_deciduous": "Semicaducifoli",
+                    "semi_evergreen": "Semiperenne"
+                }
+            },
+            "leaf_cycle_singular": {
+                "label": "Cicle de renovació de fulla",
+                "options": {
+                    "deciduous": "Caducifòlia",
+                    "evergreen": "Perennifòlia",
+                    "semi_deciduous": "Semicaducifòlia",
+                    "semi_evergreen": "Semiperennifòlia"
+                }
+            },
+            "leaf_type": {
+                "label": "Tipus de fulles",
+                "options": {
+                    "broadleaved": "Fulles amples",
+                    "leafless": "Sense fullatge",
+                    "mixed": "Barrejat",
+                    "needleleaved": "Fulles primes"
+                }
+            },
+            "leaf_type_singular": {
+                "label": "Tipus de fulla",
+                "options": {
+                    "broadleaved": "Panifoli",
+                    "leafless": "Sense fulles",
+                    "needleleaved": "Fulla en agulla"
+                }
+            },
             "leisure": {
                 "label": "Tipus"
             },
             "length": {
                 "label": "Llargada (metres)"
+            },
+            "level": {
+                "label": "Nivell"
             },
             "levels": {
                 "label": "Nivells",
@@ -809,9 +1071,11 @@
                 "label": "Límit de velocitat",
                 "placeholder": "40, 50, 60..."
             },
+            "maxstay": {
+                "label": "Estada màxima"
+            },
             "mtb/scale": {
                 "label": "Dificultat per a bicicletes de muntanya",
-                "placeholder": "0, 1, 2, 3...",
                 "options": {
                     "0": "0: Grava sòlida/terra compactada, sense obstacles, corbes de radi ample",
                     "1": "1: Algunes zones amb superfície inestable, petits obstacles, corbes de radi ample",
@@ -820,22 +1084,22 @@
                     "4": "4: Superfície inestable o còdols, corbes en paella perilloses",
                     "5": "5: Dificultat màxima, camps de còdols, esllavissades",
                     "6": "6: No ciclable excepte per als millors ciclistes de muntanya"
-                }
+                },
+                "placeholder": "0, 1, 2, 3..."
             },
             "mtb/scale/imba": {
                 "label": "Dificultat del camí segons IMBA",
-                "placeholder": "Fàcil, Mitjana, Difícil...",
                 "options": {
                     "0": "La més fàcil (cercle blanc)",
                     "1": "Fàcil (cercle verd)",
                     "2": "Mitjana (quadrat blau)",
                     "3": "Difícil (diamant negre)",
                     "4": "Extremadament difícil (diamant negre doble)"
-                }
+                },
+                "placeholder": "Fàcil, Mitjana, Difícil..."
             },
             "mtb/scale/uphill": {
                 "label": "Dificultat d'ascens per a ciclistes de muntanya",
-                "placeholder": "0, 1, 2, 3...",
                 "options": {
                     "0": "0: Incl. mitjana <10%, grava/terra compactada, sense obstacles",
                     "1": "1: Incl. mitjana <15%. grava/terra compactada, pocs i petits obstacles",
@@ -843,7 +1107,8 @@
                     "3": "3: Incl. mitjana <25%, superfície variable, roques i banques de la mida d'un puny",
                     "4": "4: Incl. mitjana <30%, condicions pobres, grans roques/branques",
                     "5": "5: Molt empinat, generalment la bicicleta ha de ser empesa."
-                }
+                },
+                "placeholder": "0, 1, 2, 3..."
             },
             "name": {
                 "label": "Nom",
@@ -864,17 +1129,17 @@
             "oneway": {
                 "label": "Sentit únic",
                 "options": {
+                    "no": "No",
                     "undefined": "Sobreentès que no",
-                    "yes": "Sí",
-                    "no": "No"
+                    "yes": "Sí"
                 }
             },
             "oneway_yes": {
                 "label": "Sentit únic",
                 "options": {
+                    "no": "No",
                     "undefined": "Sobreentès que sí",
-                    "yes": "Sí",
-                    "no": "No"
+                    "yes": "Sí"
                 }
             },
             "opening_hours": {
@@ -893,13 +1158,13 @@
             "parking": {
                 "label": "Tipus",
                 "options": {
-                    "surface": "Superfície",
-                    "multi-storey": "Diversos nivells",
-                    "underground": "Subterrani",
-                    "sheds": "Garatges",
                     "carports": "Aixoplucs",
                     "garage_boxes": "Boxs",
-                    "lane": "Adossat a la carretera"
+                    "lane": "Adossat a la carretera",
+                    "multi-storey": "Diversos nivells",
+                    "sheds": "Garatges",
+                    "surface": "Superfície",
+                    "underground": "Subterrani"
                 }
             },
             "phone": {
@@ -908,24 +1173,24 @@
             },
             "piste/difficulty": {
                 "label": "Dificultat",
-                "placeholder": "Fàcil, Intermedi, avançat...",
                 "options": {
-                    "novice": "Debutants (instrucció)",
-                    "easy": "Fàcil (pista verda)",
-                    "intermediate": "Intermedi (Pista blava)",
                     "advanced": "Avançat (Pista negra nivell I )",
+                    "easy": "Fàcil (pista verda)",
                     "expert": "Expert (Pista negra nivell II)",
+                    "extreme": "Extrem (es necessita equipament d'escalada)",
                     "freeride": "Pista no oficial (fora pistes)",
-                    "extreme": "Extrem (es necessita equipament d'escalada)"
-                }
+                    "intermediate": "Intermedi (Pista blava)",
+                    "novice": "Debutants (instrucció)"
+                },
+                "placeholder": "Fàcil, Intermedi, avançat..."
             },
             "piste/grooming": {
                 "label": "Adequació",
                 "options": {
-                    "classic": "Classic",
-                    "mogul": "Mogul",
                     "backcountry": "Backcountry",
+                    "classic": "Classic",
                     "classic+skating": "Classic i Skating",
+                    "mogul": "Mogul",
                     "scooter": "Retrack petita/moto de neu",
                     "skating": "Skating"
                 }
@@ -934,14 +1199,14 @@
                 "label": "Tipus",
                 "options": {
                     "downhill": "Descens",
+                    "hike": "Raquetes/senderistes",
+                    "ice_skate": "Patinatge sobre gel",
                     "nordic": "Esquí de fons",
+                    "playground": "Parc infantil",
                     "skitour": "Esquí de muntanya",
                     "sled": "Trineus",
-                    "hike": "Raquetes/senderistes",
                     "sleigh": "Trineus multiplaça",
-                    "ice_skate": "Patinatge sobre gel",
-                    "snow_park": "Parc per a snowboards",
-                    "playground": "Parc infantil"
+                    "snow_park": "Parc per a snowboards"
                 }
             },
             "place": {
@@ -952,6 +1217,9 @@
             },
             "power": {
                 "label": "Tipus"
+            },
+            "power_supply": {
+                "label": "Abastament elèctric"
             },
             "railway": {
                 "label": "Tipus"
@@ -965,8 +1233,21 @@
             "recycling/glass": {
                 "label": "Accepta vidre"
             },
+            "recycling/glass_bottles": {
+                "label": "Accepta ampolles de vidre"
+            },
             "recycling/paper": {
                 "label": "Accepta paper"
+            },
+            "recycling/plastic": {
+                "label": "Accepta Plàstic"
+            },
+            "recycling/type": {
+                "label": "Tipus de reciclatge",
+                "options": {
+                    "centre": "Centre de Reciclatge",
+                    "container": "Contenidor"
+                }
             },
             "ref": {
                 "label": "Referència"
@@ -991,21 +1272,49 @@
             },
             "sac_scale": {
                 "label": "Dificultat per al senderisme",
-                "placeholder": "Muntanysime, Alpinisme...",
                 "options": {
-                    "hiking": "T1: Senderisme",
-                    "mountain_hiking": "T2: Muntanyisme",
-                    "demanding_mountain_hiking": "T3: Muntanyisme exigent",
                     "alpine_hiking": "T4: Alpinisme",
                     "demanding_alpine_hiking": "T5: Alpinisme exigent",
-                    "difficult_alpine_hiking": "T6: Alpinisme difícil"
-                }
+                    "demanding_mountain_hiking": "T3: Muntanyisme exigent",
+                    "difficult_alpine_hiking": "T6: Alpinisme difícil",
+                    "hiking": "T1: Senderisme",
+                    "mountain_hiking": "T2: Muntanyisme"
+                },
+                "placeholder": "Muntanysime, Alpinisme..."
+            },
+            "sanitary_dump_station": {
+                "label": "Lavabo"
             },
             "seasonal": {
                 "label": "Estacional"
             },
             "service": {
                 "label": "Tipus"
+            },
+            "service/bicycle/chain_tool": {
+                "label": "Eina de cadena",
+                "options": {
+                    "no": "No",
+                    "undefined": "Sobreentès que és no",
+                    "yes": "Sí"
+                }
+            },
+            "service/bicycle/pump": {
+                "label": "Bombament d'aire",
+                "options": {
+                    "no": "No",
+                    "undefined": "Entès que no",
+                    "yes": "Sí"
+                }
+            },
+            "service_rail": {
+                "label": "Tipus de servei de la via",
+                "options": {
+                    "crossover": "Intercambiador",
+                    "siding": "Apartador",
+                    "spur": "Canvi d'agulles",
+                    "yard": "Platja"
+                }
             },
             "shelter": {
                 "label": "Coberta"
@@ -1017,33 +1326,33 @@
                 "label": "Tipus"
             },
             "sloped_curb": {
-                "label": "Corba peraltada"
+                "label": "Rampa a la vorera"
             },
             "smoking": {
                 "label": "Apte per a fumadors",
-                "placeholder": "No, Separats, Sí...",
                 "options": {
-                    "no": "Prohibit fumar a tot arreu",
-                    "separated": "A les àrees per a fumadors, no aïllades físicament",
+                    "dedicated": "Dedicat a fumadors (ex: club de fumadors)",
                     "isolated": "A les àrees per a fumadors, aïllades físicament",
+                    "no": "Prohibit fumar a tot arreu",
                     "outside": "Permès a fora",
-                    "yes": "Permès a tot arreu",
-                    "dedicated": "Dedicat a fumadors (ex: club de fumadors)"
-                }
+                    "separated": "A les àrees per a fumadors, no aïllades físicament",
+                    "yes": "Permès a tot arreu"
+                },
+                "placeholder": "No, Separats, Sí..."
             },
             "smoothness": {
-                "label": "Uniformitat",
-                "placeholder": "Rodetes, Rodes, Tot terreny...",
+                "label": "Uniformitat per a vehicles",
                 "options": {
+                    "bad": "Rodes robustes: bicicleta de muntanya, cotxe, carruatge oriental",
                     "excellent": "Rodetes: Patí en línia, skateboard",
                     "good": "Rodes primes: bicicleta de competició",
-                    "intermediate": "Rodes: bicicleta urbana, cadira de rodes, patinet",
-                    "bad": "Rodes robustes: bicicleta de muntanya, cotxe, carruatge oriental",
-                    "very_bad": "Gran altura: vehicle utilitari lleuger tot terreny",
                     "horrible": "Tot terreny : vehicle utilitari pesant tot terreny",
-                    "very_horrible": "Tot terreny especialitzades: tractors, Quads",
-                    "impassible": "Intransitable / Cap vehicle amb rodes"
-                }
+                    "impassable": "Impassable / Vehicles sense rodes",
+                    "intermediate": "Rodes: bicicleta urbana, cadira de rodes, patinet",
+                    "very_bad": "Gran altura: vehicle utilitari lleuger tot terreny",
+                    "very_horrible": "Tot terreny especialitzades: tractors, Quads"
+                },
+                "placeholder": "Rodetes, Rodes, Tot terreny..."
             },
             "social_facility_for": {
                 "label": "Persones ateses",
@@ -1063,16 +1372,19 @@
             },
             "structure": {
                 "label": "Estructura",
-                "placeholder": "Desconegut",
                 "options": {
                     "bridge": "Pont",
-                    "tunnel": "Túnel",
-                    "embankment": "Terraplè ",
                     "cutting": "Trinxera",
-                    "ford": "Ford"
-                }
+                    "embankment": "Terraplè ",
+                    "ford": "Ford",
+                    "tunnel": "Túnel"
+                },
+                "placeholder": "Desconegut"
             },
             "studio_type": {
+                "label": "Tipus"
+            },
+            "substation": {
                 "label": "Tipus"
             },
             "supervised": {
@@ -1084,13 +1396,22 @@
             "tactile_paving": {
                 "label": "Paviment rugós"
             },
+            "takeaway": {
+                "label": "Per emportar",
+                "options": {
+                    "no": "No",
+                    "only": "Només per emportar",
+                    "yes": "Sí"
+                },
+                "placeholder": "Sí, No, Només per emportar..."
+            },
             "toilets/disposal": {
                 "label": "Contenidor",
                 "options": {
-                    "flush": "Renovació d'aigua",
-                    "pitlatrine": "Latrina",
+                    "bucket": "Cubell",
                     "chemical": "Químic",
-                    "bucket": "Cubell"
+                    "flush": "Renovació d'aigua",
+                    "pitlatrine": "Latrina"
                 }
             },
             "tourism": {
@@ -1101,29 +1422,29 @@
             },
             "tracktype": {
                 "label": "Tipus de pista",
-                "placeholder": "Sòlid, majoritàriament sòlid, tou...",
                 "options": {
                     "grade1": "Sòlid: pavimentat o amb superfície altament compactada",
                     "grade2": "Majoritàriament sòlid: Grava/roca amb materials tous barrejats",
                     "grade3": "Barreja uniforme de materials durs i tous",
                     "grade4": "Majoritàriament tou: terra/sorra/herba amb alguns materials durs barrejats",
                     "grade5": "Tou: terra/sorra/herba"
-                }
+                },
+                "placeholder": "Sòlid, majoritàriament sòlid, tou..."
+            },
+            "traffic_signals": {
+                "label": "Tipus"
             },
             "trail_visibility": {
                 "label": "Visibilitat del camí",
-                "placeholder": "Excel·lent, Bona, Dolenta...",
                 "options": {
+                    "bad": "Dolenta: sense marcadors. el camí a vegades no es veu/no hi és",
                     "excellent": "Excel·lent: camí no ambigu o amb presència de marques a tots llocs",
                     "good": "Bona: marcadors visibles, a vegades cal cercar-los",
-                    "intermediate": "Intermedia: pocs marcadors, el camí es majoritàriament visible",
-                    "bad": "Dolenta: sense marcadors. el camí a vegades no es veu/no hi és",
                     "horrible": "Horrible: a vegades sense camí, calen nocions d'orientació",
+                    "intermediate": "Intermedia: pocs marcadors, el camí es majoritàriament visible",
                     "no": "Nul·la: sense camí, calen coneixements experts d'orientació"
-                }
-            },
-            "tree_type": {
-                "label": "Tipus"
+                },
+                "placeholder": "Excel·lent, Bona, Dolenta..."
             },
             "trees": {
                 "label": "Arbres"
@@ -1136,6 +1457,9 @@
             },
             "water": {
                 "label": "Tipus"
+            },
+            "water_point": {
+                "label": "Punt d'aigua"
             },
             "waterway": {
                 "label": "Tipus"
@@ -1155,9 +1479,6 @@
             },
             "wikipedia": {
                 "label": "Viquipèdia"
-            },
-            "wood": {
-                "label": "Tipus"
             }
         },
         "presets": {
@@ -1224,8 +1545,8 @@
                 "terms": "Pista d'enlairament, Pista d'aterratge"
             },
             "aeroway/taxiway": {
-                "name": "Carrer de rodatge",
-                "terms": "Carrer de rodatge, Pista de trànsit lent."
+                "name": "Plataforma de rodada",
+                "terms": "Plataforma de Rodada, Carrer de Taxi, Pista de Taxi, Carrer de Rodament, Carrer de Rodatge, Carril de Rodada, Carril de Rodatge"
             },
             "aeroway/terminal": {
                 "name": "Terminal d'aeroport",
@@ -1265,6 +1586,12 @@
                 "name": "Lloguer de bicicletes",
                 "terms": "Lloguer de bicicletes, Servei de lloguer de bicicletes"
             },
+            "amenity/bicycle_repair_station": {
+                "name": "Punt de reparació de bicicletes"
+            },
+            "amenity/biergarten": {
+                "name": "Biergarten"
+            },
             "amenity/boat_rental": {
                 "name": "Lloguer d'embarcacions"
             },
@@ -1289,6 +1616,9 @@
             "amenity/car_wash": {
                 "name": "Rentat de cotxes",
                 "terms": "Servei de neteja de cotxes, Tren de rentat de cotxes, Estació d'autorentat de cotxes"
+            },
+            "amenity/casino": {
+                "name": "Casino"
             },
             "amenity/charging_station": {
                 "name": "Estació de càrrega"
@@ -1329,8 +1659,8 @@
                 "name": "Dojo / Acadèmia d'arts marcials"
             },
             "amenity/drinking_water": {
-                "name": "Aigua apte per al consum",
-                "terms": "Aigua potable, Aigua apte per al consum humà, Aigua per beure"
+                "name": "Aigua apta per al consum",
+                "terms": "Aigua potable, Aigua apta per al consum humà, Aigua per beure, Font"
             },
             "amenity/embassy": {
                 "name": "Ambaixada",
@@ -1356,6 +1686,9 @@
                 "name": "Cementiri",
                 "terms": "Cementiri, Camp de tombes, necròpoli, ciutat dels difunts"
             },
+            "amenity/grit_bin": {
+                "name": "Contenidor de sorra"
+            },
             "amenity/hospital": {
                 "name": "Hospital",
                 "terms": "Hospital, centre hospitalari, policlínica, clínica, CAP, Centre d'atenció primària, Centre de salut, Centre, Atenció, Primària, Centre d'Atenció Primària."
@@ -1370,6 +1703,9 @@
             "amenity/marketplace": {
                 "name": "Mercat",
                 "terms": "Mercat, Mercat veïnal, Mercat de carrer"
+            },
+            "amenity/motorcycle_parking": {
+                "name": "Aparcament per a motocicletes"
             },
             "amenity/nightclub": {
                 "name": "Club nocturn"
@@ -1421,15 +1757,24 @@
                 "name": "Pub",
                 "terms": "Bar, Bar Musical, Pub, Local de copes, Local d'oci nocturn, Bareto"
             },
+            "amenity/public_bookcase": {
+                "name": "Biblioteca pública"
+            },
             "amenity/ranger_station": {
                 "name": "Base d'Agents Rurals"
             },
             "amenity/recycling": {
                 "name": "Reciclatge"
             },
+            "amenity/register_office": {
+                "name": "Oficina de registre"
+            },
             "amenity/restaurant": {
                 "name": "Restaurant",
                 "terms": "Restaurant, Lloc per menjar, Bistro, Wok, Trattoria, Pizzeria"
+            },
+            "amenity/sanitary_dump_station": {
+                "name": "Estació de buidatge de lavabos"
             },
             "amenity/school": {
                 "name": "Escola",
@@ -1445,7 +1790,8 @@
                 "name": "Banc d'aliments"
             },
             "amenity/social_facility/group_home": {
-                "name": "Residència d'avis"
+                "name": "Residència d'avis",
+                "terms": "Geriàtric, Residencia geriàtrica"
             },
             "amenity/social_facility/homeless_shelter": {
                 "name": "Refugi per a indigents"
@@ -1480,8 +1826,35 @@
             "amenity/university": {
                 "name": "Campus universitari"
             },
-            "amenity/vending_machine": {
-                "name": "Màquina de vending"
+            "amenity/vending_machine/cigarettes": {
+                "name": "Màquina de tabac"
+            },
+            "amenity/vending_machine/condoms": {
+                "name": "Expenedor de preservatius"
+            },
+            "amenity/vending_machine/drinks": {
+                "name": "Màquina de vènding de begudes"
+            },
+            "amenity/vending_machine/excrement_bags": {
+                "name": "Equipament de residus canins"
+            },
+            "amenity/vending_machine/news_papers": {
+                "name": "Màquina expenedora de diaris"
+            },
+            "amenity/vending_machine/parcel_pickup_dropoff": {
+                "name": "Màquina de recollida/enviament de paqueteria"
+            },
+            "amenity/vending_machine/parking_tickets": {
+                "name": "Màquina de cobrament de tiquet d'aparcament"
+            },
+            "amenity/vending_machine/public_transport_tickets": {
+                "name": "Màquina de venda de títols de transport públic"
+            },
+            "amenity/vending_machine/sweets": {
+                "name": "Màquina de vènding de comestibles"
+            },
+            "amenity/vending_machine/vending_machine": {
+                "name": "Màquina de vènding"
             },
             "amenity/veterinary": {
                 "name": "Veterinari"
@@ -1493,6 +1866,9 @@
             "area": {
                 "name": "Àrea",
                 "terms": "Àrea"
+            },
+            "area/highway": {
+                "name": "Superfície de la carretera"
             },
             "barrier": {
                 "name": "Barrera",
@@ -1572,7 +1948,7 @@
             },
             "building/apartments": {
                 "name": "Apartaments",
-                "terms": "Apartaments"
+                "terms": "Apartaments, Pisos, Bloc de pisos, Bloc"
             },
             "building/barn": {
                 "name": "Graner"
@@ -1584,13 +1960,13 @@
                 "name": "Cabana"
             },
             "building/cathedral": {
-                "name": "Catedral"
+                "name": "Edifici Catedralici"
             },
             "building/chapel": {
-                "name": "Capella"
+                "name": "Edifici de capella"
             },
             "building/church": {
-                "name": "Església"
+                "name": "Edifici d'església"
             },
             "building/college": {
                 "name": "Edifici d'escola professional"
@@ -1603,8 +1979,7 @@
                 "name": "Edifici en construcció"
             },
             "building/detached": {
-                "name": "Xalet unifamiliar",
-                "terms": "casa aïllada, casa d'urbanització, xalet, chalet, xalets, chalets, casa i jardí, casa amb jardí"
+                "name": "Casa a quatre vents"
             },
             "building/dormitory": {
                 "name": "Edifici d'habitacions"
@@ -1662,6 +2037,9 @@
                 "name": "Edifici escolar",
                 "terms": "Escola, Gimnàs, Poliesportiu, Aulari, Seminaris, Pati, Esbarjo, Aules, Despatxos, Tallers, Ateliers, Aules d'informàtica, Classes, Classe, Sala de música, Corredors, Corredor, Pasillo, Pasillos, Passadís, Passadissos, Sala de professors, Recepció"
             },
+            "building/semidetached_house": {
+                "name": "Casa adossada"
+            },
             "building/shed": {
                 "name": "Traster"
             },
@@ -1706,7 +2084,8 @@
                 "name": "Cerveseria"
             },
             "craft/carpenter": {
-                "name": "Fuster"
+                "name": "Fuster",
+                "terms": "Fuster, Fusteria, Ebenista, Ebenisteria, Tallista"
             },
             "craft/carpet_layer": {
                 "name": "Moquetista"
@@ -1717,8 +2096,9 @@
             "craft/clockmaker": {
                 "name": "Rellotger"
             },
-            "craft/confectionary": {
-                "name": "Confiteria"
+            "craft/confectionery": {
+                "name": "Confiteria",
+                "terms": "Dolços, Llaminadures, Llamins, Bombons, Caramels, Carmels, Confits, Llepolies"
             },
             "craft/dressmaker": {
                 "name": "Sastreria"
@@ -1844,12 +2224,10 @@
                 "terms": "Entrada/Sortida"
             },
             "footway/crossing": {
-                "name": "Pas de vianants",
-                "terms": "Travessera, Cruïlla, Pas de Vianants, Pas Zebra, Pas de peatons, pas de transeünts"
+                "name": "Creuament de carrer"
             },
             "footway/crosswalk": {
-                "name": "Pas de vianants",
-                "terms": "Pas de peations, pas, de, peatons, vianants, persones, zebra"
+                "name": "Pas de vianants"
             },
             "footway/sidewalk": {
                 "name": "Vorera"
@@ -1893,17 +2271,18 @@
                 "name": "Parada d'autobús",
                 "terms": "Parada de bus, Parada"
             },
+            "highway/corridor": {
+                "name": "Corredor interior"
+            },
             "highway/crossing": {
-                "name": "Pas de vianants",
-                "terms": "Travessera, Cruïlla, Pas de Vianants, Pas Zebra, Pas de peatons, pas de transeünts"
+                "name": "Creuament de carrer"
             },
             "highway/crosswalk": {
-                "name": "Pas de vianants",
-                "terms": "Pas de peations, pas, de, peatons, vianants, persones, zebra"
+                "name": "Pas de vianants"
             },
             "highway/cycleway": {
-                "name": "Carril bici",
-                "terms": "Carril bici, Via verda,Via ciclista"
+                "name": "Carril Bici",
+                "terms": "Carril Bici, Via verda, Via ciclista"
             },
             "highway/footway": {
                 "name": "Camí per a vianants",
@@ -1933,8 +2312,7 @@
                 "terms": "Sender,Corriol"
             },
             "highway/pedestrian": {
-                "name": "Via Peatonal",
-                "terms": "Carrer Peatonal, Àrea per a peatons, Trànsit tallat, Carrer tancat al trànsit, Carrer per a vianants, Àrea per a vianants, Carrer per a transeünts, Peatons, Peatonal, Carrer per a Transeünts, Àrea peatonal"
+                "name": "Zona de vianants"
             },
             "highway/primary": {
                 "name": "Carretera primària",
@@ -2012,8 +2390,8 @@
                 "terms": "Enllaç amb terciària"
             },
             "highway/track": {
-                "name": "Pista,Camí",
-                "terms": "Pista, Traça"
+                "name": "Pista",
+                "terms": "Pista, Traça, Camí"
             },
             "highway/traffic_signals": {
                 "name": "Semàfors",
@@ -2071,13 +2449,14 @@
                 "name": "Capella",
                 "terms": "Ermita"
             },
+            "junction": {
+                "name": "Encreuament"
+            },
             "landuse": {
-                "name": "Aprofitament del terreny",
-                "terms": "Ús del terra, Ús del sòl"
+                "name": "Ús de la terra"
             },
             "landuse/allotments": {
-                "name": "Horts",
-                "terms": "Assignació"
+                "name": "Jardí comunitari"
             },
             "landuse/basin": {
                 "name": "Bassa",
@@ -2091,20 +2470,17 @@
                 "name": "Terrenys d'església"
             },
             "landuse/commercial": {
-                "name": "Zona comercial",
-                "terms": "Comercial,Botiga"
+                "name": "Zona Comercial"
             },
             "landuse/construction": {
                 "name": "Zona en construcció",
                 "terms": "En construcció"
             },
             "landuse/farm": {
-                "name": "Granja",
-                "terms": "Granja"
+                "name": "Zona Agrícola"
             },
             "landuse/farmland": {
-                "name": "Terrenys de Granja",
-                "terms": "Camps de conreu, Pastures, Erm, Erms, Guaret, Camp de blat, Blat, Hort, Horts, Camp, Camps, Camps de cultiu, Cultiu"
+                "name": "Zona Agrícola"
             },
             "landuse/farmyard": {
                 "name": "Edificis de Granja",
@@ -2114,13 +2490,15 @@
                 "name": "Bosc",
                 "terms": "Massa forestal,Bosc,Arbreda"
             },
+            "landuse/garages": {
+                "name": "Garatges"
+            },
             "landuse/grass": {
                 "name": "Herba",
                 "terms": "Herba,Gespa"
             },
             "landuse/industrial": {
-                "name": "Zona industrial",
-                "terms": "Indústria, Industrial,Fàbrica"
+                "name": "Zona Industrial"
             },
             "landuse/landfill": {
                 "name": "Abocador"
@@ -2130,23 +2508,24 @@
                 "terms": "Prat,Prada,Natural"
             },
             "landuse/military": {
-                "name": "Zona militar"
+                "name": "Zona Militar"
             },
             "landuse/orchard": {
                 "name": "Verger",
                 "terms": "Horta,Hort,Plantació"
+            },
+            "landuse/plant_nursery": {
+                "name": "Planter"
             },
             "landuse/quarry": {
                 "name": "Mina a cel obert",
                 "terms": "Pedrera"
             },
             "landuse/residential": {
-                "name": "Zona residencial",
-                "terms": "Residencial,Cases"
+                "name": "Zona Residencial"
             },
             "landuse/retail": {
-                "name": "Comerç minorista",
-                "terms": "Venda al detall,Botiga,Minoristes"
+                "name": "Zona de Comerç minorista"
             },
             "landuse/vineyard": {
                 "name": "Vinya",
@@ -2155,6 +2534,12 @@
             "leisure": {
                 "name": "Esbarjo",
                 "terms": "Lleure,Temps lliure"
+            },
+            "leisure/adult_gaming_centre": {
+                "name": "Centre d'oci adult"
+            },
+            "leisure/bowling_alley": {
+                "name": "Bolera"
             },
             "leisure/common": {
                 "name": "Àrea comuna"
@@ -2181,6 +2566,9 @@
                 "name": "Port esportiu",
                 "terms": "Port esportiu, Marina"
             },
+            "leisure/nature_reserve": {
+                "name": "Reserva Natural"
+            },
             "leisure/park": {
                 "name": "Parc",
                 "terms": "parc, àrea verda, àrea enjardinada, jardí, verger, gespa, arbres, flors"
@@ -2204,6 +2592,12 @@
                 "name": "Pista de bàsquet",
                 "terms": "Pista de bàsquet, Pavelló de bàsquet"
             },
+            "leisure/pitch/rugby_league": {
+                "name": "Camp de la lliga de Rugbi"
+            },
+            "leisure/pitch/rugby_union": {
+                "name": "Camp de la Unió de Rugbi"
+            },
             "leisure/pitch/skateboard": {
                 "name": "Parc per a skates"
             },
@@ -2224,7 +2618,8 @@
                 "terms": "Parc Infantil"
             },
             "leisure/running_track": {
-                "name": "Pista per córrer"
+                "name": "Pista atlètica",
+                "terms": "Pista per córrer, Pista d'atletisme, Pista, Córrer, Atlètic, Atlètica, Atletisme"
             },
             "leisure/slipway": {
                 "name": "Pendent per a embarcacions",
@@ -2252,6 +2647,9 @@
                 "name": "Fet per l'home",
                 "terms": "Fet per la mà de l'home"
             },
+            "man_made/adit": {
+                "name": "Entrada"
+            },
             "man_made/breakwater": {
                 "name": "trencaonades",
                 "terms": "Escullera,Espigó,Espatller"
@@ -2270,8 +2668,14 @@
                 "name": "Far",
                 "terms": "Far"
             },
+            "man_made/mast": {
+                "name": "Torre de ràdio"
+            },
             "man_made/observation": {
                 "name": "Torre de vigilància"
+            },
+            "man_made/petroleum_well": {
+                "name": "Pou petrolífer"
             },
             "man_made/pier": {
                 "name": "Moll de pilons",
@@ -2280,6 +2684,12 @@
             "man_made/pipeline": {
                 "name": "Canonada",
                 "terms": "Gàseoducte,Oleoducte,Canonades"
+            },
+            "man_made/silo": {
+                "name": "Sitja"
+            },
+            "man_made/storage_tank": {
+                "name": "Dipòsit d'emmagatzematge"
             },
             "man_made/survey_point": {
                 "name": "Punt referencial",
@@ -2312,8 +2722,23 @@
             "military/bunker": {
                 "name": "Búnquer"
             },
+            "military/checkpoint": {
+                "name": "Punt de control"
+            },
+            "military/danger_area": {
+                "name": "Àrea de perill"
+            },
+            "military/naval_base": {
+                "name": "Base Naval"
+            },
+            "military/obstacle_course": {
+                "name": "Cursa d'obstacles"
+            },
             "military/range": {
                 "name": "Terreny per a usos militars"
+            },
+            "military/training_area": {
+                "name": "Àrea d'entrenament"
             },
             "natural": {
                 "name": "Natural"
@@ -2324,6 +2749,9 @@
             "natural/beach": {
                 "name": "Platja",
                 "terms": "Platja"
+            },
+            "natural/cave_entrance": {
+                "name": "Entrada de cova"
             },
             "natural/cliff": {
                 "name": "Penya-segat"
@@ -2348,6 +2776,9 @@
                 "name": "Pic",
                 "terms": "Pic, cim, cimadal, pollegó, agulla."
             },
+            "natural/saddle": {
+                "name": "Seient"
+            },
             "natural/scree": {
                 "name": "Tartera"
             },
@@ -2360,6 +2791,12 @@
             "natural/tree": {
                 "name": "Arbre",
                 "terms": "Arbre"
+            },
+            "natural/tree_row": {
+                "name": "Fila d'arbres"
+            },
+            "natural/volcano": {
+                "name": "Volcà"
             },
             "natural/water": {
                 "name": "Aigua",
@@ -2380,7 +2817,8 @@
                 "name": "Aiguamolls"
             },
             "natural/wood": {
-                "name": "Bosc"
+                "name": "Bosc",
+                "terms": "Bosc, Forest"
             },
             "office": {
                 "name": "Oficines",
@@ -2425,13 +2863,15 @@
                 "name": "Bufet d'advocats"
             },
             "office/newspaper": {
-                "name": "Diari"
+                "name": "Diari",
+                "terms": "Periòdic"
             },
             "office/ngo": {
                 "name": "Oficina d'ONG"
             },
             "office/physician": {
-                "name": "Fisioterapeuta"
+                "name": "Metge",
+                "terms": "Metgessa, Doctor, Doctora"
             },
             "office/political_party": {
                 "name": "Local de partit polític",
@@ -2459,6 +2899,9 @@
             "place/city": {
                 "name": "Ciutat ",
                 "terms": "Ciutat, Municipi"
+            },
+            "place/farm": {
+                "name": "Granja"
             },
             "place/hamlet": {
                 "name": "Llogaret"
@@ -2508,6 +2951,10 @@
                 "name": "Subestació",
                 "terms": "Subestació"
             },
+            "power/substation": {
+                "name": "Subestació",
+                "terms": "Subestació elèctrica, Estació elèctrica, Central elèctrica"
+            },
             "power/tower": {
                 "name": "Torre de línia d'alta tensió",
                 "terms": "Torre d'alta tensió, Torre d'alt voltatge"
@@ -2529,7 +2976,8 @@
                 "name": "Via fèrria abandonada"
             },
             "railway/disused": {
-                "name": "Vià de tren fora d'ús"
+                "name": "Via fèrria fora d'ús",
+                "terms": "Via fèrria abandonada, Via de tren fora d'ús, Via de tren abandonada"
             },
             "railway/funicular": {
                 "name": "Funicular"
@@ -2538,8 +2986,7 @@
                 "name": "Parada de Ferrocarril"
             },
             "railway/level_crossing": {
-                "name": "Pas a nivell",
-                "terms": "Pas a nivell, Pas de ferrocarril, guardaagulles, pas de ferrocarril, barreres, semàfors, tren, cotxe"
+                "name": "Pas a nivell"
             },
             "railway/monorail": {
                 "name": "Monocarril",
@@ -2573,6 +3020,9 @@
                 "name": "Relació",
                 "terms": "Relació"
             },
+            "roundabout": {
+                "name": "Rotonda"
+            },
             "route/ferry": {
                 "name": "Ruta de ferri"
             },
@@ -2601,7 +3051,7 @@
             },
             "shop/bakery": {
                 "name": "Fleca",
-                "terms": "Forn de pa, Panaderia"
+                "terms": "Forn de pa, Panaderia, pastisseria, forn"
             },
             "shop/bathroom_furnishing": {
                 "name": "Botiga de mobles de bany"
@@ -2613,7 +3063,8 @@
                 "name": "Botiga de matalassos"
             },
             "shop/beverages": {
-                "name": "botiga de begudes"
+                "name": "Botiga de begudes",
+                "terms": "Licoreria"
             },
             "shop/bicycle": {
                 "name": "Botiga de bicicletes",
@@ -2665,23 +3116,28 @@
                 "terms": "Botiga d'informàtica, Botiga d'ordinadors"
             },
             "shop/confectionery": {
-                "name": "Botiga de llaminadures"
+                "name": "Botiga de llaminadures",
+                "terms": "Botiga de dolços, Botiga de caramels, Botiga de Llepolies, Dolços, Llaminadures, Caramels, Llepolies"
             },
             "shop/convenience": {
-                "name": "Botiga d'ultramarins"
+                "name": "Botiga d'ultramarins",
+                "terms": "Botiga de queviures, Ultramarins, Queviures, Colmado"
             },
             "shop/copyshop": {
                 "name": "Copisteria",
                 "terms": "Botiga, fotocòpies, fulls, impressora"
             },
             "shop/cosmetics": {
-                "name": "Botiga de cosmètics"
+                "name": "Botiga de cosmètics",
+                "terms": "Botiga de perfums, Cosmètics, Cosmètica, Perfums, Perfumeria"
             },
             "shop/craft": {
-                "name": "Botiga per a les arts plàstiques"
+                "name": "Botiga per a les arts plàstiques",
+                "terms": "Botiga de manualitats, Manualitats, Arts plàstiques"
             },
             "shop/curtain": {
-                "name": "Botiga de cortines"
+                "name": "Botiga de cortines",
+                "terms": "Botiga de roba de la llar, Cortines, Coixins"
             },
             "shop/dairy": {
                 "name": "Botiga de productes làctics"
@@ -2697,7 +3153,8 @@
                 "terms": "Botiga de bricolatge"
             },
             "shop/dry_cleaning": {
-                "name": "Tintoreria"
+                "name": "Bugaderia",
+                "terms": "Tintoreria, Centre de neteja, Neteja, Neteja en sec"
             },
             "shop/electronics": {
                 "name": "Botiga d'electrònica",
@@ -2708,7 +3165,8 @@
                 "terms": "sex, shop, sexshop"
             },
             "shop/fabric": {
-                "name": "Botiga de teles"
+                "name": "Botiga de teles",
+                "terms": "Botiga de robes, Teles, Robes"
             },
             "shop/farm": {
                 "name": "Estand productiu",
@@ -2731,11 +3189,12 @@
                 "name": "Tanatori"
             },
             "shop/furnace": {
-                "name": "Botiga de mobles"
+                "name": "Botiga de forns i calderes",
+                "terms": "Botiga de forns, Botiga de calderes, Forn, Forns, Caldera, Calderes, Calefacció, Calefactors"
             },
             "shop/furniture": {
                 "name": "Botiga de mobles",
-                "terms": "Botiga de mobles"
+                "terms": "Botiga de mobles, Moblista"
             },
             "shop/garden_centre": {
                 "name": "Centre de jardineria"
@@ -2761,6 +3220,9 @@
             },
             "shop/hifi": {
                 "name": "Botiga d'alta fidelitat"
+            },
+            "shop/houseware": {
+                "name": "Botiga de la llar"
             },
             "shop/interior_decoration": {
                 "name": "Botiga d'Interiorisme"
@@ -2899,10 +3361,12 @@
                 "name": "Botiga d'aspiradors"
             },
             "shop/variety_store": {
-                "name": "Botiga de tot a 100"
+                "name": "Botiga de tot a 100",
+                "terms": "Basar"
             },
             "shop/video": {
-                "name": "Botiga de vídeos"
+                "name": "Botiga de vídeos",
+                "terms": "Videoclub"
             },
             "shop/video_games": {
                 "name": "Botiga de videojocs"
@@ -2978,6 +3442,22 @@
             "tourism/zoo": {
                 "name": "Zoo",
                 "terms": "Zoo, Zoològic"
+            },
+            "traffic_calming/bump": {
+                "name": "Ressalt",
+                "terms": "Cavalló, Resalt, Túmul, Reductor, Tope"
+            },
+            "traffic_calming/hump": {
+                "name": "Esquena d'ase",
+                "terms": "Esquena de ruc, Esquena de burro, Esquena de bou, Esquena de toro, Llom d'ase, Llom de ruc, Llom de burro, Llom de bou, Llom de toro, Ressalt, Cavalló, Túmul"
+            },
+            "traffic_calming/rumble_strip": {
+                "name": "Bandes rugoses",
+                "terms": "banda, bandes, rugós, rugoses"
+            },
+            "traffic_calming/table": {
+                "name": "Pas de vianants de ressalt",
+                "terms": "pas de vianants elevat, peató, peatons, pas, vianant, elevat, ressalt, esquena d'ase"
             },
             "type/boundary": {
                 "name": "Límit",
@@ -3081,11 +3561,15 @@
                 "terms": "Presa, Pantà, Embassament"
             },
             "waterway/ditch": {
-                "name": "Sèquia",
-                "terms": "Sèquia, Rara, Canal, Aigua, Via aquífera, Torrent, Conducció d'aigua, Aquífer, Rierol"
+                "name": "Séquia",
+                "terms": "Séquia, Sèquia, Rara, Canal, Aigua, Via aqüífera, Torrent, Conducció d'aigua, Aqüífer, Rierol"
             },
             "waterway/drain": {
-                "name": "Torrent"
+                "name": "Torrent",
+                "terms": "Torrentera, Rambla"
+            },
+            "waterway/fuel": {
+                "name": "Benzinera per a embarcacions"
             },
             "waterway/river": {
                 "name": "Riu",
@@ -3093,11 +3577,14 @@
             },
             "waterway/riverbank": {
                 "name": "Banc fluvial",
-                "terms": "Riba del riu,ribera"
+                "terms": "Riba del riu, Ribera"
+            },
+            "waterway/sanitary_dump_station": {
+                "name": "Lavabo per a vaixells"
             },
             "waterway/stream": {
                 "name": "Rierol",
-                "terms": "Sèquia, rierol, fil d'aigua, rajolí, riuet, riachuelu, ramal, reguer, segla, canal, rec, regueró, sequiola, sequió, cavim."
+                "terms": "Séquia, rierol, Fil d'aigua, Rajolí, Riuet, Ramal, Reguer, Segla, Canal, Rec, Regueró, Sequiola, Sequió, Cavim."
             },
             "waterway/weir": {
                 "name": "Assut"

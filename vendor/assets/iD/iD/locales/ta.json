@@ -58,7 +58,6 @@
         },
         "merge": {
             "title": "இணை",
-            "description": "இந்த கோடுகளை இணை",
             "key": "C"
         },
         "move": {
@@ -127,24 +126,23 @@
         },
         "fields": {
             "access": {
-                "placeholder": "அறியப்படவில்லை",
-                "types": {
-                    "horse": "குதிரைகள்"
-                },
                 "options": {
-                    "yes": {
-                        "title": "அனுமதிக்கப்படுகிறது"
-                    },
                     "private": {
                         "title": "தனியார்"
+                    },
+                    "yes": {
+                        "title": "அனுமதிக்கப்படுகிறது"
                     }
+                },
+                "types": {
+                    "horse": "குதிரைகள்"
                 }
             },
             "address": {
                 "label": "முகவரி",
                 "placeholders": {
-                    "street": "தெரு",
-                    "city": "மாநகரம்"
+                    "city": "மாநகரம்",
+                    "street": "தெரு"
                 }
             },
             "aerialway": {
@@ -359,9 +357,6 @@
             "tourism": {
                 "label": "வகை"
             },
-            "tree_type": {
-                "label": "வகை"
-            },
             "water": {
                 "label": "வகை"
             },
@@ -377,9 +372,6 @@
             },
             "wikipedia": {
                 "label": "விக்கிப்பீடியா"
-            },
-            "wood": {
-                "label": "வகை"
             }
         },
         "presets": {
@@ -518,9 +510,6 @@
             "landuse/construction": {
                 "name": "கட்டுமானம்"
             },
-            "landuse/farm": {
-                "name": "பண்ணை"
-            },
             "landuse/farmyard": {
                 "name": "பண்ணை"
             },
@@ -529,9 +518,6 @@
             },
             "landuse/grass": {
                 "name": "புல்வெளி"
-            },
-            "landuse/industrial": {
-                "name": "தொழிற்சாலை"
             },
             "leisure/marina": {
                 "name": "மரினா"

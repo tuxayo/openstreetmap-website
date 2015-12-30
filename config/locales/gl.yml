@@ -1,6 +1,7 @@
 # Messages for Galician (galego)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Banjo
 # Author: Elisardojm
 # Author: Gallaecio
 # Author: Nemo bis
@@ -161,6 +162,7 @@ gl:
         way: camiño
         relation: relación
         changeset: conxunto de cambios
+        note: nota
     timeout:
       sorry: Tardouse demasiado en obter os datos para o %{type} co id %{id}.
       type:
@@ -168,6 +170,7 @@ gl:
         way: camiño
         relation: relación
         changeset: conxunto de cambios
+        note: nota
     redacted:
       redaction: Redacción %{id}
       message_html: A versión %{version} deste %{type} non se pode mostrar tal como
@@ -210,7 +213,7 @@ gl:
         %{when}</abbr>
       hidden_by: Agochado por %{user} <abbr title='%{exact_time}'>hai %{when}</abbr>
     query:
-      title: Características da consulta
+      title: Consultar as características
       introduction: Prema no mapa para atopar características preto de aquí.
       nearby: Características preto de aquí
       enclosing: Características envolventes
@@ -254,6 +257,7 @@ gl:
   diary_entry:
     new:
       title: Nova entrada no diario
+      publish_button: Publicar
     list:
       title: Diarios de usuarios
       title_friends: Diarios de amigos
@@ -392,8 +396,10 @@ gl:
     search_osm_nominatim:
       prefix:
         aerialway:
+          cable_car: Teleférico
           chair_lift: Teleférico
           drag_lift: Telesquí
+          gondola: Telecabina
           station: Estación de telesquí
         aeroway:
           aerodrome: Aeródromo
@@ -404,11 +410,9 @@ gl:
           taxiway: Vía de circulación do aeroporto
           terminal: Terminal
         amenity:
-          airport: Aeroporto
+          animal_shelter: Refuxio de animais
           arts_centre: Centro artístico
-          artwork: Obra de arte
           atm: Caixeiro automático
-          auditorium: Auditorio
           bank: Banco
           bar: Bar
           bbq: Barbacoa
@@ -416,6 +420,7 @@ gl:
           bicycle_parking: Aparcadoiro de bicicletas
           bicycle_rental: Aluguer de bicicletas
           biergarten: Terraza
+          boat_rental: Aluguer de botes
           brothel: Prostíbulo
           bureau_de_change: Casa de cambio
           bus_station: Estación de autobuses
@@ -425,9 +430,10 @@ gl:
           car_wash: Lavadoiro de coches
           casino: Casino
           charging_station: Estación de carga
+          childcare: Gardería
           cinema: Cine
           clinic: Clínica
-          club: Club
+          clock: Reloxio
           college: Instituto
           community_centre: Centro comunitario
           courthouse: Xulgado
@@ -446,25 +452,25 @@ gl:
           food_court: Área de restauración
           fountain: Fonte
           fuel: Combustible
+          gambling: Xogos de azar
           grave_yard: Cemiterio
           gym: Ximnasio
-          hall: Sala de reunións
           health_centre: Centro de saúde
           hospital: Hospital
-          hotel: Hotel
           hunting_stand: Lugar de caza
           ice_cream: Xeadaría
           kindergarten: Xardín de infancia
           library: Biblioteca
           market: Mercado
           marketplace: Praza de mercado
-          mountain_rescue: Rescate de montaña
+          monastery: Mosteiro
+          motorcycle_parking: Estacionamento para motocicletas
           nightclub: Club nocturno
           nursery: Parvulario
           nursing_home: Residencia para a terceira idade
           office: Oficina
-          park: Parque
           parking: Aparcadoiro
+          parking_entrance: Entrada de estacionamento
           pharmacy: Farmacia
           place_of_worship: Lugar de culto
           police: Policía
@@ -474,7 +480,6 @@ gl:
           prison: Prisión
           pub: Pub
           public_building: Edificio público
-          public_market: Mercado público
           reception_area: Zona de recepción
           recycling: Punto de reciclaxe
           restaurant: Restaurante
@@ -483,13 +488,11 @@ gl:
           school: Escola
           shelter: Abeiro
           shop: Tenda
-          shopping: Comercio
           shower: Ducha
           social_centre: Centro social
           social_club: Club social
           social_facility: Servizos sociais
           studio: Estudio
-          supermarket: Supermercado
           swimming_pool: Piscina
           taxi: Taxi
           telephone: Teléfono público
@@ -501,8 +504,7 @@ gl:
           veterinary: Clínica veterinaria
           village_hall: Concello
           waste_basket: Cesto do lixo
-          wifi: Acceso WiFi
-          WLAN: Acceso WiFi
+          waste_disposal: Contedor de lixo
           youth_centre: Casa da xuventude
         boundary:
           administrative: Límite administrativo
@@ -517,22 +519,35 @@ gl:
           "yes": Ponte
         building:
           "yes": Construción
+        craft:
+          brewery: Fábrica de cervexa
+          carpenter: Carpinteiro
+          electrician: Electricista
+          gardener: Xardineiro
+          painter: Pintor
+          photographer: Fotógrafo
+          plumber: Fontaneiro
+          shoemaker: Zapateiro
+          tailor: Xastre
+          "yes": Tenda de artesanía
         emergency:
-          fire_hydrant: Boca de incendios
+          ambulance_station: Base de ambulancias
+          defibrillator: Desfibrilador
+          landing_site: Lugar de aterrizaxe de emerxencia
           phone: Teléfono de emerxencia
         highway:
+          abandoned: Estrada abandonada
           bridleway: Pista de cabalos
           bus_guideway: Liña de autobuses guiados
           bus_stop: Parada de autobús
-          byway: Camiño secundario
           construction: Autoestrada en construción
           cycleway: Pista de bicicletas
+          elevator: Ascensor
           emergency_access_point: Punto de acceso de emerxencia
           footway: Carreiro
           ford: Vao
           living_street: Rúa residencial
           milestone: Miliario
-          minor: Estrada lateral
           motorway: Autoestrada
           motorway_junction: Cruzamento de autovías
           motorway_link: Enlace de autoestrada
@@ -553,37 +568,44 @@ gl:
           speed_camera: Radar
           steps: Chanzos
           street_lamp: Luminaria
-          stile: Escada
           tertiary: Estrada terciaria
           tertiary_link: Estrada terciaria
           track: Pista
+          traffic_signals: Sinais de tráfico
           trail: Pista
           trunk: Estrada nacional
           trunk_link: Estrada nacional
           unclassified: Estrada sen clasificar
           unsurfaced: Estrada non pavimentada
+          "yes": Estrada
         historic:
           archaeological_site: Xacemento arqueolóxico
           battlefield: Campo de batalla
           boundary_stone: Marco
-          building: Construción
+          building: Edificio histórico
+          bunker: Búnker
           castle: Castelo
           church: Igrexa
+          city_gate: Porta da cidade
           citywalls: Muralla
           fort: Forte
+          heritage: Patrimonio da humanidade
           house: Casa
           icon: Icona
           manor: Casa señorial
           memorial: Memorial
           mine: Mina
           monument: Monumento
-          museum: Museo
+          roman_road: Estrada romana
           ruins: Ruínas
+          stone: Pedra
           tomb: Sepulcro
           tower: Torre
           wayside_cross: Cruce de camiños
           wayside_shrine: Santuario no camiño
           wreck: Pecio
+        junction:
+          "yes": Intersección
         landuse:
           allotments: Hortas
           basin: Cunca
@@ -605,9 +627,6 @@ gl:
           military: Zona militar
           mine: Mina
           orchard: Horta
-          nature_reserve: Reserva natural
-          park: Parque
-          piste: Pista
           quarry: Canteira
           railway: Ferrocarril
           recreation_ground: Área recreativa
@@ -618,16 +637,19 @@ gl:
           road: Zona de estrada
           village_green: Parque municipal
           vineyard: Viñedo
-          wetland: Pantano
-          wood: Madeira
+          "yes": Uso do solo
         leisure:
           beach_resort: Balneario
           bird_hide: Observatorio de aves
+          club: Club
           common: Terreo común
+          dog_park: Parque canino
           fishing: Área de pesca
+          fitness_centre: Ximnasio (fitness)
           fitness_station: Ximnasio
           garden: Xardín
           golf_course: Campo de golf
+          horse_riding: Hípica
           ice_rink: Pista de patinaxe sobre xeo
           marina: Porto deportivo
           miniature_golf: Minigolf
@@ -636,6 +658,7 @@ gl:
           pitch: Cancha deportiva
           playground: Patio de recreo
           recreation_ground: Área recreativa
+          resort: Centro turístico
           sauna: Sauna
           slipway: Varadoiro
           sports_centre: Centro deportivo
@@ -643,6 +666,13 @@ gl:
           swimming_pool: Piscina
           track: Pista de carreiras
           water_park: Parque acuático
+          "yes": Ocio
+        man_made:
+          lighthouse: Faro
+          pipeline: Tubaxe
+          tower: Torre
+          works: Fábrica
+          "yes": Artificial
         military:
           airfield: Aeródromo militar
           barracks: Barracas
@@ -654,16 +684,15 @@ gl:
           beach: Praia
           cape: Cabo
           cave_entrance: Entrada de cova
-          channel: Canal
           cliff: Cantil
           crater: Cráter
           dune: Duna
-          feature: Elemento
           fell: Brañal
           fjord: Fiorde
           forest: Bosque
           geyser: Géyser
           glacier: Glaciar
+          grassland: Pradaría
           heath: Breixeira
           hill: Outeiro
           island: Illa
@@ -675,11 +704,11 @@ gl:
           point: Punto
           reef: Arrecife
           ridge: Crista
-          river: Río
           rock: Rocha
+          saddle: Outeiro
+          sand: Area
           scree: Pedregal
           scrub: Matogueira
-          shoal: Cardume
           spring: Primavera
           stone: Pedra
           strait: Estreito
@@ -688,10 +717,10 @@ gl:
           volcano: Volcán
           water: Auga
           wetland: Pantano
-          wetlands: Pantano
           wood: Bosque
         office:
           accountant: Contable
+          administrative: Administración
           architect: Arquitecto
           company: Empresa
           employment_agency: Axencia de emprego
@@ -704,6 +733,8 @@ gl:
           travel_agent: Axencia de viaxes
           "yes": Oficina
         place:
+          allotments: Hortas
+          block: Bloque
           airport: Aeroporto
           city: Cidade
           country: País
@@ -728,6 +759,7 @@ gl:
           town: Cidade
           unincorporated_area: Área non incorporada
           village: Vila
+          "yes": Lugar
         railway:
           abandoned: Vía de tren abandonada
           construction: Vía ferroviaria en construción
@@ -748,14 +780,11 @@ gl:
           spur: Vía ramificada
           station: Estación de ferrocarril
           stop: Parada de ferrocarril
-          subway: Estación de metro
+          subway: Metro
           subway_entrance: Boca de metro
           switch: Puntos de cambio de vía
           tram: Vía de tranvías
           tram_stop: Parada de tranvías
-          yard: Estación de clasificación
-        route:
-          bus: Ruta de autobús
         shop:
           alcohol: Tenda de licores
           antiques: Tenda de antigüidades
@@ -833,6 +862,7 @@ gl:
           "yes": Tenda
         tourism:
           alpine_hut: Cabana alpina
+          apartment: Apartamento
           artwork: Obra de arte
           attraction: Atracción
           bed_and_breakfast: Cama e almorzo
@@ -840,16 +870,15 @@ gl:
           camp_site: Campamento
           caravan_site: Sitio de caravanas
           chalet: Chalé
+          gallery: Galería
           guest_house: Albergue
           hostel: Hostal
           hotel: Hotel
           information: Información
-          lean_to: Caseta
           motel: Motel
           museum: Museo
           picnic_site: Sitio de pícnic
           theme_park: Parque temático
-          valley: Val
           viewpoint: Miradoiro
           zoo: Zoolóxico
         tunnel:
@@ -859,7 +888,6 @@ gl:
           artificial: Vía fluvial artificial
           boatyard: Estaleiro
           canal: Canal
-          connector: Conexión de vía de auga
           dam: Encoro
           derelict_canal: Canal abandonado
           ditch: Cuneta
@@ -867,16 +895,14 @@ gl:
           drain: Sumidoiro
           lock: Esclusa
           lock_gate: Esclusa
-          mineral_spring: Fonte mineral
           mooring: Atraque
           rapids: Rápidos
           river: Río
-          riverbank: Beira do río
           stream: Arroio
           wadi: Uadi
           waterfall: Fervenza
-          water_point: Punto de auga
           weir: Vaira
+          "yes": Curso de auga
       admin_levels:
         level2: Fronteira do país
         level4: Fronteira do estado/provincia
@@ -897,19 +923,6 @@ gl:
     results:
       no_results: Non se atopou ningún resultado
       more_results: Máis resultados
-    distance:
-      one: arredor de 1km
-      zero: menos de 1km
-      other: arredor de %{count}km
-    direction:
-      south_west: suroeste
-      south: sur
-      south_east: sueste
-      east: leste
-      north_east: nordés
-      north: norte
-      north_west: noroeste
-      west: oeste
   layouts:
     logo:
       alt_text: Logo do OpenStreetMap
@@ -974,10 +987,10 @@ gl:
       mapping_link: comezar a contribuír
     legal_babble:
       title_html: Dereitos de autoría e licenza
-      intro_1_html: |-
-        O OpenStreetMap é de <i>datos abertos</i> e atópase baixo a <a
-        href="http://opendatacommons.org/licenses/odbl/">Open Data
-        Commons Open Database License</a> (ODbL).
+      intro_1_html: "O OpenStreetMap <sup><a href=\"#trademarks\">&reg;</a></sup>
+        está dispoñible baixo <i>datos abertos</i> e atópase baixo a <a\nhref=\"http://opendatacommons.org/licenses/odbl/\">Open
+        Data\nCommons Open Database License</a> (ODbL) da  <a\t\nhref=\"http://osmfoundation.org/\">Fundación
+        OpenStreetMap</a> (OSMF)."
       intro_2_html: |-
         Vostede é libre de copiar, distribuír, transmitir e adaptar os nosos datos,
         na medida en que acredite o OpenStreetMap e mais os seus
@@ -1011,7 +1024,8 @@ gl:
         title: Exemplo de recoñecemento
       more_title_html: Máis información
       more_1_html: |-
-        Descubra máis sobre como empregar os nosos datos e como acreditarnos nas <a
+        Descubra máis sobre como empregar os nosos datos e como acreditarnos na <a
+        href="http://osmfoundation.org/Licence">páxina de licenza de OSMF</a> e na comunidade de <a
         href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">preguntas máis frecuentes
         sobre asuntos legais</a>.
       more_2_html: |-
@@ -1051,6 +1065,11 @@ gl:
       contributors_nz_html: |-
         <strong>Nova Zelandia:</strong> Contén datos con orixe no
         Land Information New Zealand. Dereitos de autor da coroa.
+      contributors_si_html: |-
+        <strong>Eslovenia</strong>: Contén datos da
+        <a href="http://www.gu.gov.si/en/">Autoridade de Planificación e de Cartografía</a> e do
+        <a href="http://www.mkgp.gov.si/en/">Ministerio de Agricultura, Bosques e Alimentación</a>
+        (información pública de Eslovenia).
       contributors_za_html: |-
         <strong>Sudáfrica:</strong> Contén datos con orixe no
         <a href="http://www.ngi.gov.za/">Chief Directorate:
@@ -1079,6 +1098,11 @@ gl:
         o noso <a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">procedemento
         para retirar datos</a> ou deixe unha notificación no noso
         <a href="http://dmca.openstreetmap.org/">formulario en liña</a>.
+      trademarks_title_html: <span id="trademarks"></span>Marcas rexistadas
+      trademarks_1_html: OpenStreetMap e o logotipo coa lupa son marcas rexistadas
+        da OpenStreetMap Foundation. Se ten algunha pregunta sobre a utilización das
+        marcas, por favor envée as súas cuestión ó <a href="http://wiki.osmfoundation.org/wiki/Licensing_Working_Group">Grupo
+        de Traballo de Licenzas</a>.
   welcome_page:
     title: Reciba a nosa benvida!
     introduction_html: Dámoslle a benvida ao OpenStreetMap, o mapa do mundo libre
@@ -1107,6 +1131,14 @@ gl:
       tag_html: Unha <strong>etiqueta</strong> é unha peza de datos sobre un nodo
         ou un camiño, como o nome dun restaurante ou o límite de velocidade dunha
         estrada.
+    rules:
+      title: Regras!
+      paragraph_1_html: OpenStreetMap ten poucas regras formais, pero esperamos que
+        todos os participantes colaboraren e se comuniquen coa comunidade. Se está
+        considerando algunha actividade que non sexa a edición manual, lea e siga
+        as instrucións sobre <a href='http://wiki.openstreetmap.<a href='http://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct'></a>org/wiki/Import/Guidelines'>importacións</a>
+        e <a href='http://wiki.openstreetmap.org/wiki/Import/Automated_Edits_code_of_conduct'>edicións
+        automatizadas</a>.
     questions:
       title: Ten algunha pregunta?
       paragraph_1_html: |-
@@ -1151,11 +1183,30 @@ gl:
       url: /welcome
       title: Dámoslle a benvida ao OSM
       description: Comece con esta guía rápida cos principios básicos do OpenStreetMap.
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Beginners%27_guide
+      title: Guía do principiante
+      description: Guía para principiantes, mantida pola comunidade.
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
       description: Formule unha pregunta ou busque respostas no sitio de preguntas
         e respostas do OSM.
+    mailing_lists:
+      title: Listas de correo
+      description: Pregunta ou conversa sobre temas interesantes nun amplo abano de
+        listas de correo temáticas ou rexionais.
+    forums:
+      title: Foros
+      description: Preguntas e conversas para os que prefiren unha interface do estilo
+        carteleira de anuncios.
+    irc:
+      title: IRC
+      description: Chat interactivo en moitos idiomas diferentes e sobre moitos temas.
+    switch2osm:
+      title: Migra a OSM
+      description: Axuda para as empresas e organizacións que migran a mapas e a outros
+        servizos baseados en OpenStreetMap.
     wiki:
       url: http://wiki.openstreetmap.org/
       title: wiki.openstreetmap.org
@@ -1163,7 +1214,7 @@ gl:
   about_page:
     next: Seguinte
     copyright_html: <span>&copy;</span>Colaboradores do<br>OpenStreetMap
-    used_by: '%{name} fornece datos xeográficos a centos de sitios web, aplicacións
+    used_by: '%{name} fornece datos xeográficos a miles de sitios web, aplicacións
       para móbiles e dispositivos físicos'
     lede_text: |-
       O OpenStreetMap é obra dunha comunidade de xente que achega e mantén datos
@@ -1187,6 +1238,12 @@ gl:
       Os datos do OpenStreetMap son <i>datos libres</i>; pode usalos libremente e para calquera finalidade
       sempre que recoñeza ao OpenStreetMap e mailos seus colaboradores como os autores dos datos. Se modifica os datos
       ou os utiliza dalgún xeito para outros fins, pode distribuír o resultado sempre e cando o faga empregando a mesma licenza. Atopará información máis detallada na <a href='%{copyright_path}'>páxina de dereitos de autoría e licenza</a>.
+    legal_title: Legal
+    legal_html: "Este sitio e moitos outros servizos relacionados son manexados pola
+      \ \n<a href='http://osmfoundation.org/'>Fundación OpenStreetMap</a> (OSMF) \nen
+      nome da comunidade.\n<br> \n<a href='http://osmfoundation.org/Contact'>Contacte
+      coa OSMF</a> \nse ten preguntas ou problemas sobre licenzas, dereitos de autor
+      ou outro tema legal."
     partners_title: Socios
   notifier:
     diary_comment_notification:
@@ -1407,6 +1464,10 @@ gl:
       close: Pechar
     search:
       search: Procurar
+      get_directions: Obter indicacións
+      get_directions_title: Atopar indicacións entre dous puntos
+      from: De
+      to: A
       where_am_i: Onde estou?
       where_am_i_title: Describa a localización actual usando o motor de procuras
       submit_text: Ir
@@ -1418,9 +1479,7 @@ gl:
           primary: Estrada principal
           secondary: Estrada secundaria
           unclassified: Estrada sen clasificar
-          unsurfaced: Estrada non pavimentada
           track: Pista
-          byway: Camiño secundario
           bridleway: Pista de cabalos
           cycleway: Pista de bicicletas
           footway: Vía peonil
@@ -1444,7 +1503,6 @@ gl:
           golf: Campo de golf
           park: Parque
           resident: Zona residencial
-          tourist: Atracción turística
           common:
           - Espazo común
           - pradaría
@@ -1474,7 +1532,6 @@ gl:
           tunnel: Bordo a raias = túnel
           bridge: Bordo negro = ponte
           private: Acceso privado
-          permissive: Acceso limitado
           destination: Acceso a destino
           construction: Estradas en construción
     richtext_area:
@@ -1634,6 +1691,7 @@ gl:
       allow_read_gpx: ler as súas pistas GPS privadas.
       allow_write_gpx: cargar pistas GPS.
       allow_write_notes: modificar as notas.
+      grant_access: Permitir o acceso
     oauthorize_success:
       title: Aceptouse a solicitude de autorización
       allowed: Concedeulle acceso á súa conta á aplicación %{app_name}.
@@ -1687,7 +1745,7 @@ gl:
       name: Nome
       required: Obrigatorio
       url: URL principal da aplicación
-      callback_url: URL de retorno
+      callback_url: URL de retorno de chamada
       support_url: URL de apoio
       requests: 'Solicitar os seguintes permisos ao usuario:'
       allow_read_prefs: ler as súas preferencias de usuario.
@@ -1718,7 +1776,7 @@ gl:
       register now: Rexístrese agora
       with username: 'Xa ten unha conta no OpenStreetMap? Acceda ao sistema co seu
         nome de usuario e contrasinal:'
-      with openid: 'Tamén pode usar o seu OpenID para acceder:'
+      with external: 'O ben, utilice un servizo de terceiros para acceder:'
       new to osm: É novo no OpenStreetMap?
       to make changes: Para realizar as modificacións nos datos do OpenStreetMap,
         cómpre ter unha conta.
@@ -1731,17 +1789,20 @@ gl:
         sospeitosas.<br />Póñase en contacto co <a href="%{webmaster}">webmaster</a>
         se quere debatelo.
       auth failure: Sentímolo, non puido acceder ao sistema con eses datos.
-      openid missing provider: Sentímolo, non podemos contactar co seu provedor do
-        OpenID
-      openid invalid: Sentímolo, o seu OpenID semella non estar ben formado
       openid_logo_alt: Acceder ao sistema cun OpenID
-      openid_providers:
+      auth_providers:
         openid:
           title: Acceder ao sistema co OpenID
           alt: Acceder ao sistema cun URL OpenID
         google:
           title: Acceder ao sistema co Google
           alt: Acceder ao sistema cun OpenID de Google
+        facebook:
+          title: Acceda co Facebook
+          alt: Iniciar sesión cunha conta de Facebook
+        windowslive:
+          title: Iniciar sesión co Windows Live
+          alt: Iniciar sesión cunha conta de Windows Live
         yahoo:
           title: Acceder ao sistema con Yahoo
           alt: Acceder ao sistema cun OpenID de Yahoo
@@ -1796,20 +1857,18 @@ gl:
       display name: 'Nome mostrado:'
       display name description: O seu nome de usuario mostrado publicamente. Pode
         cambialo máis tarde nas preferencias.
-      openid: '%{logo} OpenID:'
+      external auth: 'Autenticación de terceiros:'
       password: 'Contrasinal:'
       confirm password: 'Confirmar o contrasinal:'
-      use openid: Tamén pode usar %{logo} OpenID para acceder
-      openid no password: Co OpenID non é necesario un contrasinal, pero algunhas
-        ferramentas adicionais ou servidores aínda poden necesitalo.
-      openid association: |-
-        <p>O seu OpenID aínda non está asociado a ningunha conta no OpenStreetMap.</p>
+      use external auth: Ou ben, utilice un servizo de terceiros para acceder
+      auth no password: Coa autenticación de terceiros non se precisa un contrasinal,
+        aínda que hai algunhas ferramentas e servidores que aínda a solicitan.
+      auth association: |-
+        <p>O seu identificador todavía non está asociado cunha conta de OpenStreetMap.</p>
         <ul>
-          <li>Se é novo no OpenStreetMap, cree unha nova conta mediante o formulario inferior.</li>
+          <li>Se eres novo en OpenStreetMap, por favor crea unha conta mediante o seguinte formulario.</li>
           <li>
-            Se xa ten unha conta, pode acceder ao sistema
-            co seu nome de usuario e contrasinal e logo asociar a conta
-            ao seu OpenID nas preferencias de usuario.
+            Se xa tes unha conta, podes iniciar sesión na túa conta usando o teu nome de usuario e contrasinal e logo asociar a conta co teu identificador na configuración de usuario.
           </li>
         </ul>
       continue: Rexistrarse
@@ -1917,8 +1976,8 @@ gl:
       current email address: 'Enderezo de correo electrónico actual:'
       new email address: 'Novo enderezo de correo electrónico:'
       email never displayed publicly: (nunca mostrado publicamente)
+      external auth: 'Autenticación externa:'
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: que é isto?
       public editing:
@@ -1981,6 +2040,7 @@ gl:
       press confirm button: Prema sobre o botón de confirmación que aparece a continuación
         para activar a súa conta.
       button: Confirmar
+      success: Confirmouse a súa conta. Grazas por se rexistrar!
       already active: Esta conta xa se confirmou.
       unknown token: Ese código de confirmación caducou ou non existe.
       reconfirm_html: Se quere que reenviemos o correo electrónico de confirmación,
@@ -1996,8 +2056,9 @@ gl:
       press confirm button: Prema sobre o botón de confirmación que aparece a continuación
         para confirmar o seu novo enderezo de correo electrónico.
       button: Confirmar
-      success: Confirmouse o seu enderezo de correo electrónico. Grazas por se rexistrar!
+      success: Confirmouse o cambio do seu enderezo de correo electrónico!
       failure: Xa se confirmou un enderezo de correo electrónico con este pase.
+      unknown_token: Ese código de confirmación caducou ou non existe.
     set_home:
       flash success: Gardouse o domicilio
     go_public:
@@ -2041,6 +2102,12 @@ gl:
           Axiña un administrador revisará esta decisión.
           Quizais queira contactar co %{webmaster} para conversar sobre isto.
         </p>
+    auth_failure:
+      connection_failed: Fallou a conexión ó proveedor de autenticación
+      invalid_credentials: Credenciais de autenticación inválidas
+      no_authorization_code: Sen código de autorización
+      unknown_signature_algorithm: Algoritmo de sinatura descoñecido
+      invalid_scope: Ámbito inválido
   user_role:
     filter:
       not_an_administrator: Só os administradores poden xestionar os roles dos usuarios,
@@ -2157,6 +2224,8 @@ gl:
       heading: '%{block_on} bloqueado por %{block_by}'
       time_future: Remata en %{time}
       time_past: Rematou hai %{time}
+      created: Creado
+      ago: hai %{time}
       status: Estado
       show: Mostrar
       edit: Editar
@@ -2171,7 +2240,7 @@ gl:
     description:
       opened_at_html: Creado hai %{when}
       opened_at_by_html: Creado hai %{when} por %{user}
-      commented_at_html: Cargado hai %{when}
+      commented_at_html: Subido hai %{when}
       commented_at_by_html: Cargado hai %{when} por %{user}
       closed_at_html: Resolto hai %{when}
       closed_at_by_html: Resolto hai %{when} por %{user}
@@ -2208,6 +2277,7 @@ gl:
       link: Ligazón ou HTML
       long_link: Ligazón
       short_link: Ligazón abreviada
+      geo_uri: URI geo
       embed: HTML
       custom_dimensions: Establecer dimensións personalizadas
       format: 'Formato:'
@@ -2251,7 +2321,7 @@ gl:
       createnote_disabled_tooltip: Achegar o mapa para engadirlle unha nota
       map_notes_zoom_in_tooltip: Achegar para ver as notas do mapa
       map_data_zoom_in_tooltip: Achegar para ver os datos do mapa
-      queryfeature_tooltip: Características da consulta
+      queryfeature_tooltip: Consultar as características
       queryfeature_disabled_tooltip: Acercar para consultar características
     changesets:
       show:
@@ -2277,6 +2347,44 @@ gl:
         comment: Comentar
     edit_help: Desplace o mapa e amplíeo na localización que queira editar; logo,
       prema aquí.
+    directions:
+      engines:
+        graphhopper_bicycle: Bicicleta (GraphHopper)
+        graphhopper_foot: A pé (GraphHopper)
+        mapquest_bicycle: Bicicleta (MapQuest)
+        mapquest_car: Coche (MapQuest)
+        mapquest_foot: A pé (MapQuest)
+        osrm_car: Coche (OSRM)
+        mapzen_bicycle: En bicicleta (Mapzen)
+        mapzen_car: En coche (Mapzen)
+        mapzen_foot: A pé (Mapzen)
+      directions: Indicacións
+      distance: Distancia
+      errors:
+        no_route: Non se puido atopar unha ruta entre eses dous lugares.
+        no_place: Sentímolo - non se puido atopar ese lugar.
+      instructions:
+        continue_without_exit: Continuar en %{name}
+        slight_right_without_exit: Xire un pouco cara á dereita en %{name}
+        turn_right_without_exit: Xire á dereita en %{name}
+        sharp_right_without_exit: Xiro brusco á dereita en %{name}
+        uturn_without_exit: Cambio de sentido en %{name}
+        sharp_left_without_exit: Xiro brusco á esquerda en %{name}
+        turn_left_without_exit: Xire á esquerda cara %{name}
+        slight_left_without_exit: Xire un pouco cara á esquerda en %{name}
+        via_point_without_exit: (punto intermedio)
+        follow_without_exit: Siga %{name}
+        roundabout_without_exit: Na rotonda, tomar %{name}
+        leave_roundabout_without_exit: Sair da rotonda - %{name}
+        stay_roundabout_without_exit: Permanecer na rotonda - %{name}
+        start_without_exit: Comezar ó final de %{name}
+        destination_without_exit: Chegada ó destino
+        against_oneway_without_exit: Ir en contra dun só sentido en %{name}
+        end_oneway_without_exit: Final dun só sentido en %{name}
+        roundabout_with_exit: Na rotonda coller saída %{exit} en %{name}
+        unnamed: sen nome
+        courtesy: Indicacións cortesía de %{link}
+      time: Tempo
     query:
       node: Nodo
       way: Camiño

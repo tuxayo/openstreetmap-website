@@ -92,11 +92,8 @@
         },
         "merge": {
             "title": "విలీనం చెయ్యు",
-            "description": "ఈ గీతలను విలీనం చెయ్యు",
             "key": "సీ",
-            "annotation": "{n} గీతలు విలీనం చేయబడ్డాయి",
-            "not_eligible": "ఈ విశేషాలు విలీనానికి చేయబడలేవు",
-            "not_adjacent": "గీతాలు కలిసి లేకపోవడం వలన విలీనం చేయటం కుదరదు."
+            "not_eligible": "ఈ విశేషాలు విలీనానికి చేయబడలేవు"
         },
         "move": {
             "title": "తరలించు",
@@ -146,11 +143,9 @@
     "zoom_in_edit": "మార్చడానికి దగ్గరగా వీక్షించు",
     "logout": "నిష్క్రమించు",
     "loading_auth": "ఓపెన్‌స్ట్రీట్‌మ్యాపుకి అనుసంధానిస్తున్నాం…",
-    "report_a_bug": "ఒక తప్పును నివేదించు",
     "commit": {
         "title": "మార్పులను భద్రపరచు",
         "description_placeholder": "మీ మార్పులకు టూకీ వివరణ",
-        "message_label": "మార్పుని తెలిపే సందేశం",
         "upload_explanation": "మీరు ఎక్కించే మార్పులు ఓపెన్‌స్ట్రీట్‌మ్యాప్ డేటాను వాడే పటాలన్నింటిలోనూ కనిపిస్తాయి.",
         "save": "భద్రపరచు",
         "cancel": "రద్దుచేయి",
@@ -208,7 +203,6 @@
     "save": {
         "title": "భద్రపరచు",
         "no_changes": "భద్రపరచాల్సిన మార్పులేమీ లేవు.",
-        "error": "భద్రపరచడంలో పొరపాటు జరిగింది",
         "unsaved_changes": "భద్రపరచని మార్పులు ఉన్నాయి"
     },
     "success": {
@@ -260,22 +254,21 @@
     "presets": {
         "fields": {
             "access": {
-                "types": {
-                    "access": "సాధారణం",
-                    "bicycle": "సైకిళ్ళు",
-                    "horse": "గుర్రాలు"
-                },
                 "options": {
                     "destination": {
                         "title": "గమ్యం"
                     }
+                },
+                "types": {
+                    "bicycle": "సైకిళ్ళు",
+                    "horse": "గుర్రాలు"
                 }
             },
             "address": {
                 "label": "చిరునామా",
                 "placeholders": {
-                    "street": "వీధి",
-                    "city": "నగరం"
+                    "city": "నగరం",
+                    "street": "వీధి"
                 }
             },
             "aeroway": {
@@ -444,9 +437,6 @@
             },
             "wikipedia": {
                 "label": "వికీపీడియా"
-            },
-            "wood": {
-                "label": "రకం"
             }
         },
         "presets": {
@@ -539,20 +529,11 @@
             "historic": {
                 "name": "చారిత్రక ప్రదేశం"
             },
-            "landuse/farm": {
-                "name": "పొలం"
-            },
             "landuse/forest": {
                 "name": "అడవి"
             },
             "landuse/grass": {
                 "name": "పచ్చిక"
-            },
-            "landuse/industrial": {
-                "name": "పారిశ్రామికం"
-            },
-            "landuse/residential": {
-                "name": "నివాస ప్రాంతం"
             },
             "leisure/garden": {
                 "name": "తోట"

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class UserPreferenceControllerTest < ActionController::TestCase
   fixtures :users, :user_preferences
@@ -36,7 +36,7 @@ class UserPreferenceControllerTest < ActionController::TestCase
     assert_response :unauthorized, "should be authenticated"
 
     # authenticate as a user with no preferences
-    basic_authorization("test@example.com", "test")
+    basic_authorization("moderator@example.com", "test")
 
     # try the read again
     get :read
@@ -45,7 +45,7 @@ class UserPreferenceControllerTest < ActionController::TestCase
         assert_select "preference", :count => 0
       end
     end
-    
+
     # authenticate as a user with preferences
     basic_authorization("test@openstreetmap.org", "test")
 

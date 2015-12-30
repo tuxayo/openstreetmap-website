@@ -1,5 +1,5 @@
-require 'test_helper'
-require 'old_way_controller'
+require "test_helper"
+require "old_way_controller"
 
 class OldWayControllerTest < ActionController::TestCase
   api_fixtures
@@ -30,19 +30,19 @@ class OldWayControllerTest < ActionController::TestCase
     get :history, :id => ways(:visible_way).way_id
     assert_response :success
   end
-  
+
   def test_history_invisible
     # check that an invisible way's history is returned properly
     get :history, :id => ways(:invisible_way).way_id
     assert_response :success
   end
-  
+
   def test_history_invalid
     # check chat a non-existent way is not returned
     get :history, :id => 0
     assert_response :not_found
   end
-  
+
   ##
   # check that we can retrieve versions of a way
   def test_version
@@ -52,7 +52,7 @@ class OldWayControllerTest < ActionController::TestCase
   end
 
   ##
-  # check that returned history is the same as getting all 
+  # check that returned history is the same as getting all
   # versions of a way from the api.
   def test_history_equals_versions
     check_history_equals_versions(current_ways(:visible_way).id)
@@ -69,8 +69,8 @@ class OldWayControllerTest < ActionController::TestCase
     assert_response :unauthorized, "should need to be authenticated to redact."
   end
 
-    ##
-  # test the redaction of an old version of a way, while being 
+  ##
+  # test the redaction of an old version of a way, while being
   # authorised as a normal user.
   def test_redact_way_normal_user
     basic_authorization(users(:public_user).email, "test")
@@ -87,12 +87,12 @@ class OldWayControllerTest < ActionController::TestCase
     basic_authorization(users(:moderator_user).email, "test")
 
     do_redact_way(ways(:way_with_versions_v4),
-                   redactions(:example))
+                  redactions(:example))
     assert_response :bad_request, "shouldn't be OK to redact current version as moderator."
-  end    
+  end
 
   ##
-  # test that redacted ways aren't visible, regardless of 
+  # test that redacted ways aren't visible, regardless of
   # authorisation except as moderator...
   def test_version_redacted
     way = ways(:way_with_redacted_versions_v2)
@@ -113,18 +113,18 @@ class OldWayControllerTest < ActionController::TestCase
 
     get :history, :id => way.way_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm way[id=#{way.way_id}][version=#{way.version}]", 0, "redacted way #{way.way_id} version #{way.version} shouldn't be present in the history."
+    assert_select "osm way[id='#{way.way_id}'][version='#{way.version}']", 0, "redacted way #{way.way_id} version #{way.version} shouldn't be present in the history."
 
     # not even to a logged-in user
     basic_authorization(users(:public_user).email, "test")
     get :version, :id => way.way_id, :version => way.version
     get :history, :id => way.way_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm way[id=#{way.way_id}][version=#{way.version}]", 0, "redacted node #{way.way_id} version #{way.version} shouldn't be present in the history, even when logged in."
+    assert_select "osm way[id='#{way.way_id}'][version='#{way.version}']", 0, "redacted node #{way.way_id} version #{way.version} shouldn't be present in the history, even when logged in."
   end
 
   ##
-  # test the redaction of an old version of a way, while being 
+  # test the redaction of an old version of a way, while being
   # authorised as a moderator.
   def test_redact_way_moderator
     way = ways(:way_with_versions_v3)
@@ -137,16 +137,16 @@ class OldWayControllerTest < ActionController::TestCase
     # the appropriate flag
     get :version, :id => way.way_id, :version => way.version
     assert_response :forbidden, "After redaction, node should be gone for moderator, when flag not passed."
-    get :version, :id => way.way_id, :version => way.version, :show_redactions => 'true'
+    get :version, :id => way.way_id, :version => way.version, :show_redactions => "true"
     assert_response :success, "After redaction, node should not be gone for moderator, when flag passed."
-    
+
     # and when accessed via history
     get :history, :id => way.way_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm way[id=#{way.way_id}][version=#{way.version}]", 0, "way #{way.way_id} version #{way.version} should not be present in the history for moderators when not passing flag."
-    get :history, :id => way.way_id, :show_redactions => 'true'
+    assert_select "osm way[id='#{way.way_id}'][version='#{way.version}']", 0, "way #{way.way_id} version #{way.version} should not be present in the history for moderators when not passing flag."
+    get :history, :id => way.way_id, :show_redactions => "true"
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm way[id=#{way.way_id}][version=#{way.version}]", 1, "way #{way.way_id} version #{way.version} should still be present in the history for moderators when passing flag."
+    assert_select "osm way[id='#{way.way_id}'][version='#{way.version}']", 1, "way #{way.way_id} version #{way.version} should still be present in the history for moderators when passing flag."
   end
 
   # testing that if the moderator drops auth, he can't see the
@@ -164,12 +164,67 @@ class OldWayControllerTest < ActionController::TestCase
     # check can't see the redacted data
     get :version, :id => way.way_id, :version => way.version
     assert_response :forbidden, "Redacted node shouldn't be visible via the version API."
-    
+
     # and when accessed via history
     get :history, :id => way.way_id
     assert_response :success, "Redaction shouldn't have stopped history working."
-    assert_select "osm way[id=#{way.way_id}][version=#{way.version}]", 0, "redacted way #{way.way_id} version #{way.version} shouldn't be present in the history."
+    assert_select "osm way[id='#{way.way_id}'][version='#{way.version}']", 0, "redacted way #{way.way_id} version #{way.version} shouldn't be present in the history."
   end
+
+  ##
+  # test the unredaction of an old version of a way, while not being
+  # authorised.
+  def test_unredact_way_unauthorised
+    way = ways(:way_with_redacted_versions_v3)
+
+    post :redact, :id => way.way_id, :version => way.version
+    assert_response :unauthorized, "should need to be authenticated to unredact."
+  end
+
+  ##
+  # test the unredaction of an old version of a way, while being
+  # authorised as a normal user.
+  def test_unredact_way_normal_user
+    way = ways(:way_with_redacted_versions_v3)
+    basic_authorization(users(:public_user).email, "test")
+
+    post :redact, :id => way.way_id, :version => way.version
+    assert_response :forbidden, "should need to be moderator to unredact."
+  end
+
+  ##
+  # test the unredaction of an old version of a way, while being
+  # authorised as a moderator.
+  def test_unredact_way_moderator
+    way = ways(:way_with_redacted_versions_v3)
+    basic_authorization(users(:moderator_user).email, "test")
+
+    post :redact, :id => way.way_id, :version => way.version
+    assert_response :success, "should be OK to unredact old version as moderator."
+
+    # check moderator can still see the redacted data, without passing
+    # the appropriate flag
+    get :version, :id => way.way_id, :version => way.version
+    assert_response :success, "After redaction, node should not be gone for moderator, when flag passed."
+
+    # and when accessed via history
+    get :history, :id => way.way_id
+    assert_response :success, "Redaction shouldn't have stopped history working."
+    assert_select "osm way[id='#{way.way_id}'][version='#{way.version}']", 1, "way #{way.way_id} version #{way.version} should still be present in the history for moderators when passing flag."
+
+    basic_authorization(users(:normal_user).email, "test")
+
+    # check normal user can now see the redacted data
+    get :version, :id => way.way_id, :version => way.version
+    assert_response :success, "After redaction, node should not be gone for moderator, when flag passed."
+
+    # and when accessed via history
+    get :history, :id => way.way_id
+    assert_response :success, "Redaction shouldn't have stopped history working."
+    assert_select "osm way[id='#{way.way_id}'][version='#{way.version}']", 1, "way #{way.way_id} version #{way.version} should still be present in the history for moderators when passing flag."
+  end
+
+  private
 
   ##
   # check that the current version of a way is equivalent to the
@@ -209,7 +264,7 @@ class OldWayControllerTest < ActionController::TestCase
       assert_response :success, "couldn't get way #{way_id}, v#{history_way.version}"
       version_way = Way.from_xml(@response.body)
       assert_not_nil version_way, "failed to parse #{way_id}, v#{history_way.version}"
-      
+
       assert_ways_are_equal history_way, version_way
     end
   end
@@ -217,9 +272,8 @@ class OldWayControllerTest < ActionController::TestCase
   def do_redact_way(way, redaction)
     get :version, :id => way.way_id, :version => way.version
     assert_response :success, "should be able to get version #{way.version} of node #{way.way_id}."
-    
+
     # now redact it
     post :redact, :id => way.way_id, :version => way.version, :redaction => redaction.id
   end
-
 end

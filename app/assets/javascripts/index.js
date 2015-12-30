@@ -5,6 +5,7 @@
 //= require leaflet.key
 //= require leaflet.note
 //= require leaflet.share
+//= require leaflet.polyline
 //= require leaflet.query
 //= require index/search
 //= require index/browse
@@ -13,14 +14,17 @@
 //= require index/history
 //= require index/note
 //= require index/new_note
+//= require index/directions
 //= require index/changeset
 //= require index/query
 //= require router
 
-(function() {
+$(document).ready(function () {
   var loaderTimeout;
 
   OSM.loadSidebarContent = function(path, callback) {
+    map.setSidebarOverlaid(false);
+
     clearTimeout(loaderTimeout);
 
     loaderTimeout = setTimeout(function() {
@@ -30,9 +34,9 @@
     // IE<10 doesn't respect Vary: X-Requested-With header, so
     // prevent caching the XHR response as a full-page URL.
     if (path.indexOf('?') >= 0) {
-      path += '&xhr=1'
+      path += '&xhr=1';
     } else {
-      path += '?xhr=1'
+      path += '?xhr=1';
     }
 
     $('#sidebar_content')
@@ -50,7 +54,7 @@
 
         if (xhr.getResponseHeader('X-Page-Title')) {
           var title = xhr.getResponseHeader('X-Page-Title');
-          document.title = decodeURIComponent(escape(title));
+          document.title = decodeURIComponent(title);
         }
 
         $('head')
@@ -68,9 +72,7 @@
       }
     });
   };
-})();
 
-$(document).ready(function () {
   var params = OSM.mapParams();
 
   var map = new L.OSM.Map("map", {
@@ -134,19 +136,20 @@ $(document).ready(function () {
   L.control.scale()
     .addTo(map);
 
-  if (OSM.STATUS != 'api_offline' && OSM.STATUS != 'database_offline') {
-    initializeNotes(map);
+  if (OSM.STATUS !== 'api_offline' && OSM.STATUS !== 'database_offline') {
+    OSM.initializeNotes(map);
     if (params.layers.indexOf(map.noteLayer.options.code) >= 0) {
       map.addLayer(map.noteLayer);
     }
 
-    initializeBrowse(map);
+    OSM.initializeBrowse(map);
     if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {
       map.addLayer(map.dataLayer);
     }
   }
 
-  $('.leaflet-control .control-button').tooltip({placement: 'left', container: 'body'});
+  var placement = $('html').attr('dir') === 'rtl' ? 'right' : 'left';
+  $('.leaflet-control .control-button').tooltip({placement: placement, container: 'body'});
 
   var expiry = new Date();
   expiry.setYear(expiry.getFullYear() + 10);
@@ -162,7 +165,7 @@ $(document).ready(function () {
     $.cookie("_osm_location", OSM.locationCookie(map), { expires: expiry, path: "/" });
   });
 
-  if ($.cookie('_osm_welcome') == 'hide') {
+  if ($.cookie('_osm_welcome') === 'hide') {
     $('.welcome').hide();
   }
 
@@ -189,7 +192,7 @@ $(document).ready(function () {
     map.setView([params.lat, params.lon], params.zoom);
   }
 
-  var marker = L.marker([0, 0], {icon: getUserIcon()});
+  var marker = L.marker([0, 0], {icon: OSM.getUserIcon()});
 
   if (params.marker) {
     marker.setLatLng([params.mlat, params.mlon]).addTo(map);
@@ -204,6 +207,39 @@ $(document).ready(function () {
     map.setView(center, data.zoom);
     marker.setLatLng(center).addTo(map);
   });
+
+  function remoteEditHandler(bbox, object) {
+    var loaded = false,
+        url = document.location.protocol === "https:" ?
+        "https://127.0.0.1:8112/load_and_zoom?" :
+        "http://127.0.0.1:8111/load_and_zoom?",
+        query = {
+          left: bbox.getWest() - 0.0001,
+          top: bbox.getNorth() + 0.0001,
+          right: bbox.getEast() + 0.0001,
+          bottom: bbox.getSouth() - 0.0001
+        };
+
+    if (object) query.select = object.type + object.id;
+
+    var iframe = $('<iframe>')
+        .hide()
+        .appendTo('body')
+        .attr("src", url + querystring.stringify(query))
+        .on('load', function() {
+          $(this).remove();
+          loaded = true;
+        });
+
+    setTimeout(function () {
+      if (!loaded) {
+        alert(I18n.t('site.index.remote_failed'));
+        iframe.remove();
+      }
+    }, 1000);
+
+    return false;
+  }
 
   $("a[data-editor=remote]").click(function(e) {
     var params = OSM.mapParams(this.search);
@@ -228,30 +264,20 @@ $(document).ready(function () {
   OSM.Index = function(map) {
     var page = {};
 
-    page.pushstate = function() {
-      $("#content").addClass("overlay-sidebar");
-      map.invalidateSize({pan: false})
-        .panBy([-350, 0], {animate: false});
+    page.pushstate = page.popstate = function() {
+      map.setSidebarOverlaid(true);
       document.title = I18n.t('layouts.project_name.title');
     };
 
     page.load = function() {
+      var params = querystring.parse(location.search.substring(1));
+      if (params.query) {
+        $("#sidebar .search_form input[name=query]").value(params.query);
+      }
       if (!("autofocus" in document.createElement("input"))) {
         $("#sidebar .search_form input[name=query]").focus();
       }
       return map.getState();
-    };
-
-    page.popstate = function() {
-      $("#content").addClass("overlay-sidebar");
-      map.invalidateSize({pan: false});
-      document.title = I18n.t('layouts.project_name.title');
-    };
-
-    page.unload = function() {
-      map.panBy([350, 0], {animate: false});
-      $("#content").removeClass("overlay-sidebar");
-      map.invalidateSize({pan: false});
     };
 
     return page;
@@ -271,7 +297,7 @@ $(document).ready(function () {
     };
 
     function addObject(type, id, center) {
-      var bounds = map.addObject({type: type, id: parseInt(id)}, function(bounds) {
+      map.addObject({type: type, id: parseInt(id)}, function(bounds) {
         if (!window.location.hash && bounds.isValid() &&
             (center || !map.getBounds().contains(bounds))) {
           OSM.router.withoutMoveListener(function () {
@@ -293,6 +319,7 @@ $(document).ready(function () {
   OSM.router = OSM.Router(map, {
     "/":                           OSM.Index(map),
     "/search":                     OSM.Search(map),
+    "/directions":                 OSM.Directions(map),
     "/export":                     OSM.Export(map),
     "/note/new":                   OSM.NewNote(map),
     "/history/friends":            history,
@@ -307,7 +334,7 @@ $(document).ready(function () {
     "/query":                      OSM.Query(map)
   });
 
-  if (OSM.preferred_editor == "remote" && document.location.pathname == "/edit") {
+  if (OSM.preferred_editor === "remote" && document.location.pathname === "/edit") {
     remoteEditHandler(map.getBounds(), params.object);
     OSM.router.setCurrentPath("/");
   }
@@ -328,25 +355,5 @@ $(document).ready(function () {
 
     if (OSM.router.route(this.pathname + this.search + this.hash))
       e.preventDefault();
-  });
-
-  $(".search_form").on("submit", function(e) {
-    e.preventDefault();
-    $("header").addClass("closed");
-    var query = $(this).find("input[name=query]").val();
-    if (query) {
-      OSM.router.route("/search?query=" + encodeURIComponent(query) + OSM.formatHash(map));
-    } else {
-      OSM.router.route("/");
-    }
-  });
-
-  $(".describe_location").on("click", function(e) {
-    e.preventDefault();
-    var center = map.getCenter().wrap(),
-      precision = OSM.zoomPrecision(map.getZoom());
-    OSM.router.route("/search?query=" + encodeURIComponent(
-      center.lat.toFixed(precision) + "," + center.lng.toFixed(precision)
-    ));
   });
 });

@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class I18nTest < ActiveSupport::TestCase
   I18n.available_locales.each do |locale|
     define_method("test_#{locale.to_s.underscore}".to_sym) do
-      plural_keys = plural_keys(locale)
+      # plural_keys = plural_keys(locale)
 
       translation_keys.each do |key|
         variables = []
@@ -13,7 +13,7 @@ class I18nTest < ActiveSupport::TestCase
         if default_value.is_a?(Hash)
           variables.push("count")
 
-          default_value.each do |subkey,subvalue|
+          default_value.each do |_subkey, subvalue|
             subvalue.scan(/%\{(\w+)\}/) do
               variables.push($1)
             end
@@ -31,13 +31,13 @@ class I18nTest < ActiveSupport::TestCase
         value = I18n.t(key, :locale => locale, :fallback => true)
 
         if value.is_a?(Hash)
-          value.each do |subkey,subvalue|
-#            assert plural_keys.include?(subkey), "#{key}.#{subkey} is not a valid plural key"
+          value.each do |subkey, subvalue|
+            # assert plural_keys.include?(subkey), "#{key}.#{subkey} is not a valid plural key"
 
-            unless subvalue.nil?
-              subvalue.scan(/%\{(\w+)\}/) do
-                assert variables.include?($1), "#{key}.#{subkey} uses unknown interpolation variable #{$1}"
-              end
+            next if subvalue.nil?
+
+            subvalue.scan(/%\{(\w+)\}/) do
+              assert variables.include?($1), "#{key}.#{subkey} uses unknown interpolation variable #{$1}"
             end
           end
         else
@@ -49,31 +49,33 @@ class I18nTest < ActiveSupport::TestCase
         end
       end
 
-      assert ["ltr", "rtl"].include?(I18n.t("html.dir", :locale => locale)), "html.dir must be ltr or rtl"
+      assert %w(ltr rtl).include?(I18n.t("html.dir", :locale => locale)), "html.dir must be ltr or rtl"
     end
   end
-private
+
+  private
+
   def translation_keys(scope = nil)
     plural_keys = plural_keys(I18n.default_locale)
 
-    I18n.t(scope || ".", :locale => I18n.default_locale).map do |key,value|
+    I18n.t(scope || ".", :locale => I18n.default_locale).map do |key, value|
       scoped_key = scope ? "#{scope}.#{key}" : key
 
-      if value.kind_of?(Hash)
+      if value.is_a?(Hash)
         if value.keys - plural_keys == []
           scoped_key
         else
           translation_keys(scoped_key)
         end
-      elsif value.kind_of?(String)
+      elsif value.is_a?(String)
         scoped_key
       end
     end.flatten
   end
 
   def plural_keys(locale)
-    I18n.t("i18n.plural.keys", :locale => locale, :raise => true) + [ :zero ]
+    I18n.t("i18n.plural.keys", :locale => locale, :raise => true) + [:zero]
   rescue I18n::MissingTranslationData
-    [ :zero, :one, :other ]
+    [:zero, :one, :other]
   end
 end

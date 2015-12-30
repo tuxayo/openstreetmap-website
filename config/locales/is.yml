@@ -242,9 +242,7 @@ is:
       prefix_format: '%{name}:'
       prefix:
         amenity:
-          airport: Flugvöllurinn
           atm: Hraðbankinn
-          auditorium: Áheyrandasalur
           bank: Bankinn
           bar: Barinn
           bench: Bekkur
@@ -259,7 +257,6 @@ is:
           casino: Spilavíti
           cinema: Kvikmyndarhúsið
           clinic: Heilsugæsla
-          club: Skemmtistaður
           college: Framhaldskóli
           community_centre: Samfélagsmiðstöð
           courthouse: Dómshús
@@ -278,16 +275,13 @@ is:
           grave_yard: Kirkjugarður
           gym: Líkamsræktarstöð
           hospital: Sjúkrahúsið
-          hotel: Hótelið
           ice_cream: Ís
           kindergarten: Leikskóli
           library: Bókasafnið
           market: Markaður
           marketplace: Markaður
-          mountain_rescue: Fjallabjörgun
           nightclub: Næturklúbbur
           office: Skrifstofa
-          park: Almenningsgarður
           parking: Bílastæði
           pharmacy: Apótek
           police: Lögreglustöð
@@ -303,7 +297,6 @@ is:
           shelter: Skýli
           shop: Verslunin
           studio: Stúdíó íbúð
-          supermarket: Stórmarkaður
           taxi: Leigubílastöð
           telephone: Almenningssími
           theatre: Leikhúsið
@@ -349,7 +342,6 @@ is:
           island: Eyjan
           peak: Fjallið eða tindurinn
           reef: Rifið
-          river: Áin
           tree: Tréð
           valley: Dalurinn
           volcano: Eldfjallið
@@ -404,7 +396,6 @@ is:
           information: Upplýsingar
           motel: Mótel
           museum: Safn
-          valley: Dalurinn
           zoo: Dýragarður
         waterway:
           dam: Vatnsaflsvirkjunin
@@ -423,19 +414,6 @@ is:
     results:
       no_results: Ekkert fannst
       more_results: Fleiri niðurstöður
-    distance:
-      one: u.þ.b. 1 km
-      zero: minna en 1 km
-      other: u.þ.b. %{count} km
-    direction:
-      south_west: suðvestur
-      south: suður
-      south_east: suðaustur
-      east: austur
-      north_east: norðaustur
-      north: norður
-      north_west: norðvestur
-      west: vestur
   layouts:
     logo:
       alt_text: OpenStreetMap merkið
@@ -643,9 +621,7 @@ is:
           primary: Stofnvegur
           secondary: Tengivegur
           unclassified: Héraðsvegur
-          unsurfaced: Óbundið slitlag
           track: Slóði
-          byway: Merkt (bresk) hjólaleið
           bridleway: Reiðstígur
           cycleway: Hjólastígur
           footway: Göngustígur
@@ -669,7 +645,6 @@ is:
           golf: Golfvöllur
           park: Almenningsgarður
           resident: Íbúðasvæði
-          tourist: Ferðamannasvæði
           common:
           - Almenningur
           - lundur
@@ -699,7 +674,6 @@ is:
           tunnel: Umkringt punktalínum = göng
           bridge: Umkringt svartri línu = brú
           private: Í einkaeigu
-          permissive: Umferð leyfileg
           destination: Umferð leyfileg á ákveðinn áfangastað
           construction: Vegur í byggingu
   trace:
@@ -866,19 +840,6 @@ is:
         eða <a href="%{reconfirm}">óskaðu eftir nýjum staðfestingarpósti</a>.
       auth failure: Þetta notandanafn eða lykilorð er rangt.
       openid_logo_alt: Innskrá með OpenID
-      openid_providers:
-        openid:
-          title: Innskrá með OpenID slóð
-          alt: Innskrá með OpenID slóð
-        google:
-          title: Innsrká með Google OpenID
-          alt: Innsrká með Google OpenID
-        yahoo:
-          title: Innsrká með Yahoo! OpenID
-          alt: Innsrká með Yahoo! OpenID
-        wordpress:
-          title: Innsrká með Wordpress.com OpenID
-          alt: Innsrká með Wordpress.com OpenID
     logout:
       title: Útskrá
       heading: Útskrá
@@ -1036,6 +997,7 @@ is:
       heading: Staðfesta notanda
       press confirm button: Hér getur þú staðfest að þú viljir búa til notanda..
       button: Staðfesta
+      success: Notandinn þinn hefur verið staðfestur.
     confirm_email:
       heading: Staðfesta breytingu á netfangi
       press confirm button: Hér getur þú staðfest breytingu á netfangi.

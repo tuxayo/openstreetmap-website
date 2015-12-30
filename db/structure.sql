@@ -126,7 +126,7 @@ CREATE TYPE user_status_enum AS ENUM (
 
 CREATE FUNCTION maptile_for_point(bigint, bigint, integer) RETURNS integer
     LANGUAGE c STRICT
-    AS '/tmp/libpgosm', 'maptile_for_point';
+    AS '/srv/www/master.osm.compton.nu/db/functions/libpgosm.so', 'maptile_for_point';
 
 
 --
@@ -135,7 +135,7 @@ CREATE FUNCTION maptile_for_point(bigint, bigint, integer) RETURNS integer
 
 CREATE FUNCTION tile_for_point(integer, integer) RETURNS bigint
     LANGUAGE c STRICT
-    AS '/tmp/libpgosm', 'tile_for_point';
+    AS '/srv/www/master.osm.compton.nu/db/functions/libpgosm.so', 'tile_for_point';
 
 
 --
@@ -143,8 +143,8 @@ CREATE FUNCTION tile_for_point(integer, integer) RETURNS bigint
 --
 
 CREATE FUNCTION xid_to_int4(xid) RETURNS integer
-    LANGUAGE c STRICT
-    AS '/tmp/libpgosm', 'xid_to_int4';
+    LANGUAGE c IMMUTABLE STRICT
+    AS '/srv/www/master.osm.compton.nu/db/functions/libpgosm.so', 'xid_to_int4';
 
 
 SET default_tablespace = '';
@@ -152,15 +152,15 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: acls; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: acls; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE acls (
     id integer NOT NULL,
     address inet,
-    k character varying(255) NOT NULL,
-    v character varying(255),
-    domain character varying(255)
+    k character varying NOT NULL,
+    v character varying,
+    domain character varying
 );
 
 
@@ -184,7 +184,7 @@ ALTER SEQUENCE acls_id_seq OWNED BY acls.id;
 
 
 --
--- Name: changeset_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: changeset_comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE changeset_comments (
@@ -217,18 +217,18 @@ ALTER SEQUENCE changeset_comments_id_seq OWNED BY changeset_comments.id;
 
 
 --
--- Name: changeset_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: changeset_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE changeset_tags (
     changeset_id bigint NOT NULL,
-    k character varying(255) DEFAULT ''::character varying NOT NULL,
-    v character varying(255) DEFAULT ''::character varying NOT NULL
+    k character varying DEFAULT ''::character varying NOT NULL,
+    v character varying DEFAULT ''::character varying NOT NULL
 );
 
 
 --
--- Name: changesets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE changesets (
@@ -264,7 +264,7 @@ ALTER SEQUENCE changesets_id_seq OWNED BY changesets.id;
 
 
 --
--- Name: changesets_subscribers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets_subscribers; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE changesets_subscribers (
@@ -274,15 +274,15 @@ CREATE TABLE changesets_subscribers (
 
 
 --
--- Name: client_applications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: client_applications; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE client_applications (
     id integer NOT NULL,
-    name character varying(255),
-    url character varying(255),
-    support_url character varying(255),
-    callback_url character varying(255),
+    name character varying,
+    url character varying,
+    support_url character varying,
+    callback_url character varying,
     key character varying(50),
     secret character varying(50),
     user_id integer,
@@ -318,18 +318,18 @@ ALTER SEQUENCE client_applications_id_seq OWNED BY client_applications.id;
 
 
 --
--- Name: current_node_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_node_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_node_tags (
     node_id bigint NOT NULL,
-    k character varying(255) DEFAULT ''::character varying NOT NULL,
-    v character varying(255) DEFAULT ''::character varying NOT NULL
+    k character varying DEFAULT ''::character varying NOT NULL,
+    v character varying DEFAULT ''::character varying NOT NULL
 );
 
 
 --
--- Name: current_nodes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_nodes; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_nodes (
@@ -364,31 +364,31 @@ ALTER SEQUENCE current_nodes_id_seq OWNED BY current_nodes.id;
 
 
 --
--- Name: current_relation_members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relation_members; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_relation_members (
     relation_id bigint NOT NULL,
     member_type nwr_enum NOT NULL,
     member_id bigint NOT NULL,
-    member_role character varying(255) NOT NULL,
+    member_role character varying NOT NULL,
     sequence_id integer DEFAULT 0 NOT NULL
 );
 
 
 --
--- Name: current_relation_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relation_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_relation_tags (
     relation_id bigint NOT NULL,
-    k character varying(255) DEFAULT ''::character varying NOT NULL,
-    v character varying(255) DEFAULT ''::character varying NOT NULL
+    k character varying DEFAULT ''::character varying NOT NULL,
+    v character varying DEFAULT ''::character varying NOT NULL
 );
 
 
 --
--- Name: current_relations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_relations (
@@ -420,7 +420,7 @@ ALTER SEQUENCE current_relations_id_seq OWNED BY current_relations.id;
 
 
 --
--- Name: current_way_nodes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_way_nodes; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_way_nodes (
@@ -431,18 +431,18 @@ CREATE TABLE current_way_nodes (
 
 
 --
--- Name: current_way_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_way_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_way_tags (
     way_id bigint NOT NULL,
-    k character varying(255) DEFAULT ''::character varying NOT NULL,
-    v character varying(255) DEFAULT ''::character varying NOT NULL
+    k character varying DEFAULT ''::character varying NOT NULL,
+    v character varying DEFAULT ''::character varying NOT NULL
 );
 
 
 --
--- Name: current_ways; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: current_ways; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE current_ways (
@@ -474,7 +474,7 @@ ALTER SEQUENCE current_ways_id_seq OWNED BY current_ways.id;
 
 
 --
--- Name: diary_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE diary_comments (
@@ -485,7 +485,7 @@ CREATE TABLE diary_comments (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     visible boolean DEFAULT true NOT NULL,
-    body_format format_enum DEFAULT 'html'::format_enum NOT NULL
+    body_format format_enum DEFAULT 'markdown'::format_enum NOT NULL
 );
 
 
@@ -509,21 +509,21 @@ ALTER SEQUENCE diary_comments_id_seq OWNED BY diary_comments.id;
 
 
 --
--- Name: diary_entries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_entries; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE diary_entries (
     id bigint NOT NULL,
     user_id bigint NOT NULL,
-    title character varying(255) NOT NULL,
+    title character varying NOT NULL,
     body text NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     latitude double precision,
     longitude double precision,
-    language_code character varying(255) DEFAULT 'en'::character varying NOT NULL,
+    language_code character varying DEFAULT 'en'::character varying NOT NULL,
     visible boolean DEFAULT true NOT NULL,
-    body_format format_enum DEFAULT 'html'::format_enum NOT NULL
+    body_format format_enum DEFAULT 'markdown'::format_enum NOT NULL
 );
 
 
@@ -547,7 +547,7 @@ ALTER SEQUENCE diary_entries_id_seq OWNED BY diary_entries.id;
 
 
 --
--- Name: friends; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: friends; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE friends (
@@ -577,7 +577,7 @@ ALTER SEQUENCE friends_id_seq OWNED BY friends.id;
 
 
 --
--- Name: gps_points; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: gps_points; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE gps_points (
@@ -592,12 +592,12 @@ CREATE TABLE gps_points (
 
 
 --
--- Name: gpx_file_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_file_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE gpx_file_tags (
     gpx_id bigint DEFAULT 0 NOT NULL,
-    tag character varying(255) NOT NULL,
+    tag character varying NOT NULL,
     id bigint NOT NULL
 );
 
@@ -622,19 +622,19 @@ ALTER SEQUENCE gpx_file_tags_id_seq OWNED BY gpx_file_tags.id;
 
 
 --
--- Name: gpx_files; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_files; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE gpx_files (
     id bigint NOT NULL,
     user_id bigint NOT NULL,
     visible boolean DEFAULT true NOT NULL,
-    name character varying(255) DEFAULT ''::character varying NOT NULL,
+    name character varying DEFAULT ''::character varying NOT NULL,
     size bigint,
     latitude double precision,
     longitude double precision,
     "timestamp" timestamp without time zone NOT NULL,
-    description character varying(255) DEFAULT ''::character varying NOT NULL,
+    description character varying DEFAULT ''::character varying NOT NULL,
     inserted boolean NOT NULL,
     visibility gpx_visibility_enum DEFAULT 'public'::gpx_visibility_enum NOT NULL
 );
@@ -660,31 +660,31 @@ ALTER SEQUENCE gpx_files_id_seq OWNED BY gpx_files.id;
 
 
 --
--- Name: languages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: languages; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE languages (
-    code character varying(255) NOT NULL,
-    english_name character varying(255) NOT NULL,
-    native_name character varying(255)
+    code character varying NOT NULL,
+    english_name character varying NOT NULL,
+    native_name character varying
 );
 
 
 --
--- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE messages (
     id bigint NOT NULL,
     from_user_id bigint NOT NULL,
-    title character varying(255) NOT NULL,
+    title character varying NOT NULL,
     body text NOT NULL,
     sent_on timestamp without time zone NOT NULL,
     message_read boolean DEFAULT false NOT NULL,
     to_user_id bigint NOT NULL,
     to_user_visible boolean DEFAULT true NOT NULL,
     from_user_visible boolean DEFAULT true NOT NULL,
-    body_format format_enum DEFAULT 'html'::format_enum NOT NULL
+    body_format format_enum DEFAULT 'markdown'::format_enum NOT NULL
 );
 
 
@@ -708,19 +708,19 @@ ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 
 --
--- Name: node_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: node_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE node_tags (
     node_id bigint NOT NULL,
     version bigint NOT NULL,
-    k character varying(255) DEFAULT ''::character varying NOT NULL,
-    v character varying(255) DEFAULT ''::character varying NOT NULL
+    k character varying DEFAULT ''::character varying NOT NULL,
+    v character varying DEFAULT ''::character varying NOT NULL
 );
 
 
 --
--- Name: nodes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: nodes; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE nodes (
@@ -737,7 +737,7 @@ CREATE TABLE nodes (
 
 
 --
--- Name: note_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: note_comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE note_comments (
@@ -772,7 +772,7 @@ ALTER SEQUENCE note_comments_id_seq OWNED BY note_comments.id;
 
 
 --
--- Name: notes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: notes; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE notes (
@@ -807,12 +807,12 @@ ALTER SEQUENCE notes_id_seq OWNED BY notes.id;
 
 
 --
--- Name: oauth_nonces; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: oauth_nonces; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE oauth_nonces (
     id integer NOT NULL,
-    nonce character varying(255),
+    nonce character varying,
     "timestamp" integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -839,7 +839,7 @@ ALTER SEQUENCE oauth_nonces_id_seq OWNED BY oauth_nonces.id;
 
 
 --
--- Name: oauth_tokens; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: oauth_tokens; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE oauth_tokens (
@@ -859,9 +859,9 @@ CREATE TABLE oauth_tokens (
     allow_write_api boolean DEFAULT false NOT NULL,
     allow_read_gpx boolean DEFAULT false NOT NULL,
     allow_write_gpx boolean DEFAULT false NOT NULL,
-    callback_url character varying(255),
+    callback_url character varying,
     verifier character varying(20),
-    scope character varying(255),
+    scope character varying,
     valid_to timestamp without time zone,
     allow_write_notes boolean DEFAULT false NOT NULL
 );
@@ -887,12 +887,12 @@ ALTER SEQUENCE oauth_tokens_id_seq OWNED BY oauth_tokens.id;
 
 
 --
--- Name: redactions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: redactions; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE redactions (
     id integer NOT NULL,
-    title character varying(255),
+    title character varying,
     description text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -921,33 +921,33 @@ ALTER SEQUENCE redactions_id_seq OWNED BY redactions.id;
 
 
 --
--- Name: relation_members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: relation_members; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE relation_members (
     relation_id bigint DEFAULT 0 NOT NULL,
     member_type nwr_enum NOT NULL,
     member_id bigint NOT NULL,
-    member_role character varying(255) NOT NULL,
+    member_role character varying NOT NULL,
     version bigint DEFAULT 0 NOT NULL,
     sequence_id integer DEFAULT 0 NOT NULL
 );
 
 
 --
--- Name: relation_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: relation_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE relation_tags (
     relation_id bigint DEFAULT 0 NOT NULL,
-    k character varying(255) DEFAULT ''::character varying NOT NULL,
-    v character varying(255) DEFAULT ''::character varying NOT NULL,
+    k character varying DEFAULT ''::character varying NOT NULL,
+    v character varying DEFAULT ''::character varying NOT NULL,
     version bigint NOT NULL
 );
 
 
 --
--- Name: relations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: relations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE relations (
@@ -961,16 +961,16 @@ CREATE TABLE relations (
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE schema_migrations (
-    version character varying(255) NOT NULL
+    version character varying NOT NULL
 );
 
 
 --
--- Name: user_blocks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: user_blocks; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE user_blocks (
@@ -983,7 +983,7 @@ CREATE TABLE user_blocks (
     revoker_id bigint,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    reason_format format_enum DEFAULT 'html'::format_enum NOT NULL
+    reason_format format_enum DEFAULT 'markdown'::format_enum NOT NULL
 );
 
 
@@ -1007,26 +1007,26 @@ ALTER SEQUENCE user_blocks_id_seq OWNED BY user_blocks.id;
 
 
 --
--- Name: user_preferences; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: user_preferences; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE user_preferences (
     user_id bigint NOT NULL,
-    k character varying(255) NOT NULL,
-    v character varying(255) NOT NULL
+    k character varying NOT NULL,
+    v character varying NOT NULL
 );
 
 
 --
--- Name: user_roles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: user_roles; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE user_roles (
     id integer NOT NULL,
     user_id bigint NOT NULL,
+    role user_role_enum NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    role user_role_enum NOT NULL,
     granter_id bigint NOT NULL
 );
 
@@ -1051,13 +1051,13 @@ ALTER SEQUENCE user_roles_id_seq OWNED BY user_roles.id;
 
 
 --
--- Name: user_tokens; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: user_tokens; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE user_tokens (
     id bigint NOT NULL,
     user_id bigint NOT NULL,
-    token character varying(255) NOT NULL,
+    token character varying NOT NULL,
     expiry timestamp without time zone NOT NULL,
     referer text
 );
@@ -1083,40 +1083,41 @@ ALTER SEQUENCE user_tokens_id_seq OWNED BY user_tokens.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
-    email character varying(255) NOT NULL,
+    email character varying NOT NULL,
     id bigint NOT NULL,
-    pass_crypt character varying(255) NOT NULL,
+    pass_crypt character varying NOT NULL,
     creation_time timestamp without time zone NOT NULL,
-    display_name character varying(255) DEFAULT ''::character varying NOT NULL,
+    display_name character varying DEFAULT ''::character varying NOT NULL,
     data_public boolean DEFAULT false NOT NULL,
     description text DEFAULT ''::text NOT NULL,
     home_lat double precision,
     home_lon double precision,
     home_zoom smallint DEFAULT 3,
     nearby integer DEFAULT 50,
-    pass_salt character varying(255),
+    pass_salt character varying,
     image_file_name text,
     email_valid boolean DEFAULT false NOT NULL,
-    new_email character varying(255),
-    creation_ip character varying(255),
-    languages character varying(255),
+    new_email character varying,
+    creation_ip character varying,
+    languages character varying,
     status user_status_enum DEFAULT 'pending'::user_status_enum NOT NULL,
     terms_agreed timestamp without time zone,
     consider_pd boolean DEFAULT false NOT NULL,
-    openid_url character varying(255),
-    preferred_editor character varying(255),
+    auth_uid character varying,
+    preferred_editor character varying,
     terms_seen boolean DEFAULT false NOT NULL,
-    description_format format_enum DEFAULT 'html'::format_enum NOT NULL,
-    image_fingerprint character varying(255),
+    description_format format_enum DEFAULT 'markdown'::format_enum NOT NULL,
+    image_fingerprint character varying,
     changesets_count integer DEFAULT 0 NOT NULL,
     traces_count integer DEFAULT 0 NOT NULL,
     diary_entries_count integer DEFAULT 0 NOT NULL,
     image_use_gravatar boolean DEFAULT true NOT NULL,
-    image_content_type character varying(255)
+    image_content_type character varying,
+    auth_provider character varying
 );
 
 
@@ -1140,7 +1141,7 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: way_nodes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: way_nodes; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE way_nodes (
@@ -1152,19 +1153,19 @@ CREATE TABLE way_nodes (
 
 
 --
--- Name: way_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: way_tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE way_tags (
     way_id bigint DEFAULT 0 NOT NULL,
-    k character varying(255) NOT NULL,
-    v character varying(255) NOT NULL,
+    k character varying NOT NULL,
+    v character varying NOT NULL,
     version bigint NOT NULL
 );
 
 
 --
--- Name: ways; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: ways; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE ways (
@@ -1332,7 +1333,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: acls_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: acls_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY acls
@@ -1340,7 +1341,7 @@ ALTER TABLE ONLY acls
 
 
 --
--- Name: changeset_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: changeset_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY changeset_comments
@@ -1348,7 +1349,7 @@ ALTER TABLE ONLY changeset_comments
 
 
 --
--- Name: changesets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY changesets
@@ -1356,7 +1357,7 @@ ALTER TABLE ONLY changesets
 
 
 --
--- Name: client_applications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: client_applications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY client_applications
@@ -1364,7 +1365,7 @@ ALTER TABLE ONLY client_applications
 
 
 --
--- Name: current_node_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_node_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_node_tags
@@ -1372,7 +1373,7 @@ ALTER TABLE ONLY current_node_tags
 
 
 --
--- Name: current_nodes_pkey1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_nodes_pkey1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_nodes
@@ -1380,7 +1381,7 @@ ALTER TABLE ONLY current_nodes
 
 
 --
--- Name: current_relation_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relation_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_relation_members
@@ -1388,7 +1389,7 @@ ALTER TABLE ONLY current_relation_members
 
 
 --
--- Name: current_relation_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relation_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_relation_tags
@@ -1396,7 +1397,7 @@ ALTER TABLE ONLY current_relation_tags
 
 
 --
--- Name: current_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_relations
@@ -1404,7 +1405,7 @@ ALTER TABLE ONLY current_relations
 
 
 --
--- Name: current_way_nodes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_way_nodes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_way_nodes
@@ -1412,7 +1413,7 @@ ALTER TABLE ONLY current_way_nodes
 
 
 --
--- Name: current_way_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_way_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_way_tags
@@ -1420,7 +1421,7 @@ ALTER TABLE ONLY current_way_tags
 
 
 --
--- Name: current_ways_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: current_ways_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY current_ways
@@ -1428,7 +1429,7 @@ ALTER TABLE ONLY current_ways
 
 
 --
--- Name: diary_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY diary_comments
@@ -1436,7 +1437,7 @@ ALTER TABLE ONLY diary_comments
 
 
 --
--- Name: diary_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY diary_entries
@@ -1444,7 +1445,7 @@ ALTER TABLE ONLY diary_entries
 
 
 --
--- Name: friends_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: friends_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY friends
@@ -1452,7 +1453,7 @@ ALTER TABLE ONLY friends
 
 
 --
--- Name: gpx_file_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_file_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY gpx_file_tags
@@ -1460,7 +1461,7 @@ ALTER TABLE ONLY gpx_file_tags
 
 
 --
--- Name: gpx_files_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_files_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY gpx_files
@@ -1468,7 +1469,7 @@ ALTER TABLE ONLY gpx_files
 
 
 --
--- Name: languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY languages
@@ -1476,7 +1477,7 @@ ALTER TABLE ONLY languages
 
 
 --
--- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY messages
@@ -1484,7 +1485,7 @@ ALTER TABLE ONLY messages
 
 
 --
--- Name: node_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: node_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY node_tags
@@ -1492,7 +1493,7 @@ ALTER TABLE ONLY node_tags
 
 
 --
--- Name: nodes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: nodes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY nodes
@@ -1500,7 +1501,7 @@ ALTER TABLE ONLY nodes
 
 
 --
--- Name: note_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: note_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY note_comments
@@ -1508,7 +1509,7 @@ ALTER TABLE ONLY note_comments
 
 
 --
--- Name: notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY notes
@@ -1516,7 +1517,7 @@ ALTER TABLE ONLY notes
 
 
 --
--- Name: oauth_nonces_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: oauth_nonces_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY oauth_nonces
@@ -1524,7 +1525,7 @@ ALTER TABLE ONLY oauth_nonces
 
 
 --
--- Name: oauth_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: oauth_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY oauth_tokens
@@ -1532,7 +1533,7 @@ ALTER TABLE ONLY oauth_tokens
 
 
 --
--- Name: redactions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: redactions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY redactions
@@ -1540,7 +1541,7 @@ ALTER TABLE ONLY redactions
 
 
 --
--- Name: relation_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: relation_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY relation_members
@@ -1548,7 +1549,7 @@ ALTER TABLE ONLY relation_members
 
 
 --
--- Name: relation_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: relation_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY relation_tags
@@ -1556,7 +1557,7 @@ ALTER TABLE ONLY relation_tags
 
 
 --
--- Name: relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY relations
@@ -1564,7 +1565,7 @@ ALTER TABLE ONLY relations
 
 
 --
--- Name: user_blocks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: user_blocks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY user_blocks
@@ -1572,7 +1573,7 @@ ALTER TABLE ONLY user_blocks
 
 
 --
--- Name: user_preferences_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: user_preferences_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY user_preferences
@@ -1580,7 +1581,7 @@ ALTER TABLE ONLY user_preferences
 
 
 --
--- Name: user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY user_roles
@@ -1588,7 +1589,7 @@ ALTER TABLE ONLY user_roles
 
 
 --
--- Name: user_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: user_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY user_tokens
@@ -1596,7 +1597,7 @@ ALTER TABLE ONLY user_tokens
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -1604,7 +1605,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: way_nodes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: way_nodes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY way_nodes
@@ -1612,7 +1613,7 @@ ALTER TABLE ONLY way_nodes
 
 
 --
--- Name: way_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: way_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY way_tags
@@ -1620,7 +1621,7 @@ ALTER TABLE ONLY way_tags
 
 
 --
--- Name: ways_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: ways_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY ways
@@ -1628,420 +1629,420 @@ ALTER TABLE ONLY ways
 
 
 --
--- Name: acls_k_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: acls_k_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX acls_k_idx ON acls USING btree (k);
 
 
 --
--- Name: changeset_tags_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: changeset_tags_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX changeset_tags_id_idx ON changeset_tags USING btree (changeset_id);
 
 
 --
--- Name: changesets_bbox_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets_bbox_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX changesets_bbox_idx ON changesets USING gist (min_lat, max_lat, min_lon, max_lon);
 
 
 --
--- Name: changesets_closed_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets_closed_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX changesets_closed_at_idx ON changesets USING btree (closed_at);
 
 
 --
--- Name: changesets_created_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets_created_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX changesets_created_at_idx ON changesets USING btree (created_at);
 
 
 --
--- Name: changesets_user_id_created_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets_user_id_created_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX changesets_user_id_created_at_idx ON changesets USING btree (user_id, created_at);
 
 
 --
--- Name: changesets_user_id_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: changesets_user_id_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX changesets_user_id_id_idx ON changesets USING btree (user_id, id);
 
 
 --
--- Name: current_nodes_tile_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: current_nodes_tile_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX current_nodes_tile_idx ON current_nodes USING btree (tile);
 
 
 --
--- Name: current_nodes_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: current_nodes_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX current_nodes_timestamp_idx ON current_nodes USING btree ("timestamp");
 
 
 --
--- Name: current_relation_members_member_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relation_members_member_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX current_relation_members_member_idx ON current_relation_members USING btree (member_type, member_id);
 
 
 --
--- Name: current_relations_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: current_relations_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX current_relations_timestamp_idx ON current_relations USING btree ("timestamp");
 
 
 --
--- Name: current_way_nodes_node_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: current_way_nodes_node_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX current_way_nodes_node_idx ON current_way_nodes USING btree (node_id);
 
 
 --
--- Name: current_ways_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: current_ways_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX current_ways_timestamp_idx ON current_ways USING btree ("timestamp");
 
 
 --
--- Name: diary_comment_user_id_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_comment_user_id_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX diary_comment_user_id_created_at_index ON diary_comments USING btree (user_id, created_at);
 
 
 --
--- Name: diary_comments_entry_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_comments_entry_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX diary_comments_entry_id_idx ON diary_comments USING btree (diary_entry_id, id);
 
 
 --
--- Name: diary_entry_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_entry_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX diary_entry_created_at_index ON diary_entries USING btree (created_at);
 
 
 --
--- Name: diary_entry_language_code_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_entry_language_code_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX diary_entry_language_code_created_at_index ON diary_entries USING btree (language_code, created_at);
 
 
 --
--- Name: diary_entry_user_id_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: diary_entry_user_id_created_at_index; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX diary_entry_user_id_created_at_index ON diary_entries USING btree (user_id, created_at);
 
 
 --
--- Name: friends_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: friends_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX friends_user_id_idx ON friends USING btree (user_id);
 
 
 --
--- Name: gpx_file_tags_gpxid_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_file_tags_gpxid_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX gpx_file_tags_gpxid_idx ON gpx_file_tags USING btree (gpx_id);
 
 
 --
--- Name: gpx_file_tags_tag_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_file_tags_tag_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX gpx_file_tags_tag_idx ON gpx_file_tags USING btree (tag);
 
 
 --
--- Name: gpx_files_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_files_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX gpx_files_timestamp_idx ON gpx_files USING btree ("timestamp");
 
 
 --
--- Name: gpx_files_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_files_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX gpx_files_user_id_idx ON gpx_files USING btree (user_id);
 
 
 --
--- Name: gpx_files_visible_visibility_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: gpx_files_visible_visibility_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX gpx_files_visible_visibility_idx ON gpx_files USING btree (visible, visibility);
 
 
 --
--- Name: index_changeset_comments_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_changeset_comments_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_changeset_comments_on_created_at ON changeset_comments USING btree (created_at);
 
 
 --
--- Name: index_changesets_subscribers_on_changeset_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_changesets_subscribers_on_changeset_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_changesets_subscribers_on_changeset_id ON changesets_subscribers USING btree (changeset_id);
 
 
 --
--- Name: index_changesets_subscribers_on_subscriber_id_and_changeset_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_changesets_subscribers_on_subscriber_id_and_changeset_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_changesets_subscribers_on_subscriber_id_and_changeset_id ON changesets_subscribers USING btree (subscriber_id, changeset_id);
 
 
 --
--- Name: index_client_applications_on_key; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_client_applications_on_key; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_client_applications_on_key ON client_applications USING btree (key);
 
 
 --
--- Name: index_note_comments_on_body; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_note_comments_on_body; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_note_comments_on_body ON note_comments USING gin (to_tsvector('english'::regconfig, body));
 
 
 --
--- Name: index_note_comments_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_note_comments_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_note_comments_on_created_at ON note_comments USING btree (created_at);
 
 
 --
--- Name: index_oauth_nonces_on_nonce_and_timestamp; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_oauth_nonces_on_nonce_and_timestamp; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_oauth_nonces_on_nonce_and_timestamp ON oauth_nonces USING btree (nonce, "timestamp");
 
 
 --
--- Name: index_oauth_tokens_on_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_oauth_tokens_on_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_oauth_tokens_on_token ON oauth_tokens USING btree (token);
 
 
 --
--- Name: index_user_blocks_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_user_blocks_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_user_blocks_on_user_id ON user_blocks USING btree (user_id);
 
 
 --
--- Name: messages_from_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: messages_from_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX messages_from_user_id_idx ON messages USING btree (from_user_id);
 
 
 --
--- Name: messages_to_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: messages_to_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX messages_to_user_id_idx ON messages USING btree (to_user_id);
 
 
 --
--- Name: nodes_changeset_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: nodes_changeset_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX nodes_changeset_id_idx ON nodes USING btree (changeset_id);
 
 
 --
--- Name: nodes_tile_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: nodes_tile_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX nodes_tile_idx ON nodes USING btree (tile);
 
 
 --
--- Name: nodes_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: nodes_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX nodes_timestamp_idx ON nodes USING btree ("timestamp");
 
 
 --
--- Name: note_comments_note_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: note_comments_note_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX note_comments_note_id_idx ON note_comments USING btree (note_id);
 
 
 --
--- Name: notes_created_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: notes_created_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX notes_created_at_idx ON notes USING btree (created_at);
 
 
 --
--- Name: notes_tile_status_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: notes_tile_status_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX notes_tile_status_idx ON notes USING btree (tile, status);
 
 
 --
--- Name: notes_updated_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: notes_updated_at_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX notes_updated_at_idx ON notes USING btree (updated_at);
 
 
 --
--- Name: points_gpxid_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: points_gpxid_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX points_gpxid_idx ON gps_points USING btree (gpx_id);
 
 
 --
--- Name: points_tile_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: points_tile_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX points_tile_idx ON gps_points USING btree (tile);
 
 
 --
--- Name: relation_members_member_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: relation_members_member_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX relation_members_member_idx ON relation_members USING btree (member_type, member_id);
 
 
 --
--- Name: relations_changeset_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: relations_changeset_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX relations_changeset_id_idx ON relations USING btree (changeset_id);
 
 
 --
--- Name: relations_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: relations_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX relations_timestamp_idx ON relations USING btree ("timestamp");
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
 
 
 --
--- Name: user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX user_id_idx ON friends USING btree (friend_user_id);
 
 
 --
--- Name: user_openid_url_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX user_openid_url_idx ON users USING btree (openid_url);
-
-
---
--- Name: user_roles_id_role_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: user_roles_id_role_unique; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX user_roles_id_role_unique ON user_roles USING btree (user_id, role);
 
 
 --
--- Name: user_tokens_token_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: user_tokens_token_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX user_tokens_token_idx ON user_tokens USING btree (token);
 
 
 --
--- Name: user_tokens_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: user_tokens_user_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX user_tokens_user_id_idx ON user_tokens USING btree (user_id);
 
 
 --
--- Name: users_display_name_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_auth_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
+--
+
+CREATE UNIQUE INDEX users_auth_idx ON users USING btree (auth_provider, auth_uid);
+
+
+--
+-- Name: users_display_name_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX users_display_name_idx ON users USING btree (display_name);
 
 
 --
--- Name: users_display_name_lower_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_display_name_lower_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX users_display_name_lower_idx ON users USING btree (lower((display_name)::text));
 
 
 --
--- Name: users_email_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_email_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX users_email_idx ON users USING btree (email);
 
 
 --
--- Name: users_email_lower_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_email_lower_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX users_email_lower_idx ON users USING btree (lower((email)::text));
 
 
 --
--- Name: way_nodes_node_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: way_nodes_node_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX way_nodes_node_idx ON way_nodes USING btree (node_id);
 
 
 --
--- Name: ways_changeset_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: ways_changeset_id_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX ways_changeset_id_idx ON ways USING btree (changeset_id);
 
 
 --
--- Name: ways_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: ways_timestamp_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX ways_timestamp_idx ON ways USING btree ("timestamp");
@@ -2540,6 +2541,12 @@ INSERT INTO schema_migrations (version) VALUES ('20140210003018');
 INSERT INTO schema_migrations (version) VALUES ('20140507110937');
 
 INSERT INTO schema_migrations (version) VALUES ('20140519141742');
+
+INSERT INTO schema_migrations (version) VALUES ('20150110152606');
+
+INSERT INTO schema_migrations (version) VALUES ('20150111192335');
+
+INSERT INTO schema_migrations (version) VALUES ('20150222101847');
 
 INSERT INTO schema_migrations (version) VALUES ('21');
 

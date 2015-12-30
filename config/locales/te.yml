@@ -3,6 +3,7 @@
 # Export driver: phpyaml
 # Author: Arjunaraoc
 # Author: Chaduvari
+# Author: Gayatri
 # Author: Kiranmayee
 # Author: Ravichandra
 # Author: Veeven
@@ -27,6 +28,7 @@ te:
       old_node: పాత అంశం
       old_node_tag: పాత అంశం యొక్క ట్యాగ్
       old_relation: పాత సంబంధం
+      old_way: పాత పద్ధతి
       relation: సంబంధం
       session: సెషన్
       user: వాడుకరి
@@ -101,12 +103,15 @@ te:
     not_found:
       sorry: 'క్షమించండి, %{type} #%{id} కనబడలేదు.'
       type:
+        way: దారి
         relation: సంబంధం
     timeout:
       type:
+        way: దారి
         relation: సంబంధం
     redacted:
       type:
+        way: దారి
         relation: సంబంధం
     start_rjs:
       loading: లోడవుతోంది...
@@ -117,6 +122,8 @@ te:
       title: 'గమనిక: %{id}'
       new_note: కొత్త గమనిక
       description: వివరణ
+    query:
+      nearby: daggarlo unna lakshanalu
   changeset:
     changeset_paging_nav:
       showing_page: పేజీ %{page}
@@ -150,6 +157,7 @@ te:
       older_entries: పాత పద్దులు
       newer_entries: కొత్త పద్దులు
     edit:
+      title: dairy lo unna entry ni marchu
       subject: 'విషయం:'
       body: 'వివరణ:'
       language: 'భాష:'
@@ -214,20 +222,32 @@ te:
         geonames: <a href="http://www.geonames.org/">GeoNames</a> నుండి ఫలితాలు
     search_osm_nominatim:
       prefix:
+        aerialway:
+          cable_car: కేబుల్ కారు
+          chair_lift: చెయిర్ లిఫ్ట్
+          drag_lift: డ్రాగ్ లిఫ్ట్
+          gondola: గొండోలా లిఫ్ట్
+          station: ఆకాశమార్గ స్టేషను
         aeroway:
+          aerodrome: విమానాశ్రయం
+          apron: విమానాశ్రయ విమానరహదారి
           gate: గేటు
           helipad: హెలిప్యాడ్
           runway: రన్‍వే
           taxiway: ట్యాక్సీదారి
+          terminal: ఆఖరి స్టేషను
         amenity:
-          airport: విమానాశ్రయం
+          animal_shelter: పశుగృహం
+          arts_centre: కళాకేంద్రం
           atm: ఏటీఎం
-          auditorium: ప్రదర్శనశాల
           bank: బ్యాంకు
           bar: బార్
+          bbq: బార్బెక్
           bench: బెంచీ
           bicycle_parking: సైకిళ్ళు నిలుపు స్థలం
           bicycle_rental: సైకిల్ అద్దెకిచ్చు స్థలం
+          biergarten: బీరు తోట
+          boat_rental: బోట్ అద్దెకు
           brothel: వేశ్యావాటిక
           bus_station: బస్సలు ఆగు చోటు
           cafe: కెఫే
@@ -237,7 +257,7 @@ te:
           casino: జూదగృహం
           cinema: సినిమా
           clinic: ఆసుపత్రి
-          club: క్లబ్బు
+          clock: గడియారం
           college: కళాశాల
           community_centre: సామాజిక కేంద్రం
           courthouse: న్యాయస్థానం
@@ -254,14 +274,12 @@ te:
           grave_yard: స్మశానం
           health_centre: ఆరోగ్య కేంద్రం
           hospital: ఆసుపత్రి
-          hotel: హోటెల్
           ice_cream: ఐస్ క్రీం
           library: గ్రంథాలయం
           market: సంత
           marketplace: సంత
           nursery: పిల్లల బడి
           office: కార్యాలయం
-          park: పార్కు
           pharmacy: మందుల దుకాణం
           place_of_worship: పూజా స్థలం
           police: పోలీసు
@@ -286,6 +304,10 @@ te:
           "yes": వంతెన
         building:
           "yes": భవనం
+        craft:
+          painter: chitrakarudu
+          photographer: చాయాగ్రాహకుడు
+          tailor: దర్జీ
         highway:
           footway: కాలినడక దారి
           milestone: మైలురాయి
@@ -293,7 +315,7 @@ te:
           pedestrian: కాలిబాట
           primary: ప్రధాన రహదారి
           primary_link: ప్రధాన రహదారి
-          residential: నివాసప్రాంతం
+          residential: నివాసప్రాంత దారి
           rest_area: విశ్రాంతి స్థలమ
           road: దారి
           secondary: ద్వితీయ శ్రేణి రహదారి
@@ -313,7 +335,6 @@ te:
           memorial: జ్ఞాపిక
           mine: గని
           monument: స్మారకం
-          museum: ప్రదర్శన శాల
           ruins: శిథిలాలు
           tomb: సమాధి
           tower: గోపురం
@@ -332,13 +353,11 @@ te:
           military: సైనిక ప్రాంతం
           mine: గని
           orchard: పళ్ళతోట
-          park: పార్కు
           quarry: క్వారీ
           railway: రైల్వే
           reservoir: జలాశయం
           reservoir_watershed: జలాశయం
           residential: నివాస ప్రాంతం
-          wood: కలప
         leisure:
           beach_resort: బీచి రిసార్టు
           bird_hide: పక్షులకు ఆవాసం
@@ -358,7 +377,6 @@ te:
           land: నేల
           mud: బురద
           peak: శిఖరం
-          river: నది
           rock: రాయి
           spring: ఊట
           stone: రాయి
@@ -368,7 +386,6 @@ te:
           volcano: అగ్ని పర్వతం
           water: నీరు
           wetland: చిత్తడి నేల
-          wetlands: చిత్తడి నేలలు
           wood: అడవి
         office:
           architect: వాస్తుశిల్పి
@@ -403,7 +420,6 @@ te:
           hotel: హోటెల్
           information: సమాచారం
           museum: ప్రదర్శన శాల
-          valley: లోయ
           zoo: జంతుప్రదర్శనశాల
         tunnel:
           culvert: చప్టా
@@ -428,18 +444,6 @@ te:
     results:
       no_results: ఫలితాలేమీ దొరకలేదు
       more_results: మరిన్ని ఫలితాలు
-    distance:
-      one: దాదాపు 1కిమీ
-      other: దాదాపు %{count}కిమీ
-    direction:
-      south_west: నైరుతి
-      south: దక్షిణం
-      south_east: ఆగ్నేయం
-      east: తూర్పు
-      north_east: ఈశాన్యం
-      north: ఉత్తరం
-      north_west: వాయువ్యం
-      west: పడమర
   layouts:
     logo:
       alt_text: ఓపెన్&zwnj;స్ట్రీట్&zwnj;మాప్ చిహ్నం
@@ -558,7 +562,6 @@ te:
           wood: కలప
           park: పార్కు
           resident: నివాస ప్రాంతం
-          tourist: పర్యాటక ఆకర్షణ
           common:
           - పచ్చికబయలు
           - పచ్చికబయలు
@@ -643,9 +646,6 @@ te:
       new to osm: ఓపెన్‌స్ట్రీట్‌మ్యాప్‌కి కొత్తా?
       create account minute: ఒక ఖాతాను సృష్టించుకోండి. కేవలం నిమిషంలో అయిపోతుంది.
       no account: మీకు ఖాతా లేదా?
-      openid_providers:
-        wordpress:
-          title: వర్డ్‌ప్రెస్‌తో ప్రవేశించండి
     logout:
       title: నిష్క్రమించు
       heading: ఓపెన్‌స్ట్రీట్‌మ్యాప్‌ నుండి నిష్క్రమించండి
@@ -667,7 +667,6 @@ te:
         title="wiki privacy policy including section on email addresses">గోప్యతా విధానాన్ని</a>
         చూడండి)
       display name: 'చూపించే పేరు:'
-      openid: '%{logo} ఓపెన్ఐడీ:'
       password: 'సంకేతపదం:'
       confirm password: 'సంకేతపదాన్ని నిర్ధారించండి:'
       continue: నమోదవ్వండి
@@ -728,7 +727,6 @@ te:
       new email address: 'కొత్త ఈమెయిల్ చిరునామా:'
       email never displayed publicly: (బహిరంగంగా ఎన్నటికీ చూపించబడదు)
       openid:
-        openid: 'ఓపెన్ఐడీ:'
         link text: ఇది ఏమిటి?
       public editing:
         enabled link text: ఇది ఏమిటి?

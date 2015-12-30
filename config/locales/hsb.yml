@@ -123,6 +123,7 @@ hsb:
       feed:
         title: Sadźba změnow %{id}
         title_comment: Sadźba změnow %{id} - %{comment}
+      discussion: Diskusija
     node:
       title: 'Suk: %{name}'
       history_title: 'Sukata historija: %{name}'
@@ -203,6 +204,9 @@ hsb:
       reopened_by_anonymous: Reaktiwizowany wot anonymneho <abbr title='%{exact_time}'>před
         %{when}</abbr>
       hidden_by: Schowany wot %{user} <abbr title='%{exact_time}'>před %{when}</abbr>
+    query:
+      introduction: Klikń na kartu, zo by susodne objekty namakał(a).
+      nearby: Objekty w bliskosći
   changeset:
     changeset_paging_nav:
       showing_page: Strona %{page}
@@ -232,6 +236,9 @@ hsb:
       load_more: Wjace začitać
     timeout:
       sorry: Bohužel je předołho trało, skupiny změny, kotrež sy požadał, wotwołać.
+    rss:
+      commented_at_by_html: Před %{when} wot %{user} nahraty
+      full: Dospołna diskusija
   diary_entry:
     new:
       title: Nowy dźenikowy zapisk
@@ -386,11 +393,8 @@ hsb:
           taxiway: Lětadłowa jězdnja
           terminal: Terminal
         amenity:
-          airport: Lětanišćo
           arts_centre: Kulturny centrum
-          artwork: Wuměłska twórba
           atm: Bankomat
-          auditorium: Awditorij
           bank: Banka
           bar: Bara
           bbq: Grilowanišćo
@@ -409,7 +413,6 @@ hsb:
           charging_station: Napjelnjenska stacija
           cinema: Kino
           clinic: Klinika
-          club: Klub
           college: Wysoka šula
           community_centre: Zhromadny centrum
           courthouse: Sudnistwo
@@ -430,22 +433,18 @@ hsb:
           fuel: Tankownja
           grave_yard: Kěrchow
           gym: Fitnesowy center/Fitnesowe studijo
-          hall: Schadźowarnja
           health_centre: Strowotny centrum
           hospital: Chorownja
-          hotel: Hotel
           hunting_stand: Łakańca
           ice_cream: Jědźny lód
           kindergarten: Pěstowarnja
           library: Knihownja
           market: Wiki
           marketplace: Torhošćo
-          mountain_rescue: Hórska wuchowanska słužba
           nightclub: Nócny klub
           nursery: Pěstowarnja
           nursing_home: Hladarnja
           office: Běrow
-          park: Park
           parking: Parkowanišćo
           pharmacy: Lěkarnja
           place_of_worship: Boži dom
@@ -456,7 +455,6 @@ hsb:
           prison: Jastwo
           pub: Korčma
           public_building: Zjawne twarjenje
-          public_market: Zjawne wiki
           reception_area: Přijimanski wobłuk
           recycling: Přijimarnja starowiznow
           restaurant: Hosćenc
@@ -465,13 +463,11 @@ hsb:
           school: Šula
           shelter: Podstup
           shop: Wobchod
-          shopping: Nakup
           shower: Duša
           social_centre: Socialne srjedźišćo
           social_club: Towarstwo
           social_facility: Socialne zarjadnišćo
           studio: Studijo
-          supermarket: Superwiki
           swimming_pool: Płuwanišćo
           taxi: Taksijowe zastanišćo
           telephone: Zjawny telefon
@@ -483,8 +479,6 @@ hsb:
           veterinary: Zwěrjacy lěkar
           village_hall: Gmejnski centrum
           waste_basket: Wotpadkowe sudobjo
-          wifi: WiFi-přistup
-          WLAN: WLAN-přistup
           youth_centre: Centrum za młodostnych
         boundary:
           administrative: Zarjadniska hranica
@@ -500,13 +494,11 @@ hsb:
         building:
           "yes": Twarjenje
         emergency:
-          fire_hydrant: Wohnjowy hydrant
           phone: Nuzowy telefon
         highway:
           bridleway: Jěchanski puć
           bus_guideway: Trolejbusowy milinowód
           bus_stop: Busowe zastanišćo
-          byway: Pódlanski puć
           construction: Dróha so twari
           cycleway: Kolesowarska šćežka
           emergency_access_point: Přijimarnja njezbožow
@@ -514,7 +506,6 @@ hsb:
           ford: Bród
           living_street: Hasa z pomjeńšenym wobchadom
           milestone: Kilometrowy kamjeń
-          minor: Pódlanska hasa
           motorway: Awtodróha
           motorway_junction: Awtodróhowe křižnišćo
           motorway_link: Přijězd na awtodróhu
@@ -535,7 +526,6 @@ hsb:
           speed_camera: Błyskadło
           steps: Schodźenki
           street_lamp: Nadróžna latarnja
-          stile: Płótne stupadło
           tertiary: Dróha třećeho rjada
           tertiary_link: Dróha třećeho rjada
           track: Pólny puć
@@ -559,7 +549,6 @@ hsb:
           memorial: Wopomnišćo
           mine: Podkopki
           monument: Pomnik
-          museum: Muzej
           ruins: Rozpadanki
           tomb: Row
           tower: Wěža
@@ -587,9 +576,6 @@ hsb:
           military: Wojerska kónčina
           mine: Podkopki
           orchard: Sadowa zahroda
-          nature_reserve: Přirodoškitne pasmo
-          park: Park
-          piste: Pista
           quarry: Skała
           railway: Železnica
           recreation_ground: Wočerstwjenska krajina
@@ -600,8 +586,6 @@ hsb:
           road: Dróhowe pasmo
           village_green: Nawjes
           vineyard: Winicy
-          wetland: Łučina
-          wood: Lěs
         leisure:
           beach_resort: Mórske kupjele
           bird_hide: Ptači schow
@@ -636,11 +620,9 @@ hsb:
           beach: Přibrjóh
           cape: Kap
           cave_entrance: Prózdnjeński zachod
-          channel: Kanal
           cliff: Wuskała
           crater: Krater
           dune: Nawěw
-          feature: Funkcija
           fell: Fjeld
           fjord: Fjord
           forest: Lěs
@@ -657,11 +639,9 @@ hsb:
           point: Dypk
           reef: Rif
           ridge: Horinski hrjebjeń
-          river: Rěka
           rock: Skała
           scree: Walanki
           scrub: Kerki
-          shoal: Niłčina, pěsčišćo
           spring: Žórło
           stone: Kamjeń
           strait: Mórska wužina
@@ -670,7 +650,6 @@ hsb:
           volcano: Wulkan
           water: wodźizna
           wetland: Łučina
-          wetlands: Łučiny
           wood: Lěs
         office:
           accountant: Knihiwjedniski běrow
@@ -735,7 +714,6 @@ hsb:
           switch: Wuhibka
           tram: Tramwajka
           tram_stop: Tramwajkowe zastanišćo
-          yard: Ranžěrowanske dwórnišćo
         shop:
           alcohol: Wobchod za spirituozy
           antiques: Wobchod starožitnosćow
@@ -824,12 +802,10 @@ hsb:
           hostel: Hospoda
           hotel: Hotel
           information: Informacija
-          lean_to: Kólnja
           motel: Motel
           museum: Muzej
           picnic_site: Piknikowanišćo
           theme_park: Park zabawy
-          valley: Doł
           viewpoint: Wuhladnišćo
           zoo: Coo
         tunnel:
@@ -839,7 +815,6 @@ hsb:
           artificial: Kumštna wodowa dróha
           boatyard: Łódźnica
           canal: Kanal
-          connector: Zwisk mjez wódnymi pućemi
           dam: Nasyp
           derelict_canal: Zanjerodźeny kanal
           ditch: Hrjebja
@@ -847,15 +822,12 @@ hsb:
           drain: Wentok
           lock: Přepław
           lock_gate: Wrota přeplawnje
-          mineral_spring: Mineralne žórło
           mooring: Přistawnišćo
           rapids: Rěčne prohi
           river: Rěka
-          riverbank: Rěčny brjóh
           stream: rěčka
           wadi: Wadi
           waterfall: Wodopad
-          water_point: Wódne městno
           weir: Spušćadło
       admin_levels:
         level2: Statna hranica
@@ -877,19 +849,6 @@ hsb:
     results:
       no_results: Žane wuslědki namakane
       more_results: Dalše wuslědki
-    distance:
-      one: něhdźe 1 km
-      zero: mjenje hač 1 km
-      other: něhdźe %{count} km
-    direction:
-      south_west: juhozapad
-      south: juh
-      south_east: juhowuchod
-      east: wuchod
-      north_east: sewjerowuchod
-      north: sewjer
-      north_west: sewjerozapad
-      west: zapad
   layouts:
     logo:
       alt_text: OpenStreetMap logo
@@ -1103,8 +1062,8 @@ hsb:
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
-      description: Prašej so něčeho abo pytaj za wotmołwami na stronje prašenjow a
-        wotmołwow OpenStreetMap.
+      description: Prašej so za něčim abo pytaj za wotmołwami na stronje prašenjow
+        a wotmołwow OpenStreetMap.
     wiki:
       url: http://wiki.openstreetmap.org/
       title: wiki.openstreetmap.org
@@ -1230,6 +1189,12 @@ hsb:
         commented_note: '%{commenter} je kartowu pokazku reaktiwizował,  kotruž sy
           komentował. Pokazka je blisko %{place}.'
       details: Dalše podrobnosće wo pokazce móžeš pod %{url} namakać.
+    changeset_comment_notification:
+      greeting: Witaj,
+      commented:
+        subject_own: '[OpenStreetMap] %{commenter} je jednu z twojich změnow komentował(a)'
+        partial_changeset_with_comment: z komentarom „%{changeset_comment}“
+        partial_changeset_without_comment: bjez komentara
   message:
     inbox:
       title: Póstowy kašćik
@@ -1358,9 +1323,7 @@ hsb:
           primary: Zwjazkowa dróha
           secondary: Krajna dróha, statna dróha
           unclassified: Njeklasifikowana dróha
-          unsurfaced: Njewobtwjerdźena dróha
           track: Čara
-          byway: Pódlanski puć
           bridleway: Jěchanski puć
           cycleway: Kolesowarska šćežka
           footway: Chódnik
@@ -1384,7 +1347,6 @@ hsb:
           golf: Golfownišćo
           park: Park
           resident: Bydlenski wobwod
-          tourist: Turistiska atrakcija
           common:
           - Powšitkowny
           - łuka
@@ -1414,7 +1376,6 @@ hsb:
           tunnel: Smužkowana kroma = tunl
           bridge: Čorna kroma = móst
           private: Priwatny přistup
-          permissive: Dowoleny přistup
           destination: Jenož za přidróžnych
           construction: Dróhi w twarje
     richtext_area:
@@ -1665,7 +1626,6 @@ hsb:
       register now: Nětko registrować
       with username: 'Maš hižo konto pola OpenStreetMap? Prošu přizjew so z wužiwarskim
         mjenom a hesłom:'
-      with openid: 'Hewak wužij prošu swój OpenID, zo by so přizjewił:'
       new to osm: Nowy w OpenStreetMap?
       to make changes: Zo by daty OpenStreetMap změnił, dyrbiš konto měć.
       create account minute: Załož konto. Traje jenož chwilku.
@@ -1677,25 +1637,7 @@ hsb:
         />Stajće so prošu z <a href="%{webmaster}">webmasterom</a> do zwiska, jeli
         chceš wo tym diskutować.
       auth failure: Bohužel přizjewjenje z tutymi podaćemi móžno njeje.
-      openid missing provider: Bohužel njemóžachmy z twojim OpenID-poskićowarjom zwjazać.
-      openid invalid: Zda so, zo twój OpenID je njepłaćiwy
       openid_logo_alt: Z OpenID přizjewić
-      openid_providers:
-        openid:
-          title: Přizjewjenje z OpenID
-          alt: Z OpenID-URL přizjewić
-        google:
-          title: Přizjewjenje z Google
-          alt: Z OpenID z Google přizjewić
-        yahoo:
-          title: Z Yahoo přizjewić
-          alt: Z OpenID z Yahoo přizjewić
-        wordpress:
-          title: Z Wordpress přizjewić
-          alt: Z OpenID z Wordpress přizjewić
-        aol:
-          title: Z AOL přizjewić
-          alt: Z OpenID z AOL přizjewić
     logout:
       title: Wotzjewić
       heading: Z OpenStreetMap wotzjewić
@@ -1740,20 +1682,8 @@ hsb:
       display name: 'Wužiwarske mjeno:'
       display name description: Sy wužiwarske mjeno zjawnje pokazał. Móžeš to pozdźišo
         w nastajenjach změnić.
-      openid: '%{logo} OpenID:'
       password: 'Hesło:'
       confirm password: 'Hesło wobkrućić:'
-      use openid: Alternatiwnje OpenID z %{logo} přizjewić
-      openid no password: Za OpenID hesko trěbne njeje, ale někotre přidatne nastroje
-        móhli sej hesło wužadać.
-      openid association: |-
-        <p>Twój OpenID hišće njeje zwjazany z kontom OpenStreetMap.</p>
-        <ul>
-        <li>Jeli sy nowy w OpenStreetMap, załož nowe konto z pomocu slědowaceho formulara.</li>
-        <li>
-        Jeli maš hižo konto, móžeš so z wužiwarskim mjenom a hesłom přizjewić a potom konto ze swojim OpenID w swojich wužiwarskich nastajenjach zwjazać.
-        </li>
-        </ul>
       continue: Registrować
       terms accepted: Dźakujemy so, zo sy nowe wuměnjenja za sobuskutkowarjow akceptował!
       terms declined: Wobžarujemy, zo sy so rozsudźił, nowe wužiwarske wuměnjenja
@@ -1860,7 +1790,6 @@ hsb:
       new email address: 'Nowa e-mejlowa adresa:'
       email never displayed publicly: (njeje ženje zjawnje widźomna)
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: Što to je?
       public editing:
@@ -1921,6 +1850,7 @@ hsb:
       press confirm button: Klikni deleka na wobkrućenske tłóčatko, zo by swoje konto
         aktiwizował.
       button: Wobkrućić
+      success: Twoje konto bu wobkrućene, dźakujemy so za registrowanje!
       already active: Tute konto bu hižo wobkrućene.
       unknown token: Wobkrućenski kod je spadnjeny abo njeeksistuje.
       reconfirm_html: Jeli dyrbiš nam wobkrućensku e-mejlku znowa pósłać, <a href="%{reconfirm}">klikń
@@ -2185,6 +2115,13 @@ hsb:
       createnote_disabled_tooltip: Powjetš kartu, zo by pokazku přidał
       map_notes_zoom_in_tooltip: Powjetš kartu, zo by pokazki widźał
       map_data_zoom_in_tooltip: Powjetš kartu, zo by daty widźał
+    changesets:
+      show:
+        comment: Komentar
+        subscribe: Abonować
+        unsubscribe: Wotskazać
+        hide_comment: schować
+        unhide_comment: pokazać
     notes:
       new:
         intro: Sy zmylk widźał abo zo něšto faluje? Informuj druhich kartografow,
@@ -2202,6 +2139,11 @@ hsb:
         comment: Komentar
     edit_help: Přesuń kartu do městna, kotrež chceš wobdźěłać, powjetš tam a klikń
       potom tu.
+    query:
+      node: Suk
+      way: Puć
+      relation: Relacija
+      nothing_found: Žane funkcije namakane
   redaction:
     edit:
       description: Wopisanje

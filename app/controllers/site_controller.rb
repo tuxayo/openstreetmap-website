@@ -1,56 +1,53 @@
 class SiteController < ApplicationController
-  layout 'site'
+  layout "site"
   layout :map_layout, :only => [:index, :export]
 
-  before_filter :authorize_web
-  before_filter :set_locale
-  before_filter :redirect_browse_params, :only => :index
-  before_filter :redirect_map_params, :only => [:index, :edit, :export]
-  before_filter :require_user, :only => [:welcome]
-  before_filter :require_oauth, :only => [:index]
+  before_action :authorize_web
+  before_action :set_locale
+  before_action :redirect_browse_params, :only => :index
+  before_action :redirect_map_params, :only => [:index, :edit, :export]
+  before_action :require_user, :only => [:welcome]
+  before_action :require_oauth, :only => [:index]
 
   def index
-    unless STATUS == :database_readonly or STATUS == :database_offline
-      session[:location] ||= OSM::IPLocation(request.env['REMOTE_ADDR'])
+    unless STATUS == :database_readonly || STATUS == :database_offline
+      session[:location] ||= OSM.ip_location(request.env["REMOTE_ADDR"])
     end
   end
 
   def permalink
-    lon, lat, zoom = ShortLink::decode(params[:code])
+    lon, lat, zoom = ShortLink.decode(params[:code])
     new_params = params.except(:code, :lon, :lat, :zoom, :layers, :node, :way, :relation, :changeset)
 
-    if new_params.has_key? :m
+    if new_params.key? :m
       new_params.delete :m
       new_params[:mlat] = lat
       new_params[:mlon] = lon
     end
 
-    if params.has_key? :node
-      new_params[:controller] = 'browse'
-      new_params[:action] = 'node'
+    if params.key? :node
+      new_params[:controller] = "browse"
+      new_params[:action] = "node"
       new_params[:id] = params[:node]
-    elsif params.has_key? :way
-      new_params[:controller] = 'browse'
-      new_params[:action] = 'way'
+    elsif params.key? :way
+      new_params[:controller] = "browse"
+      new_params[:action] = "way"
       new_params[:id] = params[:way]
-    elsif params.has_key? :relation
-      new_params[:controller] = 'browse'
-      new_params[:action] = 'relation'
+    elsif params.key? :relation
+      new_params[:controller] = "browse"
+      new_params[:action] = "relation"
       new_params[:id] = params[:relation]
-    elsif params.has_key? :changeset
-      new_params[:controller] = 'browse'
-      new_params[:action] = 'changeset'
+    elsif params.key? :changeset
+      new_params[:controller] = "browse"
+      new_params[:action] = "changeset"
       new_params[:id] = params[:changeset]
     else
-      new_params[:controller] = 'site'
-      new_params[:action] = 'index'
+      new_params[:controller] = "site"
+      new_params[:action] = "index"
     end
 
     new_params[:anchor] = "map=#{zoom}/#{lat}/#{lon}"
-
-    if params.has_key? :layers
-      new_params[:anchor] += "&layers=#{params[:layers]}"
-    end
+    new_params[:anchor] += "&layers=#{params[:layers]}" if params.key? :layers
 
     redirect_to Hash[new_params]
   end
@@ -146,12 +143,12 @@ class SiteController < ApplicationController
 
     if params[:layers]
       anchor << "layers=#{params.delete(:layers)}"
-    elsif params.delete(:notes) == 'yes'
+    elsif params.delete(:notes) == "yes"
       anchor << "layers=N"
     end
 
     if anchor.present?
-      redirect_to Hash[params].merge(:anchor => anchor.join('&'))
+      redirect_to Hash[params].merge(:anchor => anchor.join("&"))
     end
   end
 end

@@ -1,15 +1,11 @@
-require 'validators'
+require "validators"
 
 class Message < ActiveRecord::Base
   belongs_to :sender, :class_name => "User", :foreign_key => :from_user_id
   belongs_to :recipient, :class_name => "User", :foreign_key => :to_user_id
 
-  validates_presence_of :title, :body, :sent_on, :sender, :recipient
-  validates_length_of :title, :within => 1..255
-  validates_inclusion_of :message_read, :in => [ true, false ]
-  validates_as_utf8 :title
-
-  after_initialize :set_defaults
+  validates :title, :presence => true, :utf8 => true, :length => 1..255
+  validates :body, :sent_on, :sender, :recipient, :presence => true
 
   def self.from_mail(mail, from, to)
     if mail.multipart?
@@ -18,13 +14,13 @@ class Message < ActiveRecord::Base
       elsif mail.html_part
         body = HTMLEntities.new.decode(Sanitize.clean(mail.html_part.decoded))
       end
-    elsif mail.text? and mail.sub_type == "html"
+    elsif mail.text? && mail.sub_type == "html"
       body = HTMLEntities.new.decode(Sanitize.clean(mail.decoded))
     else
       body = mail.decoded
     end
 
-    message = Message.new(
+    Message.new(
       :sender => from,
       :recipient => to,
       :sent_on => mail.date.new_offset(0),
@@ -35,7 +31,7 @@ class Message < ActiveRecord::Base
   end
 
   def body
-    RichText.new(read_attribute(:body_format), read_attribute(:body))
+    RichText.new(self[:body_format], self[:body])
   end
 
   def digest
@@ -46,11 +42,5 @@ class Message < ActiveRecord::Base
     md5 << title
     md5 << body
     md5.hexdigest
-  end
-
-private
-
-  def set_defaults
-    self.body_format = "markdown" unless self.attribute_present?(:body_format)
   end
 end

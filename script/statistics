@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require File.dirname(__FILE__) + '/../config/environment'
+require File.dirname(__FILE__) + "/../config/environment"
 
 start_time = Time.now
 
@@ -11,11 +11,11 @@ puts "<title>OpenStreetMap Statistics</title>"
 puts "<style>th { text-align: left }</style>"
 puts "</head>"
 puts "<body>"
-puts "<h2>OpenStreetMap stats report run at #{start_time.to_s}</h2>"
+puts "<h2>OpenStreetMap stats report run at #{start_time}</h2>"
 
 begin
   ActiveRecord::Base.transaction do
-    user_count = User.where(:status => ["active", "confirmed", "suspended"]).count
+    user_count = User.where(:status => %w(active confirmed suspended)).count
     tracepoint_count = Tracepoint.count
     node_count = Node.where(:visible => true).count
     way_count = Way.where(:visible => true).count
@@ -34,7 +34,7 @@ begin
     puts "<tr><th>User</th><th>Number of Points</th></tr>"
 
     Trace.where(:inserted => true).group(:user_id).order("sum_size DESC").limit(50).sum(:size).each do |user, count|
-      display_name = User.find(user).display_name.gsub('@', ' at ').gsub('.', ' dot ')
+      display_name = User.find(user).display_name.gsub("@", " at ").gsub(".", " dot ")
       puts "<tr><td><a href=\"/user/#{display_name}\">#{display_name}</a></td><td>#{count}</td></tr>"
     end
 
@@ -57,7 +57,7 @@ begin
     puts "<tr><th>Nodes</th><td>#{day_count}</td><td>#{week_count}</td><td>#{month_count}</td></tr>"
 
     puts "</table>"
-  
+
     puts "<h2>Top users editing over the past...</h2>"
     puts "<table>"
     puts "<tr><th>Day</th><th>Week</th><th>Month</th></tr>"
@@ -72,7 +72,7 @@ begin
         if column.nil?
           puts "<td></td>"
         else
-          display_name = User.find(column[0]).display_name.gsub('@', ' at ').gsub('.', ' dot ')
+          display_name = User.find(column[0]).display_name.gsub("@", " at ").gsub(".", " dot ")
           count = column[1]
           puts "<td>#{count} <a href=\"/user/#{display_name}\">#{display_name}</a></td>"
         end
@@ -82,11 +82,11 @@ begin
 
     puts "</table>"
   end
-rescue Exception => e
-  puts "<p><em>Exception: #{e.to_s}</em><br />#{e.backtrace.join('<br />')}</p>"
+rescue StandardError => e
+  puts "<p><em>Exception: #{e}</em><br />#{e.backtrace.join('<br />')}</p>"
 end
 
-puts "<p>Report took #{(Time.new - start_time).to_s} seconds to run</p>"
+puts "<p>Report took #{(Time.new - start_time)} seconds to run</p>"
 puts "</body>"
 puts "</html>"
 

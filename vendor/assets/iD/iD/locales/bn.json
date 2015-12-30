@@ -119,11 +119,8 @@
         },
         "merge": {
             "title": "এদের এক করুন",
-            "description": "এই রেখাগুলিকে এক করুন।",
             "key": "সি",
-            "annotation": "এই {n}টি রেখাকে এক করুন।",
-            "not_eligible": "এই বৈশিষ্ট্যগুলি একত্রীকরণ করা যাবে না",
-            "not_adjacent": "এই লাইনগুলো একত্রীকরণ করা যাবে না কারণ এগুলো সংযুক্ত নয়."
+            "not_eligible": "এই বৈশিষ্ট্যগুলি একত্রীকরণ করা যাবে না"
         },
         "move": {
             "title": "সরান",
@@ -178,7 +175,6 @@
         "nothing": "পুনরায় করার কিছুই নেই।"
     },
     "tooltip_keyhint": "শর্টকাট:",
-    "browser_notice": "এই এডিটরটি ফায়ারফক্স, ক্রোম, সাফারি, অপেরা এবং ইন্টারনেট এক্সপ্লোরার ৯ এবং তার উপরে কাজ করে। দয়া করে অাপনার ব্রাউসারটিকে উন্নত করুন অথবা ম্যাপ এ পরিবর্তন করতে পটল্যাচ ২ ব্যব্হার করুন।",
     "translate": {
         "translate": "অনুবাদ করুন",
         "localized_translation_label": "বহুভাষিক নাম",
@@ -188,7 +184,6 @@
     "zoom_in_edit": "সম্পাদনার জন্য জুম ইন করুন",
     "logout": "বেরিয়ে যান",
     "loading_auth": "ওপেনস্ট্রীটম্যাপ-এর সাথে যোগাযোগ করা হচ্ছে ...",
-    "report_a_bug": "একটি বাগ রিপোর্ট করুন",
     "status": {
         "error": "API-এর সাথে যোগাযোগ করা যাচ্ছে না।",
         "offline": "API-টি এই মুহুর্তে অফলাইন। একটু পরে চেষ্টা করুন।"
@@ -196,7 +191,6 @@
     "commit": {
         "title": "পরিবর্তনগুলিকে সেভ করুন",
         "description_placeholder": "অাপনার সাহায্যের সংক্ষিপ্ত বিবরন",
-        "message_label": "কমিট বার্তা",
         "save": "সেভ করুন",
         "cancel": "বাতিল করুন",
         "warnings": "সতর্ক বার্তাসমুহ",
@@ -257,7 +251,6 @@
         "title": "সেভ করুন",
         "help": "ওপেনস্ট্রীটম্যাপ-এ অাপনার পরিবর্তনগুলি সেভ করে অন্যদের কাছে তা দৃশ্যমান করুন।",
         "no_changes": "সেভ করার মত কোন পরিবর্তন বাকি নেই।",
-        "error": "সেভ করার সময় একটি বিভ্রান্তি দেখা দিয়েছে।",
         "uploading": "ওপেনস্ট্রীটম্যাপ-এ পরিবর্তনগুলি অাপলোড করা হচ্ছে।",
         "unsaved_changes": "অাপনার কিছু পরিবর্তন সেভ করা বাকি অাছে।"
     },
@@ -368,43 +361,39 @@
         },
         "fields": {
             "access": {
-                "label": "প্রবেশ করা",
-                "placeholder": "অজানা",
-                "types": {
-                    "access": "সাধারণ",
-                    "foot": "পদচালন",
-                    "motor_vehicle": "মোটরগাড়ি",
-                    "bicycle": "সাইকেল",
-                    "horse": "ঘোড়া"
-                },
                 "options": {
-                    "yes": {
-                        "title": "অনুমোদিত",
-                        "description": "অাইনানুসারে প্রবেশ অনুমোদিত"
-                    },
-                    "no": {
-                        "title": "নিষিদ্ধ",
-                        "description": "জনসাধারনের প্রবেশ অনুমোদিত নয়।"
-                    },
-                    "permissive": {
-                        "title": "অনুমতিসূচক",
-                        "description": "প্রবেশ অনুমোদিত, যতক্ষন অব্দি এর মালিক অনুমতি প্রত্যাহার না করছেন।"
-                    },
-                    "private": {
-                        "title": "একান্ত",
-                        "description": "প্রত্যেক ব্যক্তির জন্য মালিক-এর অনুমতি থাকলে প্রবেশ অনুমোদিত।"
-                    },
                     "designated": {
                         "description": "কোন চিহ্ন বা স্থানীয় অাইন অনুযায়ী প্রবেশ অনুমোদিত।"
                     },
                     "destination": {
-                        "title": "গন্তব্য",
-                        "description": "শুধুমাত্র কোন গন্তব্যে পৌছানোর জন্য প্রবেশ অনুমোদিত।"
+                        "description": "শুধুমাত্র কোন গন্তব্যে পৌছানোর জন্য প্রবেশ অনুমোদিত।",
+                        "title": "গন্তব্য"
+                    },
+                    "no": {
+                        "description": "জনসাধারনের প্রবেশ অনুমোদিত নয়।",
+                        "title": "নিষিদ্ধ"
+                    },
+                    "permissive": {
+                        "description": "প্রবেশ অনুমোদিত, যতক্ষন অব্দি এর মালিক অনুমতি প্রত্যাহার না করছেন।",
+                        "title": "অনুমতিসূচক"
+                    },
+                    "private": {
+                        "description": "প্রত্যেক ব্যক্তির জন্য মালিক-এর অনুমতি থাকলে প্রবেশ অনুমোদিত।",
+                        "title": "একান্ত"
+                    },
+                    "yes": {
+                        "description": "অাইনানুসারে প্রবেশ অনুমোদিত",
+                        "title": "অনুমোদিত"
                     }
+                },
+                "types": {
+                    "bicycle": "সাইকেল",
+                    "foot": "পদচালন",
+                    "horse": "ঘোড়া",
+                    "motor_vehicle": "মোটরগাড়ি"
                 }
             },
             "access_simple": {
-                "label": "প্রবেশ করা",
                 "placeholder": "হ্যা"
             },
             "access_toilets": {
@@ -413,17 +402,17 @@
             "address": {
                 "label": "ঠিকানা",
                 "placeholders": {
+                    "city": "শহর",
+                    "country": "দেশ",
+                    "district": "জেলা",
                     "housename": "বাড়ির নাম",
                     "housenumber": "১২৩",
-                    "street": "স্ট্রীট",
-                    "city": "শহর",
-                    "postcode": "পিনকোড",
                     "place": "জায়গা",
-                    "suburb": "শহরতলি",
-                    "subdistrict": "উপজেলা",
-                    "district": "জেলা",
+                    "postcode": "পিনকোড",
                     "state": "রাজ্য",
-                    "country": "দেশ"
+                    "street": "স্ট্রীট",
+                    "subdistrict": "উপজেলা",
+                    "suburb": "শহরতলি"
                 }
             },
             "aerialway": {
@@ -432,9 +421,9 @@
             "aerialway/access": {
                 "label": "প্রবেশ করা",
                 "options": {
+                    "both": "উভয়",
                     "entry": "প্রবেশ",
-                    "exit": "প্রস্থাণ",
-                    "both": "উভয়"
+                    "exit": "প্রস্থাণ"
                 }
             },
             "aerialway/capacity": {
@@ -448,9 +437,9 @@
             },
             "aerialway/summer/access": {
                 "options": {
+                    "both": "উভয়",
                     "entry": "প্রবেশ",
-                    "exit": "প্রস্থাণ",
-                    "both": "উভয়"
+                    "exit": "প্রস্থাণ"
                 }
             },
             "aeroway": {
@@ -490,18 +479,18 @@
             "cardinal_direction": {
                 "label": "দিক/অভিমুখ",
                 "options": {
-                    "N": "উত্তর",
                     "E": "পূর্ব",
+                    "N": "উত্তর",
+                    "NE": "উত্তরপূর্ব",
                     "S": "দক্ষিণ",
-                    "W": "পশ্চিম",
-                    "NE": "উত্তরপূর্ব"
+                    "W": "পশ্চিম"
                 }
             },
             "clock_direction": {
                 "label": "দিক/অভিমুখ",
                 "options": {
-                    "clockwise": "ঘড়ির কাটার দিকে",
-                    "anticlockwise": "ঘড়ির কাটার উল্টো দিকে"
+                    "anticlockwise": "ঘড়ির কাটার উল্টো দিকে",
+                    "clockwise": "ঘড়ির কাটার দিকে"
                 }
             },
             "collection_times": {
@@ -541,8 +530,8 @@
             "fire_hydrant/type": {
                 "label": "টাইপ",
                 "options": {
-                    "wall": "দেয়াল",
-                    "pond": "পুকুর"
+                    "pond": "পুকুর",
+                    "wall": "দেয়াল"
                 }
             },
             "fixme": {
@@ -582,11 +571,11 @@
             "internet_access": {
                 "label": "ইন্টারনেট সুবিধা",
                 "options": {
-                    "yes": "হ্যা",
                     "no": "না",
-                    "wlan": "তারবিহীন",
+                    "terminal": "টার্মিনাল",
                     "wired": "তারযুক্ত",
-                    "terminal": "টার্মিনাল"
+                    "wlan": "তারবিহীন",
+                    "yes": "হ্যা"
                 }
             },
             "landuse": {
@@ -698,11 +687,11 @@
             },
             "structure": {
                 "label": "কাঠামো",
-                "placeholder": "অজানা",
                 "options": {
                     "bridge": "সেতু",
                     "tunnel": "সুড়ঙ্গ"
-                }
+                },
+                "placeholder": "অজানা"
             },
             "surface": {
                 "label": "উপরিভাগ"
@@ -725,9 +714,6 @@
             },
             "wikipedia": {
                 "label": "উইকিপিডিয়া"
-            },
-            "wood": {
-                "label": "টাইপ"
             }
         },
         "presets": {
@@ -896,17 +882,11 @@
             "emergency/phone": {
                 "name": "অাপদকালীন দুরভাষ"
             },
-            "footway/crossing": {
-                "name": "ক্রসিং"
-            },
             "highway": {
                 "name": "রাজপথ"
             },
             "highway/bus_stop": {
                 "name": "বাস স্টপ"
-            },
-            "highway/crossing": {
-                "name": "ক্রসিং"
             },
             "highway/cycleway": {
                 "name": "সাইকেল-এর রাস্তা"
@@ -919,9 +899,6 @@
             },
             "highway/path": {
                 "name": "পথ"
-            },
-            "highway/pedestrian": {
-                "name": "পথচারী"
             },
             "highway/primary": {
                 "name": "প্রাথমিক রাস্তা"
@@ -971,23 +948,11 @@
             "historic/ruins": {
                 "name": "ধ্বংসাবশেষ"
             },
-            "landuse": {
-                "name": "ভূমি ব্যবহার"
-            },
-            "landuse/allotments": {
-                "name": "আবন্টন"
-            },
             "landuse/cemetery": {
                 "name": "কবরখানা"
             },
-            "landuse/commercial": {
-                "name": "বানিজ্যিক"
-            },
             "landuse/construction": {
                 "name": "মেরামত"
-            },
-            "landuse/farm": {
-                "name": "খামারবাড়ি"
             },
             "landuse/farmyard": {
                 "name": "খামার"
@@ -998,9 +963,6 @@
             "landuse/grass": {
                 "name": "ঘাস"
             },
-            "landuse/industrial": {
-                "name": "শিল্পায়িত"
-            },
             "landuse/meadow": {
                 "name": "তৃণক্ষেত্র"
             },
@@ -1009,12 +971,6 @@
             },
             "landuse/quarry": {
                 "name": "খনি"
-            },
-            "landuse/residential": {
-                "name": "অাবাসিক"
-            },
-            "landuse/retail": {
-                "name": "খুচরো ব্যবসা"
             },
             "landuse/vineyard": {
                 "name": "অাঙুরখেত"
@@ -1174,9 +1130,6 @@
             },
             "railway/disused": {
                 "name": "অব্যবহৃত রেলপথ"
-            },
-            "railway/level_crossing": {
-                "name": "রেল ক্রসি"
             },
             "railway/monorail": {
                 "name": "মনোরেল"

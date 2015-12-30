@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class RichTextTest < ActiveSupport::TestCase
-  include ActionDispatch::Assertions::SelectorAssertions
+  include Rails::Dom::Testing::Assertions::SelectorAssertions
 
   def test_html_to_html
     r = RichText.new("html", "foo http://example.com/ bar")
@@ -47,6 +47,16 @@ class RichTextTest < ActiveSupport::TestCase
       assert_select "style", false
       assert_select "p", /^foo *baz$/
     end
+  end
+
+  def test_html_to_text
+    r = RichText.new("html", "foo <a href='http://example.com/'>bar</a> baz")
+    assert_equal "foo <a href='http://example.com/'>bar</a> baz", r.to_text
+  end
+
+  def test_html_spam_score
+    r = RichText.new("html", "foo <a href='http://example.com/'>bar</a> baz")
+    assert_equal 55, r.spam_score.round
   end
 
   def test_markdown_to_html
@@ -137,6 +147,16 @@ class RichTextTest < ActiveSupport::TestCase
     end
   end
 
+  def test_markdown_to_text
+    r = RichText.new("markdown", "foo [bar](http://example.com/) baz")
+    assert_equal "foo [bar](http://example.com/) baz", r.to_text
+  end
+
+  def test_markdown_spam_score
+    r = RichText.new("markdown", "foo [bar](http://example.com/) baz")
+    assert_equal 50, r.spam_score.round
+  end
+
   def test_text_to_html
     r = RichText.new("text", "foo http://example.com/ bar")
     assert_html r do
@@ -152,16 +172,26 @@ class RichTextTest < ActiveSupport::TestCase
 
     r = RichText.new("text", "foo < bar & baz > qux")
     assert_html r do
-      assert_select "p", "foo &lt; bar &amp; baz &gt; qux"
+      assert_select "p", "foo < bar & baz > qux"
     end
   end
 
-private
+  def test_text_to_text
+    r = RichText.new("text", "foo http://example.com/ bar")
+    assert_equal "foo http://example.com/ bar", r.to_text
+  end
+
+  def test_text_spam_score
+    r = RichText.new("text", "foo http://example.com/ bar")
+    assert_equal 141, r.spam_score.round
+  end
+
+  private
 
   def assert_html(richtext, &block)
     html = richtext.to_html
     assert html.html_safe?
-    root = HTML::Document.new(richtext.to_html, false, true).root
+    root = Nokogiri::HTML::DocumentFragment.parse(html)
     assert_select root, "*" do
       yield block
     end

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-require 'test_helper'
+require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
+  include Rails::Dom::Testing::Assertions::SelectorAssertions
+
   api_fixtures
   fixtures :friends, :languages, :user_roles
 
@@ -16,12 +18,12 @@ class UserTest < ActiveSupport::TestCase
     assert !user.errors[:home_lon].any?
     assert !user.errors[:home_zoom].any?
   end
-  
+
   def test_unique_email
     new_user = User.new(
       :email => users(:normal_user).email,
-      :status => "active", 
-      :pass_crypt => Digest::MD5.hexdigest('test'),
+      :status => "active",
+      :pass_crypt => Digest::MD5.hexdigest("test"),
       :display_name => "new user",
       :data_public => 1,
       :description => "desc"
@@ -29,39 +31,39 @@ class UserTest < ActiveSupport::TestCase
     assert !new_user.save
     assert new_user.errors[:email].include?("has already been taken")
   end
-  
+
   def test_unique_display_name
     new_user = User.new(
       :email => "tester@openstreetmap.org",
       :status => "pending",
-      :pass_crypt => Digest::MD5.hexdigest('test'),
-      :display_name => users(:normal_user).display_name, 
+      :pass_crypt => Digest::MD5.hexdigest("test"),
+      :display_name => users(:normal_user).display_name,
       :data_public => 1,
       :description => "desc"
     )
     assert !new_user.save
     assert new_user.errors[:display_name].include?("has already been taken")
   end
-  
+
   def test_email_valid
-    ok = %w{ a@s.com test@shaunmcdonald.me.uk hello_local@ping-d.ng 
-    test_local@openstreetmap.org test-local@example.com }
-    bad = %w{ hi ht@ n@ @.com help@.me.uk help"hi.me.uk も対@応します
-    輕觸搖晃的遊戲@ah.com も対応します@s.name }
-    
+    ok = %w(a@s.com test@shaunmcdonald.me.uk hello_local@ping-d.ng
+            test_local@openstreetmap.org test-local@example.com)
+    bad = %w(hi ht@ n@ @.com help@.me.uk help"hi.me.uk も対@応します
+             輕觸搖晃的遊戲@ah.com も対応します@s.name)
+
     ok.each do |name|
       user = users(:normal_user)
       user.email = name
       assert user.valid?(:save), user.errors.full_messages.join(",")
     end
-    
+
     bad.each do |name|
       user = users(:normal_user)
       user.email = name
-      assert user.invalid?(:save), "#{name} is valid when it shouldn't be" 
+      assert user.invalid?(:save), "#{name} is valid when it shouldn't be"
     end
   end
-  
+
   def test_display_name_length
     user = users(:normal_user)
     user.display_name = "123"
@@ -71,38 +73,38 @@ class UserTest < ActiveSupport::TestCase
     user.display_name = ""
     assert !user.valid?
     user.display_name = nil
-    # Don't understand why it isn't allowing a nil value, 
+    # Don't understand why it isn't allowing a nil value,
     # when the validates statements specifically allow it
     # It appears the database does not allow null values
     assert !user.valid?
   end
-  
+
   def test_display_name_valid
-    # Due to sanitisation in the view some of these that you might not 
+    # Due to sanitisation in the view some of these that you might not
     # expact are allowed
     # However, would they affect the xml planet dumps?
-    ok = [ "Name", "'me", "he\"", "<hr>", "*ho", "\"help\"@", 
-           "vergrößern", "ルシステムにも対応します", "輕觸搖晃的遊戲" ]
+    ok = ["Name", "'me", "he\"", "<hr>", "*ho", "\"help\"@",
+          "vergrößern", "ルシステムにも対応します", "輕觸搖晃的遊戲"]
     # These need to be 3 chars in length, otherwise the length test above
     # should be used.
-    bad = [ "<hr/>", "test@example.com", "s/f", "aa/", "aa;", "aa.",
-            "aa,", "aa?", "/;.,?", "も対応します/", "#ping",
-            "foo\x1fbar", "foo\x7fbar", "foo\ufffebar", "foo\uffffbar",
-            "new", "terms", "save", "confirm", "confirm-email",
-            "go_public", "reset-password", "forgot-password", "suspended" ]
+    bad = ["<hr/>", "test@example.com", "s/f", "aa/", "aa;", "aa.",
+           "aa,", "aa?", "/;.,?", "も対応します/", "#ping",
+           "foo\x1fbar", "foo\x7fbar", "foo\ufffebar", "foo\uffffbar",
+           "new", "terms", "save", "confirm", "confirm-email",
+           "go_public", "reset-password", "forgot-password", "suspended"]
     ok.each do |display_name|
       user = users(:normal_user)
       user.display_name = display_name
       assert user.valid?, "#{display_name} is invalid, when it should be"
     end
-    
+
     bad.each do |display_name|
       user = users(:normal_user)
       user.display_name = display_name
       assert !user.valid?, "#{display_name} is valid when it shouldn't be"
     end
   end
-  
+
   def test_friend_with
     assert users(:normal_user).is_friends_with?(users(:public_user))
     assert !users(:normal_user).is_friends_with?(users(:inactive_user))
@@ -114,13 +116,15 @@ class UserTest < ActiveSupport::TestCase
 
   def test_users_nearby
     # second user has their data public and is close by normal user
-    assert_equal [users(:public_user)], users(:normal_user).nearby
+    assert_equal [users(:public_user), users(:german_user)], users(:normal_user).nearby
     # second_user has normal user nearby, but normal user has their data private
-    assert_equal [], users(:public_user).nearby
+    assert_equal [users(:german_user)], users(:public_user).nearby
     # inactive_user has no user nearby
     assert_equal [], users(:inactive_user).nearby
     # north_pole_user has no user nearby, and doesn't throw exception
     assert_equal [], users(:north_pole_user).nearby
+    # confirmed_user has no home location
+    assert_equal [], users(:confirmed_user).nearby
   end
 
   def test_friends_with
@@ -129,12 +133,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, Friend.count
     norm = users(:normal_user)
     sec = users(:public_user)
-    #friend = Friend.new
-    #friend.befriender = norm
-    #friend.befriendee = sec
-    #friend.save
-    assert_equal [sec], norm.nearby
-    assert_equal 1, norm.nearby.size
+    # friend = Friend.new
+    # friend.befriender = norm
+    # friend.befriendee = sec
+    # friend.save
+    assert_equal [sec], norm.friend_users
+    assert_equal 1, norm.friend_users.size
     assert_equal 1, Friend.count
     assert norm.is_friends_with?(sec)
     assert !sec.is_friends_with?(norm)
@@ -143,8 +147,8 @@ class UserTest < ActiveSupport::TestCase
     assert !users(:public_user).is_friends_with?(users(:inactive_user))
     assert !users(:inactive_user).is_friends_with?(users(:normal_user))
     assert !users(:inactive_user).is_friends_with?(users(:public_user))
-    #Friend.delete(friend)
-    #assert_equal 0, Friend.count
+    # Friend.delete(friend)
+    # assert_equal 0, Friend.count
   end
 
   def test_user_preferred_editor
@@ -159,7 +163,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_visible
-    assert_equal 15, User.visible.count
+    assert_equal 19, User.visible.count
     assert_raise ActiveRecord::RecordNotFound do
       User.visible.find(users(:suspended_user).id)
     end
@@ -169,7 +173,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_active
-    assert_equal 14, User.active.count
+    assert_equal 18, User.active.count
     assert_raise ActiveRecord::RecordNotFound do
       User.active.find(users(:inactive_user).id)
     end
@@ -182,7 +186,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_identifiable
-    assert_equal 16, User.identifiable.count
+    assert_equal 20, User.identifiable.count
     assert_raise ActiveRecord::RecordNotFound do
       User.identifiable.find(users(:normal_user).id)
     end
@@ -190,12 +194,14 @@ class UserTest < ActiveSupport::TestCase
 
   def test_languages
     user = users(:normal_user)
-    assert_equal [ "en" ], user.languages
-    user.languages = [ "de", "fr", "en" ]
-    assert_equal [ "de", "fr", "en" ], user.languages
-    user.languages = [ "fr", "de", "sl" ]
+    assert_equal ["en"], user.languages
+    user.languages = %w(de fr en)
+    assert_equal %w(de fr en), user.languages
+    user.languages = %w(fr de sl)
     assert_equal "de", user.preferred_language
-    assert_equal "de", user.preferred_language_from(["en", "sl", "de", "es"])
+    assert_equal "de", user.preferred_language_from(%w(en sl de es))
+    user = users(:public_user)
+    assert_equal %w(en de), user.languages
   end
 
   def test_visible?
@@ -242,5 +248,25 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "deleted", user.status
     assert_equal false, user.visible?
     assert_equal false, user.active?
+  end
+
+  def test_to_xml
+    user = users(:normal_user)
+    xml = user.to_xml
+    assert_select Nokogiri::XML::Document.parse(xml.to_s), "user" do
+      assert_select "[display_name=?]", user.display_name
+      assert_select "[account_created=?]", user.creation_time.xmlschema
+      assert_select "home[lat=?][lon=?][zoom=?]", user.home_lat.to_s, user.home_lon.to_s, user.home_zoom.to_s
+    end
+  end
+
+  def test_to_xml_node
+    user = users(:normal_user)
+    xml = user.to_xml_node
+    assert_select Nokogiri::XML::DocumentFragment.parse(xml.to_s), "user" do
+      assert_select "[display_name=?]", user.display_name
+      assert_select "[account_created=?]", user.creation_time.xmlschema
+      assert_select "home[lat=?][lon=?][zoom=?]", user.home_lat.to_s, user.home_lon.to_s, user.home_zoom.to_s
+    end
   end
 end

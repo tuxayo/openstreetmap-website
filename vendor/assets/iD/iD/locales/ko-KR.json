@@ -4,8 +4,8 @@
             "address": {
                 "label": "주소",
                 "placeholders": {
-                    "street": "길",
-                    "city": "도시"
+                    "city": "도시",
+                    "street": "길"
                 }
             },
             "aeroway": {
@@ -47,8 +47,8 @@
             "internet_access": {
                 "label": "인터넷 이용 가능 여부",
                 "options": {
-                    "wlan": "Wifi",
-                    "terminal": "터미널"
+                    "terminal": "터미널",
+                    "wlan": "Wifi"
                 }
             },
             "landuse": {
@@ -104,9 +104,6 @@
             },
             "wikipedia": {
                 "label": "위키페디아"
-            },
-            "wood": {
-                "label": "종류"
             }
         },
         "presets": {
@@ -215,32 +212,17 @@
             "historic/monument": {
                 "name": "산"
             },
-            "landuse": {
-                "name": "토지용도"
-            },
-            "landuse/allotments": {
-                "name": "텃밭"
-            },
             "landuse/basin": {
                 "name": "온천"
             },
-            "landuse/commercial": {
-                "name": "상업"
-            },
             "landuse/construction": {
                 "name": "개발중"
-            },
-            "landuse/farm": {
-                "name": "경작 및 재배에 사용되는 농지"
             },
             "landuse/forest": {
                 "name": "숲"
             },
             "landuse/grass": {
                 "name": "목초지"
-            },
-            "landuse/industrial": {
-                "name": "공업"
             },
             "landuse/quarry": {
                 "name": "채석장"

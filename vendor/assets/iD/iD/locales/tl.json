@@ -131,12 +131,8 @@
         },
         "merge": {
             "title": "Pagsamahin",
-            "description": "Pagdugtungin ang mga linyang ito.",
             "key": "C",
-            "annotation": "Dinugtung ang {n} linya.",
             "not_eligible": "Ang mga bagay na ito ay hindi maaaring pagsamahin.",
-            "not_adjacent": "Hindi mapagsama ang linyang ito dahil sila ay hindi konektado.",
-            "restriction": "Hindi maaaring ipagsama o i-merge dahil ang isa sa mga miyembro ng '{relation}\" ito ay hindi pa ganap na nai-download.",
             "incomplete_relation": "Hindi maaaring ipagsama o i-merge dahil ang isa sa mga ito ay hindi pa ganap na nai-download."
         },
         "move": {
@@ -205,7 +201,6 @@
         "nothing": "Walang ma-redo."
     },
     "tooltip_keyhint": "Shortcut:",
-    "browser_notice": "Ang editor na ito ay suportado sa Firefox, Chrome, Safari, Opera, at Internet Explorer 9 at sa mas mataas pang bersion. I-upgrade ang inyong browser o gamitin Potlatch 2 upang i-edit ng mapa.",
     "translate": {
         "translate": "I-salin",
         "localized_translation_label": "Multilingual name",
@@ -215,7 +210,6 @@
     "zoom_in_edit": "Mag-zoom-in para makapag-edit",
     "logout": "Mag-logout",
     "loading_auth": "Kumokonekta sa OpenStreetMap ...",
-    "report_a_bug": "I-ulat ang bug",
     "status": {
         "error": "Hindi maka-konekta sa API.",
         "offline": "Kasalukuyang offline ang API. Subukang mag-edit muli sa ibang pagkakataon.",
@@ -224,7 +218,6 @@
     "commit": {
         "title": "I-save ang mga binago.",
         "description_placeholder": "Maikling paglalarawan ng iyong mga ambag o edits",
-        "message_label": "Mag-commit mensahe",
         "upload_explanation": "Ang mga pagbabagong na-upload ay makikita sa lahat ng mapang gumagamit ng datos ng OpenStreetMap.",
         "upload_explanation_with_user": "Ang mga pagbabagong na-upload bilang {user} ay makikita sa lahat ng mapang gumagamit ng datos ng OpenStreetMap.",
         "save": "I-save",
@@ -267,6 +260,10 @@
         "incomplete": "<not downloaded>",
         "feature_list": "Mag-hanap ng \"feature\"",
         "edit": "I-edit ang \"feature\"",
+        "check": {
+            "yes": "Oo",
+            "no": "Hindi"
+        },
         "none": "Wala",
         "node": "Node",
         "way": "Way",
@@ -284,6 +281,11 @@
         "fix_misalignment": "Ayusin ang pagkakahanay ng \"imagery\"",
         "reset": "I-reset"
     },
+    "feature": {
+        "others": {
+            "description": "Iba pa"
+        }
+    },
     "restore": {
         "heading": "Mayroon kang hindi na-save ng mga pagbabago",
         "description": "Ibig mo bang ibalik ang mga hindi na-save na pagbabago mula sa isang nakaraang session sa pag-edit?",
@@ -294,7 +296,6 @@
         "title": "I-save",
         "help": "I-save ang mga pagbabago sa OpenStreetMap upang makita ng ibang gumagamit ng datos.",
         "no_changes": "Walang mga pagbabago upang i-save.",
-        "error": "May error habang sinusubukang i-save",
         "uploading": "Ina-upload ang mga pagbabago sa OpenStreetMap.",
         "unsaved_changes": "Mayroon kang hindi na-save ng mga pagbabago"
     },
@@ -349,10 +350,7 @@
         "browse": "Mag-browse ng .gpx file"
     },
     "help": {
-        "title": "Tulong",
-        "help": "# Help\n\nIto ay isang editor para sa [OpenStreetMap] (http://www.openstreetmap.org/), isang libre at maaaring i-edit na mapa ng mundo. Maaari mo itong gamitin upang idagdag at i-update ang iyong lugar, sa paggawa ng isang open-source at open-data na mapa ng mundo para magamit ng lahat.\n\nAng pag-edit na gagawin mo sa mapang ito ay makikita ng lahat ng gumagamit OpenStreetMap. Upang makapag-edit, kakailanganin mo ng [OpenStreetMap account] (https://www.openstreetmap.org/user/new). \n\nAng [iD editor] (http://ideditor.com/) ay isang collaborative proyekto,  ang [source code ay matatagpuan sa GitHub] (https://github.com/openstreetmap/iD).\n",
-        "editing_saving": "### Pag-edit & Saving\n\nEditor na ito ay dinisenyo upang gumana lalo na sa online, at ina-access mo ito sa pamamagitan ng isang website sa ngayon.\n\n### Pagpili ng Mga Tampok\n\nUpang pumili ng isang tampok ng mapa , tulad ng kalsada o punto ng interes , i-click \nsa ito sa mapa. Ito ay i-highlight ang mga napiling tampok , buksan ang isang panel na may \nmga detalye tungkol dito , at ipakita ang menu ng mga bagay na maaari mong gawin gamit ang tampok. \n\nUpang pumili ng maraming mga tampok , pindutin nang matagal ang 'Shift ' key. Pagkatapos ay i-click ang alinman sa \nsa ang tampok na gusto mong piliin , o i-drag sa mapa upang gumuhit ng parihaba . \nAy ito gumuhit ng isang kahon at piliin ang lahat ng mga punto sa loob nito.\n\n### Saving Pag-edit \n\nKapag gumawa ka ng mga pagbabago tulad ng pag-edit ng mga kalsada, gusali , at mga lugar, ang mga ito ay \nnaka-imbak sa isang lugar lamang hanggang sa i-save mo ang mga ito sa server. Huwag mag-alala kung gumawa ka \nisang pagkakamali - maaari mong i-undo ang mga pagbabago sa pamamagitan ng pag-click sa pindutan undo , at gawing muli ang \nmga pagbabago sa pamamagitan ng pag-click sa pindutan gawing muli.\n\nI-click ang 'I-save ' upang matapos sa isang pangkat ng mga pag-edit - halimbawa , kung nag- nakumpleto \nisang lugar ng bayan at nais na magsimula sa isang bagong lugar . Magkakaroon ka ng pagkakataong \nupang suriin kung ano ang iyong nagawa , at ang editor supplies nakakatulong na mga mungkahi\nat babala kung may isang bagay ay hindi tila karapatan tungkol sa mga pagbabago . \n\nKung mukhang maganda ang lahat ng bagay , maaari mong ipasok ang isang maikling komento na nagpapaliwanag ng mga pagbabago\nna ginawa mo , at i-click muli ang ' I-save' upang i-post ang mga pagbabago\nsa [ OpenStreetMap.org ] ( http://www.openstreetmap.org/ ), kung saan ang mga ito ay nakikita \nsa lahat ng iba pang mga gumagamit at magagamit para sa iba upang bumuo at pagbutihin sa.\n\nKung hindi mo maaaring tapusin ang iyong mga pag-edit sa isang sitting , maaari mong iwanan ang editor window at bumalik ( sa parehong browser at computer ) , at ang\neditor application ay mag-aalok upang ibalik ang iyong trabaho .\n\n",
-        "gps": "# GPS\n\nAng datos mula sa GPS data ay isa sa pinagkakatiwalaang pinagmumulan ng\ndatos para sa OpenStreetMap.  Gamit ang Editor na ito, maaring i-dagdag \nang iyong mga GPS trace mula sa inyong lokal na computer. \nMaaari kang mangolekta ng ganitong uri ng GPS trace sa gamit ang iyong \nsmartphone o anumang GPS receiver. \n\nPara sa impormasyon kung paano magsagawa ng survey sa pamamagitan ng\nGPS, basahin ang: \n[Pag-survey gamit ang GPS] (http://learnosm.org/en/beginner/using-gps/). \n\nUpang magamit ang GPX track para sa pagmamapa, i-drag at i-drop ang GPX file papunta sa mapa. \nMakikita ito sa mapa bilang isang berdeng linya. \nMag-click sa menu na 'Background Settings' sa kanang bahagi upang \ni-enable, disable, o mag-zoom sa GPX layer. \n\nAng GPX track ay hindi direktang naia-upload sa OpenStreetMap. \nGamitin ito bilang isang gabay para sa mga bagong tampok na nais \nmong idagdag.  Kung nais mong i-upload ito sa OpenStreetMap para magamit na iba,  pumunta lamang sa \n[upload ito sa OpenStreetMap] (http://www.openstreetmap.org/trace/create).\n"
+        "title": "Tulong"
     },
     "intro": {
         "navigation": {
@@ -407,8 +405,8 @@
             "address": {
                 "label": "Address",
                 "placeholders": {
-                    "street": "Kalsada",
-                    "city": "Siyudad"
+                    "city": "Siyudad",
+                    "street": "Kalsada"
                 }
             },
             "aerialway": {
@@ -530,9 +528,6 @@
             "tourism": {
                 "label": "Uri"
             },
-            "tree_type": {
-                "label": "Uri"
-            },
             "water": {
                 "label": "Uri"
             },
@@ -540,9 +535,6 @@
                 "label": "Uri"
             },
             "wetland": {
-                "label": "Uri"
-            },
-            "wood": {
                 "label": "Uri"
             }
         },

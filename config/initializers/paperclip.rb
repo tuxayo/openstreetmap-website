@@ -5,7 +5,7 @@ module Paperclip
     def for(style_name, options)
       url = super(style_name, options)
 
-      if url =~ /^\/assets\/(.*)$/
+      if url =~ %r{^/assets/(.*)$}
         asset_path($1)
       else
         url
@@ -14,7 +14,7 @@ module Paperclip
   end
 end
 
-Rails.application.config.after_initialize do |app|
+Rails.application.config.after_initialize do |_app|
   Paperclip::AssetUrlGenerator::VIEW_ACCESSORS.each do |attr|
     Paperclip::AssetUrlGenerator.send("#{attr}=", ActionView::Base.send(attr))
   end

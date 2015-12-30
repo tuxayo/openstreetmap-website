@@ -1,4 +1,4 @@
-require 'migrate'
+require "migrate"
 
 class AddDateClosed < ActiveRecord::Migration
   def self.up
@@ -6,6 +6,6 @@ class AddDateClosed < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :map_bugs, :date_closed 
+    remove_column :map_bugs, :date_closed
   end
 end

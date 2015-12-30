@@ -2,9 +2,10 @@ if defined?(ActiveRecord::ConnectionAdaptors::AbstractAdapter)
   module ActiveRecord
     module ConnectionAdapters
       class AbstractAdapter
-      protected
+        protected
+
         alias_method :old_log, :log
-  
+
         def log(sql, name)
           if block_given?
             old_log(sql, name) do

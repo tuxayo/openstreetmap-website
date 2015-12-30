@@ -6,10 +6,13 @@
 # Author: KuboF
 # Author: Kusavica
 # Author: Lesny skriatok
+# Author: MartinSNV
 # Author: MichalP
+# Author: Mikulas1
 # Author: Mimarik
 # Author: Nemo bis
 # Author: Rudko
+# Author: Ruila
 # Author: Teslaton
 # Author: Vladolc
 ---
@@ -126,11 +129,17 @@ sk:
       way_paginated: Cesty (%{x}–%{y} z %{count})
       relation: Relácie (%{count})
       relation_paginated: Relácie (%{x}–%{y} z %{count})
+      comment: Komentáre (%{count})
+      hidden_commented_by: Skrytý komentár od %{user} <abbr title='%{exact_time}'>pred
+        %{when}</abbr>
+      commented_by: Komentár od %{user} <abbr title='%{exact_time}'>pred %{when}</abbr>
       changesetxml: XML sady zmien
       osmchangexml: osmChange XML
       feed:
         title: Sada zmien %{id}
         title_comment: Sada zmien %{id} - %{comment}
+      join_discussion: Zapojte sa do diskusie
+      discussion: Diskusia
     node:
       title: 'Uzol: %{name}'
       history_title: 'História uzlu: %{name}'
@@ -177,6 +186,9 @@ sk:
         way: cesta
         relation: vzťah
     start_rjs:
+      feature_warning: Načíta sa %{num_features} funkcií, ktoré môžu sposobiť, že
+        Váš prehliadač bude spomalený alebo nebude reagovať. Ste si istý, že chcete
+        zobraziť tieto údaje?
       load_data: Načítať údaje
       loading: Nahrávanie...
     tag_details:
@@ -185,12 +197,21 @@ sk:
         key: Stránka s popisom značky %{key} na wiki
         tag: Stránka s popisom značky %{key}=%{value} na wiki
       wikipedia_link: Článok %{page} na Wikipédii
+      telephone_link: Vytočiť %{phone_number}
     note:
       title: 'Poznámka: %{id}'
       new_note: Nová poznámka
       description: Popis
       open_title: 'Nevyriešená chyba #%{note_name}'
       closed_title: 'Vyriešená chyba #%{note_name}'
+      hidden_title: Skrytá poznámka %{note_name}
+      open_by: Vytvoril %{user} <abbr title='%{exact_time}'>pred %{when}</abbr>
+      open_by_anonymous: Vytvoril anonym <abbr title='%{exact_time}'>pred %{when}</abbr>
+      commented_by: Komentár od %{user} <abbr title='%{exact_time}'>pred %{when}</abbr>
+      commented_by_anonymous: Komentoval anonym <abbr title='%{exact_time}'>pred %{when}</abbr>
+      closed_by: Vyriešil %{user} <abbr title='%{exact_time}'>pred %{when}</abbr>
+      closed_by_anonymous: Vyriešil anonym <abbr title='%{exact_time}'>pred %{when}</abbr>
+      hidden_by: Skryl %{user} <abbr title='%{exact_time}'>pred %{when}</abbr>
   changeset:
     changeset_paging_nav:
       showing_page: Stránka %{page}
@@ -359,6 +380,7 @@ sk:
     search_osm_nominatim:
       prefix:
         aerialway:
+          cable_car: Lanovka
           chair_lift: Sedačková lanovka
           drag_lift: Vlek
           station: Lanovková stanica
@@ -371,11 +393,9 @@ sk:
           taxiway: Pojazdová dráha
           terminal: Terminál
         amenity:
-          airport: Letisko
+          animal_shelter: Útulok pre zvieratá
           arts_centre: Kultúrne stredisko
-          artwork: Umelecké dielo
           atm: Bankomat
-          auditorium: Auditórium
           bank: Banka
           bar: Bar
           bbq: Miesto na grilovanie
@@ -383,6 +403,7 @@ sk:
           bicycle_parking: Parkovisko bicyklov
           bicycle_rental: Požičovňa bicyklov
           biergarten: Záhradná krčma
+          boat_rental: Požičovňa lodí
           brothel: Nevestinec
           bureau_de_change: Zmenáreň
           bus_station: Autobusová stanica
@@ -394,7 +415,6 @@ sk:
           charging_station: Nabíjacia stanica
           cinema: Kino
           clinic: Poliklinika
-          club: Klub
           college: Vysoká škola
           community_centre: Kultúrne stredisko
           courthouse: Súd
@@ -415,22 +435,19 @@ sk:
           fuel: Benzínová pumpa
           grave_yard: Cintorín
           gym: Fitnes centrum / telocvičňa
-          hall: Sála
           health_centre: Zdravotné stredisko
           hospital: Nemocnica
-          hotel: Hotel
           hunting_stand: Poľovnícky posed
           ice_cream: Zmrzlina
           kindergarten: Materská škola
           library: Knižnica
           market: Obchod
           marketplace: Tržnica
-          mountain_rescue: Horská služba
+          monastery: Kláštor
           nightclub: Nočný klub
           nursery: Jasle
           nursing_home: Sanatórium
           office: Úrad
-          park: Park
           parking: Parkovisko
           pharmacy: lekáreň
           place_of_worship: Miesto pre bohoslužby
@@ -441,7 +458,6 @@ sk:
           prison: Väzenie
           pub: Krčma
           public_building: Verejná budova
-          public_market: Verejné trhovisko
           reception_area: Recepcia
           recycling: Recyklačné miesto
           restaurant: Reštaurácia
@@ -450,13 +466,11 @@ sk:
           school: Škola
           shelter: Altánok
           shop: Obchod
-          shopping: Nákupné centrum
           shower: Sprchy
           social_centre: Komunitné centrum
           social_club: Spoločenský klub
           social_facility: Sociálne zariadenie
           studio: Ateliér
-          supermarket: Supermarket
           swimming_pool: Plaváreň, kúpalisko
           taxi: Taxi
           telephone: Verejný telefón
@@ -468,8 +482,6 @@ sk:
           veterinary: Veterinárna ordinácia
           village_hall: Spoločenská miestnosť
           waste_basket: Odpadkový kôš
-          wifi: Wi-Fi prístup
-          WLAN: Wi-Fi prístup
           youth_centre: Mládežnícke centrum
         boundary:
           administrative: Administratívna hranica
@@ -484,22 +496,31 @@ sk:
           "yes": Most
         building:
           "yes": Budova
+        craft:
+          brewery: Pivovar
+          electrician: Elektrikár
+          gardener: Záhradník
+          painter: Maliar
+          photographer: Fotograf
+          plumber: Inštalatér
+          shoemaker: Obuvník
+          tailor: Krajčír
         emergency:
-          fire_hydrant: Požiarny hydrant
+          ambulance_station: Stanica záchrannej služby
+          defibrillator: Defibrilátor
           phone: Núdzový telefón
         highway:
           bridleway: Cesta pre kone
           bus_guideway: Bus so sprievodcom
           bus_stop: Zastávka autobusu
-          byway: Účelová komunikácia
           construction: Cesta vo výstavbe
           cycleway: Cyklistický chodník
+          elevator: Výťah
           emergency_access_point: Stanica prvej pomoci
           footway: Chodník
           ford: Brod
           living_street: Obytná zóna
           milestone: Kilometrovník
-          minor: Vedľajšia cesta
           motorway: Diaľnica
           motorway_junction: Diaľničná križovatka
           motorway_link: Diaľničný privádzač
@@ -510,7 +531,7 @@ sk:
           primary_link: Cesta I. triedy
           proposed: Navrhovaná cesta
           raceway: Pretekárska dráha
-          residential: Ulica
+          residential: Ulica v obytnej štvrti
           rest_area: Odpočívadlo
           road: Cesta
           secondary: Cesta II. triedy
@@ -520,31 +541,35 @@ sk:
           speed_camera: Radar
           steps: Schody
           street_lamp: Pouličná lampa
-          stile: Schodíky cez ohradu
           tertiary: Cesta III. triedy
           tertiary_link: Cesta III. triedy
           track: Nespevnená cesta
+          traffic_signals: Semafor
           trail: Chodník
           trunk: Cesta pre motorové vozidlá
           trunk_link: Privádzač k ceste pre motorové vozidlá
           unclassified: Neklasifikovaná cesta
           unsurfaced: Nespevnená cesta
+          "yes": Cesta
         historic:
           archaeological_site: Archeologické nálezisko
           battlefield: Bojisko
           boundary_stone: Hraničný kameň
-          building: Budova
+          building: Historická budova
+          bunker: Bunker
           castle: Hrad
           church: Kostol
+          city_gate: Mestská brána
           citywalls: Mestské hradby
           fort: Pevnosť
+          heritage: Lokalita historického dedičstva
           house: Dom
           icon: Ikona
           manor: Šľachtické sídlo
           memorial: Pomník
           mine: Baňa
           monument: Pamätník
-          museum: Múzeum
+          roman_road: Rímska cesta
           ruins: Ruina
           tomb: Náhrobok
           tower: Veža
@@ -572,9 +597,6 @@ sk:
           military: Vojenský priestor
           mine: Baňa
           orchard: Sad
-          nature_reserve: Prírodná rezervácia
-          park: Park
-          piste: Zjazdovka
           quarry: Lom
           railway: Železnica
           recreation_ground: Rekreačná oblasť
@@ -585,16 +607,18 @@ sk:
           road: Cesty
           village_green: Verejná zeleň
           vineyard: Vinica
-          wetland: Mokrina
-          wood: Les (neudržiavaný)
         leisure:
           beach_resort: Plážové letovisko
           bird_hide: Vtáčia pozorovateľňa
+          club: Klub
           common: Verejné priestranstvo
+          dog_park: Psí park
           fishing: Rybolov (športový)
+          fitness_centre: Fitnescentrum
           fitness_station: Fitnes zastávka
           garden: Záhrada
           golf_course: Golfové ihrisko
+          horse_riding: Jazda na koni
           ice_rink: Umelé klzisko
           marina: Prístav pre jachty
           miniature_golf: Mini golf
@@ -610,6 +634,12 @@ sk:
           swimming_pool: Plaváreň
           track: Bežecká dráha
           water_park: Aquapark
+        man_made:
+          lighthouse: Maják
+          pipeline: Vodovod
+          tower: Veža
+          works: Továreň
+          "yes": Vytvorené človekom
         military:
           airfield: Vojenské letisko
           barracks: Kasárne
@@ -621,16 +651,15 @@ sk:
           beach: Pláž
           cape: Mys
           cave_entrance: Vstup do jaskyne
-          channel: Kanál
           cliff: Útes, kamenná stena
           crater: Kráter
           dune: Duna
-          feature: Vlastnosť
           fell: Horská pastvina
           fjord: Fjord
           forest: Les (udržiavaný)
           geyser: Gejzír
           glacier: Ľadovec
+          grassland: Trvalé trávne porasty
           heath: Vresovisko
           hill: Kopec
           island: Ostrov
@@ -642,11 +671,11 @@ sk:
           point: Bod
           reef: Bradlo, Skalisko
           ridge: Hrebeň
-          river: Rieka
           rock: Skala
+          saddle: Sedlo
+          sand: Piesok
           scree: Sutina
           scrub: Rúbanisko
-          shoal: Plytčina
           spring: Prameň
           stone: Balvan
           strait: Úžina
@@ -655,7 +684,6 @@ sk:
           volcano: Sopka
           water: Voda
           wetland: Mokrina
-          wetlands: Mokrina
           wood: Les (neudržiavaný)
         office:
           accountant: Účtovník
@@ -715,12 +743,11 @@ sk:
           spur: Železničná vlečka
           station: Železničná stanica
           stop: Železničná zastávka
-          subway: Stanica metra
+          subway: Metro
           subway_entrance: Vchod do metra
           switch: Železničná výhybka
           tram: Električka
           tram_stop: Zastávka električky
-          yard: Železničné depo
         shop:
           alcohol: Mimo povolenia
           antiques: Starožitnosti
@@ -805,16 +832,15 @@ sk:
           camp_site: Kemping
           caravan_site: Autokemping
           chalet: Veľká chata
+          gallery: Galéria
           guest_house: Penzión
           hostel: Ubytovňa, internát
           hotel: Hotel
           information: Informácie
-          lean_to: Prístrešok
           motel: Motel
           museum: Múzeum
           picnic_site: Výletné miesto
           theme_park: Zábavný park
-          valley: Údolie
           viewpoint: Rozhľadňa, výhliadka
           zoo: Zoo
         tunnel:
@@ -824,7 +850,6 @@ sk:
           artificial: Vodný kanál, prieplav
           boatyard: Lodenica
           canal: Kanál
-          connector: Prepojenie vodných ciest
           dam: Priehrada,hrádza
           derelict_canal: Opustený kanál
           ditch: Priekopa
@@ -832,16 +857,14 @@ sk:
           drain: Odvodňovací kanál
           lock: Plavebná komora
           lock_gate: Brána plavebnej komory
-          mineral_spring: Minerálny prameň
           mooring: Kotvisko
           rapids: Pereje
           river: Rieka
-          riverbank: Breh rieky
           stream: Potok
           wadi: Občasné riečisko(Vádí)
           waterfall: Vodopád
-          water_point: Vodný bod
           weir: Splav
+          "yes": Vodná cesta
       admin_levels:
         level2: Štátna hranica
         level4: Hranica kraja (state)
@@ -862,19 +885,6 @@ sk:
     results:
       no_results: Neboli nájdené žiadne výsledky
       more_results: Viac výsledkov
-    distance:
-      one: asi 1 km
-      zero: menej ako 1 km
-      other: asi %{count} km
-    direction:
-      south_west: juhozápad
-      south: juh
-      south_east: juhovýchod
-      east: východ
-      north_east: severovýchod
-      north: sever
-      north_west: severozápad
-      west: západ
   layouts:
     logo:
       alt_text: Logo OpenStreetMap
@@ -1048,12 +1058,23 @@ sk:
     title: Nahlásiť problém / Opraviť mapu
     how_to_help:
       title: Ako pomôcť
+      join_the_community:
+        title: Pripojte sa ku komunite
   help_page:
     welcome:
       title: Vitajte na OSM
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Sk:Beginners%27_guide
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
+    forums:
+      title: Fóra
+    irc:
+      title: IRC
+    wiki:
+      url: http://wiki.openstreetmap.org/
+      title: wiki.openstreetmap.org
   about_page:
     next: Ďalej
     partners_title: Partneri
@@ -1129,6 +1150,8 @@ sk:
       anonymous: Anonymný používateľ
       greeting: Ahoj,
       details: Viac podrobností o poznámke môžete nájsť nájsť na %{url}.
+    changeset_comment_notification:
+      greeting: Ahoj,
   message:
     inbox:
       title: Doručená pošta
@@ -1242,6 +1265,10 @@ sk:
       close: Zavrieť
     search:
       search: Hľadať
+      get_directions: Nájsť trasu
+      get_directions_title: Vyhľadať trasu medzi dvoma bodmi
+      from: Odkiaľ
+      to: Kam
       where_am_i: Kde som?
       where_am_i_title: Opis aktuálnej polohy pomocou vyhľadávača
       submit_text: hľ.
@@ -1253,9 +1280,7 @@ sk:
           primary: Cesta prvej triedy
           secondary: Cesta druhej triedy
           unclassified: Neklasifikovaná cesta
-          unsurfaced: Nespevnená cesta
           track: Lesná, poľná cesta
-          byway: Súkromná cesta
           bridleway: Chodník pre kone
           cycleway: Cyklotrasa
           footway: Chodník pre peších
@@ -1279,7 +1304,6 @@ sk:
           golf: Golfové ihrisko
           park: Park
           resident: Obytná oblasť
-          tourist: Turistická atrakcia
           common:
           - Pastvina
           - lúka
@@ -1309,7 +1333,6 @@ sk:
           tunnel: Čiarkovaný obrys = tunel
           bridge: Čireny obrys = most
           private: Súkromný prístup
-          permissive: Voľný prístup
           destination: Prejazd zakázaný
           construction: Cesta vo výstavbe
     richtext_area:
@@ -1533,7 +1556,6 @@ sk:
       register now: Zaregistrujte se
       with username: 'Už máte na OpenStreetMap konto? Prihláste sa svojim menom a
         heslom:'
-      with openid: 'Alternatívne sa môžete prihlásiť svojím OpenID:'
       new to osm: Ste na OpenStreetMap nový?
       to make changes: Ak chcete upravovať OpenStreetMap, musíte mať používateľské
         konto.
@@ -1545,25 +1567,29 @@ sk:
       account is suspended: Ľutujeme, ale vaše konto bolo pozastavené vzhľadom na
         podozrivú aktivitu.<br>Ak to chcete riešiť, môžete kontaktovať <a href="%{webmaster}">webmastera</a>.
       auth failure: Ľutujeme, s uvedenými údajmi sa nie je možné prihlásiť.
-      openid missing provider: Ľutujeme, nepodarilo se spojiť s vaším OpenID poskytovateľom
-      openid invalid: Ľutujeme, ale vaše OpenID sa zdá byť nesprávne
       openid_logo_alt: Prihlásenie pomocou OpenID
-      openid_providers:
+      auth_providers:
         openid:
-          title: Prihlásenie pomocou OpenID
-          alt: Prihlásenie pomocou OpenID URL
+          title: Prihlásenie sa pomocou OpenID
+          alt: Prihlásenie sa pomocou OpenID URL
         google:
-          title: Prihlásenie pomocou Google
-          alt: Prihlásenie pomocou Google OpenID
+          title: Prihlásenie sa pomocou Google
+          alt: Prihlásenie sa pomocou Google OpenID
+        facebook:
+          title: Prihlásenie sa pomocou Facebooku
+          alt: Prihlásenie sa pomocou účtu na Facebooku
+        windowslive:
+          title: Prihlásenie sa pomocou Windows Live
+          alt: Prihlásenie sa pomocou účtu Windows Live
         yahoo:
-          title: Prihlásenie pomocou Yahoo
-          alt: Prihlásenie pomocou Yahoo OpenID
+          title: Prihlásenie sa pomocou Yahoo
+          alt: Prihlásenie sa pomocou Yahoo OpenID
         wordpress:
-          title: Prihlásenie pomocou Wordpress
-          alt: Prihlásenie pomocou Wordpress OpenID
+          title: Prihlásenie sa pomocou Wordpress
+          alt: Prihlásenie sa pomocou Wordpress OpenID
         aol:
-          title: Prihlásenie pomocou AOL
-          alt: Prihlásenie pomocou AOL OpenID
+          title: Prihlásenie sa pomocou AOL
+          alt: Prihlásenie sa pomocou AOL OpenID
     logout:
       title: Odhlásenie
       heading: Odhlásenie z OpenStreetMap
@@ -1603,22 +1629,8 @@ sk:
       display name: 'Zobrazované meno:'
       display name description: Vaše verejne zobrazené meno užívateľa. Môžete ho potom
         zmeniť v nastaveniach.
-      openid: '%{logo} OpenID:'
       password: 'Heslo:'
       confirm password: 'Potvrdiť heslo:'
-      use openid: Prípadne sa môžete prihlásiť pomocou %{logo} OpenID
-      openid no password: S OpenID nie je heslo potrebné. Niektoré ďalšie nástroje
-        alebo servery ho však vyžadovať môžu.
-      openid association: |-
-        <p>Vaše OpenID zatiaľ nebolo prepojené s kontom na OpenStreetMap.</p>
-        <ul>
-          <li>Ak ste na OpenStreetMap nový, vytvorte si konto pomocou formulára nižšie.</li>
-          <li>
-           Ak už konto máte, môžete sa prihlásiť
-           pomocou používateľského mena a hesla a následne ho
-           v používateľskom nastavení prepojiť s OpenID.
-          </li>
-        </ul>
       continue: Zaregistrovať sa
       terms accepted: Ďakujeme za odsúhlasenie nových podmienok prispievania!
       terms declined: Je nám ľúto, že ste sa rozhodli neprijať nové Podmienky prispievania.
@@ -1726,7 +1738,6 @@ sk:
       new email address: 'Nová e-mailová adresa:'
       email never displayed publicly: (nikde se verejne nezobrazuje)
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/CS:OpenID
         link text: čo to znamená?
       public editing:
@@ -1788,6 +1799,7 @@ sk:
       press confirm button: Stlačte tlačítko na potvrdenie dole, pre aktiváciu vášho
         účtu.
       button: Potvrdiť
+      success: Váš účet je založený, ďakujeme, že ste sa zapísali!
       already active: Toto používateľské konto už bolo potvrdené.
       unknown token: Zadaný potvrdzovací kód vypršal alebo neexistuje.
       reconfirm_html: Ak potrebujete, aby sme vám potvrdzovací e-mail poslali znova,
@@ -1962,6 +1974,8 @@ sk:
       heading: '%{block_on} zablokovaný používateľom %{block_by}'
       time_future: Končí o %{time}
       time_past: Ukončené pred %{time}
+      created: Vytvorené
+      ago: pred %{time}
       status: Stav
       show: Zobraziť
       edit: Upraviť
@@ -1972,9 +1986,14 @@ sk:
       revoker: 'Odvolal:'
       needs_view: Aby sa blok zmazal, požívateľ sa musí najprv prihlásiť.
   note:
+    description:
+      opened_at_html: Vytvorené pred %{when}
     mine:
       creator: Autor
       description: Popis
+      created_at: Vytvorené
+      last_changed: Posledná zmena
+      ago_html: pred %{when}
   javascripts:
     close: Zavrieť
     share:
@@ -2024,6 +2043,10 @@ sk:
       edit_disabled_tooltip: Pre editáciu priblížte mapu
       createnote_tooltip: Pridať do mapy poznámku
       createnote_disabled_tooltip: Pre vloženie poznámky priblížte mapu
+    changesets:
+      show:
+        hide_comment: skryť
+        unhide_comment: zobraziť
     notes:
       new:
         intro: Aby sme mohli mapu spresniť, zobrazí sa vami zadaná informácia ostatným
@@ -2032,6 +2055,22 @@ sk:
         add: Pridať poznámku
       show:
         hide: Skryť
+    directions:
+      engines:
+        graphhopper_bicycle: Bicykel (GraphHopper)
+        graphhopper_foot: Pešo (GraphHopper)
+        mapquest_bicycle: Bicykel (MapQuest)
+        mapquest_car: Automobil (MapQuest)
+        mapquest_foot: Pešo (MapQuest)
+        osrm_car: Automobil (OSRM)
+      directions: Trasa
+      distance: Vzdialenosť
+      errors:
+        no_route: Nepodarilo sa nájsť trasu medzi týmito miestami.
+        no_place: Ospravedlňujeme sa - nepodarilo sa nájsť toto miesto.
+      instructions:
+        unnamed: nepomenované
+      time: Čas
   redaction:
     edit:
       description: Popis

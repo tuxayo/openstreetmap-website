@@ -1,36 +1,36 @@
-require 'test_helper'
+require "test_helper"
 
 class RelationTagTest < ActiveSupport::TestCase
   api_fixtures
-  
+
   def test_relation_tag_count
-    assert_equal 9, RelationTag.count
+    assert_equal 10, RelationTag.count
   end
-  
+
   def test_length_key_valid
     key = "k"
     (0..255).each do |i|
       tag = RelationTag.new
       tag.relation_id = 1
-      tag.k = key*i
+      tag.k = key * i
       tag.v = "v"
       assert tag.valid?
     end
   end
-  
+
   def test_length_value_valid
     val = "v"
     (0..255).each do |i|
       tag = RelationTag.new
       tag.relation_id = 1
       tag.k = "k"
-      tag.v = val*i
+      tag.v = val * i
       assert tag.valid?
     end
   end
-  
+
   def test_length_key_invalid
-    ["k"*256].each do |i|
+    ["k" * 256].each do |i|
       tag = RelationTag.new
       tag.relation_id = 1
       tag.k = i
@@ -39,9 +39,9 @@ class RelationTagTest < ActiveSupport::TestCase
       assert tag.errors[:k].any?
     end
   end
-  
+
   def test_length_value_invalid
-    ["v"*256].each do |i|
+    ["v" * 256].each do |i|
       tag = RelationTag.new
       tag.relation_id = 1
       tag.k = "k"
@@ -50,13 +50,13 @@ class RelationTagTest < ActiveSupport::TestCase
       assert tag.errors[:v].any?
     end
   end
-  
+
   def test_empty_tag_invalid
     tag = RelationTag.new
     assert !tag.valid?, "Empty relation tag should be invalid"
     assert tag.errors[:relation].any?
   end
-  
+
   def test_uniquness
     tag = RelationTag.new
     tag.relation_id = current_relation_tags(:t1).relation_id
@@ -64,18 +64,18 @@ class RelationTagTest < ActiveSupport::TestCase
     tag.v = current_relation_tags(:t1).v
     assert tag.new_record?
     assert !tag.valid?
-    assert_raise(ActiveRecord::RecordInvalid) {tag.save!}
+    assert_raise(ActiveRecord::RecordInvalid) { tag.save! }
     assert tag.new_record?
   end
 
   ##
   # test that tags can be updated and saved uniquely, i.e: tag.save!
-  # only affects the single tag that the activerecord object 
+  # only affects the single tag that the activerecord object
   # represents. this amounts to testing that the primary key is
   # unique.
   #
   # Commenting this out - I attempted to fix it, but composite primary keys
-  # wasn't playing nice with the column already called :id. Seemed to be 
+  # wasn't playing nice with the column already called :id. Seemed to be
   # impossible to have validations on the :id column. If someone knows better
   # please fix, otherwise this test is shelved.
   #
