@@ -2,6 +2,7 @@ class ChangesetComment < ActiveRecord::Base
   belongs_to :changeset
   belongs_to :author, :class_name => "User"
 
+# Upstream was kept, with the addition of the scope :visible
 <<<<<<< HEAD
   validates_presence_of :id, :on => :update # is it necessary?
   validates_uniqueness_of :id
@@ -11,7 +12,7 @@ class ChangesetComment < ActiveRecord::Base
   validates_associated :author
   validates :visible, :inclusion => { :in => [true,false] }
 
-  scope :visible, -> { where(visible: true) }
+  scope :visible, -> { where(visible: true) } # THIS WAS KEPT
 
 ||||||| merged common ancestors
   validates_presence_of :id, :on => :update # is it necessary?

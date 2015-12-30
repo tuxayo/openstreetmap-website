@@ -126,6 +126,7 @@ CREATE TYPE user_status_enum AS ENUM (
 
 CREATE FUNCTION maptile_for_point(bigint, bigint, integer) RETURNS integer
     LANGUAGE c STRICT
+# Upstream was kept
 <<<<<<< HEAD
     AS '/tmp/libpgosm', 'maptile_for_point';
 ||||||| merged common ancestors
@@ -141,6 +142,7 @@ CREATE FUNCTION maptile_for_point(bigint, bigint, integer) RETURNS integer
 
 CREATE FUNCTION tile_for_point(integer, integer) RETURNS bigint
     LANGUAGE c STRICT
+# Upstream was kept
 <<<<<<< HEAD
     AS '/tmp/libpgosm', 'tile_for_point';
 ||||||| merged common ancestors
@@ -155,6 +157,7 @@ CREATE FUNCTION tile_for_point(integer, integer) RETURNS bigint
 --
 
 CREATE FUNCTION xid_to_int4(xid) RETURNS integer
+# Upstream was kept, MIGHT BREAK SOMETHING BECAUSE IMMUTABLE WAS REMOVED
 <<<<<<< HEAD
     LANGUAGE c STRICT
     AS '/tmp/libpgosm', 'xid_to_int4';

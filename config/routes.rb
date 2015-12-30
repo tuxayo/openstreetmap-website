@@ -1,5 +1,6 @@
 OpenStreetMap::Application.routes.draw do
   # API
+# Upstream was kept, the conflict seems to have been triggered by a removed empty line
 <<<<<<< HEAD
   match 'api/capabilities' => 'api#capabilities', :via => :get
   match 'api/0.6/capabilities' => 'api#capabilities', :via => :get

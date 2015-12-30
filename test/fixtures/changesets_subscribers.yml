@@ -1,6 +1,7 @@
 t1:
   changeset_id: 8
   subscriber_id: 2
+# I kept upstream so the test relying on t2 should fail
 <<<<<<< HEAD
 t2:
   changeset_id: 3
