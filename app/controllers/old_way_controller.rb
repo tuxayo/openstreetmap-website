@@ -1,7 +1,6 @@
 class OldWayController < OldController
-
   private
-  
+
   def lookup_old_element
     @old_element = OldWay.find([params[:id], params[:version]])
   end

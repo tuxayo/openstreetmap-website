@@ -184,14 +184,17 @@ img.tile-removing {
     opacity: 0;
 }
 
-/* base styles */
-path {
-    fill: none;
-}
+use { pointer-events: none; }
 
-use {
-    pointer-events: none;
-}
+/* base styles */
+.layer path:not(.oneway) { fill: none; }     /* IE needs :not(.oneway) */
+
+/* the above fill: none rule affects paths in <use> shadow dom only in Firefox */
+.layer use.icon path { fill: #333; }                       /* FF svg Maki icons */
+.layer .turn use path { fill: #000; }                      /* FF turn restriction icons */
+#turn-only-shape2, #turn-only-u-shape2 { fill: #7092FF; }  /* FF turn-only, turn-only-u */
+#turn-no-shape2, #turn-no-u-shape2     { fill: #E06D5F; }  /* FF turn-no, turn-no-u */
+#turn-yes-shape2, #turn-yes-u-shape2   { fill: #8CD05F; }  /* FF turn-yes, turn-yes-u */
 
 g.point .shadow,
 g.vertex .shadow,
@@ -259,6 +262,7 @@ g.midpoint .fill {
     opacity: .7;
 }
 
+g.midpoint.tag-highway-corridor .fill,
 g.midpoint.tag-highway-pedestrian .fill,
 g.midpoint.tag-highway-steps .fill,
 g.midpoint.tag-highway-path .fill,
@@ -309,13 +313,18 @@ g.vertex.selected .shadow {
 
 /* lines */
 
+.preset-icon .icon.other-line {
+    color: #fff;
+    fill: #777;
+}
+
 path.line {
     stroke-linecap: round;
     stroke-linejoin: bevel;
 }
 
 path.stroke {
-    stroke: black;
+    stroke: #000;
     stroke-width: 4;
 }
 
@@ -334,15 +343,17 @@ path.shadow.selected {
 }
 
 path.line.stroke {
-    stroke: white;
+    stroke: #fff;
     stroke-width: 2;
 }
 
 path.area.stroke {
-    stroke: white;
+    stroke: #fff;
     stroke-width: 1;
 }
 path.area.fill {
+    stroke-width: 0;
+    stroke: rgba(255, 255, 255, 0.3);
     fill: rgba(255, 255, 255, 0.3);
     fill-rule: evenodd;
 }
@@ -355,6 +366,7 @@ path.stroke.tag-natural {
     stroke: rgb(182, 225, 153);
 }
 path.fill.tag-natural {
+    stroke: rgba(182, 225, 153, 0.3);
     fill: rgba(182, 225, 153, 0.3);
 }
 .preset-icon-fill-area.tag-natural {
@@ -362,12 +374,52 @@ path.fill.tag-natural {
     background-color: rgba(182, 225, 153, 0.3);
 }
 
-path.stroke.tag-natural-water {
+path.stroke.tag-landuse,
+path.stroke.tag-natural-wood,
+path.stroke.tag-natural-tree,
+path.stroke.tag-natural-grassland,
+path.stroke.tag-natural-grass,
+path.stroke.tag-leisure-nature_reserve,
+path.stroke.tag-leisure-pitch,
+path.stroke.tag-leisure-park {
+    stroke: rgb(140, 208, 95);
+}
+path.fill.tag-landuse,
+path.fill.tag-natural-wood,
+path.fill.tag-natural-tree,
+path.fill.tag-natural-grassland,
+path.fill.tag-natural-grass,
+path.fill.tag-leisure-nature_reserve,
+path.fill.tag-leisure-pitch,
+path.fill.tag-leisure-park {
+    stroke: rgba(140, 208, 95, 0.3);
+    fill: rgba(140, 208, 95, 0.3);
+}
+.preset-icon-fill-area.tag-landuse,
+.preset-icon-fill-area.tag-natural-wood,
+.preset-icon-fill-area.tag-natural-tree,
+.preset-icon-fill-area.tag-natural-grassland,
+.preset-icon-fill-area.tag-natural-grass,
+.preset-icon-fill-area.tag-leisure-nature_reserve,
+.preset-icon-fill-area.tag-leisure-pitch,
+.preset-icon-fill-area.tag-leisure-park {
+    border-color: rgb(140, 208, 95);
+    background-color: rgba(140, 208, 95, 0.3);
+}
+
+path.stroke.tag-natural-water,
+path.stroke.tag-landuse-basin,
+path.stroke.tag-landuse-reservoir {
     stroke: rgb(119, 211, 222);
 }
+path.fill.tag-landuse-basin,
+path.fill.tag-landuse-reservoir,
 path.fill.tag-natural-water {
+    stroke: rgba(119, 211, 222, 0.3);
     fill: rgba(119, 211, 222, 0.3);
 }
+.preset-icon-fill-area.tag-landuse-basin,
+.preset-icon-fill-area.tag-landuse-reservoir,
 .preset-icon-fill-area.tag-natural-water {
     border-color: rgb(119, 211, 222);
     background-color: rgba(119, 211, 222, 0.3);
@@ -385,6 +437,7 @@ path.fill.tag-amenity-kindergarten,
 path.fill.tag-amenity-school,
 path.fill.tag-amenity-college,
 path.fill.tag-amenity-university {
+    stroke: rgba(255, 255, 148, 0.15);
     fill: rgba(255, 255, 148, 0.15);
 }
 .preset-icon-fill-area.tag-amenity-childcare,
@@ -396,53 +449,16 @@ path.fill.tag-amenity-university {
     background-color: rgba(255, 255, 148, 0.15);
 }
 
-path.stroke.tag-landuse,
-path.stroke.tag-natural-wood,
-path.stroke.tag-natural-tree,
-path.stroke.tag-natural-grassland,
-path.stroke.tag-natural-grass,
-path.stroke.tag-leisure-pitch,
-path.stroke.tag-leisure-park {
-    stroke: rgb(140, 208, 95);
-}
-path.fill.tag-landuse,
-path.fill.tag-natural-wood,
-path.fill.tag-natural-tree,
-path.fill.tag-natural-grassland,
-path.fill.tag-natural-grass,
-path.fill.tag-leisure-pitch,
-path.fill.tag-leisure-park {
-    fill: rgba(140, 208, 95, 0.2);
-}
-.preset-icon-fill-area.tag-landuse,
-.preset-icon-fill-area.tag-natural-wood,
-.preset-icon-fill-area.tag-natural-tree,
-.preset-icon-fill-area.tag-natural-grassland,
-.preset-icon-fill-area.tag-natural-grass,
-.preset-icon-fill-area.tag-leisure-pitch,
-.preset-icon-fill-area.tag-leisure-park {
-    border-color: rgb(140, 208, 95);
-    background-color: rgba(140, 208, 95, 0.2);
-}
-
-path.fill.tag-landuse-residential,
-path.fill.tag-landuse-retail,
-path.fill.tag-landuse-commercial,
-path.fill.tag-landuse-industrial {
-    fill: none;
-    stroke-width: 60px;
-}
-
 path.stroke.tag-landuse-residential {
     stroke: rgb(196, 189, 25);
 }
 path.fill.tag-landuse-residential {
     stroke: rgba(196, 189, 25, 0.3);
+    fill: rgba(196, 189, 25, 0.3);
 }
 .preset-icon-fill-area.tag-landuse-residential {
     border-color: rgb(196, 189, 25);
-    background: none;
-    box-shadow: inset 0 0 0 5px rgba(196, 189, 25, 0.3);
+    background: rgba(196, 189, 25, 0.3);
 }
 
 path.stroke.tag-landuse-retail,
@@ -452,12 +468,12 @@ path.stroke.tag-landuse-commercial {
 path.fill.tag-landuse-retail,
 path.fill.tag-landuse-commercial {
     stroke: rgba(214, 136, 26, 0.3);
+    fill: rgba(214, 136, 26, 0.3);
 }
 .preset-icon-fill-area.tag-landuse-retail,
 .preset-icon-fill-area.tag-landuse-commercial {
     border-color: rgb(214, 136, 26);
-    background: none;
-    box-shadow: inset 0 0 0 5px rgba(214, 136, 26, 0.3);
+    background-color: rgba(214, 136, 26, 0.3);
 }
 
 path.stroke.tag-landuse-industrial {
@@ -465,31 +481,18 @@ path.stroke.tag-landuse-industrial {
 }
 path.fill.tag-landuse-industrial {
     stroke: rgba(228, 164, 245, 0.3);
+    fill: rgba(228, 164, 245, 0.3);
 }
 .preset-icon-fill-area.tag-landuse-industrial {
     border-color: rgb(228, 164, 245);
-    background: none;
-    box-shadow: inset 0 0 0 5px rgba(228, 164, 245, 0.3);
-}
-
-path.stroke.tag-landuse-basin,
-path.stroke.tag-landuse-reservoir {
-    stroke: rgb(119, 211, 222);
-}
-path.fill.tag-landuse-basin,
-path.fill.tag-landuse-reservoir {
-    fill: rgba(119, 211, 222, 0.3);
-}
-.preset-icon-fill-area.tag-landuse-basin,
-.preset-icon-fill-area.tag-landuse-reservoir {
-    border-color: rgb(119, 211, 222);
-    background-color: rgba(119, 211, 222, 0.3);
+    background-color: rgba(228, 164, 245, 0.3);
 }
 
 path.stroke.tag-landuse-quarry {
     stroke: rgb(166, 149, 123);
 }
 path.fill.tag-landuse-quarry {
+    stroke: rgba(166, 149, 123, 0.2);
     fill: rgba(166, 149, 123, 0.2);
 }
 .preset-icon-fill-area.tag-landuse-quarry {
@@ -501,6 +504,7 @@ path.stroke.tag-landuse-landfill {
     stroke: rgb(255, 153, 51);
 }
 path.fill.tag-landuse-landfill {
+    stroke: rgba(255, 153, 51, 0.2);
     fill: rgba(255, 153, 51, 0.2);
 }
 .preset-icon-fill-area.tag-landuse-landfill {
@@ -508,13 +512,13 @@ path.fill.tag-landuse-landfill {
     background-color: rgba(255, 153, 51, 0.2);
 }
 
-path.stroke.tag-landuse-construction {
-    stroke: rgb(196, 189, 25);
-}
 .pattern-color-construction {
     fill: rgba(196, 189, 25, 0.2);
 }
-.preset-icon-fill-area.tag-landuse-construction {
+path.stroke.tag-landuse.tag-status {
+    stroke: rgb(196, 189, 25);
+}
+.preset-icon-fill-area.tag-landuse.tag-status {
     border-color: rgb(196, 189, 25);
     background-color: rgba(196, 189, 25, 0.2);
 }
@@ -522,49 +526,53 @@ path.stroke.tag-landuse-construction {
 path.stroke.tag-landuse-military {
     stroke: rgb(214, 136, 26);
 }
+path.fill.tag-landuse-military {
+    stroke: rgba(214, 136, 26, 0.2);
+    fill: rgba(214, 136, 26, 0.2);
+}
 .preset-icon-fill-area.tag-landuse-military {
     border-color: rgb(214, 136, 26);
     background-color: rgba(214, 136, 26, 0.2);
 }
 
-path.stroke.tag-natural-wetland {
-    stroke: rgb(182, 225, 153);
-}
 .pattern-color-wetland {
     fill: rgba(182, 225, 153, 0.2);
+}
+path.stroke.tag-natural-wetland {
+    stroke: rgb(182, 225, 153);
 }
 .preset-icon-fill-area.tag-natural-wetland {
     border-color: rgb(182, 225, 153);
     background-color: rgba(182, 225, 153, 0.2);
 }
 
-path.stroke.tag-landuse-meadow {
-    stroke: rgb(182, 225, 153);
-}
 .pattern-color-meadow {
     fill: rgba(182, 225, 153, 0.2);
+}
+path.stroke.tag-landuse-meadow {
+    stroke: rgb(182, 225, 153);
 }
 .preset-icon-fill-area.tag-landuse-meadow {
     border-color: rgb(182, 225, 153);
     background-color: rgba(182, 225, 153, 0.2);
 }
 
-path.stroke.tag-natural-beach {
-    stroke: rgb(255, 255, 126);
-}
 .pattern-color-beach {
     fill: rgba(255, 255, 126, 0.2);
+}
+path.stroke.tag-natural-beach {
+    stroke: rgb(255, 255, 126);
 }
 .preset-icon-fill-area.tag-natural-beach {
     border-color: rgb(255, 255, 126);
     background-color: rgba(255, 255, 126, 0.2);
 }
 
-path.stroke.tag-natural-scrub {
-    stroke: rgb(219, 240, 139);
-}
 .pattern-color-scrub {
     fill: rgba(219, 240, 139, 0.2);
+}
+path.stroke.tag-natural-scrub {
+    stroke: rgb(219, 240, 139);
 }
 .preset-icon-fill-area.tag-natural-scrub {
     border-color: rgb(219, 240, 139);
@@ -575,29 +583,33 @@ path.stroke.tag-natural-scrub {
 .pattern-color-farmland {
     fill: rgba(140, 208, 95, 0.2);
 }
+path.stroke.tag-landuse-farm,
+path.stroke.tag-landuse-farmland {
+    stroke: rgb(140, 208, 95);
+}
 .preset-icon-fill-area.tag-landuse-farm,
 .preset-icon-fill-area.tag-landuse-farmland {
     background-color: rgba(140, 208, 95, 0.2);
 }
 
-.pattern-color-cemetery {
-    fill: rgba(140, 208, 95, 0.2)
-}
-.preset-icon-fill-area.tag-landuse-cemetery {
-    background-color: rgba(140, 208, 95, 0.2);
-}
-
+.pattern-color-cemetery,
 .pattern-color-orchard {
-    fill: rgba(140, 208, 95, 0.2)
+    fill: rgba(140, 208, 95, 0.2);
 }
+path.stroke.tag-landuse-cemetery,
+path.stroke.tag-landuse-orchard {
+    stroke: rgb(140, 208, 95);
+}
+.preset-icon-fill-area.tag-landuse-cemetery,
 .preset-icon-fill-area.tag-landuse-orchard {
-    background-color: rgba(140, 208, 95, 0.8);
+    background-color: rgba(140, 208, 95, 0.2);
 }
 
 path.stroke.tag-amenity-parking {
     stroke: rgb(170, 170, 170);
 }
 path.fill.tag-amenity-parking {
+    stroke: rgba(170, 170, 170, 0.3);
     fill: rgba(170, 170, 170, 0.3);
 }
 .preset-icon-fill-area.tag-amenity-parking {
@@ -605,12 +617,21 @@ path.fill.tag-amenity-parking {
     background-color: rgba(170, 170, 170, 0.3);
 }
 
-path.fill.tag-place,
-path.fill.tag-boundary {
-    fill: none;
+
+/* highway areas */
+
+path.stroke.area.tag-highway {
+    stroke:#fff;
+    stroke-dasharray: none;
+    stroke-width: 2;
 }
 
-/* highways */
+/* wide highways */
+
+.preset-icon .icon.tag-highway.other-line {
+    color: #fff;
+    fill: #777;
+}
 
 path.shadow.tag-highway {
     stroke-width:16;
@@ -634,195 +655,446 @@ path.stroke.tag-highway {
     stroke-width:4;
 }
 
+.preset-icon .icon.highway-motorway,
+.preset-icon .icon.highway-motorway-link {
+    color: #CF2081;
+    fill: #70372f;
+}
 path.stroke.tag-highway-motorway,
 path.stroke.tag-highway-motorway_link,
-path.stroke.tag-construction-motorway {
-    stroke:#58a9ed;
+path.stroke.tag-motorway {
+    stroke:#CF2081;
 }
-
 path.casing.tag-highway-motorway,
 path.casing.tag-highway-motorway_link,
-path.casing.tag-construction-motorway {
-    stroke:#2c5476;
-}
-
-path.stroke.tag-highway-trunk,
-path.stroke.tag-highway-trunk_link,
-path.stroke.tag-construction-trunk {
-    stroke:#8cd05f;
-}
-path.casing.tag-highway-trunk,
-path.casing.tag-highway-trunk_link,
-path.casing.tag-construction-trunk {
-    stroke:#46682f;
-}
-
-path.stroke.tag-highway-primary,
-path.stroke.tag-highway-primary_link,
-path.stroke.tag-construction-primary {
-    stroke:#e06d5f;
-}
-path.casing.tag-highway-primary,
-path.casing.tag-highway-primary_link,
-path.casing.tag-construction-primary {
+path.casing.tag-motorway {
     stroke:#70372f;
 }
 
+.preset-icon .icon.highway-trunk,
+.preset-icon .icon.highway-trunk-link {
+    color: #DD2F22;
+    fill: #70372f;
+}
+path.stroke.tag-highway-trunk,
+path.stroke.tag-highway-trunk_link,
+path.stroke.tag-trunk {
+    stroke:#DD2F22;
+}
+path.casing.tag-highway-trunk,
+path.casing.tag-highway-trunk_link,
+path.casing.tag-trunk {
+    stroke:#70372f;
+}
+
+.preset-icon .icon.highway-primary,
+.preset-icon .icon.highway-primary-link {
+    color: #F99806;
+    fill: #70372f;
+}
+path.stroke.tag-highway-primary,
+path.stroke.tag-highway-primary_link,
+path.stroke.tag-primary {
+    stroke:#F99806;
+}
+path.casing.tag-highway-primary,
+path.casing.tag-highway-primary_link,
+path.casing.tag-primary {
+    stroke:#70372f;
+}
+
+.preset-icon .icon.highway-secondary,
+.preset-icon .icon.highway-secondary-link {
+    color: #F3F312;
+    fill: #70372f;
+}
 path.stroke.tag-highway-secondary,
 path.stroke.tag-highway-secondary_link,
-path.stroke.tag-construction-secondary {
-    stroke:#eab056;
+path.stroke.tag-secondary {
+    stroke:#F3F312;
 }
 path.casing.tag-highway-secondary,
 path.casing.tag-highway-secondary_link,
-path.casing.tag-construction-secondary {
-    stroke:#75582b;
+path.casing.tag-secondary {
+    stroke:#70372f;
 }
 
+.preset-icon .icon.highway-tertiary,
+.preset-icon .icon.highway-tertiary-link {
+    color: #FFF9B3;
+    fill: #70372f;
+}
 path.stroke.tag-highway-tertiary,
 path.stroke.tag-highway-tertiary_link,
-path.stroke.tag-construction-tertiary {
-    stroke:#ffff7e;
+path.stroke.tag-tertiary {
+    stroke:#FFF9B3;
 }
 path.casing.tag-highway-tertiary,
 path.casing.tag-highway-tertiary_link,
-path.casing.tag-construction-tertiary {
+path.casing.tag-tertiary {
+    stroke:#70372f;
+}
+
+.legacy-carto .preset-icon .icon.highway-motorway,
+.legacy-carto .preset-icon .icon.highway-motorway-link {
+    color: #58a9ed;
+    fill: #2c5476;
+}
+.legacy-carto path.stroke.tag-highway-motorway,
+.legacy-carto path.stroke.tag-highway-motorway_link,
+.legacy-carto path.stroke.tag-motorway {
+    stroke:#58a9ed;
+}
+.legacy-carto path.casing.tag-highway-motorway,
+.legacy-carto path.casing.tag-highway-motorway_link,
+.legacy-carto path.casing.tag-motorway {
+    stroke:#2c5476;
+}
+
+.legacy-carto .preset-icon .icon.highway-trunk,
+.legacy-carto .preset-icon .icon.highway-trunk-link {
+    color: #8cd05f;
+    fill: #46682f;
+}
+.legacy-carto path.stroke.tag-highway-trunk,
+.legacy-carto path.stroke.tag-highway-trunk_link,
+.legacy-carto path.stroke.tag-trunk {
+    stroke:#8cd05f;
+}
+.legacy-carto path.casing.tag-highway-trunk,
+.legacy-carto path.casing.tag-highway-trunk_link,
+.legacy-carto path.casing.tag-trunk {
+    stroke:#46682f;
+}
+
+.legacy-carto .preset-icon .icon.highway-primary,
+.legacy-carto .preset-icon .icon.highway-primary-link {
+    color: #e06d5f;
+    fill: #70372f;
+}
+.legacy-carto path.stroke.tag-highway-primary,
+.legacy-carto path.stroke.tag-highway-primary_link,
+.legacy-carto path.stroke.tag-primary {
+    stroke:#e06d5f;
+}
+.legacy-carto path.casing.tag-highway-primary,
+.legacy-carto path.casing.tag-highway-primary_link,
+.legacy-carto path.casing.tag-primary {
+    stroke:#70372f;
+}
+
+.legacy-carto .preset-icon .icon.highway-secondary,
+.legacy-carto .preset-icon .icon.highway-secondary-link {
+    color: #eab056;
+    fill: #75582b;
+}
+.legacy-carto path.stroke.tag-highway-secondary,
+.legacy-carto path.stroke.tag-highway-secondary_link,
+.legacy-carto path.stroke.tag-secondary {
+    stroke:#eab056;
+}
+.legacy-carto path.casing.tag-highway-secondary,
+.legacy-carto path.casing.tag-highway-secondary_link,
+.legacy-carto path.casing.tag-secondary {
+    stroke:#75582b;
+}
+
+.legacy-carto .preset-icon .icon.highway-tertiary,
+.legacy-carto .preset-icon .icon.highway-tertiary-link {
+    color: #ffff7e;
+    fill: #7f7f3f;
+}
+.legacy-carto path.stroke.tag-highway-tertiary,
+.legacy-carto path.stroke.tag-highway-tertiary_link,
+.legacy-carto path.stroke.tag-tertiary {
+    stroke:#ffff7e;
+}
+.legacy-carto path.casing.tag-highway-tertiary,
+.legacy-carto path.casing.tag-highway-tertiary_link,
+.legacy-carto path.casing.tag-tertiary {
     stroke:#7f7f3f;
 }
 
+.preset-icon .icon.highway-unclassified {
+    color: #eaeaea;
+    fill: #444;
+}
 path.stroke.tag-highway-unclassified,
-path.stroke.tag-construction-unclassified {
+path.stroke.tag-unclassified {
     stroke:#eaeaea;
 }
 path.casing.tag-highway-unclassified,
-path.casing.tag-construction-unclassified {
+path.casing.tag-unclassified {
     stroke:#444;
 }
 
+.preset-icon .icon.highway-residential {
+    color: #fff;
+    fill: #444;
+}
 path.stroke.tag-highway-residential,
-path.stroke.tag-construction-residential {
+path.stroke.tag-residential {
     stroke:#fff;
 }
 path.casing.tag-highway-residential,
-path.casing.tag-construction-residential {
+path.casing.tag-residential {
     stroke:#444;
 }
 
-path.stroke.tag-highway-living_street {
-    stroke:#ccc;
+/* narrow highways */
+path.stroke.tag-highway-living_street,
+path.stroke.tag-highway-service,
+path.stroke.tag-highway-track,
+path.stroke.tag-highway-path,
+path.stroke.tag-highway-footway,
+path.stroke.tag-highway-cycleway,
+path.stroke.tag-highway-bridleway,
+path.stroke.tag-highway-corridor,
+path.stroke.tag-highway-pedestrian,
+path.stroke.tag-highway-steps,
+path.stroke.tag-highway-road,
+path.stroke.tag-living_street,
+path.stroke.tag-service,
+path.stroke.tag-track,
+path.stroke.tag-path,
+path.stroke.tag-footway,
+path.stroke.tag-cycleway,
+path.stroke.tag-bridleway,
+path.stroke.tag-corridor,
+path.stroke.tag-pedestrian,
+path.stroke.tag-steps,
+path.stroke.tag-road {
     stroke-width:4;
 }
-path.casing.tag-highway-living_street {
-    stroke:#fff;
+path.casing.tag-highway-living_street,
+path.casing.tag-highway-service,
+path.casing.tag-highway-track,
+path.casing.tag-highway-path,
+path.casing.tag-highway-footway,
+path.casing.tag-highway-cycleway,
+path.casing.tag-highway-bridleway,
+path.casing.tag-highway-corridor,
+path.casing.tag-highway-pedestrian,
+path.casing.tag-highway-steps,
+path.casing.tag-highway-road,
+path.casing.tag-living_street,
+path.casing.tag-service,
+path.casing.tag-track,
+path.casing.tag-path,
+path.casing.tag-footway,
+path.casing.tag-cycleway,
+path.casing.tag-bridleway,
+path.casing.tag-corridor,
+path.casing.tag-pedestrian,
+path.casing.tag-steps,
+path.casing.tag-road {
     stroke-width:6;
 }
 
-path.stroke.line.tag-highway-pedestrian {
+.low-zoom path.stroke.tag-highway-living_street,
+.low-zoom path.stroke.tag-highway-service,
+.low-zoom path.stroke.tag-highway-track,
+.low-zoom path.stroke.tag-highway-path,
+.low-zoom path.stroke.tag-highway-footway,
+.low-zoom path.stroke.tag-highway-cycleway,
+.low-zoom path.stroke.tag-highway-bridleway,
+.low-zoom path.stroke.tag-highway-corridor,
+.low-zoom path.stroke.tag-highway-pedestrian,
+.low-zoom path.stroke.tag-highway-steps,
+.low-zoom path.stroke.tag-highway-road,
+.low-zoom path.stroke.tag-living_street,
+.low-zoom path.stroke.tag-service,
+.low-zoom path.stroke.tag-track,
+.low-zoom path.stroke.tag-path,
+.low-zoom path.stroke.tag-footway,
+.low-zoom path.stroke.tag-cycleway,
+.low-zoom path.stroke.tag-bridleway,
+.low-zoom path.stroke.tag-corridor,
+.low-zoom path.stroke.tag-pedestrian,
+.low-zoom path.stroke.tag-steps,
+.low-zoom path.stroke.tag-road {
+    stroke-width:2;
+}
+.low-zoom path.casing.tag-highway-living_street,
+.low-zoom path.casing.tag-highway-service,
+.low-zoom path.casing.tag-highway-track,
+.low-zoom path.casing.tag-highway-path,
+.low-zoom path.casing.tag-highway-footway,
+.low-zoom path.casing.tag-highway-cycleway,
+.low-zoom path.casing.tag-highway-bridleway,
+.low-zoom path.casing.tag-highway-corridor,
+.low-zoom path.casing.tag-highway-pedestrian,
+.low-zoom path.casing.tag-highway-steps,
+.low-zoom path.casing.tag-highway-road,
+.low-zoom path.casing.tag-living_street,
+.low-zoom path.casing.tag-service,
+.low-zoom path.casing.tag-track,
+.low-zoom path.casing.tag-path,
+.low-zoom path.casing.tag-footway,
+.low-zoom path.casing.tag-cycleway,
+.low-zoom path.casing.tag-bridleway,
+.low-zoom path.casing.tag-corridor,
+.low-zoom path.casing.tag-pedestrian,
+.low-zoom path.casing.tag-steps,
+.low-zoom path.casing.tag-road {
+    stroke-width:4;
+}
+
+.preset-icon .icon.highway-living-street {
+    color: #ccc;
+    fill: #fff;
+}
+path.stroke.tag-highway-living_street,
+path.stroke.tag-living_street {
+    stroke:#ccc;
+}
+path.casing.tag-highway-living_street,
+path.casing.tag-living_street {
+    stroke:#fff;
+}
+
+.preset-icon .icon.highway-pedestrian {
+    color: #8cd05f;
+    fill: #fff;
+}
+path.stroke.tag-highway-corridor,
+path.stroke.tag-highway-pedestrian,
+path.stroke.tag-corridor,
+path.stroke.tag-pedestrian {
     stroke:#fff;
     stroke-dasharray: 2, 8;
-    stroke-width:4 !important;
-    shapeRendering: auto;
 }
-path.casing.line.tag-highway-pedestrian {
-    stroke:#8cd05f;
-    stroke-width:6 !important;
-}
-path.stroke.area.tag-highway-pedestrian {
-    stroke:#fff;
-    stroke-width: 2;
+path.casing.tag-highway-corridor,
+path.casing.tag-highway-pedestrian,
+path.casing.tag-corridor,
+path.casing.tag-pedestrian,
+path.casing.tag-highway-corridor.tag-unpaved,
+path.casing.tag-highway-pedestrian.tag-unpaved,
+path.casing.tag-corridor.tag-unpaved,
+path.casing.tag-pedestrian.tag-unpaved {
+    stroke: #8cd05f;
+    stroke-linecap: round;
+    stroke-dasharray: none;
 }
 
-path.stroke.tag-highway-service {
-    stroke:#fff;
-    stroke-width:4;
+.preset-icon .icon.highway-road {
+    color: #9e9e9e;
+    fill: #666;
 }
-path.casing.tag-highway-service {
+path.stroke.tag-highway-road,
+path.stroke.tag-road {
+    stroke:#9e9e9e;
+}
+path.casing.tag-highway-road,
+path.casing.tag-road {
     stroke:#666;
-    stroke-width:6;
-}
-.low-zoom path.stroke.tag-highway-service {
-    stroke-width:2;
-}
-.low-zoom path.casing.tag-highway-service {
-    stroke-width:4;
 }
 
-path.stroke.tag-highway-track {
-    stroke: #fff;
-    stroke-width: 4;
+.preset-icon .icon.highway-service {
+    color: #fff;
+    fill: #666;
 }
-path.casing.tag-highway-track {
-    stroke: #996600;
-    stroke-width: 6;
-    stroke-linecap: butt;
-    stroke-dasharray: 6, 6;
+path.stroke.tag-highway-service,
+path.stroke.tag-service {
+    stroke:#fff;
 }
-.low-zoom path.stroke.tag-highway-track {
-    stroke-width:2;
-}
-.low-zoom path.casing.tag-highway-track {
-    stroke-width:4;
+path.casing.tag-highway-service,
+path.casing.tag-service {
+    stroke:#666;
 }
 
-path.stroke.tag-highway-path {
-    stroke: #000;
-    stroke-width: 1 !important;
-    stroke-linecap: butt;
-    stroke-dasharray: 8, 4;
+.preset-icon .icon.highway-track {
+    color: #eaeaea;
+    fill: #c5b59f;
 }
-path.casing.tag-highway-path {
-    stroke-width: 1 !important;
-    stroke: #fff;
+path.stroke.tag-highway-track,
+path.stroke.tag-track {
+    stroke: #c5b59f;
+}
+path.casing.tag-highway-track,
+path.casing.tag-track {
+    stroke: #746f6f;
 }
 
+path.stroke.tag-highway-path,
 path.stroke.tag-highway-footway,
 path.stroke.tag-highway-cycleway,
 path.stroke.tag-highway-bridleway {
-    stroke-width: 4;
     stroke-linecap: butt;
     stroke-dasharray: 6, 6;
 }
+
+path.casing.tag-highway-path,
+path.casing.tag-highway-path.tag-unpaved {
+    stroke: #c5b59f;
+    stroke-linecap: round;
+    stroke-dasharray: none;
+}
 path.casing.tag-highway-footway,
 path.casing.tag-highway-cycleway,
-path.casing.tag-highway-bridleway {
-    stroke-width: 6;
+path.casing.tag-highway-bridleway,
+path.casing.tag-highway-footway.tag-unpaved,
+path.casing.tag-highway-cycleway.tag-unpaved,
+path.casing.tag-highway-bridleway.tag-unpaved {
     stroke: #fff;
+    stroke-linecap: round;
+    stroke-dasharray: none;
 }
 
-.low-zoom path.stroke.tag-highway-footway,
-.low-zoom path.stroke.tag-highway-cycleway,
-.low-zoom path.stroke.tag-highway-bridleway {
-    stroke-width: 2;
+.preset-icon .icon.category-path,
+.preset-icon .icon.highway-path {
+    color: #746f6f;
+    fill: #c5b59f;
 }
-.low-zoom path.casing.tag-highway-footway,
-.low-zoom path.casing.tag-highway-cycleway,
-.low-zoom path.casing.tag-highway-bridleway {
-    stroke-width: 4;
+path.stroke.tag-highway-path {
+    stroke: #746f6f;
 }
 
+.preset-icon .icon.tag-route-foot,
+.preset-icon .icon.tag-route-hiking,
+.preset-icon .icon.highway-footway {
+    color: #ae8681;
+    fill: #fff;
+}
 path.stroke.tag-highway-footway {
     stroke: #ae8681;
 }
+
+.preset-icon .icon.tag-route-bicycle,
+.preset-icon .icon.highway-cycleway {
+    color: #58a9ed;
+    fill: #fff;
+}
 path.stroke.tag-highway-cycleway {
     stroke: #58a9ed;
+}
+
+.preset-icon .icon.highway-bridleway {
+    color: #e06d5f;
+    fill: #fff;
 }
 path.stroke.tag-highway-bridleway {
     stroke: #e06d5f;
 }
 
+.preset-icon .icon.highway-steps {
+    color: #81d25c;
+    fill: #fff;
+}
 path.stroke.tag-highway-steps {
     stroke: #81d25c;
-    stroke-width: 4;
     stroke-linecap: butt;
     stroke-dasharray: 3, 3;
 }
-path.casing.tag-highway-steps {
-    stroke-width: 6;
+path.casing.tag-highway-steps,
+path.casing.tag-highway-steps.tag-unpaved {
     stroke: #fff;
+    stroke-linecap: round;
+    stroke-dasharray: none;
 }
 
-/* aeroways */
 
+/* aeroways */
 path.stroke.tag-aeroway-taxiway {
     stroke: #805C80;
     stroke-width: 4;
@@ -842,30 +1114,43 @@ path.casing.tag-aeroway-runway {
     stroke-linecap: square;
 }
 path.fill.tag-aeroway-runway {
+    stroke: rgba(0, 0, 0, 0.6);
     fill: rgba(0, 0, 0, 0.6);
 }
 path.stroke.tag-aeroway-apron {
     stroke: #805C80;
 }
 path.fill.tag-aeroway-apron {
+    stroke: rgba(128, 92, 128, 0.2);
     fill: rgba(128, 92, 128, 0.2);
 }
 
 
 /* railways */
-
+.preset-icon .icon.tag-railway.other-line {
+    color: #fff;
+    fill: #777;
+}
+.preset-icon .icon.tag-railway {
+    color: #555;
+    fill: #eee;
+}
 path.stroke.tag-railway {
     stroke: #eee;
     stroke-width: 2;
     stroke-linecap: butt;
     stroke-dasharray: 12,12;
 }
-
 path.casing.tag-railway {
     stroke: #555;
     stroke-width: 4;
 }
 
+.preset-icon .icon.tag-railway-disused,
+.preset-icon .icon.tag-railway-abandoned {
+    color: #999;
+    fill: #eee;
+}
 path.stroke.tag-railway-abandoned {
     stroke: #eee;
 }
@@ -873,8 +1158,12 @@ path.casing.tag-railway-abandoned {
     stroke: #999;
 }
 
+.preset-icon .icon.tag-railway-subway {
+    color: #222;
+    fill: #bbb;
+}
 path.stroke.tag-railway-subway {
-    stroke: #666;
+    stroke: #bbb;
 }
 path.casing.tag-railway-subway {
     stroke: #222;
@@ -898,9 +1187,21 @@ path.casing.tag-railway-platform {
     stroke: none;
 }
 
+
 /* waterways */
+.preset-icon .icon.tag-waterway.other-line {
+    color: #77d3de;
+    fill: #77d3de;
+}
+.preset-icon .icon.category-water,
+.preset-icon .icon.tag-route-ferry,
+.preset-icon .icon.tag-waterway {
+    color: #77d3de;
+    fill: #fff;
+}
 
 path.fill.tag-waterway {
+    stroke: rgba(119, 211, 222, 0.3);
     fill: rgba(119, 211, 222, 0.3);
 }
 
@@ -920,6 +1221,9 @@ path.casing.tag-waterway-river {
     stroke-width: 6;
 }
 
+.preset-icon .icon.tag-waterway-ditch {
+    color: #6591ff;
+}
 path.stroke.tag-waterway-ditch {
     stroke: #6591ff;
     stroke-width: 1;
@@ -928,8 +1232,25 @@ path.casing.tag-waterway-ditch {
     stroke: #6591ff;
     stroke-width: 3;
 }
+path.area.stroke.tag-waterway-fuel {
+    stroke: white;
+    stroke-width: 1;
+}
+path.area.casing.tag-waterway-fuel {
+    stroke: none;
+}
+path.area.fill.tag-waterway-fuel {
+    stroke: rgba(255, 255, 255, 0.3);
+    fill: rgba(255, 255, 255, 0.3);
+}
+
 
 /* power */
+.preset-icon .icon.tag-man_made-pipeline,
+.preset-icon .icon.tag-power {
+    color: #939393;
+    fill: #939393;
+}
 
 path.stroke.tag-power {
     stroke: #939393;
@@ -939,8 +1260,8 @@ path.casing.tag-power {
     stroke: none;
 }
 
-/* boundary */
 
+/* boundaries */
 path.stroke.tag-boundary {
     stroke: #fff;
     stroke-width: 2;
@@ -958,22 +1279,36 @@ path.casing.tag-boundary-national_park {
 }
 
 
-/* bridges */
+/* barriers */
+path.stroke.tag-barrier {
+    stroke: #ddd;
+    stroke-width: 3px;
+    stroke-linecap: round;
+    stroke-dasharray: 15, 5, 1, 5;
+}
+.low-zoom path.stroke.tag-barrier {
+    stroke-width: 2px;
+    stroke-linecap: butt;
+    stroke-dasharray: 8, 2, 2, 2;
+}
 
+
+/* bridges */
 path.casing.tag-bridge {
     stroke-width: 16;
     stroke-opacity: 0.6;
     stroke: #000;
     stroke-linecap: butt;
+    stroke-dasharray: none;
 }
 
 path.shadow.tag-bridge {
     stroke-width: 22;
 }
-
 path.casing.line.tag-railway.tag-bridge,
 path.casing.tag-highway-living_street.tag-bridge,
 path.casing.tag-highway-path.tag-bridge,
+path.casing.tag-highway-corridor.tag-bridge,
 path.casing.line.tag-highway-pedestrian.tag-bridge,
 path.casing.tag-highway-service.tag-bridge,
 path.casing.tag-highway-track.tag-bridge,
@@ -983,10 +1318,10 @@ path.casing.tag-highway-cycleway.tag-bridge,
 path.casing.tag-highway-bridleway.tag-bridge {
     stroke-width: 10;
 }
-
 path.shadow.line.tag-railway.tag-bridge,
 path.shadow.tag-highway-living_street.tag-bridge,
 path.shadow.tag-highway-path.tag-bridge,
+path.shadow.tag-highway-corridor.tag-bridge,
 path.shadow.line.tag-highway-pedestrian.tag-bridge,
 path.shadow.tag-highway-service.tag-bridge,
 path.shadow.tag-highway-track.tag-bridge,
@@ -996,15 +1331,9 @@ path.shadow.tag-highway-cycleway.tag-bridge,
 path.shadow.tag-highway-bridleway.tag-bridge {
     stroke-width: 17;
 }
-
-
 .low-zoom path.casing.tag-bridge {
     stroke-width: 10;
-    stroke-opacity: 0.6;
-    stroke: #000;
-    stroke-linecap: butt;
 }
-
 .low-zoom path.shadow.tag-bridge {
     stroke-width: 14;
 }
@@ -1012,6 +1341,7 @@ path.shadow.tag-highway-bridleway.tag-bridge {
 .low-zoom path.casing.line.tag-railway.tag-bridge,
 .low-zoom path.casing.tag-highway-living_street.tag-bridge,
 .low-zoom path.casing.tag-highway-path.tag-bridge,
+.low-zoom path.casing.tag-highway-corridor.tag-bridge,
 .low-zoom path.casing.line.tag-highway-pedestrian.tag-bridge,
 .low-zoom path.casing.tag-highway-service.tag-bridge,
 .low-zoom path.casing.tag-highway-track.tag-bridge,
@@ -1025,6 +1355,7 @@ path.shadow.tag-highway-bridleway.tag-bridge {
 .low-zoom path.shadow.line.tag-railway.tag-bridge,
 .low-zoom path.shadow.tag-highway-living_street.tag-bridge,
 .low-zoom path.shadow.tag-highway-path.tag-bridge,
+.low-zoom path.shadow.tag-highway-corridor.tag-bridge,
 .low-zoom path.shadow.line.tag-highway-pedestrian.tag-bridge,
 .low-zoom path.shadow.tag-highway-service.tag-bridge,
 .low-zoom path.shadow.tag-highway-track.tag-bridge,
@@ -1036,19 +1367,18 @@ path.shadow.tag-highway-bridleway.tag-bridge {
 }
 
 
-
 /* tunnels */
-
 path.stroke.tag-tunnel {
     stroke-opacity: 0.3;
 }
-
 path.casing.tag-tunnel {
     stroke-opacity: 0.5;
+    stroke-linecap: butt;
+    stroke-dasharray: none;
 }
 
-/* embankments / cuttings */
 
+/* embankments / cuttings */
 path.casing.tag-embankment,
 path.casing.tag-cutting {
     stroke-opacity: 0.5;
@@ -1074,19 +1404,55 @@ path.shadow.tag-cutting {
 }
 
 
-/* construction */
-
-path.stroke.tag-highway-construction,
-path.casing.tag-highway-construction {
+/* Surface - unpaved */
+path.casing.tag-unpaved {
+    stroke: #eaeaea;
     stroke-linecap: butt;
-    stroke-dasharray: 7, 7;
+    stroke-dasharray: 4, 3;
+}
+.low-zoom path.casing.tag-unpaved {
+    stroke-dasharray: 3, 2;
+}
+path.casing.tag-bridge.tag-unpaved {
+    stroke: #000;
+    stroke-dasharray: 4, 3;
+}
+.low-zoom path.casing.tag-bridge.tag-unpaved {
+    stroke: #000;
+    stroke-dasharray: 3, 2;
 }
 
-.low-zoom path.stroke.tag-highway-construction,
-.low-zoom path.casing.tag-highway-construction {
+
+/* Status (e.g. construction, proposed, abandoned) */
+path.stroke.tag-status,
+path.casing.tag-status {
     stroke-linecap: butt;
-    stroke-dasharray: 5, 5;
+    stroke-dasharray: 7, 3;
 }
+.low-zoom path.stroke.tag-status,
+.low-zoom path.casing.tag-status {
+    stroke-dasharray: 5, 2;
+}
+
+
+/* Buildings */
+path.stroke.tag-building,
+path.stroke.tag-amenity-shelter {
+    stroke: rgb(224, 110, 95);
+}
+path.fill.tag-building,
+path.fill.tag-amenity-shelter {
+    stroke: rgba(224, 110, 95, 0.3);
+    fill: rgba(224, 110, 95, 0.3);
+}
+.preset-icon-fill-area.tag-building,
+.preset-icon-fill-area.tag-amenity-shelter {
+    border-color: rgb(224, 110, 95);
+    background-color: rgba(224, 110, 95, 0.3);
+}
+
+
+/* Labels / Markers */
 
 text {
     font-size:10px;
@@ -1099,35 +1465,10 @@ text {
     fill: #002F35;
 }
 
-marker#oneway-marker path {
-    fill:#000;
-    opacity: .5;
-}
-
 path.oneway {
     stroke-width: 6px;
 }
 
-/* Buildings */
-
-path.stroke.tag-building,
-path.stroke.tag-amenity-shelter {
-    stroke: rgb(224, 110, 95);
-}
-path.fill.tag-building,
-path.fill.tag-amenity-shelter {
-    fill: rgba(224, 110, 95, 0.3);
-}
-.preset-icon-fill-area.tag-building,
-.preset-icon-fill-area.tag-amenity-shelter {
-    border-color: rgb(224, 110, 95);
-    background-color: rgba(224, 110, 95, 0.3);
-}
-
-
-/*
- * Labels
- */
 
 text.arealabel-halo,
 text.linelabel-halo,
@@ -1187,6 +1528,7 @@ g.turn circle {
 
 /* Cursors */
 
+.map-in-map,
 #map {
     cursor: auto; /* Opera */
     cursor: url(<%= asset_path("iD/img/cursor-grab.png") %>) 9 9, auto; /* FF */
@@ -1273,9 +1615,14 @@ g.turn circle {
 }
 
 .mode-add-point #map,
-.lasso #map,
-.lasso .way,
-.lasso .vertex {
+.mode-browse.lasso #map,
+.mode-browse.lasso .way,
+.mode-browse.lasso .vertex,
+.mode-browse.lasso .midpoint,
+.mode-select.lasso #map,
+.mode-select.lasso .way,
+.mode-select.lasso .vertex,
+.mode-select.lasso .midpoint {
     cursor: crosshair; /* Opera */
     cursor: url(<%= asset_path("iD/img/cursor-draw.png") %>) 9 9, crosshair; /* FF */
 }
@@ -1291,16 +1638,18 @@ g.turn circle {
 }
 
 /* GPX Paths */
+div.layer-gpx {
+    pointer-events: none;
+}
+
 path.gpx {
     stroke: #FF26D4;
     stroke-width: 2;
     fill: none;
-    pointer-events: none;
 }
 
-/* GPS Labels */
 text.gpx {
-    fill:#FF26D4;
+    fill: #FF26D4;
 }
 
 /* Mapillary Layer */
@@ -1316,21 +1665,28 @@ text.gpx {
 }
 
 .layer-mapillary g * {
-    stroke-width: 2;
-    stroke: #ffc600;
+    stroke-width: 1;
+    stroke: #444;
     fill: #ffc600;
 }
 
 .layer-mapillary g:hover * {
-    stroke-width: 2;
-    stroke: #ff9900;
+    stroke-width: 1;
+    stroke: #333;
     fill: #ff9900;
 }
 
-.layer-mapillary g.selected * {
-    stroke-width: 4;
-    stroke: #ff5800;
+.layer-mapillary g.selected  * {
+    stroke-width: 2;
+    stroke: #222;
     fill: #ff5800;
+}
+
+.layer-mapillary g:hover path.viewfield,
+.layer-mapillary g.selected path.viewfield,
+.layer-mapillary g path.viewfield {
+    stroke-width: 0;
+    fill-opacity: 0.6;
 }
 
 /* Modes */
@@ -1355,6 +1711,42 @@ text.gpx {
 .mode-add-area .area.fill,
 .mode-drag-node .area.fill {
     pointer-events: none;
+}
+
+
+/* Fill Styles */
+.low-zoom.fill-wireframe path.stroke,
+.fill-wireframe path.stroke {
+    stroke-width: 1;
+    stroke-opacity: 0.5;
+    stroke-dasharray: none;
+    fill: none;
+}
+
+.low-zoom.fill-wireframe path.shadow,
+.fill-wireframe path.shadow {
+    stroke-width: 8;
+}
+
+.fill-wireframe path.shadow.hover:not(.selected) {
+    stroke-opacity: 0.2;
+}
+.fill-wireframe path.shadow.selected {
+    stroke-opacity: 0.4;
+}
+
+.fill-wireframe .point,
+.fill-wireframe .areaicon,
+.fill-wireframe path.casing,
+.fill-wireframe path.fill,
+.fill-wireframe path.oneway {
+    display: none;
+}
+
+.fill-partial path.fill {
+    fill-opacity: 0;
+    stroke-width: 60px;
+    pointer-events: visibleStroke;
 }
 /* Basics
 ------------------------------------------------------- */
@@ -1387,7 +1779,6 @@ body {
 .id-container {
     height: 100%;
     width: 100%;
-    position: fixed;
     min-width: 768px;
 }
 
@@ -1416,14 +1807,12 @@ body {
 
 .spinner {
     opacity: .5;
+    float: right;
 }
 
 .spinner img {
-    position: absolute;
     height: 40px;
     width: 40px;
-    right: 10px;
-    top: 10px;
     border-radius: 4px;
     margin-right: 10px;
     background: black;
@@ -1498,10 +1887,6 @@ strong {
 
 a:visited, a {
     color: #7092ff;
-    -webkit-transition: all 100ms;
-       -moz-transition: all 100ms;
-         -o-transition: all 100ms;
-            transition: all 100ms;
 }
 
 a:hover {
@@ -1530,10 +1915,6 @@ input[type=email] {
     width: 100%;
     border-radius:4px;
     text-overflow: ellipsis;
-    -webkit-transition: all 200ms;
-       -moz-transition: all 200ms;
-         -o-transition: all 200ms;
-            transition: all 200ms;
 }
 
 textarea:focus,
@@ -1575,6 +1956,10 @@ table.tags, table.tags td, table.tags th {
     padding: 4px;
 }
 
+::-ms-clear {
+   display: none;
+}
+
 /* Grid
 ------------------------------------------------------- */
 
@@ -1605,9 +1990,6 @@ ul li { list-style: none;}
     background-color: white;
     color: #7092FF;
     cursor: pointer;
-       -moz-transition: all 100ms;
-         -o-transition: all 100ms;
-            transition: all 100ms;
 }
 
 .toggle-list > label:hover {
@@ -1633,18 +2015,6 @@ ul li { list-style: none;}
     background: #E8EBFF;
 }
 
-.link-list li {
-    float: right;
-    border-left: 1px solid rgba(255,255,255,.5);
-    padding: 5px 0 5px 5px;
-    margin-left: 5px;
-}
-
-ul.link-list li:last-child {
-    border-left: 0;
-    margin-left: 0;
-    padding-left: 0;
-}
 
 /* Utility Classes
 ------------------------------------------------------- */
@@ -1668,13 +2038,19 @@ ul.link-list li:last-child {
     color: white;
 }
 
+.fillD2 {
+    background:rgba(0,0,0,.75);
+    color: white;
+}
+
 .fl { float: left;}
 .fr { float: right;}
 
 div.hide,
 form.hide,
 button.hide,
-a.hide {
+a.hide,
+li.hide {
     display: none;
 }
 
@@ -1727,11 +2103,6 @@ button {
     display: inline-block;
     height:40px;
     border-radius:4px;
-    /* Crashes Safari: https://github.com/openstreetmap/iD/issues/1188 */
-    /*-webkit-transition: all 100ms;*/
-       -moz-transition: all 100ms;
-         -o-transition: all 100ms;
-            transition: all 100ms;
 }
 
 button:focus,
@@ -1787,6 +2158,10 @@ button.minor:hover {
     border-right: 1px solid rgba(0,0,0,.5);
 }
 
+.fillL .joined button {
+    border-right: 1px solid white;
+}
+
 .joined button:first-child {
     border-radius:4px 0 0 4px;
 }
@@ -1798,11 +2173,27 @@ button.minor:hover {
 
 button.action {
     background: #7092ff;
+    color: white;
+}
+
+button[disabled].action,
+button[disabled].action:hover {
+    background: #cccccc;
+    color: #888;
 }
 
 button.action:focus,
 button.action:hover {
     background: #597BE7;
+}
+
+button.secondary-action {
+    background: #ececec;
+}
+
+button.secondary-action:focus,
+button.secondary-action:hover {
+    background: #cccccc;
 }
 
 button.save.has-count {
@@ -1844,17 +2235,36 @@ button.save.has-count .count::before {
 /* Icons */
 
 .icon {
-  display:inline-block;
-  vertical-align:top;
-  width:20px;
-  height:20px;
-  background:transparent url(<%= asset_path("iD/img/sprite.svg") %>) no-repeat 0 0;
-  text-indent:-9999px;
-  overflow:hidden;
-  }
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+}
 
-.icon-pre-text {
+.icon.inline {
+    vertical-align: text-top;
+    width: 14px;
+    height: 14px;
+    margin: 0px 3px;
+}
+
+.icon.pre-text {
     margin-right: 3px;
+}
+
+.icon.light {
+    color: #fff;
+}
+
+.icon.created {
+    color: #00ca07;
+}
+
+.icon.modified {
+    color: #666;
+}
+
+.icon.deleted {
+    color: #ea0000;
 }
 
 .user-icon {
@@ -1865,101 +2275,6 @@ button.save.has-count .count::before {
     border-radius: 3px;
 }
 
-/* Definitions for every icon */
-.icon.alert     { background-position:   0 0;}
-.icon.point,
-.icon.add-point  { background-position: -20px 0;}
-.icon.line,
-.icon.add-line   { background-position: -40px 0;}
-.icon.area,
-.icon.add-area   { background-position: -60px 0;}
-.icon.undo       { background-position: -80px 0;}
-.icon.redo       { background-position: -100px 0;}
-.icon.apply      { background-position: -120px 0;}
-.icon.save       { background-position: -140px 0;}
-.icon.close      { background-position: -160px 0;}
-.icon.delete     { background-position: -180px 0;}
-.icon.remove     { background-position: -200px 0;}
-.icon.inspect    { background-position: -220px 0;}
-.icon.plus       { background-position: -240px 0;}
-.icon.search     { background-position: -280px 0;}
-.icon.geocode    { background-position: -280px 0;}
-.icon.layers     { background-position: -300px 0;}
-.icon.avatar     { background-position: -320px 0;}
-.icon.nearby     { background-position: -340px 0;}
-.icon.geolocate  { background-position: -360px 0;}
-.icon.warning    { background-position: -380px 0;}
-.icon.bug        { background-position: -400px 0;}
-.icon.back       { background-position: -420px 0;}
-.icon.forward    { background-position: -440px 0;}
-.icon.help       { background-position: -460px 0;}
-.icon.relation    { background-position: -520px 0;}
-.icon.relation.route         { background-position: -540px 0;}
-.icon.relation.multipolygon  { background-position: -560px 0;}
-.icon.vertex     { background-position: -580px 0;}
-
-.icon.inspect.light    { background-position: -220px -20px;}
-.icon.plus.light       { background-position: -240px -20px;}
-.icon.zoom-in          { background-position: -240px -20px;}
-.icon.zoom-out         { background-position: -260px -20px;}
-.icon.geocode.light    { background-position: -280px -20px;}
-.icon.layers.light     { background-position: -300px -20px;}
-.icon.avatar.light     { background-position: -320px -20px;}
-.icon.nearby.light     { background-position: -340px -20px;}
-.icon.geolocate.light  { background-position: -360px -20px;}
-.icon.bug.light        { background-position: -400px -20px;}
-.icon.help.light       { background-position: -460px -20px;}
-
-.icon.back.blue        { background-position: -420px -20px;}
-.icon.forward.blue     { background-position: -440px -20px;}
-
-button[disabled] .icon.alert      { background-position:   0 -40px;}
-button[disabled] .icon.add-point  { background-position: -20px -40px;}
-button[disabled] .icon.add-line   { background-position: -40px -40px;}
-button[disabled] .icon.add-area   { background-position: -60px -40px;}
-button.disabled  .icon.undo       { background-position: -80px -40px;}
-button.disabled  .icon.redo       { background-position: -100px -40px;}
-button[disabled] .apply.icon      { background-position: -120px -40px;}
-button[disabled] .close.icon      { background-position: -160px -40px;}
-button[disabled] .delete.icon     { background-position: -180px -40px;}
-button[disabled] .icon.remove     { background-position: -200px -40px;}
-button[disabled] .icon.inspect    { background-position: -220px -40px;}
-button[disabled] .icon.zoom-in    { background-position: -240px -40px;}
-button[disabled] .icon.zoom-out   { background-position: -260px -40px;}
-button[disabled] .icon.geocode    { background-position: -280px -40px;}
-button[disabled] .icon.layers     { background-position: -300px -40px;}
-button[disabled] .icon.avatar     { background-position: -320px -40px;}
-button[disabled] .icon.nearby     { background-position: -340px -40px;}
-
-.icon.point.deleted  { background-position: -302px -80px;}
-.icon.line.deleted   { background-position: -320px -80px;}
-.icon.area.deleted   { background-position: -340px -80px;}
-
-.icon.point.created  { background-position: -302px -100px;}
-.icon.line.created   { background-position: -320px -100px;}
-.icon.area.created   { background-position: -340px -100px;}
-
-.icon.point.modified  { background-position: -22px 0; }
-
-.icon.modified { opacity: .5; }
-
-/* Out link is special */
-
-.icon.out-link   { height: 14px; width: 14px; background-position: -500px 0;}
-a:hover .icon.out-link   { background-position: -500px -14px;}
-
-.icon.plus-dark    { background-position: -240px -40px;}
-
-/* Universal preset icons */
-
-.icon.source     { background-position:   0 -200px;}
-.icon.address    { background-position: -20px -200px;}
-.icon.telephone  { background-position: -40px -200px;}
-.icon.website    { background-position: -60px -200px;}
-.icon.elevation  { background-position: -80px -200px;}
-.icon.wikipedia  { background-position: -100px -200px;}
-.icon.note       { background-position: -120px -200px;}
-.icon.wheelchair { background-position: -140px -200px;}
 
 /* ToolBar / Persistent UI Elements
 ------------------------------------------------------- */
@@ -1971,7 +2286,7 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     top:0;
     right:0;
     height:60px;
-    z-index: 1;
+    z-index: 9;
     min-width: 768px;
 }
 
@@ -1985,7 +2300,7 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
 }
 
 .header h3 {
-    text-align: center;
+    text-align: left;
     margin-bottom: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -2012,18 +2327,24 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     top: 0;
 }
 
+.preset-choose {
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: bold;
+}
+
 .modal > button {
     position: absolute;
     right: 0;
     top: 0;
     height: 59px;
-    z-index: 3;
+    z-index: 50;
 }
 
 .footer {
     position: absolute;
     bottom: 0;
-    padding: 5px 30px 5px 30px;
+    padding: 5px 20px 5px 20px;
     border-top: 1px solid #ccc;
     background-color: #fafafa;
     width: 100%;
@@ -2045,7 +2366,7 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     float: left;
     height: 100%;
     overflow: hidden;
-    z-index: 2;
+    z-index: 10;
     background: #f6f6f6;
 }
 
@@ -2182,9 +2503,6 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     text-overflow: ellipsis;
     overflow: hidden;
     border-left: 1px solid rgba(0, 0, 0, .1);
-    -moz-transition: all 100ms;
-    -o-transition: all 100ms;
-    transition: all 100ms;
 }
 
 .feature-list-item .label .icon {
@@ -2237,17 +2555,52 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     background: #ececec;
 }
 
-.preset-icon {
+.preset-icon-fill-area {
+    cursor: inherit;
+    height: 40px;
+    width: 40px;
+    margin: auto;
     position: absolute;
-    top: 17px;
-    left: 17px;
+    left: 10px;
+    top: 10px;
+}
+
+.preset-icon-frame {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    height: 42px;
+    width: 42px;
     margin: auto;
 }
 
-.preset-icon-line,
-.preset-icon-relation {
-    top: 0;
-    left: 0;
+.preset-icon-frame .icon {
+    width: 46px;
+    height: 46px;
+}
+
+.preset-icon-60 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: auto;
+}
+
+.preset-icon-60 .icon {
+    width: 60px;
+    height: 60px;
+}
+
+.preset-icon-32 {
+    position: absolute;
+    top: 14px;
+    left: 13px;   /* Maki icons off center? */
+    margin: auto;
+}
+
+.preset-icon-32 .icon {
+    width: 32px;
+    height: 32px;
 }
 
 .preset-list-button .label {
@@ -2264,9 +2617,6 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     text-overflow: ellipsis;
     overflow: hidden;
     border-left: 1px solid rgba(0, 0, 0, .1);
-    -moz-transition: all 100ms;
-    -o-transition: all 100ms;
-    transition: all 100ms;
     border-radius: 0 3px 3px 0;
     }
 
@@ -2283,6 +2633,10 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     right: 0;
     width: 10%;
     background: #fafafa;
+}
+
+.preset-list-item button.tag-reference-button:hover {
+    background: #f1f1f1;
 }
 
 .preset-list-item button.tag-reference-button .icon {
@@ -2330,27 +2684,6 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     margin-top: -10px;
 }
 
-/* Preset icon colors */
-
-.preset-icon-fill-area {
-    cursor: inherit;
-    height: 39px;
-    width: 39px;
-    margin: auto;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}
-
-.preset-icon-fill-area:after {
-    content: '';
-    left: -4px;
-    top: -4px;
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    background:transparent url(<%= asset_path("iD/img/sprite.svg") %>) no-repeat 0 -80px;
-}
 
 /* preset form basics */
 
@@ -2360,7 +2693,7 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
 
 .inspector-preset .preset-form {
     padding: 10px;
-    margin: 0 10px 20px 10px;
+    margin: 0 10px 10px 10px;
     border-radius: 8px;
 }
 
@@ -2417,6 +2750,10 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     text-align: right;
 }
 
+.form-label-button-wrap .tag-reference-button {
+    border-radius: 0 3px 0 0;
+}
+
 .form-label-button-wrap .icon {
     opacity: .5;
 }
@@ -2426,7 +2763,10 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     width: 10%;
     height: 100%;
     border-radius: 0;
-    background: #fafafa;
+    background: #f6f6f6;
+}
+.form-label button:hover {
+    background: #f1f1f1;
 }
 
 .form-label .modified-icon,
@@ -2446,6 +2786,7 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     min-height: 30px;
     border-top: 0;
     border-radius: 0 0 4px 4px;
+    overflow: hidden;
 }
 
 .form-field textarea {
@@ -2494,7 +2835,7 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
 .inspector-hover .entity-editor-pane .header button,
 .inspector-hover .spin-control,
 .inspector-hover .hide-toggle:before,
-.inspector-hover .more-buttons,
+.inspector-hover .more-fields,
 .inspector-hover .form-label-button-wrap,
 .inspector-hover .tag-reference-button,
 .inspector-hover .view-on-osm {
@@ -2503,7 +2844,7 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
 
 /* Styles for raw tag inspector on hover */
 .inspector-hover .tag-row .key-wrap,
-.inspector-hover .tag-row .input-wrap-position {
+.inspector-hover .tag-row .form-field.input-wrap-position {
     width: 50%;
 }
 
@@ -2519,9 +2860,9 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     border-bottom-left-radius: 4px;
 }
 
-.inspector-hover .inspector-body .more-buttons {
+.inspector-hover .more-fields {
     max-height: 0;
-    padding-bottom: 0;
+    margin-bottom: -10px;
 }
 
 /* Unstyle button fields */
@@ -2556,142 +2897,17 @@ a:hover .icon.out-link   { background-position: -500px -14px;}
     line-height: 0;
     display: block;
     overflow: hidden;
-    -webkit-transition: opacity 200ms, width 0 200ms, padding 0 200ms, line-height 0 200ms;
-       -moz-transition: opacity 200ms, width 0 200ms, padding 0 200ms, line-height 0 200ms;
-         -o-transition: opacity 200ms, width 0 200ms, padding 0 200ms, line-height 0 200ms;
-            transition: opacity 200ms, width 0 200ms, padding 0 200ms, line-height 0 200ms;
-}
-
-/* first phase hover-to-active animations */
-
-textarea,
-.form-label,
-.preset-input-wrap,
-.preset-input-wrap .label {
-    -webkit-transition: all 200ms;
-       -moz-transition: all 200ms;
-         -o-transition: all 200ms;
-            transition: all 200ms;
-}
-
-/* second phase hover-to-active animations */
-
-input,
-.checkselect label:last-of-type {
-    -webkit-transition: opacity 200ms 200ms, width 200ms 200ms, margin-right 200ms 200ms;
-       -moz-transition: opacity 200ms 200ms, width 200ms 200ms, margin-right 200ms 200ms;
-         -o-transition: opacity 200ms 200ms, width 200ms 200ms, margin-right 200ms 200ms;
-            transition: opacity 200ms 200ms, width 200ms 200ms, margin-right 200ms 200ms;
-}
-
-.entity-editor-pane button.minor,
-.combobox-caret,
-.entity-editor-pane .header button,
-.toggle-list label span,
-.spin-control,
-.more-buttons,
-.view-on-osm,
-.hide-toggle:before,
-.entity-editor-pane .toggle-list label::before,
-.entity-editor-pane .toggle-list label.remove .icon {
-    -webkit-transition: opacity 200ms 200ms;
-       -moz-transition: opacity 200ms 200ms;
-         -o-transition: opacity 200ms 200ms;
-            transition: opacity 200ms 200ms;
-}
-
-.entity-editor-pane a.hide-toggle {
-    -webkit-transition: padding-left 200ms 200ms, color 200ms 200ms;
-       -moz-transition: padding-left 200ms 200ms, color 200ms 200ms;
-         -o-transition: padding-left 200ms 200ms, color 200ms 200ms;
-            transition: padding-left 200ms 200ms, color 200ms 200ms;
-}
-
-.entity-editor-pane .toggle-list label:not(.active) {
-    -webkit-transition: height 200ms 200ms, padding 200ms 200ms, border-width 100ms 300ms;
-       -moz-transition: height 200ms 200ms, padding 200ms 200ms, border-width 100ms 300ms;
-         -o-transition: height 200ms 200ms, padding 200ms 200ms, border-width 100ms 300ms;
-            transition: height 200ms 200ms, padding 200ms 200ms, border-width 100ms 300ms;
-}
-
-.entity-editor-pane .toggle-list label {
-    -webkit-transition: border-width 100ms 300ms, padding 200ms 200ms, background-color 200ms 200ms, color 200ms 200ms;
-       -moz-transition: border-width 100ms 300ms, padding 200ms 200ms, background-color 200ms 200ms, color 200ms 200ms;
-         -o-transition: border-width 100ms 300ms, padding 200ms 200ms, background-color 200ms 200ms, color 200ms 200ms;
-            transition: border-width 100ms 300ms, padding 200ms 200ms, background-color 200ms 200ms, color 200ms 200ms;
 }
 
 /* adding additional preset fields */
 
-.inspector-body .more-buttons {
-    max-height: 100px;
-    padding-top: 0;
-    -webkit-transition: padding 200ms 200ms, max-height 200ms 200ms;
-       -moz-transition: padding 200ms 200ms, max-height 200ms 200ms;
-         -o-transition: padding 200ms 200ms, max-height 200ms 200ms;
-            transition: padding 200ms 200ms, max-height 200ms 200ms;
+.more-fields {
+    padding: 0 20px 20px 20px;
+    font-weight: bold;
 }
 
-button.preset-add-field {
-    background: #f6f6f6;
-    width: 25%;
-    height: 40px;
-    -webkit-transition: width 200ms;
-       -moz-transition: width 200ms;
-         -o-transition: width 200ms;
-            transition: width 200ms;
-}
-
-button.preset-add-field:hover {
-    background: #ececec;
-}
-
-/* set width based on # of buttons */
-
-button.preset-add-field:only-child {
-    width: 100%;
-}
-
-button.preset-add-field:nth-last-child(2),
-button.preset-add-field:nth-last-child(2) ~ button.preset-add-field {
-    width: 50%;
-}
-
-button.preset-add-field:nth-last-child(3),
-button.preset-add-field:nth-last-child(3) ~ button.preset-add-field {
-    width: 33.3333%;
-}
-
-button.preset-add-field:nth-last-child(4),
-button.preset-add-field:nth-last-child(4) ~ button.preset-add-field {
-    width: 25%;
-}
-
-button.preset-add-field:nth-last-child(5),
-button.preset-add-field:nth-last-child(5) ~ button.preset-add-field {
-    width: 20%;
-}
-
-button.preset-add-field:nth-last-child(6),
-button.preset-add-field:nth-last-child(6) ~ button.preset-add-field {
-    width: 16.6666%;
-}
-
-button.preset-add-field:nth-last-child(7),
-button.preset-add-field:nth-last-child(7) ~ button.preset-add-field {
-    width: 14.2857%;
-}
-
-button.preset-add-field:nth-last-child(8),
-button.preset-add-field:nth-last-child(8) ~ button.preset-add-field {
-    width: 12.5%;
-}
-
-.preset-fav button.fav {
-    height: 30px;
-    margin: 5px;
-    padding: 0 10px;
-}
+.more-fields label { padding: 5px 10px 5px 0; }
+.more-fields input { width: 50%;}
 
 /* preset form access */
 
@@ -2716,6 +2932,21 @@ button.preset-add-field:nth-last-child(8) ~ button.preset-add-field {
 
 .preset-input-wrap li:last-child input {
     border-bottom-right-radius: 4px;
+}
+
+/* preset form cycleway */
+
+.form-field-cycleway .preset-input-wrap li {
+    border-bottom: 1px solid #CCC;
+}
+.form-field-cycleway .preset-input-wrap li:last-child {
+    border-bottom: 0;
+}
+
+.preset-input-cycleway-wrap input {
+    border-radius: 0;
+    border-width: 0;
+    border-left-width: 1px;
 }
 
 /* preset form numbers */
@@ -3025,10 +3256,6 @@ div.combobox {
     width: 40%;
     float: left;
     height: 30px;
-    -webkit-transition: width 200ms;
-       -moz-transition: width 200ms;
-         -o-transition: width 200ms;
-            transition: width 200ms;
 }
 
 .tag-row input.key {
@@ -3213,6 +3440,27 @@ img.wiki-image {
     background: rgba(0,0,0,.8);
 }
 
+/* Fullscreen button */
+div.full-screen {
+    float: right;
+    width: 40px;
+    margin-right: 10px;
+}
+
+div.full-screen .tooltip {
+    min-width: 160px;
+}
+
+div.full-screen > button, div.full-screen > button.active {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+}
+
+div.full-screen > button:hover {
+    background-color: rgba(0, 0, 0, .8);
+}
+
 /* Map Controls */
 
 .map-controls {
@@ -3244,12 +3492,18 @@ img.wiki-image {
     border-radius: 4px 0 0 0;
 }
 
-/* Background Settings */
+/* Background / Map Data Settings */
+
+
+.map-data-control button {
+    border-radius: 0;
+}
 
 .background-control button {
     border-radius: 4px 0 0 0;
 }
 
+.map-data-control,
 .background-control {
     position: relative;
 }
@@ -3262,11 +3516,12 @@ img.wiki-image {
     border: 0;
 }
 
-.background-control .hide-toggle  {
+.map-data-control .hide-toggle,
+.background-control .hide-toggle {
     padding-bottom: 10px;
 }
 
-.layer-list {
+.layer-list, .controls-list {
     margin-bottom: 10px;
     border: 1px solid #CCC;
     border-radius: 4px;
@@ -3314,6 +3569,22 @@ img.wiki-image {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.minimap-toggle {
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #7092FF;
+    border-radius: 3px;
+}
+
+.minimap-toggle.active {
+    background: #E8EBFF;
+}
+
+.minimap-toggle:hover {
+    background-color: #ececec;
 }
 
 .hide-toggle {
@@ -3407,6 +3678,8 @@ img.wiki-image {
     z-index: 9999;
 }
 
+.map-data-control li:hover .select-box,
+.map-data-control li.selected .select-box,
 .background-control li:hover .select-box,
 .background-control li.selected .select-box {
     border: 2px solid #7092ff;
@@ -3414,6 +3687,8 @@ img.wiki-image {
     opacity: .5;
 }
 
+.map-data-control li.selected:hover .select-box,
+.map-data-control li.selected .select-box,
 .background-control li.selected:hover .select-box,
 .background-control li.selected .select-box {
     opacity: 1;
@@ -3426,6 +3701,7 @@ img.wiki-image {
     height:18px;
 }
 
+.map-data-control .layer-list button,
 .background-control .layer-list button {
     float: right;
     height: 100%;
@@ -3434,13 +3710,22 @@ img.wiki-image {
     border-radius: 0;
 }
 
+.map-data-control .layer-list button .icon,
 .background-control .layer-list button .icon {
     opacity: 0.5;
 }
 
+.map-data-control .layer-list button:first-of-type,
 .background-control .layer-list button:first-of-type {
     border-radius: 0 3px 3px 0;
 }
+
+.map-data-control .map-overlay,
+.background-control .map-overlay,
+.help-control .map-overlay {
+    z-index: -1;
+}
+
 
 /* Geolocator */
 
@@ -3461,9 +3746,6 @@ img.wiki-image {
     overflow: auto;
 }
 
-.background-control .map-overlay {
-    z-index: -1;
-}
 /* Help */
 
 .help-control button {
@@ -3579,36 +3861,159 @@ img.wiki-image {
     bottom: 0;
 }
 
+/* Map-In-Map
+------------------------------------------------------- */
+
+.map-in-map {
+    position: absolute;
+    overflow: hidden;
+    top: 60px;
+    width: 200px;
+    height: 150px;
+    z-index: 5;
+    background: #000;
+    border: #aaa 1px solid;
+    box-shadow: 0 0 2em black;
+}
+
+.map-in-map-tiles {
+    transform-origin:0 0;
+    -ms-transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+    -moz-transform-origin:0 0;
+    -o-transform-origin:0 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.map-in-map-svg,
+.map-in-map-gpx {
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.map-in-map-svg {
+    position: absolute;
+}
+
+.map-in-map-gpx {
+    position: relative;
+    z-index: 10;
+}
+
+.map-in-map-bbox {
+    fill: none;
+    stroke: rgba(255, 255, 0, 0.75);
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.map-in-map-bbox.thick {
+    stroke-width: 5;
+}
+
+/* Info Box
+------------------------------------------------------- */
+.infobox {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 30px;
+    width: 240px;
+    border-radius: 4px 0 0 0;
+    border-bottom: 1px solid black;
+}
+
+.infobox .selection-heading {
+    display: block;
+    border-radius: 4px 0 0 0;
+    padding: 5px 10px;
+    height: 30px;
+}
+
+.infobox ul {
+    padding: 5px 10px;
+}
+
+.infobox .button {
+    position: absolute;
+    background: #7092ff;
+    border-radius: 2px;
+    padding: 0 4px;
+    color: white;
+    top: 40px;
+    right: 10px;
+}
+
 /* About Section
 ------------------------------------------------------- */
 
-#footer {
+#about {
     width: 100%;
     position: absolute;
     right:0;
     bottom:0;
     border-radius: 0;
-    opacity: .625;
-    -webkit-transition: opacity 200ms;
-    -moz-transition: opacity 200ms;
-    transition: opacity 200ms;
+    pointer-events: none;
 }
 
-#footer:hover {
-    opacity: 1;
+#attrib {
+    width: 100%;
+    height: 20px;
+    margin-bottom: 5px;
+    float: left;
+    clear: both;
+}
+
+#attrib * { pointer-events: all; }
+
+.base-layer-attribution,
+.overlay-layer-attribution {
+    position: absolute;
+    color: #888;
+    font-size: 10px;
+}
+
+.base-layer-attribution {
+    left: 10px;
+}
+
+.overlay-layer-attribution {
+    right: 10px;
+}
+
+.overlay-layer-attribution .attribution:not(:last-child):after {
+    content: '; ';
+}
+
+.source-image {
+    height:20px;
+    vertical-align:top;
+}
+
+#footer {
+    width: 100%;
+    float: left;
+    clear: both;
+    pointer-events: all;
 }
 
 #scale-block {
     display: table-cell;
     vertical-align: bottom;
     width: 250px;
-    height: 30px;
+    max-height: 30px;
     float: left;
     clear: left;
 }
 
 #info-block {
-    float: right;
+    max-height: 30px;
     clear: right;
 }
 
@@ -3635,6 +4040,20 @@ img.wiki-image {
     text-align: right;
     margin-right: 10px;
     clear: right;
+    overflow: hidden;
+}
+
+#about-list li {
+    float: right;
+    border-left: 1px solid rgba(255,255,255,.5);
+    padding: 5px 0 5px 5px;
+    margin-left: 5px;
+}
+
+#about-list li:last-child {
+    border-left: 0;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .source-switch a {
@@ -3646,30 +4065,11 @@ img.wiki-image {
     color:#fff;
 }
 
-/* Attribution overlay */
-.base-layer-attribution,
-.overlay-layer-attribution {
-    position: absolute;
-    bottom: 35px;
-    color: #888;
-    font-size: 10px;
-}
-
-.base-layer-attribution {
-    left: 10px;
-}
-
-.overlay-layer-attribution {
-    right: 10px;
-}
-
-.overlay-layer-attribution .attribution:not(:last-child):after {
-    content: '; ';
-}
-
-.source-image {
-    height:20px;
-    vertical-align:top;
+.feature-warning a {
+    background: #1e90ff;
+    padding: 2px 4px 4px 4px;
+    border-radius: 2px;
+    color: #eee;
 }
 
 .user-list a:not(:last-child):after {
@@ -3681,25 +4081,28 @@ img.wiki-image {
     clear: both;
     text-align: right;
     width: 100%;
+    padding: 0px 10px;
 }
 
 .api-status.offline,
 .api-status.readonly,
 .api-status.error {
     background: red;
-    padding: 0px 5px;
 }
 
 /* Modals
 ------------------------------------------------------- */
 
 .modal {
+    top: 40px;
     display: inline-block;
     position:absolute;
+    border-radius: 3px;
+    overflow: hidden;
     left: 0;
     right: 0;
     margin: auto;
-    z-index: 3;
+    z-index: 50;
 }
 
 .modal .loader {
@@ -3711,7 +4114,7 @@ img.wiki-image {
 }
 
 .shaded {
-    z-index: 2;
+    z-index: 49;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -3732,8 +4135,26 @@ img.wiki-image {
     border-bottom: 1px solid #CCC;
 }
 
-.modal-section:last-child {
-    border-bottom: 0;
+.modal-section.header h3 {
+    padding: 0;
+}
+
+.modal-section.buttons {
+    text-align: center;
+}
+
+.modal-section.buttons .action {
+    display: inline-block;
+    margin: 0 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.save-section .buttons .action {
+    display: inline-block;
+    margin: 0 20px 0 0;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .loading-modal {
@@ -3757,30 +4178,35 @@ img.wiki-image {
 }
 
 .modal-actions button:before,
-.save-success a.button:before,
+.save-success a.button.osm:before,
 .walkthrough a:before {
     display: block;
     content: '';
     height: 100px;
-    width: 100px;
+    width: 100%;
+    max-width: 100px;
     margin: auto;
     margin-bottom: 10px;
-    background:transparent url(<%= asset_path("iD/img/sprite.svg") %>) no-repeat 0 -220px;
+    background:transparent url(<%= asset_path("iD/img/iD-sprite.svg") %>) no-repeat -200px -460px;
 }
 
 .modal-actions :first-child {
     border-right: 1px solid #CCC;
 }
 
+.modal-section:last-child {
+    border-bottom: 0;
+}
+
 /* Restore Modal
 ------------------------------------------------------- */
 
 .modal-actions .restore:before {
-    background-position: -600px -220px;
+    background-position: -500px -460px;
 }
 
 .modal-actions .reset:before {
-    background-position: -700px -220px;
+    background-position: -600px -460px;
 }
 
 /* Success Modal
@@ -3794,28 +4220,18 @@ img.wiki-image {
     padding-top: 15px;
 }
 
-.save-success .button.social {
-    height: 80px;
+.save-success a.button.social {
+    height: auto;
 }
 
-.save-success .button.social:before {
-    height: 50px;
+.save-success .icon.social {
+    height: 80px;
+    width: 80px;
+    color: #7092FF;
 }
 
 .save-success .button.osm:before {
-    background-position: 0px -220px;
-}
-
-.save-success .button.twitter:before {
-    background-position: -100px -245px;
-}
-
-.save-success .button.facebook:before {
-    background-position: -200px -245px;
-}
-
-.save-success .button.google:before {
-    background-position: -300px -245px;
+    background-position: -200px -460px;
 }
 
 /* Splash Modal
@@ -3823,11 +4239,11 @@ img.wiki-image {
 
 .modal-actions .walkthrough:before,
 .walkthrough a:before {
-    background-position: -400px -220px;
+    background-position: -300px -460px;
 }
 
 .modal-actions .start:before {
-    background-position: -500px -220px;
+    background-position: -400px -460px;
 }
 
 /* Commit Modal
@@ -3839,14 +4255,6 @@ img.wiki-image {
 
 .mode-save .commit-form {
     margin-bottom: 0;
-}
-
-.mode-save button.action {
-    float: none;
-    margin: auto;
-    display: block;
-    color: white;
-    font-size: 14px;
 }
 
 .mode-save .user-info img {
@@ -3911,6 +4319,56 @@ img.wiki-image {
 
 .changeset-list li:first-child { border-top: 0;}
 
+/* Conflict resolution
+------------------------------------------------------- */
+
+.conflicts-help {
+    padding: 20px;
+    background-color: #ffffbb;
+    border-bottom: 1px solid #ccc;
+}
+
+.conflicts-buttons {
+    padding: 20px;
+}
+
+.mode-save button.conflicts-button {
+    float: left;
+}
+
+.conflict-container {
+    border-bottom: 1px solid #ccc;
+}
+
+.conflict-description {
+    padding: 5px 20px;
+    display: block;
+}
+
+.conflicts-done {
+    padding: 20px 20px 0 20px;
+}
+
+.conflict-detail-container {
+    padding: 10px 20px;
+}
+
+.conflict-count {
+    padding: 10px 20px;
+}
+
+.conflict-choices {
+    margin-top: 10px;
+}
+
+.conflict-nav-buttons {
+    padding: 10px 0 20px 0;
+}
+
+.conflict-nav-button {
+    height: 30px;
+}
+
 /* Notices
 ------------------------------------------------------- */
 
@@ -3941,10 +4399,6 @@ img.wiki-image {
 .notice .zoom-to .icon {
     margin-top:10px;
     margin-right:10px;
-}
-
-.icon.zoom-in-invert {
-    background-position: -240px -40px;
 }
 
 /* Tooltips
@@ -3986,6 +4440,7 @@ img.wiki-image {
 
 .tooltip-inner {
     display: inline-block;
+    border-radius: 3px;
     max-width: 200px;
     min-width: 80px;
     padding: 10px;
@@ -4018,6 +4473,7 @@ img.wiki-image {
 }
 
 .tail div {
+    border-radius: 3px;
     padding: 10px;
     background: white;
     position: absolute;
@@ -4085,31 +4541,11 @@ img.wiki-image {
     background: #F6F6F6;
     padding: 10px;
     margin: 10px -10px -10px;
+    border-radius: 0 0 3px 3px;
 }
 
 .tooltip-inner .keyhint {
-    font-size: 10px;
-    padding: 0 7px;
     font-weight: bold;
-    display: inline-block;
-    border-radius: 2px;
-    border: 1px solid #CCC;
-    position: relative;
-    z-index: 1;
-    text-align: left;
-}
-
-.tooltip-inner .keyhint::after {
-    content: "";
-    position: absolute;
-    border-radius: 2px;
-    height: 10px;
-    width: 100%;
-    z-index: 0;
-    bottom: -4px;
-    left: -1px;
-    border: 1px solid #CCC;
-    border-top: 0;
 }
 
 /* Exceptions for tooltip layouts */
@@ -4140,6 +4576,7 @@ img.wiki-image {
 }
 
 .map-overlay .tooltip-inner,
+.map-overlay .keyhint-wrap,
 .entity-editor-pane .tooltip-inner,
 .warning-section .tooltip-inner {
     background: #000;
@@ -4172,25 +4609,33 @@ img.wiki-image {
 }
 
 .radial-menu-background {
+    fill: none;
     stroke: black;
     stroke-opacity: 0.5;
 }
 
-.radial-menu-item {
-    fill: white;
+.radial-menu-item circle {
+    fill: #eee;
 }
 
-.radial-menu-item:hover {
-    fill: #ececec;
+.radial-menu-item circle:active,
+.radial-menu-item circle:hover {
+    fill: #fff;
 }
 
-.radial-menu-item:active {
-    fill: #ececec;
-}
-
-.radial-menu-item.disabled {
+.radial-menu-item.disabled circle {
     cursor: auto;
     fill: rgba(255,255,255,.5);
+}
+
+.radial-menu-item use {
+    fill: #222;
+    color: #79f;
+}
+
+.radial-menu-item.disabled use {
+    fill: rgba(32,32,32,.5);
+    color: rgba(40,40,40,.5);
 }
 
 .lasso-box {
@@ -4205,10 +4650,22 @@ img.wiki-image {
 ------------------------------------------------------- */
 
 @media only screen and (max-width: 840px) {
-    #bar .icon.icon-pre-text { margin-right: 0;}
     /* override hide for save button */
     #bar .save .label { display: block;}
 }
+
+@media screen and (max-width: 1200px) {
+    .user-list { display: none !important; }
+}
+
+@media screen and (max-width: 1000px) {
+    #userLink { display: none !important; }
+}
+
+@media screen and (max-width: 900px) {
+    #scale-block { display: none !important; }
+}
+
 
 /* Scrollbars
  ----------------------------------------------------- */
@@ -4314,7 +4771,7 @@ img.wiki-image {
     content: "";
     height: 80px;
     width: 200px;
-    background:transparent url(<%= asset_path("iD/img/sprite.svg") %>) no-repeat 0 -320px;
+    background:transparent url(<%= asset_path("iD/img/iD-sprite.svg") %>) no-repeat 0 -320px;
 }
 
 .intro-areas-add .tooltip-inner::before {
@@ -4334,189 +4791,6 @@ img.wiki-image {
 .huge-modal-button .illustration {
     height: 100px;
     width: 100px;
-    background: rgba(0, 0, 0, 0) url(<%= asset_path("iD/img/sprite.svg") %>) no-repeat -400px -220px;
+    background: rgba(0, 0, 0, 0) url(<%= asset_path("iD/img/iD-sprite.svg") %>) no-repeat -300px -460px;
     margin: auto;
 }
-/* This file is generated by make. Do NOT edit manually. */
-
-.preset-icon{background-image:url(<%= asset_path("iD/img/maki-sprite.png") %>);background-repeat:no-repeat;width:24px;height:24px;}
-.preset-icon-line{background-image:url(<%= asset_path("iD/img/line-presets.png") %>);background-repeat:no-repeat;width:60px;height:60px;}
-.preset-icon-relation{background-image:url(<%= asset_path("iD/img/relation-presets.png") %>);background-repeat:no-repeat;width:60px;height:60px;}
-.feature-circle-stroked{background-position:-0px -0px;}
-.feature-circle{background-position:-54px -0px;}
-.feature-square-stroked{background-position:-108px -0px;}
-.feature-square{background-position:-162px -0px;}
-.feature-triangle-stroked{background-position:-216px -0px;}
-.feature-triangle{background-position:-0px -24px;}
-.feature-star-stroked{background-position:-54px -24px;}
-.feature-star{background-position:-108px -24px;}
-.feature-cross{background-position:-162px -24px;}
-.feature-marker-stroked{background-position:-216px -24px;}
-.feature-marker{background-position:-0px -48px;}
-.feature-religious-jewish{background-position:-54px -48px;}
-.feature-religious-christian{background-position:-108px -48px;}
-.feature-religious-muslim{background-position:-162px -48px;}
-.feature-cemetery{background-position:-216px -48px;}
-.feature-rocket{background-position:-0px -72px;}
-.feature-airport{background-position:-54px -72px;}
-.feature-heliport{background-position:-108px -72px;}
-.feature-rail{background-position:-162px -72px;}
-.feature-rail-metro{background-position:-216px -72px;}
-.feature-rail-light{background-position:-0px -96px;}
-.feature-bus{background-position:-54px -96px;}
-.feature-fuel{background-position:-108px -96px;}
-.feature-parking{background-position:-162px -96px;}
-.feature-parking-garage{background-position:-216px -96px;}
-.feature-airfield{background-position:-0px -120px;}
-.feature-roadblock{background-position:-54px -120px;}
-.feature-ferry{background-position:-108px -120px;}
-.feature-harbor{background-position:-162px -120px;}
-.feature-bicycle{background-position:-216px -120px;}
-.feature-park{background-position:-0px -144px;}
-.feature-park2{background-position:-54px -144px;}
-.feature-museum{background-position:-108px -144px;}
-.feature-lodging{background-position:-162px -144px;}
-.feature-monument{background-position:-216px -144px;}
-.feature-zoo{background-position:-0px -168px;}
-.feature-garden{background-position:-54px -168px;}
-.feature-campsite{background-position:-108px -168px;}
-.feature-theatre{background-position:-162px -168px;}
-.feature-art-gallery{background-position:-216px -168px;}
-.feature-pitch{background-position:-0px -192px;}
-.feature-soccer{background-position:-54px -192px;}
-.feature-america-football{background-position:-108px -192px;}
-.feature-tennis{background-position:-162px -192px;}
-.feature-basketball{background-position:-216px -192px;}
-.feature-baseball{background-position:-0px -216px;}
-.feature-golf{background-position:-54px -216px;}
-.feature-swimming{background-position:-108px -216px;}
-.feature-cricket{background-position:-162px -216px;}
-.feature-skiing{background-position:-216px -216px;}
-.feature-school{background-position:-0px -240px;}
-.feature-college{background-position:-54px -240px;}
-.feature-library{background-position:-108px -240px;}
-.feature-post{background-position:-162px -240px;}
-.feature-fire-station{background-position:-216px -240px;}
-.feature-town-hall{background-position:-0px -264px;}
-.feature-police{background-position:-54px -264px;}
-.feature-prison{background-position:-108px -264px;}
-.feature-embassy{background-position:-162px -264px;}
-.feature-beer{background-position:-216px -264px;}
-.feature-restaurant{background-position:-0px -288px;}
-.feature-cafe{background-position:-54px -288px;}
-.feature-shop{background-position:-108px -288px;}
-.feature-fast-food{background-position:-162px -288px;}
-.feature-bar{background-position:-216px -288px;}
-.feature-bank{background-position:-0px -312px;}
-.feature-grocery{background-position:-54px -312px;}
-.feature-cinema{background-position:-108px -312px;}
-.feature-pharmacy{background-position:-162px -312px;}
-.feature-hospital{background-position:-216px -312px;}
-.feature-danger{background-position:-0px -336px;}
-.feature-industrial{background-position:-54px -336px;}
-.feature-warehouse{background-position:-108px -336px;}
-.feature-commercial{background-position:-162px -336px;}
-.feature-building{background-position:-216px -336px;}
-.feature-place-of-worship{background-position:-0px -360px;}
-.feature-alcohol-shop{background-position:-54px -360px;}
-.feature-logging{background-position:-108px -360px;}
-.feature-oil-well{background-position:-162px -360px;}
-.feature-slaughterhouse{background-position:-216px -360px;}
-.feature-dam{background-position:-0px -384px;}
-.feature-water{background-position:-54px -384px;}
-.feature-wetland{background-position:-108px -384px;}
-.feature-disability{background-position:-162px -384px;}
-.feature-telephone{background-position:-216px -384px;}
-.feature-emergency-telephone{background-position:-0px -408px;}
-.feature-toilets{background-position:-54px -408px;}
-.feature-waste-basket{background-position:-108px -408px;}
-.feature-music{background-position:-162px -408px;}
-.feature-land-use{background-position:-216px -408px;}
-.feature-city{background-position:-0px -432px;}
-.feature-town{background-position:-54px -432px;}
-.feature-village{background-position:-108px -432px;}
-.feature-farm{background-position:-162px -432px;}
-.feature-bakery{background-position:-216px -432px;}
-.feature-dog-park{background-position:-0px -456px;}
-.feature-lighthouse{background-position:-54px -456px;}
-.feature-clothing-store{background-position:-108px -456px;}
-.feature-polling-place{background-position:-162px -456px;}
-.feature-playground{background-position:-216px -456px;}
-.feature-entrance{background-position:-0px -480px;}
-.feature-heart{background-position:-54px -480px;}
-.feature-london-underground{background-position:-108px -480px;}
-.feature-minefield{background-position:-162px -480px;}
-.feature-rail-underground{background-position:-216px -480px;}
-.feature-rail-above{background-position:-0px -504px;}
-.feature-camera{background-position:-54px -504px;}
-.feature-laundry{background-position:-108px -504px;}
-.feature-car{background-position:-162px -504px;}
-.feature-suitcase{background-position:-216px -504px;}
-.feature-hairdresser{background-position:-0px -528px;}
-.feature-chemist{background-position:-54px -528px;}
-.feature-mobilephone{background-position:-108px -528px;}
-.feature-scooter{background-position:-162px -528px;}
-.feature-gift{background-position:-216px -528px;}
-.feature-ice-cream{background-position:-0px -552px;}
-.preset-icon-line.feature-highway-motorway{background-position:-20px -25px;}
-.preset-icon-line.feature-highway-trunk{background-position:-80px -25px;}
-.preset-icon-line.feature-highway-primary{background-position:-140px -25px;}
-.preset-icon-line.feature-highway-secondary{background-position:-200px -25px;}
-.preset-icon-line.feature-highway-tertiary{background-position:-260px -25px;}
-.preset-icon-line.feature-highway-motorway-link{background-position:-320px -25px;}
-.preset-icon-line.feature-highway-trunk-link{background-position:-380px -25px;}
-.preset-icon-line.feature-highway-primary-link{background-position:-440px -25px;}
-.preset-icon-line.feature-highway-secondary-link{background-position:-500px -25px;}
-.preset-icon-line.feature-highway-tertiary-link{background-position:-560px -25px;}
-.preset-icon-line.feature-highway-residential{background-position:-620px -25px;}
-.preset-icon-line.feature-highway-unclassified{background-position:-680px -25px;}
-.preset-icon-line.feature-highway-service{background-position:-740px -25px;}
-.preset-icon-line.feature-highway-road{background-position:-800px -25px;}
-.preset-icon-line.feature-highway-track{background-position:-860px -25px;}
-.preset-icon-line.feature-highway-living-street{background-position:-920px -25px;}
-.preset-icon-line.feature-highway-path{background-position:-980px -25px;}
-.preset-icon-line.feature-highway-cycleway{background-position:-1040px -25px;}
-.preset-icon-line.feature-highway-footway{background-position:-1100px -25px;}
-.preset-icon-line.feature-highway-bridleway{background-position:-1160px -25px;}
-.preset-icon-line.feature-highway-steps{background-position:-1220px -25px;}
-.preset-icon-line.feature-railway-rail{background-position:-1280px -25px;}
-.preset-icon-line.feature-railway-disused{background-position:-1340px -25px;}
-.preset-icon-line.feature-railway-abandoned{background-position:-1400px -25px;}
-.preset-icon-line.feature-railway-subway{background-position:-1460px -25px;}
-.preset-icon-line.feature-railway-light-rail{background-position:-1520px -25px;}
-.preset-icon-line.feature-railway-monorail{background-position:-1580px -25px;}
-.preset-icon-line.feature-waterway-river{background-position:-1640px -25px;}
-.preset-icon-line.feature-waterway-stream{background-position:-1700px -25px;}
-.preset-icon-line.feature-waterway-canal{background-position:-1760px -25px;}
-.preset-icon-line.feature-waterway-ditch{background-position:-1820px -25px;}
-.preset-icon-line.feature-power-line{background-position:-1880px -25px;}
-.preset-icon-line.feature-other-line{background-position:-1940px -25px;}
-.preset-icon-line.feature-category-roads{background-position:-2000px -25px;}
-.preset-icon-line.feature-category-rail{background-position:-2060px -25px;}
-.preset-icon-line.feature-category-path{background-position:-2120px -25px;}
-.preset-icon-line.feature-category-water{background-position:-2180px -25px;}
-.preset-icon-line.feature-ferry{background-position:-2240px -25px;}
-.preset-icon-line.feature-pipeline{background-position:-2300px -25px;}
-.preset-icon-relation.feature-relation{background-position:-20px -25px;}
-.preset-icon-relation.feature-restriction{background-position:-80px -25px;}
-.preset-icon-relation.feature-multipolygon{background-position:-140px -25px;}
-.preset-icon-relation.feature-boundary{background-position:-200px -25px;}
-.preset-icon-relation.feature-route{background-position:-260px -25px;}
-.preset-icon-relation.feature-route-road{background-position:-320px -25px;}
-.preset-icon-relation.feature-route-bicycle{background-position:-380px -25px;}
-.preset-icon-relation.feature-route-foot{background-position:-440px -25px;}
-.preset-icon-relation.feature-route-bus{background-position:-500px -25px;}
-.preset-icon-relation.feature-route-train{background-position:-560px -25px;}
-.preset-icon-relation.feature-route-detour{background-position:-620px -25px;}
-.preset-icon-relation.feature-route-tram{background-position:-680px -25px;}
-.preset-icon-relation.feature-route-ferry{background-position:-740px -25px;}
-.preset-icon-relation.feature-route-power{background-position:-800px -25px;}
-.preset-icon-relation.feature-route-pipeline{background-position:-860px -25px;}
-.preset-icon-relation.feature-route-master{background-position:-920px -25px;}
-.preset-icon-relation.feature-restriction-no-straight-on{background-position:-980px -25px;}
-.preset-icon-relation.feature-restriction-no-u-turn{background-position:-1040px -25px;}
-.preset-icon-relation.feature-restriction-no-left-turn{background-position:-1100px -25px;}
-.preset-icon-relation.feature-restriction-no-right-turn{background-position:-1160px -25px;}
-.preset-icon-relation.feature-restriction-only-straight-on{background-position:-1220px -25px;}
-.preset-icon-relation.feature-restriction-only-left-turn{background-position:-1280px -25px;}
-.preset-icon-relation.feature-restriction-only-right-turn{background-position:-1340px -25px;}

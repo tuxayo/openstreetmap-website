@@ -1,10 +1,10 @@
-require 'test_helper'
+require "test_helper"
 
 class UserBlocksTest < ActionDispatch::IntegrationTest
   fixtures :users, :user_blocks, :user_roles
 
   def auth_header(user, pass)
-    {"HTTP_AUTHORIZATION" => "Basic %s" % Base64.encode64("#{user}:#{pass}")}
+    { "HTTP_AUTHORIZATION" => format("Basic %s", Base64.encode64("#{user}:#{pass}")) }
   end
 
   def test_api_blocked
@@ -41,18 +41,18 @@ class UserBlocksTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
 
     # revoke the ban
-    get '/login'
+    get "/login"
     assert_response :success
-    post '/login', {'username' => moderator.email, 'password' => "test", :referer => "/blocks/#{block.id}/revoke"}
+    post "/login", "username" => moderator.email, "password" => "test", :referer => "/blocks/#{block.id}/revoke"
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_template 'user_blocks/revoke'
-    post "/blocks/#{block.id}/revoke", {'confirm' => "yes"}
+    assert_template "user_blocks/revoke"
+    post "/blocks/#{block.id}/revoke", "confirm" => "yes"
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_template 'user_blocks/show'
+    assert_template "user_blocks/show"
     reset!
 
     # access the API again. this time it should work

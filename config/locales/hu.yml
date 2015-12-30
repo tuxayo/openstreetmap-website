@@ -13,6 +13,7 @@
 # Author: Misibacsi
 # Author: Nemo bis
 # Author: R-Joe
+# Author: Ruila
 # Author: Samat
 # Author: Sucy
 # Author: Tacsipacsi
@@ -391,11 +392,8 @@ hu:
           taxiway: gurulóút
           terminal: Utasterminál
         amenity:
-          airport: Repülőtér
           arts_centre: Művészeti központ
-          artwork: Műalkotás
           atm: Bankautomata
-          auditorium: Auditórium
           bank: Bank
           bar: Bár
           bbq: Grillsütő
@@ -414,7 +412,6 @@ hu:
           charging_station: Elektromos töltőállomás
           cinema: Mozi
           clinic: Klinika
-          club: Klub
           college: Főiskola
           community_centre: Művelődési központ
           courthouse: Bíróság
@@ -435,22 +432,18 @@ hu:
           fuel: Benzinkút
           grave_yard: Kis temető
           gym: Fitnesz- / Tornaterem
-          hall: Csarnok
           health_centre: Egészségügyi központ
           hospital: Kórház
-          hotel: Szálloda
           hunting_stand: Magasles
           ice_cream: Jégkrém
           kindergarten: Óvoda
           library: Könyvtár
           market: Piac
           marketplace: Vásártér
-          mountain_rescue: Hegyimentők
           nightclub: Éjszakai bár
           nursery: Óvoda
           nursing_home: Idősek otthona
           office: Iroda
-          park: Park
           parking: Parkoló
           pharmacy: Gyógyszertár
           place_of_worship: Vallási hely
@@ -461,7 +454,6 @@ hu:
           prison: Börtön
           pub: Kocsma
           public_building: Középület
-          public_market: Piac
           reception_area: Recepció
           recycling: Szelektív hulladékgyűjtő
           restaurant: Étterem
@@ -470,13 +462,11 @@ hu:
           school: Iskola
           shelter: Esőház
           shop: Bolt
-          shopping: Bevásárlás
           shower: Zuhanyzó
           social_centre: Szociális központ
           social_club: Társasági klub
           social_facility: Szociális létesítmény
           studio: Stúdió
-          supermarket: Szupermarket
           swimming_pool: Úszómedence
           taxi: Taxi
           telephone: Nyilvános telefon
@@ -488,8 +478,6 @@ hu:
           veterinary: Állatorvosi rendelő
           village_hall: Községháza
           waste_basket: Szemétgyűjtő kosár
-          wifi: WiFi hozzáférés
-          WLAN: WiFi hozzáférés
           youth_centre: Ifjúsági központ
         boundary:
           administrative: Közigazgatási határ
@@ -505,13 +493,11 @@ hu:
         building:
           "yes": Épület
         emergency:
-          fire_hydrant: Tűzcsap
           phone: Segélyhívó
         highway:
           bridleway: Lovaglóút
           bus_guideway: Buszsín
           bus_stop: Buszmegálló
-          byway: Kiépítetlen ösvény
           construction: Építés alatt álló közút
           cycleway: Kerékpárút
           emergency_access_point: Vészhelyzeti hozzáférési pont
@@ -519,7 +505,6 @@ hu:
           ford: Gázló
           living_street: Pihenőút
           milestone: Kilométerkő
-          minor: Alárendelt út
           motorway: Autópálya
           motorway_junction: Autópálya-csomópont
           motorway_link: Autópálya
@@ -540,7 +525,6 @@ hu:
           speed_camera: Sebességmérő kamera
           steps: Lépcső
           street_lamp: Utcai lámpa
-          stile: Lépcsős átjáró
           tertiary: Bekötőút
           tertiary_link: Bekötőút
           track: Földút
@@ -553,7 +537,7 @@ hu:
           archaeological_site: Régészeti lelőhely
           battlefield: Csatamező
           boundary_stone: Határkő
-          building: Épület
+          building: Történelmi épület
           castle: Vár
           church: Templom
           citywalls: Városfal
@@ -564,7 +548,6 @@ hu:
           memorial: Emlékmű
           mine: Bánya
           monument: Műemlék
-          museum: Múzeum
           ruins: Rom
           tomb: Sírkő
           tower: Torony
@@ -592,9 +575,6 @@ hu:
           military: Katonai terület
           mine: Bánya
           orchard: Gyümölcsös
-          nature_reserve: Természetvédelmi terület
-          park: Park
-          piste: Sípálya
           quarry: Kőfejtő
           railway: Vasúti terület
           recreation_ground: Szabadidőpark
@@ -605,8 +585,6 @@ hu:
           road: Közúti terület
           village_green: Közös mező
           vineyard: Szőlős
-          wetland: Láp
-          wood: Erdő
         leisure:
           beach_resort: Tengerparti üdülőhely
           bird_hide: Madárles
@@ -641,11 +619,9 @@ hu:
           beach: Part
           cape: Partfok
           cave_entrance: Barlangbejárat
-          channel: Csatorna
           cliff: Szikla
           crater: Kráter
           dune: Dűne
-          feature: Tereptárgy
           fell: Kopár
           fjord: Fjord
           forest: Erdő
@@ -662,11 +638,9 @@ hu:
           point: Pont
           reef: Zátony
           ridge: Hegygerinc
-          river: Folyó
           rock: Szikla
           scree: Sziklatörmelék
           scrub: Cserjés
-          shoal: Zátony
           spring: Forrás
           stone: Kő
           strait: Tengerszoros
@@ -675,10 +649,10 @@ hu:
           volcano: Vulkán
           water: Tó
           wetland: Láp
-          wetlands: Láp
           wood: Erdő
         office:
           accountant: Könyvelő
+          administrative: Admininsztrálás
           architect: Építész
           company: Cég
           employment_agency: Foglalkoztatási Ügynökség
@@ -740,7 +714,6 @@ hu:
           switch: Vasúti váltó
           tram: Villamos
           tram_stop: Villamosmegálló
-          yard: Rendező-pályaudvar
         shop:
           alcohol: Alkoholos italbolt
           antiques: Régiségek
@@ -829,12 +802,10 @@ hu:
           hostel: Turistaszálló
           hotel: Szálloda
           information: Információ
-          lean_to: Kunyhó
           motel: Motel
           museum: Múzeum
           picnic_site: Piknikezőhely
           theme_park: Vidámpark
-          valley: Völgy
           viewpoint: Kilátó
           zoo: Állatkert
         tunnel:
@@ -844,7 +815,6 @@ hu:
           artificial: Mesterséges víziút
           boatyard: Hajóhangár
           canal: Csatorna
-          connector: Vízi csatlakozó
           dam: Gát
           derelict_canal: Felhagyott csatorna
           ditch: Árok
@@ -852,15 +822,12 @@ hu:
           drain: Árok
           lock: Zsilip
           lock_gate: Zsilip
-          mineral_spring: Ásványos patak
           mooring: Kikötő
           rapids: Zuhatag
           river: Folyó
-          riverbank: Folyópart
           stream: Patak
           wadi: Vádi
           waterfall: Vízesés
-          water_point: Vízi fordítópont
           weir: Bukógát
       admin_levels:
         level2: Országhatár
@@ -882,19 +849,6 @@ hu:
     results:
       no_results: Nem találhatók eredmények
       more_results: További eredmények
-    distance:
-      one: kb. 1 km
-      zero: kevesebb mint 1 km
-      other: kb. %{count} km
-    direction:
-      south_west: délnyugatra
-      south: délre
-      south_east: délkeletre
-      east: keletre
-      north_east: északkeletre
-      north: északra
-      north_west: északnyugatra
-      west: nyugatra
   layouts:
     logo:
       alt_text: OpenStreetMap logó
@@ -927,9 +881,9 @@ hu:
     partners_bytemark: Bytemark Hosting
     partners_partners: partnerek
     osm_offline: Az OpenStreetMap-adatbázis jelenleg offline, miközben alapvető adatbázis-karbantartási
-      munkát végzeznek.
+      munkát végeznek.
     osm_read_only: Az OpenStreetMap-adatbázis jelenleg csak olvasható, miközben alapvető
-      adatbázis-karbantartási munkát végzeznek.
+      adatbázis-karbantartási munkát végeznek.
     donate: Támogasd az OpenStreetMapot a Hardverfrissítési Alapba történő %{link}sal.
     help: Súgó
     about: Névjegy
@@ -1108,6 +1062,8 @@ hu:
     welcome:
       url: /welcome
       title: Üdvözlünk az OSM-en
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Hu:Beginners%27_guide
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
@@ -1341,9 +1297,7 @@ hu:
           primary: Főút
           secondary: Összekötő út
           unclassified: Egyéb út
-          unsurfaced: Burkolatlan út
           track: Földút
-          byway: Ösvény
           bridleway: Lovaglóút
           cycleway: Kerékpárút
           footway: Gyalogút
@@ -1367,7 +1321,6 @@ hu:
           golf: Golfpálya
           park: Park
           resident: Gyalogos övezet
-          tourist: Turisztikai látványosság
           common:
           - Füves terület
           - rét
@@ -1397,7 +1350,6 @@ hu:
           tunnel: Szaggatott szegély = alagút
           bridge: Fekete szegély = híd
           private: Behajtás csak engedéllyel
-          permissive: Behajtás engedélyezett
           destination: Csak célforgalom
           construction: Utak építés alatt
     richtext_area:
@@ -1541,6 +1493,7 @@ hu:
         Ezt nem kell elfogadnod, de meg kell tekintened.
   oauth:
     oauthorize:
+      title: A fiókodhoz való hozzáférés engedélyezése
       request_access: A(z) %{app_name} alkalmazás hozzáférést kér a felhasználói fiókodhoz,
         %{user}. Kérlek, jelöld, ha azt szeretnéd, hogy az alkalmazás rendelkezzen
         a következő képességekkel. Választhatsz olyan sokat vagy keveset, amennyit
@@ -1554,9 +1507,12 @@ hu:
       allow_write_gpx: GPS nyomvonalak feltöltése.
       allow_write_notes: jegyzet módosítása
     oauthorize_success:
+      title: Hozzáférési kérés jóváhagyva
+      allowed: '%{app_name} számára hozzáférést biztosítottál a fiókodhoz.'
       verification: 'Az ellenőrző kód: %{code}.'
     oauthorize_failure:
       title: Az azonosítás sikertelen.
+      denied: '%{app_name} alkalmazástól megtagadtad, hogy hozzáférhessen a fiókodhoz.'
       invalid: A hitelesítő token érvénytelen.
     revoke:
       flash: Visszavontad az utalványt a(z) %{application} alkalmazáshoz
@@ -1628,13 +1584,12 @@ hu:
       email or username: 'E-mail cím vagy felhasználónév:'
       password: 'Jelszó:'
       openid: '%{logo} OpenID:'
-      remember: 'Emlékezz rám:'
+      remember: Emlékezz rám
       lost password link: Elfelejtetted a jelszavad?
       login_button: Bejelentkezés
       register now: Regisztrálj most
       with username: 'Már van OpenStreetMap fiókod? Jelentkezz be a felhasználóneveddel
         és jelszavaddal:'
-      with openid: 'A bejelentkezéshez az OpenID azonosítódat is használhatod:'
       new to osm: Új vagy az OpenStreetMapnál?
       to make changes: Ahhoz, hogy módosíthasd az OpenStreetMap-adatokat, rendelkezned
         kell egy felhasználói fiókkal.
@@ -1648,25 +1603,14 @@ hu:
         miatt.<br>Lépj kapcsolatba ezen a címen: <a href="%{webmaster}">a webmasterrel</a>  a
         kérdés tisztázásához.'
       auth failure: Sajnálom, ilyen adatokkal nem tudsz bejelentkezni.
-      openid missing provider: Sajnos nem sikerült kapcsolódni az OpenID szolgáltatódhoz
-      openid invalid: Sajnos úgy tűnik, hogy az OpenID azonosítód hibás
       openid_logo_alt: Bejelentkezés egy OpenID-vel
-      openid_providers:
+      auth_providers:
         openid:
           title: Bejelentkezés OpenID-vel
-          alt: Bejelentkezés egy OpenID URL-lel
-        google:
-          title: Bejelentkezés Google-lel
-          alt: Bejelentkezés egy Google OpenID-vel
         yahoo:
           title: Bejelentkezés Yahoo-val
-          alt: Bejelentkezés egy Yahoo OpenID-vel
-        wordpress:
-          title: Bejelentkezés Wordpress-szel
-          alt: Bejelentkezés egy Wordpress OpenID-vel
         aol:
           title: Bejelentkezés AOL-lal
-          alt: Bejelentkezés egy AOL OpenID-vel
     logout:
       title: Kijelentkezés
       heading: Kijelentkezés az OpenStreetMapból
@@ -1712,22 +1656,8 @@ hu:
       display name: 'Megjelenítendő név:'
       display name description: A nyilvánosan megjelenített felhasználóneved. A beállításaidban
         később megváltoztathatod.
-      openid: '%{logo} OpenID:'
       password: 'Jelszó:'
       confirm password: 'Jelszó megerősítése:'
-      use openid: A bejelentkezéshez használhatod az %{logo} OpenID-t is.
-      openid no password: Az OpenID-vel nincs szükség jelszóra, de szükség lehet néhány
-        többleteszközre vagy szerverre.
-      openid association: |-
-        <p>Az OpenID azonosítód még nincs hozzákapcsolva egy OpenStreetMap fiókhoz.</p>
-        <ul>
-          <li>Ha még új vagy az OpenStreetMapnál, hozz létre egy új fiókot az alábbi űrlap használatával.</li>
-          <li>
-            Ha már rendelkezel fiókkal, felhasználóneved és jelszavad
-            használatával bejelentkezhetsz a fiókodba, majd a felhasználói
-            beállításoknál hozzákapcsolhatod azt az OpenID-hez.
-          </li>
-        </ul>
       continue: Regisztráció
       terms accepted: Köszönjük, hogy elfogadtad az új hozzájárulási feltételeket!
       terms declined: Sajnáljuk, hogy úgy döntöttél, nem fogadod el az új hozzájárulási
@@ -1835,7 +1765,6 @@ hu:
       new email address: 'Új e-mail cím:'
       email never displayed publicly: (soha nem jelenik meg nyilvánosan)
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: mi ez?
       public editing:
@@ -1897,6 +1826,7 @@ hu:
       press confirm button: Felhasználói fiókod megerősítéséhez nyomd meg az alábbi
         megerősítés gombot.
       button: Megerősítés
+      success: Felhasználói fiókod megerősítve, köszönjük a regisztrációt!
       already active: Ez a fiók már megerősítésre került.
       unknown token: Ez a megerősítési kód lejárt vagy nem létezik.
       reconfirm_html: A jóváhagyó link újraküldéséhez <a href="%{reconfirm}">kattints

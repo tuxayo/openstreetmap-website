@@ -1,21 +1,19 @@
-namespace 'db' do
-  desc 'Adds a version number to the nodes table'
-  task :node_version  do
-    require File.dirname(__FILE__) + '/../../config/environment'
+namespace "db" do
+  desc "Adds a version number to the nodes table"
+  task :node_version do
+    require File.dirname(__FILE__) + "/../../config/environment"
 
     increment = 1000
     offset = 0
-    id_max = OldNode.find(:first, :order => 'id desc').id
-    
+    id_max = OldNode.find(:first, :order => "id desc").id
+
     while offset < (id_max + increment)
       hash = {}
 
-     #should be offsetting not selecting
-      OldNode.find(:all, :limit => increment, :offset => offset, :order => 'timestamp').each do |node|
-         if hash[node.id].nil?
-           hash[node.id] = [] 
-         end
-         hash[node.id] << node
+      # should be offsetting not selecting
+      OldNode.find(:all, :limit => increment, :offset => offset, :order => "timestamp").each do |node|
+        hash[node.id] ||= []
+        hash[node.id] << node
       end
 
       hash.each_value do |node_array|
@@ -30,17 +28,11 @@ namespace 'db' do
           temp_old_node.timestamp = node.timestamp
           temp_old_node.tile = node.tile
           temp_old_node.version = n
-          temp_old_node.save! || raise
-          n +=1 
+          temp_old_node.save! || fail
+          n += 1
         end
       end
       offset += increment
     end
   end
 end
-
-
-
-
-
-

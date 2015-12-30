@@ -85,11 +85,14 @@ lb:
       relation: Relatiounen (%{count})
       relation_paginated: Relatiounen (%{x}-%{y} vu(n) %{count})
       comment: Bemierkungen (%{count})
+      hidden_commented_by: Verstoppt Bemierkung vum %{user} <abbr title='%{exact_time}'>
+        viru(n) %{when}</abbr>
       changesetxml: XML mam Set vun Ännerungen
       osmchangexml: osmChange XML
       feed:
         title: 'Set vun Ännerungen: %{id}'
         title_comment: Set vun Ännerungen %{id} - %{comment}
+      join_discussion: Loggt Iech an, fir bei der Diskussioun matzemaachen
       discussion: Diskussioun
     node:
       title: 'Knuet: %{name}'
@@ -116,12 +119,14 @@ lb:
         way: Wee
         relation: Relatioun
         changeset: Set vun Ännerungen
+        note: Notiz
     timeout:
       type:
         node: Knuet
         way: Wee
         relation: Relatioun
         changeset: Set vun Ännerungen
+        note: Notiz
     redacted:
       type:
         node: Knuet
@@ -187,6 +192,8 @@ lb:
       commented_at_by_html: Viru(n) %{when} vum %{user} aktualiséiert
       full: Komplett Diskussioun
   diary_entry:
+    new:
+      publish_button: Verëffentlechen
     list:
       title: Blogge vun de Benotzer
     edit:
@@ -261,10 +268,7 @@ lb:
           runway: Start- a Landepist
           terminal: Terminal
         amenity:
-          airport: Fluchhafen
-          artwork: Konschtwierk
           atm: Bancomat
-          auditorium: Auditoire
           bank: Bank
           bar: Bar
           bbq: Grillplaz
@@ -281,7 +285,7 @@ lb:
           charging_station: Statioun fir ze lueden
           cinema: Kino
           clinic: Klinik
-          club: Club
+          clock: Auer
           crematorium: Crematoire
           dentist: Zänndokter
           doctors: Dokteren
@@ -296,15 +300,13 @@ lb:
           grave_yard: Kiirfecht
           gym: Fitnessstudio
           hospital: Klinik
-          hotel: Hotel
           ice_cream: Glace
           kindergarten: Spillschoul
           library: Bibliothéik
           market: Maart
           marketplace: Maartplaz
-          mountain_rescue: Biergrettung
+          monastery: Klouschter
           office: Büro
-          park: Park
           parking: Parking
           pharmacy: Apdikt
           police: Police
@@ -313,7 +315,6 @@ lb:
           preschool: Spillschoul
           prison: Prisong
           pub: Bistro
-          public_market: Ëffentleche Maart
           reception_area: Rezeptiounsberäich
           recycling: Recycling-Center
           restaurant: Restaurant
@@ -324,7 +325,6 @@ lb:
           shower: Douche
           social_facility: Sozial Ariichtung
           studio: Studio
-          supermarket: Supermarché
           swimming_pool: Schwämm
           taxi: Taxi
           telephone: Telefonscabine
@@ -343,18 +343,23 @@ lb:
           "yes": Bréck
         building:
           "yes": Gebai
+        craft:
+          electrician: Elektriker
+          gardener: Gäertner
+          photographer: Fotograf
+          shoemaker: Schouster
+          tailor: Schneider
         emergency:
-          fire_hydrant: Hydrant
+          defibrillator: Defibrillator
           phone: Noutruff-Telefon
         highway:
           bridleway: Wee fir Päerd
           bus_guideway: Busspur
-          byway: Niewewee
           construction: Autobunn (am Bau)
+          elevator: Lift
           footway: Fousswee
           ford: Fuert
           milestone: Kilometersteen
-          minor: Niewestrooss
           motorway: Autobunn
           path: Pad
           pedestrian: Fousswee
@@ -369,18 +374,22 @@ lb:
           steps: Trap
           street_lamp: Stroosseluucht
           tertiary: Kleng Strooss
+          "yes": Strooss
         historic:
           archaeological_site: Archeologesche Site
           battlefield: Schluechtfeld
-          building: Gebai
+          building: Historescht Gebai
+          bunker: Bunker
           castle: Schlass
           church: Kierch
+          city_gate: Stadpaart
           citywalls: Stadmaueren
           house: Haus
           memorial: Monument
           monument: Monument
-          museum: Musée
+          roman_road: Réimerwee
           ruins: Ruinen
+          stone: Steen
           tomb: Graf
           tower: Tuerm
           wreck: Wrack
@@ -395,16 +404,12 @@ lb:
           industrial: Industriezone
           military: Militairegebitt
           orchard: Bongert
-          nature_reserve: Naturschutzgebitt
-          park: Park
-          piste: Pist
           quarry: Steekaul
           railway: Eisebunn
           residential: Wunngéigend
           vineyard: Wéngert
-          wetland: Fiichtgebitt
-          wood: Bësch
         leisure:
+          club: Club
           garden: Gaart
           golf_course: Golfterrain
           ice_rink: Äispist
@@ -416,6 +421,12 @@ lb:
           sauna: Sauna
           stadium: Stadion
           swimming_pool: Schwämm
+          "yes": Fräizäit
+        man_made:
+          lighthouse: Liichttuerm
+          pipeline: Pipeline
+          tower: Tuerm
+          works: Fabrik
         military:
           airfield: Militärfluchhafen
           barracks: Kasär
@@ -426,7 +437,6 @@ lb:
           bay: Bucht
           beach: Plage
           cape: Kap
-          channel: Kanal
           crater: Krater
           fjord: Fjord
           forest: Bësch
@@ -434,11 +444,12 @@ lb:
           glacier: Gletscher
           hill: Hiwwel
           island: Insel
+          land: Land
           marsh: Mouer
           moor: Mouer
           point: Punkt
-          river: Floss
           rock: Steng
+          sand: Sand
           spring: Quell
           stone: Steen
           tree: Bam
@@ -446,9 +457,9 @@ lb:
           volcano: Vulkan
           water: Waasser
           wetland: Fiichtgebitt
-          wetlands: Fiichtgebitter
           wood: Bësch
         office:
+          administrative: Verwaltung
           architect: Architekt
           company: Firma
           employment_agency: Aarbechtsamt
@@ -457,14 +468,17 @@ lb:
           travel_agent: Reesbüro
           "yes": Büro
         place:
+          block: Block
           airport: Fluchhafen
           city: Stad
           country: Land
+          county: Bezierk
           farm: Bauerenhaff
           house: Haus
           houses: Haiser
           island: Insel
           islet: Insel
+          locality: Plaz
           moor: Mouer
           municipality: Gemeng
           neighbourhood: Noperschaft
@@ -474,6 +488,7 @@ lb:
           subdivision: Ënnerdeelung
           town: Stad
           village: Duerf
+          "yes": Plaz
         railway:
           abandoned: Fréier Eisebunn
           construction: Eisebunn (am Bau)
@@ -482,7 +497,7 @@ lb:
           miniature: Miniatur-Eisebunn
           proposed: Proposéiert Eisebunnslinn
           station: Gare (Eisebunn)
-          subway: Metro-Statioun
+          subway: Metro
           tram: Tram
         shop:
           antiques: Antiquitéitegeschäft
@@ -523,18 +538,19 @@ lb:
           travel_agency: Reesbüro
           "yes": Geschäft
         tourism:
+          apartment: Appartement
           artwork: Konschtwierk
           attraction: Attraktioun
           cabin: Hütt
           camp_site: Camping
           chalet: Chalet
+          gallery: Galerie
           hotel: Hotel
           information: Informatioun
           motel: Motel
           museum: Musée
           picnic_site: Piknikplaz
           theme_park: Fräizäitpark
-          valley: Dall
           viewpoint: Aussiichtspunkt
           zoo: Zoo
         tunnel:
@@ -552,19 +568,6 @@ lb:
     results:
       no_results: Näischt fonnt
       more_results: Méi Resultater
-    distance:
-      one: ongeféier 1km
-      zero: manner wéi 1km
-      other: ongeféier %{count}km
-    direction:
-      south_west: südwest
-      south: südlech
-      south_east: südost
-      east: ëstlech
-      north_east: nordost
-      north: nërdlech
-      north_west: nordwest
-      west: westlech
   layouts:
     logo:
       alt_text: OpenStreetMap Logo
@@ -579,6 +582,8 @@ lb:
     user_diaries: Benotzer Bloggen
     edit_with: Ännere mat %{editor}
     intro_header: Wëllkomm bei OpenStreetMap!
+    intro_text: OpenStreetMap ass eng Kaart vun der Welt, déi vu Leit wéi Iech gemaach
+      gouf an déi fräi ënner enger oppener Lizenz benotzt ka ginn.
     intro_2_create_account: E Benotzerkont uleeën
     partners_partners: Partner
     osm_offline: D'OpenStreetMap Datebank ass elo net disponibel well dru geschafft
@@ -609,6 +614,8 @@ lb:
     title: Wëllkomm!
     whats_on_the_map:
       title: Wat ass op der Kaart
+    rules:
+      title: Regelen!
     questions:
       title: Nach Froen?
     add_a_note:
@@ -626,11 +633,19 @@ lb:
     welcome:
       url: /welcome
       title: Wëllkomm bäi OSM
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Beginners%27_guide
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
       description: Stellt eng Fro oder kuckt no Äntwerten um OSM-Site mat de Froen
         an Äntwerten.
+    mailing_lists:
+      title: Mailing-Lëschten
+    forums:
+      title: Forumen
+    irc:
+      title: IRC
     wiki:
       url: http://wiki.openstreetmap.org/
       title: wiki.openstreetmap.org
@@ -638,6 +653,7 @@ lb:
     next: Weider
     local_knowledge_title: Lokaalt Wëssen
     open_data_title: Open Data
+    legal_title: Legal
     partners_title: Partner
   notifier:
     diary_comment_notification:
@@ -741,7 +757,6 @@ lb:
           motorway: Autobunn
           secondary: Niewestrooss
           unclassified: Net klasséiert Strooss
-          byway: Niewewee
           bridleway: Wee fir Päerd
           cycleway: Vëlospiste
           footway: Fousswee
@@ -755,7 +770,6 @@ lb:
           wood: Bësch
           golf: Golfterrain
           park: Park
-          tourist: Touristenattraktioun
           industrial: Industriezone
           lake:
           - Séi
@@ -877,13 +891,19 @@ lb:
       create account minute: Maacht e Benotzerkont. Et dauert nëmmen eng Minutt.
       no account: Hutt Dir kee Benotzerkont?
       openid_logo_alt: Alogge mat enger OpenID
-      openid_providers:
+      auth_providers:
         openid:
           title: Alogge mat OpenID
           alt: Alogge mat enger OpenID URL
         google:
           title: Alogge mat Google
           alt: Alogge mat enger Google OpenID
+        facebook:
+          title: Mat Facebook aloggen
+          alt: Mat engem Facebook Benotzerkont aloggen
+        windowslive:
+          title: Mat Windows Live aloggen
+          alt: Mat engem Windows-Live Benotzerkont aloggen
         yahoo:
           title: Alogge mat Yahoo
           alt: Alogge mat enger Yahoo OpenID
@@ -919,7 +939,6 @@ lb:
       email address: 'E-Mail-Adress:'
       confirm email address: 'E-Mail-Adress confirméieren:'
       display name: Numm weisen
-      openid: '%{logo} OpenID:'
       password: 'Passwuert:'
       confirm password: 'Passwuert confirméieren:'
       continue: Mellt Iech un
@@ -1021,6 +1040,7 @@ lb:
     confirm_email:
       heading: Eng Ännerung vun enger E-Mailadress confirméieren
       button: Confirméieren
+      unknown_token: Dee Confirmatiouns-Code ass ofgelaf oder et gëtt en net.
     go_public:
       flash success: All Är Ännerunge sinn elo ëffentlech, an Dir däerft elo änneren.
     make_friend:
@@ -1043,6 +1063,8 @@ lb:
       empty: Et goufe keng sou Benotzer fonnt
     suspended:
       webmaster: Webmaster
+    auth_failure:
+      no_authorization_code: Keen Autorisatiouns-Code
   user_role:
     filter:
       not_an_administrator: Nëmmen Administrateure kënnen d'Gestioun vun de Rolle
@@ -1103,6 +1125,7 @@ lb:
     show:
       title: '%{block_on} gespaart vum %{block_by}'
       heading: '%{block_on} gespaart vum %{block_by}'
+      ago: viru(n) %{time}}
       status: Status
       show: Weisen
       edit: Änneren
@@ -1122,6 +1145,7 @@ lb:
   javascripts:
     close: Zoumaachen
     share:
+      title: Deelen
       cancel: Ofbriechen
       image: Bild
       link: Link oder HTML
@@ -1158,6 +1182,21 @@ lb:
         resolve: Léisen
         reactivate: Reaktivéieren
         comment: Bemierkung
+    directions:
+      engines:
+        mapzen_bicycle: Vëlo (Mapzen)
+      directions: Richtungen
+      distance: Distanz
+      instructions:
+        continue_without_exit: Virun op %{name}
+        sharp_right_without_exit: Schaarf riets op %{name}
+        sharp_left_without_exit: Schaarf lénks op %{name}
+        via_point_without_exit: (iwwer de Punkt)
+        roundabout_without_exit: Am Kreesverkéier huelt %{name}
+        leave_roundabout_without_exit: Aus dem Kreesverkéier erausgoen - %{name}
+        stay_roundabout_without_exit: Am Kreesverkéier bleiwen - %{name}
+        unnamed: Strooss ouni Numm
+      time: Zäit
     query:
       way: Wee
       relation: Relatioun

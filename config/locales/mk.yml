@@ -164,6 +164,7 @@ mk:
         way: пат
         relation: однос
         changeset: измени
+        note: белешка
     timeout:
       sorry: Жалиме, но добивањето на податоците за %{type} со id %{id} трае предолго.
       type:
@@ -171,6 +172,7 @@ mk:
         way: пат
         relation: однос
         changeset: менувач
+        note: белешка
     redacted:
       redaction: Редакција %{id}
       message_html: Верзијата %{version} на оваа %{type} не може да се прикаже бидејќи
@@ -255,6 +257,7 @@ mk:
   diary_entry:
     new:
       title: Нова дневничка ставка
+      publish_button: Објави
     list:
       title: Дневници на корисници
       title_friends: Дневници на пријателите
@@ -392,8 +395,10 @@ mk:
     search_osm_nominatim:
       prefix:
         aerialway:
-          chair_lift: Клупна жичарница
-          drag_lift: Влечна жичарница
+          cable_car: Кабелски трамвај
+          chair_lift: Клупна жичница
+          drag_lift: Влечна жичница
+          gondola: Кабинска жичница
           station: Гондолска станица
         aeroway:
           aerodrome: Аеродром
@@ -404,11 +409,9 @@ mk:
           taxiway: Рулажна патека
           terminal: Терминал
         amenity:
-          airport: Аеродром
+          animal_shelter: Засолниште за животни
           arts_centre: Дом на уметности
-          artwork: Уметничко дело
           atm: Банкомат
-          auditorium: Аудиториум
           bank: Банка
           bar: Бар
           bbq: Скара
@@ -416,6 +419,7 @@ mk:
           bicycle_parking: Велосипедско паркирање
           bicycle_rental: Изнајмување велосипеди
           biergarten: Пивска градина
+          boat_rental: Изнајмување пловила
           brothel: Бордел
           bureau_de_change: Менувачница
           bus_station: Автобуска станица
@@ -425,9 +429,10 @@ mk:
           car_wash: Автоперална
           casino: Казино
           charging_station: Напојна станица
+          childcare: Претшколска установа
           cinema: Кино
           clinic: Клиника
-          club: Клуб
+          clock: Часовник
           college: Колеџ
           community_centre: Центар на заедница
           courthouse: Суд
@@ -446,25 +451,25 @@ mk:
           food_court: Штандови за брза храна
           fountain: Фонтана
           fuel: Гориво
+          gambling: Коцкање
           grave_yard: Гробишта
           gym: Теретана / фитнес
-          hall: Соборна сала
           health_centre: Здравствен центар
           hospital: Болница
-          hotel: Хотел
           hunting_stand: Ловечка кула
           ice_cream: Сладолед
           kindergarten: Градинка
           library: Библиотека
           market: Пазар
           marketplace: Пазар
-          mountain_rescue: Планинарско спасување
+          monastery: Манастир
+          motorcycle_parking: Паркиралиште за мотоцикли
           nightclub: Ноќен клуб
           nursery: Јасли
           nursing_home: Старечки дом
           office: Канцеларија
-          park: Парк
           parking: Паркинг
+          parking_entrance: Влез на паркиралиште
           pharmacy: Аптека
           place_of_worship: Верски објект
           police: Полиција
@@ -474,7 +479,6 @@ mk:
           prison: Затвор
           pub: Пивница
           public_building: Јавен објект
-          public_market: Градски пазар
           reception_area: Рецепција
           recycling: Рециклирање
           restaurant: Ресторан
@@ -483,13 +487,11 @@ mk:
           school: Училиште
           shelter: Засолниште
           shop: Дуќан
-          shopping: Дуќани
           shower: Туш
           social_centre: Социјален центар
           social_club: Друштвен клуб
           social_facility: Општествена постројка
           studio: Студио
-          supermarket: Супермаркет
           swimming_pool: Базен
           taxi: Такси
           telephone: Телефонска говорница
@@ -501,8 +503,7 @@ mk:
           veterinary: Ветеринарна клиника
           village_hall: Месна заедница
           waste_basket: Корпа за отпадоци
-          wifi: WiFi-пристап
-          WLAN: WiFi-пристап
+          waste_disposal: Депонија
           youth_centre: Младински центар
         boundary:
           administrative: Административна граница
@@ -517,22 +518,35 @@ mk:
           "yes": Мост
         building:
           "yes": Градба
+        craft:
+          brewery: Пиварница
+          carpenter: Столар
+          electrician: Електричар
+          gardener: Градинар
+          painter: Сликар
+          photographer: Фотограф
+          plumber: Водоводџија
+          shoemaker: Чевлар
+          tailor: Кројач
+          "yes": Занаетчиски дуќан
         emergency:
-          fire_hydrant: Хидрант
+          ambulance_station: Итна помош
+          defibrillator: Дефибрилатор
+          landing_site: Место за итно слетување
           phone: Итен телефон
         highway:
+          abandoned: Напуштен автопат
           bridleway: Коњски пат
           bus_guideway: Автобуски шини
           bus_stop: Автобуска постојка
-          byway: Спореден пат
           construction: Автопат во изградба
           cycleway: Велосипедска патека
+          elevator: Лифт
           emergency_access_point: Прва помош
           footway: Тротоар
           ford: Брод
           living_street: Маалска улица
           milestone: Милјоказ
-          minor: Помал спореден пат
           motorway: Автопат
           motorway_junction: Клучка
           motorway_link: Приклучен пат
@@ -553,37 +567,44 @@ mk:
           speed_camera: Брзиноловец
           steps: Скалила
           street_lamp: Улична светилка
-          stile: Тарабен премин
           tertiary: Третостепен пат
           tertiary_link: Третостепен пат
           track: Полски пат
+          traffic_signals: Сообраќајна сигнализација
           trail: Патека
           trunk: Магистрала
           trunk_link: Магистрала
           unclassified: Некласификуван пат
           unsurfaced: Неасфалтиран пат
+          "yes": Пат
         historic:
           archaeological_site: Археолошки локалитет
           battlefield: Бојно поле
           boundary_stone: Граничен камен
-          building: Градба
+          building: Историска градба
+          bunker: Бункер
           castle: Замок
           church: Црква
+          city_gate: Градска порта
           citywalls: Градски ѕидини
           fort: Утврдување
+          heritage: Културно наследство
           house: Куќа
           icon: Икона
           manor: Велепоседнички дом
           memorial: Споменик
           mine: Рудник
           monument: Споменик
-          museum: Музеј
+          roman_road: Римски пат
           ruins: Рушевини
+          stone: Камен
           tomb: Гроб
           tower: Кула
           wayside_cross: Крајпатен крст
           wayside_shrine: Параклис
           wreck: Бродолом
+        junction:
+          "yes": Раскрсница
         landuse:
           allotments: Парцели
           basin: Котлина
@@ -605,9 +626,6 @@ mk:
           military: Воено подрачје
           mine: Рудник
           orchard: Овоштарник
-          nature_reserve: Природен резерват
-          park: Парк
-          piste: Писта
           quarry: Каменолом
           railway: Железница
           recreation_ground: Рекреативен терен
@@ -618,16 +636,19 @@ mk:
           road: Патно подрачје
           village_green: Селско зеленило
           vineyard: Лозници
-          wetland: Мочуриште
-          wood: Шума
+          "yes": Употреба на земјиште
         leisure:
           beach_resort: Крајбрежно одморалиште
           bird_hide: Набљудувалиште за птици
+          club: Клуб
           common: Општествена земја
+          dog_park: Парк за кучиња
           fishing: Рибарење
+          fitness_centre: Центар за фитнес
           fitness_station: Технички преглед
           garden: Градина
           golf_course: Голф-терен
+          horse_riding: Јавање
           ice_rink: Лизгалиште
           marina: Марина
           miniature_golf: Миниголф
@@ -636,6 +657,7 @@ mk:
           pitch: Спортски терен
           playground: Детско игралиште
           recreation_ground: Разонодно место
+          resort: Одморалиште
           sauna: Сауна
           slipway: Испуст
           sports_centre: Спортски центар
@@ -643,6 +665,13 @@ mk:
           swimming_pool: Базен
           track: Спортска патека
           water_park: Аквапарк
+          "yes": Разонода
+        man_made:
+          lighthouse: Светилник
+          pipeline: Цевковод
+          tower: Кула
+          works: Фабрика
+          "yes": Вештачки
         military:
           airfield: Воено слетувалиште
           barracks: Касарна
@@ -654,16 +683,15 @@ mk:
           beach: Плажа
           cape: ‘Рт
           cave_entrance: Влез во пештера
-          channel: Канал
           cliff: Гребен
           crater: Кратер
           dune: Дина
-          feature: Елемент
           fell: Фел
           fjord: Фјорд
           forest: Шума
           geyser: Гејзер
           glacier: Глечер
+          grassland: Полјана
           heath: Голет
           hill: Рид
           island: Остров
@@ -675,11 +703,11 @@ mk:
           point: Точка
           reef: Гребен
           ridge: Срт
-          river: Река
           rock: Карпа
+          saddle: Седло
+          sand: Песок
           scree: Сип
           scrub: Честак
-          shoal: Плитко место
           spring: Извор
           stone: Камен
           strait: Проток
@@ -688,10 +716,10 @@ mk:
           volcano: Вулкан
           water: Вода
           wetland: Мочуриште
-          wetlands: Мочуриште
           wood: Шума
         office:
           accountant: Сметководител
+          administrative: Администрација
           architect: Архитект
           company: Фирма
           employment_agency: Агенција за вработување
@@ -704,6 +732,8 @@ mk:
           travel_agent: Туристичка агенција
           "yes": Канцеларија
         place:
+          allotments: Парцели
+          block: Блок
           airport: Аеродром
           city: Град
           country: Земја
@@ -728,6 +758,7 @@ mk:
           town: Град
           unincorporated_area: Нездружено подрачје
           village: Село
+          "yes": Место
         railway:
           abandoned: Напуштена железничка линија
           construction: Железничка линија во изградба
@@ -748,14 +779,11 @@ mk:
           spur: Железнички огранок
           station: Железничка станица
           stop: Железничка постојка
-          subway: Метро станица
+          subway: Метро
           subway_entrance: Влез во метро
           switch: Железнички пунктови
           tram: Трамвајска линија
           tram_stop: Трамвајска постојка
-          yard: Железничко депо
-        route:
-          bus: Автобуска линија
         shop:
           alcohol: Алкохол на црно
           antiques: Старинарница
@@ -833,6 +861,7 @@ mk:
           "yes": Дуќан
         tourism:
           alpine_hut: Планинска куќарка
+          apartment: Стан
           artwork: Уметничко дело
           attraction: Атракција
           bed_and_breakfast: Полупансион
@@ -840,16 +869,15 @@ mk:
           camp_site: Камп
           caravan_site: Автокамп
           chalet: Брвнара
+          gallery: Галерија
           guest_house: Пансион
           hostel: Хостел
           hotel: Хотел
           information: Информации
-          lean_to: Прилепена стреа
           motel: Мотел
           museum: Музеј
           picnic_site: Излетничко место
           theme_park: Забавен парк
-          valley: Долина
           viewpoint: Видиковец
           zoo: Зоолошка
         tunnel:
@@ -859,7 +887,6 @@ mk:
           artificial: Вештачки воден пат
           boatyard: Чамцоградилиште
           canal: Канал
-          connector: Слив
           dam: Брана
           derelict_canal: Запуштен канал
           ditch: Канач
@@ -867,16 +894,14 @@ mk:
           drain: Одвод
           lock: Превојница
           lock_gate: Превојничка капија
-          mineral_spring: Минерален извор
           mooring: Сидриште
           rapids: Брзак
           river: Река
-          riverbank: Кеј
           stream: Поток
           wadi: Вади
           waterfall: Водопад
-          water_point: Пристап до вода
           weir: Јаз
+          "yes": Воден пат
       admin_levels:
         level2: Државна граница
         level4: Покраинска граница
@@ -897,19 +922,6 @@ mk:
     results:
       no_results: Не пронајдов ништо
       more_results: Повеќе резултати
-    distance:
-      one: околу 1 км
-      zero: помалку од 1 км
-      other: околу %{count} км
-    direction:
-      south_west: југозападно
-      south: јужно
-      south_east: југоисточно
-      east: источно
-      north_east: североисточно
-      north: северно
-      north_west: северозападно
-      west: западно
   layouts:
     logo:
       alt_text: Логотип на OpenStreetMap
@@ -976,10 +988,10 @@ mk:
       mapping_link: почнете да ги работите картите
     legal_babble:
       title_html: Авторски права и лиценца
-      intro_1_html: |-
-        OpenStreetMap има <i>отворени податоци</i> под лиценцата <a
-        href="http://opendatacommons.org/licenses/odbl/">Open Data
-        Commons Open Database License</a> (ODbL).
+      intro_1_html: "OpenStreetMap<sup><a href=\"#trademarks\">&reg;</a></sup> има
+        <i>отворени податоци</i> под лиценцата <a\nhref=\"http://opendatacommons.org/licenses/odbl/\">Open
+        Data\nCommons Open Database License</a> (ODbL) од <a\n \t+\t\nhref=\"http://osmfoundation.org/\">фондацијата
+        OpenStreetMap</a> (OSMF)."
       intro_2_html: "Нашите податоци слободно можете да ги умножувате, распространувате,
         предавате и менувате, \nдоколку ја наведете OpenStreetMap и нејзините\nучесници.
         Доколку ги измените или дополните податоците,\nдобиеното можете да го распространувате
@@ -1011,7 +1023,8 @@ mk:
       more_title_html: Повеќе информации
       more_1_html: |-
         Повеќе за употребата на податоци и како да не наведувате, ќе најдете на <a
-        href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">Правни ЧПП</a>.
+        href="http://osmfoundation.org/Licence">лиценцната страница на OSMF</a> и <a
+        href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">Правните ЧПП</a> на заедницата.
       more_2_html: |-
         Иако OpenStreetMap работи со отворени податоци, ние не можеме да понудиме
         бесплатни извршници (API) за карти на трети програмери.
@@ -1045,6 +1058,11 @@ mk:
       contributors_nz_html: |-
         <strong>Нов Зеланд</strong>: Содржи податоци од
         Катастарската служба на Нов Зеланд. Крунски авторски права.
+      contributors_si_html: |-
+        <strong>Словенија</strong>: Содржи податоци од
+        <a href="http://www.gu.gov.si/en/">Геодетската управа</a> и
+        <a href="http://www.mkgp.gov.si/en/">Министерството за земјоделство, шумарство и храна</a>
+        (јавни информации од Словенија).
       contributors_za_html: |-
         <strong>ЈАР</strong>: Содржи податоци од
         <a href="http://www.ngi.gov.za/">Главната управа:
@@ -1071,6 +1089,11 @@ mk:
         href=\"http://www.osmfoundation.org/wiki/License/Takedown_procedure\">процедурата
         \nза отстранување</a> или поднесете жалба на \n<a href=\"http://dmca.openstreetmap.org/\">оваа
         наменска страница</a>."
+      trademarks_title_html: <span id="trademarks"></span>Заштитни знаци
+      trademarks_1_html: OpenStreetMap и логото со лупа се заштитни знаци на фондацијата
+        OpenStreetMap. Ако имате прашања во врска со употребата на знаците, пишете
+        ѝ на <a href="http://wiki.osmfoundation.org/wiki/Licensing_Working_Group">Работната
+        група за лиценци</a>.
   welcome_page:
     title: Добре дојдовте!
     introduction_html: Добре дојдовте на OpenStreetMap — слободна и уредлива карта
@@ -1096,6 +1119,14 @@ mk:
         или објект (здание).
       tag_html: <strong>Ознака</strong> е податок за јазол или пат, како на пр. име
         на ресторан или дозволената брзина на улица.
+    rules:
+      title: Правила!
+      paragraph_1_html: "OpenStreetMap има само малку формални правила, но очекуваме
+        сите учесници да соработуваат и општат со заедницата. Доколку имате на ум
+        други активности освен рачно уредување, прочитајте и проследете го упатството
+        \n<a href='http://wiki.openstreetmap.org/wiki/Import/Guidelines'>Увоз</a>
+        и \n<a href='http://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct'>Автоматизирани
+        уредувања</a>."
     questions:
       title: Имате прашања?
       paragraph_1_html: |-
@@ -1138,11 +1169,29 @@ mk:
       url: /welcome
       title: Добре дојдовте на OSM
       description: Започнете со овој брз водич низ основите на OpenStreetMap.
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Beginners%27_guide
+      title: Почетен курс
+      description: Напатствија за почетници, напишани од заедницата.
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
       description: Поставете прашање или побарајте во одговорите на порталот за прашања
         и одговори на OSM.
+    mailing_lists:
+      title: Поштенски списоци
+      description: Поставете прашање или разговарајте за интересни прашања на широк
+        опсег на тематски и регионални поштенски списоци.
+    forums:
+      title: Форуми
+      description: Прашања и разговори за оние кои претпочитаат да општат со објави.
+    irc:
+      title: IRC
+      description: Разговор во живо на најразлични јазици и на многу теми.
+    switch2osm:
+      title: Преод на OSM
+      description: Помош за претпријатија и организации кои преоѓаат на  карти на
+        OpenStreetMap и други услуги.
     wiki:
       url: http://wiki.openstreetmap.org/wiki/Mk:Main_Page
       title: wiki.openstreetmap.org
@@ -1150,8 +1199,8 @@ mk:
   about_page:
     next: Следно
     copyright_html: <span>&copy;</span>Учесници на<br>OpenStreetMap
-    used_by: '%{name} обезбедува картографски податоци на стотици мрежни места, мобилни
-      извршници и сметачки уреди'
+    used_by: '%{name} обезбедува картографски податоци на илјадници мрежни места,
+      мобилни прилози и сметачки уреди'
     lede_text: |-
       OpenStreetMap ја гради заедница од учесници што придонесуваат со свои содржини и ги одржуваат податоците
       за патишта, патеки, кафеани, железнички станици и многу друго ширум светот.
@@ -1174,6 +1223,12 @@ mk:
       OpenStreetMap е проект со <i>отворени податоци</i>: можете слободно да го користите за било која цел
       доколку ја наведете OpenStreetMap и нејзините учесници. Ако решите да ги менувате податоците или да се надоврзувате на нив, добиеното дело можете да го распространувате исклучиво
       под истата лиценца. Повеќе ќе најдете на страницата <a href='%{copyright_path}'>Авторски права и лиценцирање</a>.
+    legal_title: Правни работи
+    legal_html: "Ова мрежно место и многу други поврзани услуги со кои раководи  \n<a
+      href='http://osmfoundation.org/'>Фондацијата OpenStreetMap</a> (OSMF) \nво име
+      на заедницата.\n<br> \nВе молиме <a href='http://osmfoundation.org/Contact'>контактирајте
+      ја OSMF</a> \nако имате прашања во врска со лиценцирањето, авторките права и
+      други правни прашања и проблеми."
     partners_title: Партнери
   notifier:
     diary_comment_notification:
@@ -1395,6 +1450,10 @@ mk:
       close: Затвори
     search:
       search: Пребарај
+      get_directions: Дај насоки
+      get_directions_title: Добијте насоки за движење меѓу две точки
+      from: Од
+      to: До
       where_am_i: Каде сум?
       where_am_i_title: Опишете ја моменталната местоположба со помош на пребарувачот
     key:
@@ -1405,9 +1464,7 @@ mk:
           primary: Главен пат
           secondary: Спореден пат
           unclassified: Некласификуван пат
-          unsurfaced: Неасфалтиран пат
           track: Патека
-          byway: Спореден пат
           bridleway: Пешачко-влечен пат
           cycleway: Велосипедска патека
           footway: Пешачка патека
@@ -1417,8 +1474,8 @@ mk:
           - Лека железница
           - трамвај
           cable:
-          - клупна жичарница
-          - клупна жичарница
+          - Клупна жичница
+          - клупна жичница
           runway:
           - Аеродромска писта
           - рулажна патека
@@ -1431,7 +1488,6 @@ mk:
           golf: Голф-терен
           park: Парк
           resident: Станбено подрачје
-          tourist: Туристичка атракција
           common:
           - Општествена земја
           - ливада
@@ -1461,7 +1517,6 @@ mk:
           tunnel: Испрекината линија = тунел
           bridge: Црна линија = мост
           private: Доверлив пристап
-          permissive: Дозволив пристап
           destination: Пристап до одредницата
           construction: Патишта во изградба
     richtext_area:
@@ -1508,7 +1563,7 @@ mk:
       description: 'Опис:'
       tags: 'Ознаки:'
       tags_help: одделено со запирка
-      save_button: Сочувај промени
+      save_button: Зачувај промени
       visibility: 'Видливост:'
       visibility_help: што значи ова?
       visibility_help_url: http://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces?uselang=mk
@@ -1609,7 +1664,7 @@ mk:
     setup_user_auth:
       blocked: Пристапот кон API ви е блокиран. Најавете се на посредникот за да дознаете
         повеќе.
-      need_to_see_terms: Вашиот пристап до приложниот програм (API) е привремено запрен.
+      need_to_see_terms: Вашиот пристап до извршничкиот програм е привремено запрен.
         Најавете се на мрежниот посредник за да ги погледате Условите за учесниците.
         Нема потреба да се согласувате со услоците, но мора да ги прочитате.
   oauth:
@@ -1626,6 +1681,7 @@ mk:
       allow_read_gpx: ви ги чита вашите лични GPS-траги.
       allow_write_gpx: подига GPS-траги.
       allow_write_notes: измена на белешки.
+      grant_access: Дај пристап
     oauthorize_success:
       title: Барањето за овластување е дозволено
       allowed: На извршникот %{app_name} му дадовте пристап до вашата сметка.
@@ -1647,9 +1703,9 @@ mk:
       title: OAuth податоци за %{app_name}
       key: 'Потрошувачки клуч:'
       secret: 'Потрошувачка тајна:'
-      url: 'Побарај URL-адреса на шифрата:'
-      access_url: 'URL-адреса на пристапата шифра:'
-      authorize_url: 'Дозволи URL адреса:'
+      url: 'Побарај URL на шифрата:'
+      access_url: 'URL на пристапата шифра:'
+      authorize_url: 'Дозволи URL:'
       support_notice: Поддржуваме потписи во HMAC-SHA1 (препорачано) и RSA-SHA1.
       edit: Измени подробности
       delete: Избриши клиент
@@ -1678,8 +1734,8 @@ mk:
     form:
       name: Име
       required: Се бара
-      url: URL адреса на главната апликација
-      callback_url: URL-адреса за одѕив
+      url: URL на главниот прилог
+      callback_url: URL за одѕив
       support_url: URL поддршка
       requests: 'Побарај ги следниве дозволи од корисникот:'
       allow_read_prefs: им ги чита корисничките прилагодувања.
@@ -1710,7 +1766,7 @@ mk:
       register now: Регистрација
       with username: 'Веќе имате сметка на OpenStreetMap? Најавете се со корисничкото
         име и лозинката:'
-      with openid: 'Во друг случај, најавете се со вашиот OpenID:'
+      with external: 'Во спротивно, најавете преку надворешно место:'
       new to osm: За новодојденци на OpenStreetMap
       to make changes: Мора да имате сметка за да можете да правите измени на податоците
         на OpenStreetMap.
@@ -1723,17 +1779,20 @@ mk:
         />Обратете се кај <a href="%{webmaster}">раководителот</a> ако сакате да продискутирате
         за проблемот.
       auth failure: Жалиме, не можевме да ве најавиме со тие податоци.
-      openid missing provider: За жал, не можев да се поврзам со вашиот добавувач
-        на OpenID
-      openid invalid: За жал, вашиот OpenID е погрешно обликуван
       openid_logo_alt: Најава со OpenID
-      openid_providers:
+      auth_providers:
         openid:
           title: Најава со OpenID
           alt: Најава со URL за OpenID
         google:
           title: Најава со Google
           alt: Најава со OpenID од Google
+        facebook:
+          title: Најава со Facebook
+          alt: Најава со профил на Facebook
+        windowslive:
+          title: Најава со Windows Live
+          alt: Најава со сметка на Windows Live
         yahoo:
           title: Најава со Yahoo
           alt: Најава со OpenID од Yahoo
@@ -1788,20 +1847,20 @@ mk:
       display name: 'Име за приказ:'
       display name description: Вашето јавно прикажано име. Можете да го смените подоцна
         во прилагодувањата.
-      openid: '%{logo} OpenID:'
+      external auth: 'Заверка за надворешното место:'
       password: 'Лозинка:'
       confirm password: 'Потврдете ја лозинката:'
-      use openid: Во друг случај,  најавете се со %{logo} OpenID
-      openid no password: Со OpenID не ви треба лозинка, но може да ја побараат некои
-        дополнителни алатки или опслужувачот.
-      openid association: |-
-        <p>Вашиот OpenID сè уште не е здружен со сметка на OpenStreetMap.</p>
+      use external auth: Во спротивно, најавете преку надворешно место
+      auth no password: Ако користите надворешно место, тогаш не ви треба лозинка,
+        но може да ја побараат некои дополнителни алатки или опслужувачот.
+      auth association: |-
+        <p>Вашата назнака сè уште не е здружен со сметка на OpenStreetMap.</p>
         <ul>
           <li>Ако сте нови на OpenStreetMap, тогаш направете сметка со долунаведениот образец.</li>
           <li>
             Ако веќе имате сметка, можете да се најавите со
             корисничкото име и лозинката, а потоа во корисничките
-            нагдувања да ја здружите со вашиот OpenID.
+            нагдувања да ја здружите со вашата назнака.
           </li>
         </ul>
       continue: Регистрација
@@ -1913,8 +1972,8 @@ mk:
       current email address: 'Тековна е-пошта:'
       new email address: 'Нова е-поштенска адреса:'
       email never displayed publicly: (никогаш не се прикажува јавно)
+      external auth: 'Надворешна заверка:'
       openid:
-        openid: OpenID
         link: http://wiki.openstreetmap.org/wiki/MK:OpenID?uselang=mk
         link text: што е ова?
       public editing:
@@ -1978,8 +2037,9 @@ mk:
       press confirm button: Притиснете го копчето за потврда подолу за да ја активирате
         сметката.
       button: Потврди
+      success: Вашата сметка е потврдена. Ви благодариме што се регистриравте!
       already active: Оваа сметка е веќе потврдена.
-      unknown token: ПОтврдниот код е истечен или не постои.
+      unknown token: Потврдниот код е истечен или не постои.
       reconfirm_html: Ако сакате повторно да ви ја испратиме потврдната порака, <a
         href="%{reconfirm}">стиснете тука</a>.
     confirm_resend:
@@ -1994,8 +2054,9 @@ mk:
       press confirm button: Притиснете го копчето за потврдување за да ја потврдите
         новата е-поштенска адреса.
       button: Потврди
-      success: Вашата е-пошта е потврдена. Ви благодариме што се регистриравте!
+      success: Измената на вашата е-пошта е потврдена!
       failure: Со оваа шифра е потврдена веќе една е-поштенска адреса
+      unknown_token: Потврдниот код е истечен или не постои.
     set_home:
       flash success: Матичната местоположба е успешно зачувана
     go_public:
@@ -2037,6 +2098,12 @@ mk:
           Донесената одлуката набргу ќе ја прегледа администратор, но
           можете да се обратите кај %{webmaster} ако сакате да продискутирате за овој проблем.
         </p>
+    auth_failure:
+      connection_failed: Не успеав да воспоставам врска со услужникот за заверка
+      invalid_credentials: Неважечки податоци за заверка
+      no_authorization_code: Нема код за овластување
+      unknown_signature_algorithm: Непознат алгоритам на потпис
+      invalid_scope: Неважечки делокруг
   user_role:
     filter:
       not_an_administrator: Само администраторите можат да раководат со улоги, а вие
@@ -2152,6 +2219,8 @@ mk:
       heading: '%{block_on} блокиран од %{block_by}'
       time_future: Уредувања во %{time}
       time_past: Истечено пред %{time}
+      created: Создадено
+      ago: пред %{time}
       status: Статус
       show: Прикажи
       edit: Уреди
@@ -2202,6 +2271,7 @@ mk:
       link: Врска или HTML
       long_link: Врска
       short_link: Кратка врска
+      geo_uri: ГЕО-URI
       embed: HTML
       custom_dimensions: Димензии по ваш избор
       format: 'Формат:'
@@ -2251,7 +2321,7 @@ mk:
       show:
         comment: Коментар
         subscribe: Претплати се
-        unsubscribe: Откажи претплата
+        unsubscribe: Отпиши ме
         hide_comment: скриј
         unhide_comment: откриј
     notes:
@@ -2272,6 +2342,44 @@ mk:
         comment: Коментирај
     edit_help: Поместете ја картата и приближете во местото што сакате да го уредите,
       па стиснете тука.
+    directions:
+      engines:
+        graphhopper_bicycle: Велосипед (GraphHopper)
+        graphhopper_foot: Пешки (GraphHopper)
+        mapquest_bicycle: Велосипед (MapQuest)
+        mapquest_car: Автомобил (MapQuest)
+        mapquest_foot: Пешки (MapQuest)
+        osrm_car: Автомобил (OSRM)
+        mapzen_bicycle: Велосипед (Mapzen)
+        mapzen_car: Автомобил (Mapzen)
+        mapzen_foot: Пешки (Mapzen)
+      directions: Насоки
+      distance: Растојание
+      errors:
+        no_route: Не можев да најдам маршрута помеѓу тие две места.
+        no_place: За жал, не можев да го најдам тоа место.
+      instructions:
+        continue_without_exit: Продолжете на %{name}
+        slight_right_without_exit: Малку надесно во %{name}
+        turn_right_without_exit: Свртете десно во %{name}
+        sharp_right_without_exit: Остро надесно во %{name}
+        uturn_without_exit: Полукружно свртете долж %{name}
+        sharp_left_without_exit: Остро налево во %{name}
+        turn_left_without_exit: Свртете лево во %{name}
+        slight_left_without_exit: Малку налево во %{name}
+        via_point_without_exit: (преку точката)
+        follow_without_exit: Следете го %{name}
+        roundabout_without_exit: На кружниот тек свртете на %{name}
+        leave_roundabout_without_exit: Напуштете го кружниот тек — %{name}
+        stay_roundabout_without_exit: Останете на кружниот тек — %{name}
+        start_without_exit: Почнете на крајот од %{name}
+        destination_without_exit: Стигнавте на одредиштето
+        against_oneway_without_exit: Оди обратно во еднонасочната на %{name}
+        end_oneway_without_exit: Крај на еднонасочната на %{name}
+        roundabout_with_exit: На кружниот тек, свртете на %{exit} излегувајќи на %{name}
+        unnamed: неименувано
+        courtesy: Насоките ги добивте благодарение на %{link}
+      time: Време
     query:
       node: Јазол
       way: Пат

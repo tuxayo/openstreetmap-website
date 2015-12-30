@@ -1,15 +1,14 @@
 # The OSM module provides support functions for OSM.
 module OSM
-
-  require 'time'
-  require 'rexml/parsers/sax2parser'
-  require 'rexml/text'
-  require 'xml/libxml'
+  require "time"
+  require "rexml/parsers/sax2parser"
+  require "rexml/text"
+  require "xml/libxml"
 
   if defined?(SystemTimer)
     Timer = SystemTimer
   else
-    require 'timeout'
+    require "timeout"
     Timer = Timeout
   end
 
@@ -64,7 +63,8 @@ module OSM
   # Raised when to delete an already-deleted object.
   class APIAlreadyDeletedError < APIError
     def initialize(object = "object", object_id = "")
-      @object, @object_id = object, object_id
+      @object = object
+      @object_id = object_id
     end
 
     attr_reader :object, :object_id
@@ -172,7 +172,8 @@ module OSM
   # the changeset ID that the diff was uploaded to.
   class APIChangesetMismatchError < APIError
     def initialize(provided, allowed)
-      @provided, @allowed = provided, allowed
+      @provided = provided
+      @allowed = allowed
     end
 
     def status
@@ -203,8 +204,10 @@ module OSM
   # Raised when bad XML is encountered which stops things parsing as
   # they should.
   class APIBadXMLError < APIError
-    def initialize(model, xml, message="")
-      @model, @xml, @message = model, xml, message
+    def initialize(model, xml, message = "")
+      @model = model
+      @xml = xml
+      @message = message
     end
 
     def status
@@ -219,7 +222,10 @@ module OSM
   # Raised when the provided version is not equal to the latest in the db.
   class APIVersionMismatchError < APIError
     def initialize(id, type, provided, latest)
-      @id, @type, @provided, @latest = id, type, provided, latest
+      @id = id
+      @type = type
+      @provided = provided
+      @latest = latest
     end
 
     attr_reader :provided, :latest, :id, :type
@@ -237,7 +243,9 @@ module OSM
   # this is now forbidden by the API.
   class APIDuplicateTagsError < APIError
     def initialize(type, id, tag_key)
-      @type, @id, @tag_key = type, id, tag_key
+      @type = type
+      @id = id
+      @tag_key = tag_key
     end
 
     attr_reader :type, :id, :tag_key
@@ -255,7 +263,9 @@ module OSM
   # This prevents ways from being to long and difficult to work with
   class APITooManyWayNodesError < APIError
     def initialize(id, provided, max)
-      @id, @provided, @max = id, provided, max
+      @id = id
+      @provided = provided
+      @max = max
     end
 
     attr_reader :id, :provided, :max
@@ -397,7 +407,7 @@ module OSM
   class Mercator
     include Math
 
-    #init me with your bounding box and the size of your image
+    # init me with your bounding box and the size of your image
     def initialize(min_lat, min_lon, max_lat, max_lon, width, height)
       xsize = xsheet(max_lon) - xsheet(min_lon)
       ysize = ysheet(max_lat) - ysheet(min_lat)
@@ -418,7 +428,7 @@ module OSM
       @by = ysheet(max_lat) + ypad / 2
     end
 
-    #the following two functions will give you the x/y on the entire sheet
+    # the following two functions will give you the x/y on the entire sheet
 
     def ysheet(lat)
       log(tan(PI / 4 + (lat * PI / 180 / 2))) / (PI / 180)
@@ -428,14 +438,14 @@ module OSM
       lon
     end
 
-    #and these two will give you the right points on your image. all the constants can be reduced to speed things up. FIXME
+    # and these two will give you the right points on your image. all the constants can be reduced to speed things up. FIXME
 
     def y(lat)
-      return @height - ((ysheet(lat) - @ty) / (@by - @ty) * @height)
+      @height - ((ysheet(lat) - @ty) / (@by - @ty) * @height)
     end
 
     def x(lon)
-      return  ((xsheet(lon) - @tx) / (@bx - @tx) * @width)
+      ((xsheet(lon) - @tx) / (@bx - @tx) * @width)
     end
   end
 
@@ -452,15 +462,15 @@ module OSM
     def distance(lat, lon)
       lat = lat * PI / 180
       lon = lon * PI / 180
-      return 6372.795 * 2 * asin(sqrt(sin((lat - @lat) / 2) ** 2 + cos(@lat) * cos(lat) * sin((lon - @lon)/2) ** 2))
+      6372.795 * 2 * asin(sqrt(sin((lat - @lat) / 2)**2 + cos(@lat) * cos(lat) * sin((lon - @lon) / 2)**2))
     end
 
     # get the worst case bounds for a given radius from the base position
     def bounds(radius)
-      latradius = 2 * asin(sqrt(sin(radius / 6372.795 / 2) ** 2))
+      latradius = 2 * asin(sqrt(sin(radius / 6372.795 / 2)**2))
 
       begin
-        lonradius = 2 * asin(sqrt(sin(radius / 6372.795 / 2) ** 2 / cos(@lat) ** 2))
+        lonradius = 2 * asin(sqrt(sin(radius / 6372.795 / 2)**2 / cos(@lat)**2))
       rescue Errno::EDOM, Math::DomainError
         lonradius = PI
       end
@@ -470,7 +480,7 @@ module OSM
       minlon = (@lon - lonradius) * 180 / PI
       maxlon = (@lon + lonradius) * 180 / PI
 
-      return { :minlat => minlat, :maxlat => maxlat, :minlon => minlon, :maxlon => maxlon }
+      { :minlat => minlat, :maxlat => maxlat, :minlon => minlon, :maxlon => maxlon }
     end
 
     # get the SQL to use to calculate distance
@@ -483,46 +493,44 @@ module OSM
     def get_xml_doc
       doc = XML::Document.new
       doc.encoding = XML::Encoding::UTF_8
-      root = XML::Node.new 'osm'
-      root['version'] = API_VERSION.to_s
-      root['generator'] = GENERATOR
-      root['copyright'] = COPYRIGHT_OWNER
-      root['attribution'] = ATTRIBUTION_URL
-      root['license'] =  LICENSE_URL
+      root = XML::Node.new "osm"
+      root["version"] = API_VERSION.to_s
+      root["generator"] = GENERATOR
+      root["copyright"] = COPYRIGHT_OWNER
+      root["attribution"] = ATTRIBUTION_URL
+      root["license"] = LICENSE_URL
       doc.root = root
-      return doc
+      doc
     end
   end
 
-  def self.IPToCountry(ip_address)
+  def self.ip_to_country(ip_address)
     Timer.timeout(4) do
-      ipinfo = Quova::IpInfo.new(ip_address)
+      ipinfo = Quova::IpInfo.new(ip_address) if defined?(QUOVA_USERNAME)
 
-      if ipinfo.status == Quova::Success then
+      if ipinfo && ipinfo.status == Quova::SUCCESS
         country = ipinfo.country_code
       else
-        Net::HTTP.start('api.hostip.info') do |http|
-          country = http.get("/country.php?ip=#{ip_address}").body
-          country = "GB" if country == "UK"
-        end
+        country = http_client.get("http://api.hostip.info/country.php?ip=#{ip_address}").body
+        country = "GB" if country == "UK"
       end
 
       return country.upcase
     end
 
     return nil
-  rescue Exception
+  rescue StandardError
     return nil
   end
 
-  def self.IPLocation(ip_address)
-    code = OSM.IPToCountry(ip_address)
+  def self.ip_location(ip_address)
+    code = OSM.ip_to_country(ip_address)
 
-    if code and country = Country.find_by_code(code)
+    if code && country = Country.find_by_code(code)
       return { :minlon => country.min_lon, :minlat => country.min_lat, :maxlon => country.max_lon, :maxlat => country.max_lat }
     end
 
-    return nil
+    nil
   end
 
   # Parse a float, raising a specified exception on failure
@@ -534,14 +542,14 @@ module OSM
 
   # Construct a random token of a given length
   def self.make_token(length = 30)
-    chars = 'abcdefghijklmnopqrtuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-    token = ''
+    chars = "abcdefghijklmnopqrtuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    token = ""
 
     length.times do
       token += chars[(rand * chars.length).to_i].chr
     end
 
-    return token
+    token
   end
 
   # Return an SQL fragment to select a given area of the globe
@@ -549,13 +557,24 @@ module OSM
     tilesql = QuadTile.sql_for_area(bbox, prefix)
     bbox = bbox.to_scaled
 
-    return "#{tilesql} AND #{prefix}latitude BETWEEN #{bbox.min_lat} AND #{bbox.max_lat} " +
-                      "AND #{prefix}longitude BETWEEN #{bbox.min_lon} AND #{bbox.max_lon}"
+    "#{tilesql} AND #{prefix}latitude BETWEEN #{bbox.min_lat} AND #{bbox.max_lat} " +
+      "AND #{prefix}longitude BETWEEN #{bbox.min_lon} AND #{bbox.max_lon}"
   end
 
+  # Return the terms and conditions text for a given country
   def self.legal_text_for_country(country_code)
     file_name = File.join(Rails.root, "config", "legales", country_code.to_s + ".yml")
     file_name = File.join(Rails.root, "config", "legales", DEFAULT_LEGALE + ".yml") unless File.exist? file_name
-    YAML::load_file(file_name)
+    YAML.load_file(file_name)
+  end
+
+  # Return the HTTP client to use
+  def self.http_client
+    @http_client ||= Faraday.new
+  end
+
+  # Set the HTTP client to use
+  def self.http_client=(client)
+    @http_client = client
   end
 end

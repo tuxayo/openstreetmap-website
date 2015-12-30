@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-require 'test_helper'
+require "test_helper"
 
 class NoteTest < ActiveSupport::TestCase
   fixtures :users, :notes, :note_comments
 
   def test_status_valid
-    ok = [ "open", "closed", "hidden" ]
-    bad = [ "expropriated", "fubared" ]
+    ok = %w(open closed hidden)
+    bad = %w(expropriated fubared)
 
     ok.each do |status|
       note = notes(:open_note)
@@ -30,7 +30,7 @@ class NoteTest < ActiveSupport::TestCase
     assert_not_nil note.closed_at
   end
 
-  def test_close
+  def test_reopen
     note = notes(:closed_note_with_comment)
     assert_equal "closed", note.status
     assert_not_nil note.closed_at

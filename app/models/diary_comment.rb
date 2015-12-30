@@ -2,14 +2,13 @@ class DiaryComment < ActiveRecord::Base
   belongs_to :user
   belongs_to :diary_entry
 
-  validates_presence_of :body
-  validates_associated :diary_entry
+  validates :body, :presence => true
+  validates :diary_entry, :user, :associated => true
 
-  after_initialize :set_defaults
   after_save :spam_check
 
   def body
-    RichText.new(read_attribute(:body_format), read_attribute(:body))
+    RichText.new(self[:body_format], self[:body])
   end
 
   def digest
@@ -21,11 +20,7 @@ class DiaryComment < ActiveRecord::Base
     md5.hexdigest
   end
 
-private
-
-  def set_defaults
-    self.body_format = "markdown" unless self.attribute_present?(:body_format)
-  end
+  private
 
   def spam_check
     user.spam_check

@@ -1,28 +1,22 @@
 class RelationController < ApplicationController
-  require 'xml/libxml'
+  require "xml/libxml"
 
-  skip_before_filter :verify_authenticity_token
-  before_filter :authorize, :only => [:create, :update, :delete]
-  before_filter :require_allow_write_api, :only => [:create, :update, :delete]
-  before_filter :require_public_data, :only => [:create, :update, :delete]
-  before_filter :check_api_writable, :only => [:create, :update, :delete]
-  before_filter :check_api_readable, :except => [:create, :update, :delete]
-  after_filter :compress_output
-  around_filter :api_call_handle_error, :api_call_timeout
+  skip_before_action :verify_authenticity_token
+  before_action :authorize, :only => [:create, :update, :delete]
+  before_action :require_allow_write_api, :only => [:create, :update, :delete]
+  before_action :require_public_data, :only => [:create, :update, :delete]
+  before_action :check_api_writable, :only => [:create, :update, :delete]
+  before_action :check_api_readable, :except => [:create, :update, :delete]
+  around_action :api_call_handle_error, :api_call_timeout
 
   def create
     assert_method :put
 
     relation = Relation.from_xml(request.raw_post, true)
-    
-    # We assume that an exception has been thrown if there was an error 
-    # generating the relation
-    #if relation
+
+    # Assume that Relation.from_xml has thrown an exception if there is an error parsing the xml
     relation.create_with_history @user
     render :text => relation.id.to_s, :content_type => "text/plain"
-    #else
-    # render :text => "Couldn't get turn the input into a relation.", :status => :bad_request
-    #end
   end
 
   def read
@@ -40,19 +34,19 @@ class RelationController < ApplicationController
 
     relation = Relation.find(params[:id])
     new_relation = Relation.from_xml(request.raw_post)
-    
-    if new_relation and new_relation.id == relation.id
-      relation.update_from new_relation, @user
-      render :text => relation.version.to_s, :content_type => "text/plain"
-    else
-      render :text => "", :status => :bad_request
+
+    unless new_relation && new_relation.id == relation.id
+      fail OSM::APIBadUserInput.new("The id in the url (#{relation.id}) is not the same as provided in the xml (#{new_relation.id})")
     end
+
+    relation.update_from new_relation, @user
+    render :text => relation.version.to_s, :content_type => "text/plain"
   end
 
   def delete
     relation = Relation.find(params[:id])
     new_relation = Relation.from_xml(request.raw_post)
-    if new_relation and new_relation.id == relation.id
+    if new_relation && new_relation.id == relation.id
       relation.delete_with_history!(new_relation, @user)
       render :text => relation.version.to_s, :content_type => "text/plain"
     else
@@ -62,7 +56,7 @@ class RelationController < ApplicationController
 
   # -----------------------------------------------------------------
   # full
-  # 
+  #
   # input parameters: id
   #
   # returns XML representation of one relation object plus all its
@@ -70,74 +64,77 @@ class RelationController < ApplicationController
   # -----------------------------------------------------------------
   def full
     relation = Relation.find(params[:id])
-    
+
     if relation.visible
-      
+
       # first find the ids of nodes, ways and relations referenced by this
       # relation - note that we exclude this relation just in case.
-      
-      node_ids = relation.members.select { |m| m[0] == 'Node' }.map { |m| m[1] }
-      way_ids = relation.members.select { |m| m[0] == 'Way' }.map { |m| m[1] }
-      relation_ids = relation.members.select { |m| m[0] == 'Relation' and m[1] != relation.id }.map { |m| m[1] }
-      
+
+      node_ids = relation.members.select { |m| m[0] == "Node" }.map { |m| m[1] }
+      way_ids = relation.members.select { |m| m[0] == "Way" }.map { |m| m[1] }
+      relation_ids = relation.members.select { |m| m[0] == "Relation" && m[1] != relation.id }.map { |m| m[1] }
+
       # next load the relations and the ways.
-      
+
       relations = Relation.where(:id => relation_ids).includes(:relation_tags)
       ways = Way.where(:id => way_ids).includes(:way_nodes, :way_tags)
-      
-      # now additionally collect nodes referenced by ways. Note how we 
+
+      # now additionally collect nodes referenced by ways. Note how we
       # recursively evaluate ways but NOT relations.
-      
-      way_node_ids = ways.collect { |way|
-        way.way_nodes.collect { |way_node| way_node.node_id }
-      }
+
+      way_node_ids = ways.collect do |way|
+        way.way_nodes.collect(&:node_id)
+      end
       node_ids += way_node_ids.flatten
       nodes = Node.where(:id => node_ids.uniq).includes(:node_tags)
-      
+
       # create XML.
       doc = OSM::API.new.get_xml_doc
       visible_nodes = {}
       visible_members = { "Node" => {}, "Way" => {}, "Relation" => {} }
       changeset_cache = {}
       user_display_name_cache = {}
-      
+
       nodes.each do |node|
-        if node.visible? # should be unnecessary if data is consistent.
-          doc.root << node.to_xml_node(changeset_cache, user_display_name_cache)
-          visible_nodes[node.id] = node
-          visible_members["Node"][node.id] = true
-        end
+        next unless node.visible? # should be unnecessary if data is consistent.
+
+        doc.root << node.to_xml_node(changeset_cache, user_display_name_cache)
+        visible_nodes[node.id] = node
+        visible_members["Node"][node.id] = true
       end
+
       ways.each do |way|
-        if way.visible? # should be unnecessary if data is consistent.
-          doc.root << way.to_xml_node(visible_nodes, changeset_cache, user_display_name_cache)
-          visible_members["Way"][way.id] = true
-        end
+        next unless way.visible? # should be unnecessary if data is consistent.
+
+        doc.root << way.to_xml_node(visible_nodes, changeset_cache, user_display_name_cache)
+        visible_members["Way"][way.id] = true
       end
+
       relations.each do |rel|
-        if rel.visible? # should be unnecessary if data is consistent.
-          doc.root << rel.to_xml_node(nil, changeset_cache, user_display_name_cache)
-          visible_members["Relation"][rel.id] = true
-        end
+        next unless rel.visible? # should be unnecessary if data is consistent.
+
+        doc.root << rel.to_xml_node(nil, changeset_cache, user_display_name_cache)
+        visible_members["Relation"][rel.id] = true
       end
+
       # finally add self and output
       doc.root << relation.to_xml_node(visible_members, changeset_cache, user_display_name_cache)
       render :text => doc.to_s, :content_type => "text/xml"
-      
+
     else
       render :text => "", :status => :gone
     end
   end
 
   def relations
-    if not params['relations']
-      raise OSM::APIBadUserInput.new("The parameter relations is required, and must be of the form relations=id[,id[,id...]]")
+    unless params["relations"]
+      fail OSM::APIBadUserInput.new("The parameter relations is required, and must be of the form relations=id[,id[,id...]]")
     end
 
-    ids = params['relations'].split(',').collect { |w| w.to_i }
+    ids = params["relations"].split(",").collect(&:to_i)
 
     if ids.length == 0
-      raise OSM::APIBadUserInput.new("No relations were given to search for")
+      fail OSM::APIBadUserInput.new("No relations were given to search for")
     end
 
     doc = OSM::API.new.get_xml_doc
@@ -162,7 +159,7 @@ class RelationController < ApplicationController
   end
 
   def relations_for_object(objtype)
-    relationids = RelationMember.where(:member_type => objtype, :member_id => params[:id]).collect { |ws| ws.relation_id }.uniq
+    relationids = RelationMember.where(:member_type => objtype, :member_id => params[:id]).collect(&:relation_id).uniq
 
     doc = OSM::API.new.get_xml_doc
 

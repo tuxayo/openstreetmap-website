@@ -2,17 +2,17 @@
     "modes": {
         "add_area": {
             "title": "Площ",
-            "description": "Добавете паркове, сгради, езера или други площни обекти към картата.",
+            "description": "Добавяне на паркове, сгради, езера или други площи към картата.",
             "tail": "Щракнете върху картата, за да започнете чертането на площен обект като парк, езеро или сграда."
         },
         "add_line": {
             "title": "Линия",
-            "description": "Добавете пътища, улици, пешеходни алеи, канали или други линейни обекти към картата.",
+            "description": "Добавяне на пътища, улици, пешеходни алеи, канали или други линейни обекти към картата.",
             "tail": "Щракнете върху картата, за да започнете да чертаете път, пътека или маршрут."
         },
         "add_point": {
             "title": "Точка",
-            "description": "Добавете ресторанти, паметници, пощенски кутии или други точки към картата.",
+            "description": "Добавяне на ресторанти, паметници, пощенски кутии или други точки към картата.",
             "tail": "Щракнете върху картата за да добавите точка."
         },
         "browse": {
@@ -118,12 +118,8 @@
         },
         "merge": {
             "title": "Обединяване",
-            "description": "Обединете тези линии.",
             "key": "C",
-            "annotation": "Обединени са {n} линии.",
-            "not_eligible": "Тези обекти не могат да бъдат обединени.",
-            "not_adjacent": "Тези линии не могат да бъдат обединени, защото не са свързани.",
-            "restriction": "Линиите не могат да бъдат обединени, защото поне една е член на релация \"{relation}\". "
+            "not_eligible": "Тези обекти не могат да бъдат обединени."
         },
         "move": {
             "title": "Преместване",
@@ -190,7 +186,6 @@
         "nothing": "Нищо за повторение."
     },
     "tooltip_keyhint": "Бързи клавиши:",
-    "browser_notice": "Този редактор поддържа Firefox, Chrome, Safari, Opera, Internet Explorer 9 и нагоре. Моля обновете вашия браузър или използвайте Potlatch 2, за да редактирате картата.",
     "translate": {
         "translate": "Превод",
         "localized_translation_label": "Многоезично име",
@@ -200,7 +195,6 @@
     "zoom_in_edit": "Приближаване за редакция",
     "logout": "изход",
     "loading_auth": "Свързване с OpenStreetMap...",
-    "report_a_bug": "докладвайте за бъг",
     "status": {
         "error": "Не може да се свърже с API-то.",
         "offline": "API-то е офлайн. Моля опитайте да редактирате по-късно.",
@@ -209,7 +203,6 @@
     "commit": {
         "title": "Запис на промените",
         "description_placeholder": "Кратко описание на вашия принос",
-        "message_label": "Предайте съобщение",
         "upload_explanation": "Промените, които качвате ще са видими на всички карти използващи данни от OpenStreetMap.",
         "upload_explanation_with_user": "Промените, които качвате като {user} ще са видими на всички карти използващи данни от OpenStreetMap.",
         "save": "Запис",
@@ -268,7 +261,6 @@
         "title": "Запис",
         "help": "Запишете промените в OpenStreetMap, правейки ги видими за останалите потребители.",
         "no_changes": "Няма промени за запис.",
-        "error": "Възникна грешка при опит за запис",
         "uploading": "Качване на промените в OpenStreetMap.",
         "unsaved_changes": "Имате незаписани промени"
     },
@@ -369,6 +361,9 @@
     },
     "presets": {
         "categories": {
+            "category-building": {
+                "name": "Сграда"
+            },
             "category-landuse": {
                 "name": "Земеползване"
             },
@@ -387,56 +382,53 @@
         },
         "fields": {
             "access": {
-                "label": "Достъп",
-                "placeholder": "Неизвестен",
-                "types": {
-                    "access": "Публичен",
-                    "foot": "Пешеходен",
-                    "motor_vehicle": "МПС",
-                    "bicycle": "Велосипеди",
-                    "horse": "Коне"
-                },
                 "options": {
-                    "yes": {
-                        "title": "Разрешен",
-                        "description": "Достъпът позволен с нормативен акт; право на преминаване"
-                    },
-                    "no": {
-                        "title": "Забранен",
-                        "description": "Забранен публичният достъп"
-                    },
-                    "permissive": {
-                        "title": "Частичен",
-                        "description": "Достъпът позволен докато собственика позволява"
-                    },
-                    "private": {
-                        "title": "Частен",
-                        "description": "Достъпът разрешен само с позволение на собственика"
-                    },
                     "designated": {
-                        "title": "По предназначение",
-                        "description": "Достъпът позволен според указателни табели или специфични местни разпоредби"
+                        "description": "Достъпът позволен според указателни табели или специфични местни разпоредби",
+                        "title": "По предназначение"
                     },
                     "destination": {
-                        "title": "До дестинация",
-                        "description": "Достъпът разрешен само за достигане до дестинация"
+                        "description": "Достъпът разрешен само за достигане до дестинация",
+                        "title": "До дестинация"
+                    },
+                    "no": {
+                        "description": "Забранен публичният достъп",
+                        "title": "Забранен"
+                    },
+                    "permissive": {
+                        "description": "Достъпът позволен докато собственика позволява",
+                        "title": "Частичен"
+                    },
+                    "private": {
+                        "description": "Достъпът разрешен само с позволение на собственика",
+                        "title": "Частен"
+                    },
+                    "yes": {
+                        "description": "Достъпът позволен с нормативен акт; право на преминаване",
+                        "title": "Разрешен"
                     }
+                },
+                "types": {
+                    "bicycle": "Велосипеди",
+                    "foot": "Пешеходен",
+                    "horse": "Коне",
+                    "motor_vehicle": "МПС"
                 }
             },
             "address": {
                 "label": "Адрес",
                 "placeholders": {
+                    "city": "Град",
+                    "country": "Държава",
+                    "district": "Община",
                     "housename": "Къща",
                     "housenumber": "123",
-                    "street": "Улица",
-                    "city": "Град",
                     "place": "Място",
-                    "suburb": "Квартал",
-                    "subdistrict": "Землище",
-                    "district": "Община",
                     "province": "Област",
                     "state": "Икономически район NUT2",
-                    "country": "Държава"
+                    "street": "Улица",
+                    "subdistrict": "Землище",
+                    "suburb": "Квартал"
                 }
             },
             "admin_level": {
@@ -476,8 +468,8 @@
             "clock_direction": {
                 "label": "Посока",
                 "options": {
-                    "clockwise": "По часовниковата стрелка",
-                    "anticlockwise": "Обратно на часовниковата стрелка"
+                    "anticlockwise": "Обратно на часовниковата стрелка",
+                    "clockwise": "По часовниковата стрелка"
                 }
             },
             "collection_times": {
@@ -541,9 +533,9 @@
             "internet_access": {
                 "label": "Интернет достъп",
                 "options": {
-                    "wlan": "Wifi",
+                    "terminal": "Терминал",
                     "wired": "Кабелен",
-                    "terminal": "Терминал"
+                    "wlan": "Wifi"
                 }
             },
             "lamp_type": {
@@ -658,13 +650,13 @@
             },
             "structure": {
                 "label": "Структура",
-                "placeholder": "Неизвестен",
                 "options": {
                     "bridge": "Мост",
-                    "tunnel": "Тунел",
+                    "cutting": "Изкоп",
                     "embankment": "Насип",
-                    "cutting": "Изкоп"
-                }
+                    "tunnel": "Тунел"
+                },
+                "placeholder": "Неизвестен"
             },
             "supervised": {
                 "label": "Под наблюдение"
@@ -699,9 +691,6 @@
             },
             "wikipedia": {
                 "label": "Wikipedia"
-            },
-            "wood": {
-                "label": "Вид"
             }
         },
         "presets": {
@@ -933,9 +922,6 @@
             "highway/bus_stop": {
                 "name": "Автобусна спирка"
             },
-            "highway/crossing": {
-                "name": "Пешеходна пътека"
-            },
             "highway/cycleway": {
                 "name": "Велоалея"
             },
@@ -956,9 +942,6 @@
             },
             "highway/path": {
                 "name": "Пътека"
-            },
-            "highway/pedestrian": {
-                "name": "Пешеходна улица"
             },
             "highway/primary": {
                 "name": "Първокласен път"
@@ -1053,26 +1036,14 @@
             "historic/wayside_shrine": {
                 "name": "Крайпътен параклис"
             },
-            "landuse": {
-                "name": "Земеползване"
-            },
-            "landuse/allotments": {
-                "name": "Земи за лично ползване"
-            },
             "landuse/basin": {
                 "name": "Басейн"
             },
             "landuse/cemetery": {
                 "name": "Гробищен парк"
             },
-            "landuse/commercial": {
-                "name": "Търговия"
-            },
             "landuse/construction": {
                 "name": "Строеж"
-            },
-            "landuse/farm": {
-                "name": "Селско стопанство"
             },
             "landuse/farmyard": {
                 "name": "Селскостопански двор"
@@ -1083,9 +1054,6 @@
             "landuse/grass": {
                 "name": "Трева"
             },
-            "landuse/industrial": {
-                "name": "Индустрия"
-            },
             "landuse/meadow": {
                 "name": "Пасище"
             },
@@ -1094,12 +1062,6 @@
             },
             "landuse/quarry": {
                 "name": "Кариера"
-            },
-            "landuse/residential": {
-                "name": "Жилищна територия"
-            },
-            "landuse/retail": {
-                "name": "Търговия"
             },
             "landuse/vineyard": {
                 "name": "Лозе"
@@ -1298,9 +1260,6 @@
             },
             "railway/disused": {
                 "name": "Закрита железопътна линия"
-            },
-            "railway/level_crossing": {
-                "name": "ЖП прелез"
             },
             "railway/monorail": {
                 "name": "Монорелсов път"

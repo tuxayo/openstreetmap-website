@@ -1,6 +1,6 @@
 <% if defined? ID_KEY %>
   <div id="map">
-    <iframe frameBorder="0" id="id-embed" class="id-embed"></iframe>
+    <iframe frameBorder="0" id="id-embed" class="id-embed" allowfullscreen></iframe>
   </div>
   <script>
     var params = {};
@@ -31,7 +31,7 @@
     }
 
 <% if params[:gpx] -%>
-    params.gpx = '<%= trace_data_url(params[:gpx]) %>';
+    params.gpx = '<%= trace_data_url(params[:gpx], :format => :xml) %>';
 <% else -%>
     if (hashParams.gpx) {
       params.gpx = hashParams.gpx;

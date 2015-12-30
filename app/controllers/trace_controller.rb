@@ -1,27 +1,27 @@
 class TraceController < ApplicationController
-  layout 'site'
+  layout "site", :except => :georss
 
-  skip_before_filter :verify_authenticity_token, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
-  before_filter :authorize_web
-  before_filter :set_locale
-  before_filter :require_user, :only => [:mine, :create, :edit, :delete]
-  before_filter :authorize, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
-  before_filter :check_database_readable, :except => [:api_read, :api_data]
-  before_filter :check_database_writable, :only => [:create, :edit, :delete, :api_create, :api_update, :api_delete]
-  before_filter :check_api_readable, :only => [:api_read, :api_data]
-  before_filter :check_api_writable, :only => [:api_create, :api_update, :api_delete]
-  before_filter :require_allow_read_gpx, :only => [:api_read, :api_data]
-  before_filter :require_allow_write_gpx, :only => [:api_create, :api_update, :api_delete]
-  before_filter :offline_warning, :only => [:mine, :view]
-  before_filter :offline_redirect, :only => [:create, :edit, :delete, :data, :api_create, :api_delete, :api_data]
-  around_filter :api_call_handle_error, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
+  skip_before_action :verify_authenticity_token, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
+  before_action :authorize_web
+  before_action :set_locale
+  before_action :require_user, :only => [:mine, :create, :edit, :delete]
+  before_action :authorize, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
+  before_action :check_database_readable, :except => [:api_read, :api_data]
+  before_action :check_database_writable, :only => [:create, :edit, :delete, :api_create, :api_update, :api_delete]
+  before_action :check_api_readable, :only => [:api_read, :api_data]
+  before_action :check_api_writable, :only => [:api_create, :api_update, :api_delete]
+  before_action :require_allow_read_gpx, :only => [:api_read, :api_data]
+  before_action :require_allow_write_gpx, :only => [:api_create, :api_update, :api_delete]
+  before_action :offline_warning, :only => [:mine, :view]
+  before_action :offline_redirect, :only => [:create, :edit, :delete, :data, :api_create, :api_delete, :api_data]
+  around_action :api_call_handle_error, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
 
   # Counts and selects pages of GPX traces for various criteria (by user, tags, public etc.).
   #  target_user - if set, specifies the user to fetch traces for.  if not set will fetch all traces
   def list
     # from display name, pick up user id if one user's traces only
     display_name = params[:display_name]
-    if !display_name.blank?
+    unless display_name.blank?
       target_user = User.active.where(:display_name => display_name).first
       if target_user.nil?
         render_unknown_user display_name
@@ -31,14 +31,14 @@ class TraceController < ApplicationController
 
     # set title
     if target_user.nil?
-      @title = t 'trace.list.public_traces'
-    elsif @user and @user == target_user
-      @title = t 'trace.list.your_traces'
+      @title = t "trace.list.public_traces"
+    elsif @user && @user == target_user
+      @title = t "trace.list.your_traces"
     else
-      @title = t 'trace.list.public_traces_from', :user => target_user.display_name
+      @title = t "trace.list.public_traces_from", :user => target_user.display_name
     end
 
-    @title += t 'trace.list.tagged_with', :tags => params[:tag] if params[:tag]
+    @title += t "trace.list.tagged_with", :tags => params[:tag] if params[:tag]
 
     # four main cases:
     # 1 - all traces, logged in = all public traces + all user's (i.e + all mine)
@@ -47,21 +47,19 @@ class TraceController < ApplicationController
     # 4 - user's traces, not logged in as that user = all user's public traces
     if target_user.nil? # all traces
       if @user
-        @traces = Trace.visible_to(@user) #1
+        @traces = Trace.visible_to(@user) # 1
       else
-        @traces = Trace.visible_to_all #2
+        @traces = Trace.visible_to_all # 2
       end
     else
-      if @user and @user == target_user
-        @traces = @user.traces #3 (check vs user id, so no join + can't pick up non-public traces by changing name)
+      if @user && @user == target_user
+        @traces = @user.traces # 3 (check vs user id, so no join + can't pick up non-public traces by changing name)
       else
-        @traces = target_user.traces.visible_to_all #4
+        @traces = target_user.traces.visible_to_all # 4
       end
     end
 
-    if params[:tag]
-      @traces = @traces.tagged(params[:tag])
-    end
+    @traces = @traces.tagged(params[:tag]) if params[:tag]
 
     @page = (params[:page] || 1).to_i
     @page_size = 20
@@ -73,7 +71,7 @@ class TraceController < ApplicationController
     @traces = @traces.includes(:user, :tags)
 
     # put together SET of tags across traces, for related links
-    tagset = Hash.new
+    tagset = {}
     @traces.each do |trace|
       trace.tags.reload if params[:tag] # if searched by tag, ActiveRecord won't bring back other tags, so do explicitly here
       trace.tags.each do |tag|
@@ -94,16 +92,16 @@ class TraceController < ApplicationController
   def view
     @trace = Trace.find(params[:id])
 
-    if @trace and @trace.visible? and
-       (@trace.public? or @trace.user == @user)
-      @title = t 'trace.view.title', :name => @trace.name
+    if @trace && @trace.visible? &&
+       (@trace.public? || @trace.user == @user)
+      @title = t "trace.view.title", :name => @trace.name
     else
-      flash[:error] = t 'trace.view.trace_not_found'
-      redirect_to :controller => 'trace', :action => 'list'
+      flash[:error] = t "trace.view.trace_not_found"
+      redirect_to :controller => "trace", :action => "list"
     end
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = t 'trace.view.trace_not_found'
-    redirect_to :controller => 'trace', :action => 'list'
+    flash[:error] = t "trace.view.trace_not_found"
+    redirect_to :controller => "trace", :action => "list"
   end
 
   def create
@@ -119,22 +117,21 @@ class TraceController < ApplicationController
         end
 
         if @trace.id
-          logger.info("id is #{@trace.id}")
-          flash[:notice] = t 'trace.create.trace_uploaded'
+          flash[:notice] = t "trace.create.trace_uploaded"
 
           if @user.traces.where(:inserted => false).count > 4
-            flash[:warning] = t 'trace.trace_header.traces_waiting', :count => @user.traces.where(:inserted => false).count
+            flash[:warning] = t "trace.trace_header.traces_waiting", :count => @user.traces.where(:inserted => false).count
           end
 
           redirect_to :action => :list, :display_name => @user.display_name
         end
       else
-        @trace = Trace.new({:name => "Dummy",
-                            :tagstring => params[:trace][:tagstring],
-                            :description => params[:trace][:description],
-                            :visibility => params[:trace][:visibility],
-                            :inserted => false, :user => @user,
-                            :timestamp => Time.now.getutc})
+        @trace = Trace.new(:name => "Dummy",
+                           :tagstring => params[:trace][:tagstring],
+                           :description => params[:trace][:description],
+                           :visibility => params[:trace][:visibility],
+                           :inserted => false, :user => @user,
+                           :timestamp => Time.now.getutc)
         @trace.valid?
         @trace.errors.add(:gpx_file, "can't be blank")
       end
@@ -142,21 +139,21 @@ class TraceController < ApplicationController
       @trace = Trace.new(:visibility => default_visibility)
     end
 
-    @title = t 'trace.create.upload_trace'
+    @title = t "trace.create.upload_trace"
   end
 
   def data
     trace = Trace.find(params[:id])
 
-    if trace.visible? and (trace.public? or (@user and @user == trace.user))
+    if trace.visible? && (trace.public? || (@user && @user == trace.user))
       if Acl.no_trace_download(request.remote_ip)
         render :text => "", :status => :forbidden
       elsif request.format == Mime::XML
-        send_file(trace.xml_file, :filename => "#{trace.id}.xml", :type => request.format.to_s, :disposition => 'attachment')
+        send_file(trace.xml_file, :filename => "#{trace.id}.xml", :type => request.format.to_s, :disposition => "attachment")
       elsif request.format == Mime::GPX
-        send_file(trace.xml_file, :filename => "#{trace.id}.gpx", :type => request.format.to_s, :disposition => 'attachment')
+        send_file(trace.xml_file, :filename => "#{trace.id}.gpx", :type => request.format.to_s, :disposition => "attachment")
       else
-        send_file(trace.trace_name, :filename => "#{trace.id}#{trace.extension_name}", :type => trace.mime_type, :disposition => 'attachment')
+        send_file(trace.trace_name, :filename => "#{trace.id}#{trace.extension_name}", :type => trace.mime_type, :disposition => "attachment")
       end
     else
       render :text => "", :status => :not_found
@@ -168,19 +165,19 @@ class TraceController < ApplicationController
   def edit
     @trace = Trace.find(params[:id])
 
-    if not @trace.visible?
+    if !@trace.visible?
       render :text => "", :status => :not_found
-    elsif @user.nil? or @trace.user != @user
+    elsif @user.nil? || @trace.user != @user
       render :text => "", :status => :forbidden
     else
-      @title = t 'trace.edit.title', :name => @trace.name
+      @title = t "trace.edit.title", :name => @trace.name
 
       if params[:trace]
         @trace.description = params[:trace][:description]
         @trace.tagstring = params[:trace][:tagstring]
         @trace.visibility = params[:trace][:visibility]
         if @trace.save
-          redirect_to :action => 'view', :display_name => @user.display_name
+          redirect_to :action => "view", :display_name => @user.display_name
         end
       end
     end
@@ -191,14 +188,14 @@ class TraceController < ApplicationController
   def delete
     trace = Trace.find(params[:id])
 
-    if not trace.visible?
+    if !trace.visible?
       render :text => "", :status => :not_found
-    elsif @user.nil? or trace.user != @user
+    elsif @user.nil? || trace.user != @user
       render :text => "", :status => :forbidden
     else
       trace.visible = false
       trace.save
-      flash[:notice] = t 'trace.delete.scheduled_for_deletion'
+      flash[:notice] = t "trace.delete.scheduled_for_deletion"
       redirect_to :action => :list, :display_name => @user.display_name
     end
   rescue ActiveRecord::RecordNotFound
@@ -209,13 +206,10 @@ class TraceController < ApplicationController
     @traces = Trace.visible_to_all.visible
 
     if params[:display_name]
-      @traces = @traces.joins(:user).where(:users => {:display_name => params[:display_name]})
+      @traces = @traces.joins(:user).where(:users => { :display_name => params[:display_name] })
     end
 
-    if params[:tag]
-      @traces = @traces.tagged(params[:tag])
-    end
-
+    @traces = @traces.tagged(params[:tag]) if params[:tag]
     @traces = @traces.order("timestamp DESC")
     @traces = @traces.limit(20)
     @traces = @traces.includes(:user)
@@ -224,10 +218,10 @@ class TraceController < ApplicationController
   def picture
     trace = Trace.find(params[:id])
 
-    if trace.inserted?
-      if trace.public? or (@user and @user == trace.user)
+    if trace.visible? && trace.inserted?
+      if trace.public? || (@user && @user == trace.user)
         expires_in 7.days, :private => !trace.public?, :public => trace.public?
-        send_file(trace.large_picture_name, :filename => "#{trace.id}.gif", :type => 'image/gif', :disposition => 'inline')
+        send_file(trace.large_picture_name, :filename => "#{trace.id}.gif", :type => "image/gif", :disposition => "inline")
       else
         render :text => "", :status => :forbidden
       end
@@ -241,10 +235,10 @@ class TraceController < ApplicationController
   def icon
     trace = Trace.find(params[:id])
 
-    if trace.inserted?
-      if trace.public? or (@user and @user == trace.user)
+    if trace.visible? && trace.inserted?
+      if trace.public? || (@user && @user == trace.user)
         expires_in 7.days, :private => !trace.public?, :public => trace.public?
-        send_file(trace.icon_picture_name, :filename => "#{trace.id}_icon.gif", :type => 'image/gif', :disposition => 'inline')
+        send_file(trace.icon_picture_name, :filename => "#{trace.id}_icon.gif", :type => "image/gif", :disposition => "inline")
       else
         render :text => "", :status => :forbidden
       end
@@ -258,7 +252,7 @@ class TraceController < ApplicationController
   def api_read
     trace = Trace.visible.find(params[:id])
 
-    if trace.public? or trace.user == @user
+    if trace.public? || trace.user == @user
       render :text => trace.to_xml.to_s, :content_type => "text/xml"
     else
       render :text => "", :status => :forbidden
@@ -271,8 +265,8 @@ class TraceController < ApplicationController
     if trace.user == @user
       new_trace = Trace.from_xml(request.raw_post)
 
-      unless new_trace and new_trace.id == trace.id
-        raise OSM::APIBadUserInput.new("The id in the url (#{trace.id}) is not the same as provided in the xml (#{new_trace.id})")
+      unless new_trace && new_trace.id == trace.id
+        fail OSM::APIBadUserInput.new("The id in the url (#{trace.id}) is not the same as provided in the xml (#{new_trace.id})")
       end
 
       trace.description = new_trace.description
@@ -300,13 +294,15 @@ class TraceController < ApplicationController
   end
 
   def api_data
-    trace = Trace.find(params[:id])
+    trace = Trace.visible.find(params[:id])
 
-    if trace.public? or trace.user == @user
-      if request.format == Mime::XML or request.format == Mime::GPX
-        send_file(trace.xml_file, :filename => "#{trace.id}.xml", :type => request.format.to_s, :disposition => 'attachment')
+    if trace.public? || trace.user == @user
+      if request.format == Mime::XML
+        send_file(trace.xml_file, :filename => "#{trace.id}.xml", :type => request.format.to_s, :disposition => "attachment")
+      elsif request.format == Mime::GPX
+        send_file(trace.xml_file, :filename => "#{trace.id}.gpx", :type => request.format.to_s, :disposition => "attachment")
       else
-        send_file(trace.trace_name, :filename => "#{trace.id}#{trace.extension_name}", :type => trace.mime_type, :disposition => 'attachment')
+        send_file(trace.trace_name, :filename => "#{trace.id}#{trace.extension_name}", :type => trace.mime_type, :disposition => "attachment")
       end
     else
       render :text => "", :status => :forbidden
@@ -341,11 +337,11 @@ class TraceController < ApplicationController
     end
   end
 
-private
+  private
 
   def do_create(file, tags, description, visibility)
     # Sanitise the user's filename
-    name = file.original_filename.gsub(/[^a-zA-Z0-9.]/, '_')
+    name = file.original_filename.gsub(/[^a-zA-Z0-9.]/, "_")
 
     # Get a temporary filename...
     filename = "/tmp/#{rand}"
@@ -372,7 +368,7 @@ private
 
         # Rename the temporary file to the final name
         FileUtils.mv(filename, @trace.trace_name)
-      rescue Exception => ex
+      rescue StandardError
         # Remove the file as we have failed to update the database
         FileUtils.rm_f(filename)
 
@@ -384,7 +380,7 @@ private
         # Clear the inserted flag to make the import daemon load the trace
         @trace.inserted = false
         @trace.save!
-      rescue Exception => ex
+      rescue StandardError
         # Remove the file as we have failed to update the database
         FileUtils.rm_f(@trace.trace_name)
 
@@ -400,11 +396,10 @@ private
     else
       @user.preferences.create(:k => "gps.trace.visibility", :v => visibility)
     end
-
   end
 
   def offline_warning
-    flash.now[:warning] = t 'trace.offline_warning.message' if STATUS == :gpx_offline
+    flash.now[:warning] = t "trace.offline_warning.message" if STATUS == :gpx_offline
   end
 
   def offline_redirect
@@ -422,5 +417,4 @@ private
       "public"
     end
   end
-
 end

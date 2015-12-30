@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class OldWayTest < ActiveSupport::TestCase
   api_fixtures
@@ -49,7 +49,7 @@ class OldWayTest < ActiveSupport::TestCase
     way = ways(:way_with_versions_v3)
     tags = OldWay.find(way.id).old_tags.order(:k)
     assert_equal 3, tags.count
-    assert_equal "testing", tags[0].k 
+    assert_equal "testing", tags[0].k
     assert_equal "added in way version 3", tags[0].v
     assert_equal "testing three", tags[1].k
     assert_equal "added in way version 3", tags[1].v
@@ -59,7 +59,7 @@ class OldWayTest < ActiveSupport::TestCase
     way = ways(:way_with_versions_v4)
     tags = OldWay.find(way.id).old_tags.order(:k)
     assert_equal 2, tags.count
-    assert_equal "testing", tags[0].k 
+    assert_equal "testing", tags[0].k
     assert_equal "added in way version 3", tags[0].v
     assert_equal "testing two", tags[1].k
     assert_equal "modified in way version 4", tags[1].v
@@ -92,13 +92,13 @@ class OldWayTest < ActiveSupport::TestCase
     way = ways(:way_with_versions_v3)
     nodes = OldWay.find(way.id).get_nodes_undelete
     assert_equal 2, nodes.size
-    assert_equal [1.0, 1.0, 15, 4, {"testing" => "added in node version 3", "testing two" => "modified in node version 4"}, true], nodes[0]
-    assert_equal [3.0, 3.0, 3, 1, {"test" => "yes"}, true], nodes[1]
+    assert_equal [1.0, 1.0, 15, 4, { "testing" => "added in node version 3", "testing two" => "modified in node version 4" }, true], nodes[0]
+    assert_equal [3.0, 3.0, 3, 1, { "test" => "yes" }, true], nodes[1]
 
     way = ways(:way_with_redacted_versions_v2)
     nodes = OldWay.find(way.id).get_nodes_undelete
     assert_equal 2, nodes.size
-    assert_equal [3.0, 3.0, 3, 1, {"test" => "yes"}, true], nodes[0]
-    assert_equal [2.0, 2.0, 2, 1, {"testused" => "yes"}, false], nodes[1]
+    assert_equal [3.0, 3.0, 3, 1, { "test" => "yes" }, true], nodes[0]
+    assert_equal [2.0, 2.0, 2, 1, { "testused" => "yes" }, false], nodes[1]
   end
 end

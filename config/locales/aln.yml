@@ -7,6 +7,7 @@
 # Author: Fitim
 # Author: Gent
 # Author: Heroid
+# Author: Kosovastar
 # Author: Mdupont
 # Author: MicroBoy
 # Author: Nemo bis
@@ -247,10 +248,8 @@ aln:
     search_osm_nominatim:
       prefix:
         amenity:
-          airport: Airoport
           arts_centre: Art Qendra
           atm: Bankomat
-          auditorium: sallë muzikë
           bank: Banka
           bar: Bar
           bench: Stol
@@ -266,7 +265,6 @@ aln:
           casino: Kazino
           cinema: Kinema
           clinic: Klinikë
-          club: Klub
           college: Kolegj
           community_centre: ndërtimin e qendrës së komunitetit
           courthouse: Ndërtesë e gjyqit
@@ -286,22 +284,18 @@ aln:
           fuel: Lëndë djegëse
           grave_yard: Varrezë
           gym: Qendra Kalitje fizike / palestër
-          hall: Sallë
           health_centre: Qendër e Shëndetësore
           hospital: Spital
-          hotel: Hotel
           hunting_stand: Gjuetia Stand
           ice_cream: Akullore
           kindergarten: Kopshti i fëmijëve
           library: Bibliotekë
           market: Treg
           marketplace: Treg
-          mountain_rescue: jashtëzakonshme mal shpëtimit
           nightclub: Night Club
           nursery: Fidanishte
           nursing_home: shtëpi pleqsh
           office: Zyrë
-          park: Park
           parking: Parking
           pharmacy: Barnatore
           place_of_worship: Vendi i Adhurimi
@@ -312,7 +306,6 @@ aln:
           prison: Burg
           pub: Pijetore
           public_building: Publike Ndërtimi
-          public_market: Tregu Publik
           reception_area: Zona e pritjes
           recycling: Pika riciklimit
           restaurant: Restorant
@@ -321,10 +314,8 @@ aln:
           school: Shkoll
           shelter: Strehim
           shop: Shitore
-          shopping: Pazar
           social_club: klub shoqërore
           studio: Studio
-          supermarket: Supermarket
           taxi: Taxi
           telephone: Telefon Publik
           theatre: Teatër
@@ -335,7 +326,6 @@ aln:
           veterinary: Kirurgji Veterinare
           village_hall: Fshati Hall
           waste_basket: Mbeturinat Shporta
-          wifi: WiFi Hyrje
           youth_centre: Qendër Rinore
         boundary:
           administrative: Administrative kufitare
@@ -345,14 +335,12 @@ aln:
           bridleway: Rruge pa osfallt
           bus_guideway: Lane udhëzoi Autobuseve
           bus_stop: Stacion i autobusave
-          byway: Rruge ansore
           construction: Highway nën ndërtim
           cycleway: Rruge per biciklla
           emergency_access_point: Pike Hyrje e urgjencës
           footway: Rrugë e kambsorve
           ford: Fiord
           living_street: rrugës ku njerëzit jetojnë
-          minor: rrugë të vogla
           motorway: Autostradë
           motorway_junction: Kryqzim per rruge te motorrave
           motorway_link: rrugë autostradë
@@ -369,7 +357,6 @@ aln:
           service: Rruge sherbimi
           services: Autostradë Sherbime
           steps: Hapat
-          stile: Hekur
           tertiary: Rruge tericiere
           track: Udhë
           trail: Shteg
@@ -390,7 +377,6 @@ aln:
           memorial: Përkujtim
           mine: Imi
           monument: Monument
-          museum: Muze
           ruins: Gërmadhe
           tower: Kullë
           wayside_cross: Buzë rruge Kryqi
@@ -415,9 +401,6 @@ aln:
           meadow: Livadh
           military: Zonë Ushtarake
           mine: Imi
-          nature_reserve: Natyra Rezervat
-          park: Park
-          piste: Piste
           quarry: Gurore
           railway: Hekurudhor
           recreation_ground: Zbavitje Ground
@@ -426,8 +409,6 @@ aln:
           retail: Me pakicë
           village_green: Fshati Green
           vineyard: Vresht
-          wetland: Ligatinore
-          wood: Druri
         leisure:
           beach_resort: hoteli në plazh
           common: Toke e njejte
@@ -453,10 +434,8 @@ aln:
           beach: Pllazh
           cape: Kep
           cave_entrance: Shpella Hyrja
-          channel: Kanal
           cliff: Shkamb
           crater: Krater
-          feature: Veçuni
           fell: Moqal
           fjord: Fiord
           geyser: Gejzer
@@ -472,11 +451,9 @@ aln:
           point: Pike
           reef: shkambinj nënujore
           ridge: Kreshtë
-          river: Lum
           rock: Gur
           scree: Rrëpirë me gurë të rrzum
           scrub: Kaçubë
-          shoal: Cekt
           spring: Pranverë
           strait: Ngushticë
           tree: Pemë
@@ -484,7 +461,6 @@ aln:
           volcano: Vullkan
           water: Ujë
           wetland: Lagunat
-          wetlands: Lagunat
           wood: Dru
         place:
           airport: Aeroport
@@ -531,7 +507,6 @@ aln:
           switch: Hekurudhave Pikët
           tram: Tramvajëve
           tram_stop: Tramvaj Stop
-          yard: depo stacioni hekurudhor
         shop:
           alcohol: kiosk
           art: Shitore e kafshëve
@@ -613,18 +588,15 @@ aln:
           hostel: Bujtine
           hotel: Hotel
           information: Informacione
-          lean_to: Strehore
           motel: Motel
           museum: Muze
           picnic_site: Vend per Piknik
           theme_park: Park i lojnave
-          valley: Lugine
           viewpoint: Pike shikimi
           zoo: Kopsht Zoologjik
         waterway:
           boatyard: Kantier detar
           canal: Kanal
-          connector: lidhës lumë i lundrueshëm
           dam: Pendë
           derelict_canal: Kanali i braktisur
           ditch: Hendek
@@ -632,15 +604,12 @@ aln:
           drain: Kullon
           lock: Bllokoj
           lock_gate: Mbylle Porta
-          mineral_spring: ujë mineral burim
           mooring: Ankorim
           rapids: Pragje të lumit
           river: Lum
-          riverbank: banka e lumit
           stream: Lumë
           wadi: luginë
           waterfall: Ujëvarë
-          water_point: Pika e ujit
           weir: Pendë
     description:
       title:
@@ -654,19 +623,6 @@ aln:
     results:
       no_results: Nuk është gjetur asnjë rezultat
       more_results: Më shumë rezultate
-    distance:
-      one: rreth 1km
-      zero: ma pak se 1km
-      other: rreth %{count}km
-    direction:
-      south_west: jug-perëndim
-      south: jug
-      south_east: jug-lindje
-      east: lindja
-      north_east: veri-lindje
-      north: veriu
-      north_west: veri-perendim
-      west: perëndim
   layouts:
     logo:
       alt_text: logo e OpenStreetMap
@@ -897,8 +853,8 @@ aln:
       deleted: Mesazhi u fshi
   site:
     index:
-      js_1: Ju jeni tuj e përdor naj shfletues që nuk e përkrah JavaScript, ose ju
-        e keni ndalu JavaScript.
+      js_1: Ju jeni duke përdorur ndonjë shfletues që nuk e përkrah JavaScript, ose
+        i keni çativizuar JavaScript.
       js_2: OpenStreetMap përdor Java skriptet për planet e saj të rrëshqitshëm.
       permalink: Permalink
       shortlink: Shortlink
@@ -932,9 +888,7 @@ aln:
           primary: Udhë kryesore
           secondary: rrugë e mesme
           unclassified: Udhë e paklasifikume
-          unsurfaced: rrugë Unsurfaced
           track: Udhë
-          byway: I parrahur
           bridleway: Bridleway
           cycleway: Cycleway
           footway: Këmbësore
@@ -958,7 +912,6 @@ aln:
           golf: fushë e golfit
           park: Park
           resident: Zonë Rezidenciale
-          tourist: tërheqje Turistike
           common:
           - I përbashkët
           - livadh
@@ -988,7 +941,6 @@ aln:
           tunnel: tunel zorrë thye =
           bridge: Shtresë e jashtme e Zi = urë
           private: qasje privat
-          permissive: qasje tolerant
           destination: qasje Destinacioni
           construction: Rrugët në ndërtim e sipër
   trace:
@@ -1296,7 +1248,7 @@ aln:
       my settings: Preferencat e mia
       current email address: 'Email adresa e tanishme:'
       new email address: 'Email adresa e re:'
-      email never displayed publicly: (asniher su kan publike)
+      email never displayed publicly: (asnjëherë nuk është publikuar)
       public editing:
         heading: 'Ndryshime publike:'
         enabled: E pranishme. Jo anonime dhe muni me i ndryshue t'dhanat.
@@ -1339,6 +1291,7 @@ aln:
       press confirm button: Shtype butonin e konfirmimit ma posht që me mujt me aktivizue
         akountin e juej
       button: Konfirmo
+      success: Akounti juaj u konfirmua, ju falemnderit për regjistrim!
     confirm_email:
       heading: Konfirmo ni ndryshim te email adreses
       press confirm button: Truse butonin për konfirmim për me konfirmu email adresën

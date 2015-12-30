@@ -1,9 +1,9 @@
-require 'oauth/controllers/provider_controller'
+require "oauth/controllers/provider_controller"
 
 class OauthController < ApplicationController
   include OAuth::Controllers::ProviderController
 
-  layout 'site'
+  layout "site"
 
   def login_required
     authorize_web
@@ -30,20 +30,18 @@ class OauthController < ApplicationController
     @token = current_user.oauth_tokens.find_by_token params[:token]
     if @token
       @token.invalidate!
-      flash[:notice] = t('oauth.revoke.flash', :application => @token.client_application.name)
+      flash[:notice] = t("oauth.revoke.flash", :application => @token.client_application.name)
     end
     redirect_to oauth_clients_url(:display_name => @token.user.display_name)
   end
 
-protected
+  protected
 
   def oauth1_authorize
-    unless @token
-      render :action=>"authorize_failure"
-      return
-    end
-
-    unless @token.invalidated?
+    if @token.invalidated?
+      @message = t "oauth.oauthorize_failure.invalid"
+      render :action => "authorize_failure"
+    else
       if request.post?
         if user_authorizes_token?
           @token.authorize!(current_user)
@@ -54,16 +52,21 @@ protected
           end
           @redirect_url = URI.parse(callback_url) unless callback_url.blank?
 
-          unless @redirect_url.to_s.blank?
-            @redirect_url.query = @redirect_url.query.blank? ?
-            "oauth_token=#{@token.token}" :
-              @redirect_url.query + "&oauth_token=#{@token.token}"
+          if @redirect_url.to_s.blank?
+            render :action => "authorize_success"
+          else
+            @redirect_url.query = if @redirect_url.query.blank?
+                                    "oauth_token=#{@token.token}"
+                                  else
+                                    @redirect_url.query +
+                                    "&oauth_token=#{@token.token}"
+                                  end
+
             unless @token.oauth10?
               @redirect_url.query += "&oauth_verifier=#{@token.verifier}"
             end
+
             redirect_to @redirect_url.to_s
-          else
-            render :action => "authorize_success"
           end
         else
           @token.invalidate!
@@ -71,9 +74,6 @@ protected
           render :action => "authorize_failure"
         end
       end
-    else
-      @message = t "oauth.oauthorize_failure.invalid"
-      render :action => "authorize_failure"
     end
   end
 end

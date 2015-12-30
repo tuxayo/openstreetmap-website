@@ -1,9 +1,12 @@
 # Messages for Vietnamese (Tiếng Việt)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Dinhxuanduyet
+# Author: KhangND
 # Author: Minh Nguyen
 # Author: Nemo bis
 # Author: Ninomax
+# Author: Ruila
 # Author: Trần Nguyễn Minh Huy
 ---
 vi:
@@ -161,6 +164,7 @@ vi:
         way: lối
         relation: quan hệ
         changeset: bộ thay đổi
+        note: ghi chú
     timeout:
       sorry: Rất tiếc, đã chờ lấy dữ liệu của %{type} có ID %{id} quá lâu.
       type:
@@ -168,6 +172,7 @@ vi:
         way: lối
         relation: quan hệ
         changeset: bộ thay đổi
+        note: ghi chú
     redacted:
       redaction: Dãy ẩn %{id}
       message_html: Không thể xem phiên bản %{version} của %{type} này vì nó đã bị
@@ -252,6 +257,7 @@ vi:
   diary_entry:
     new:
       title: Mục Nhật ký Mới
+      publish_button: Xuất bản
     list:
       title: Các Nhật ký Cá nhân
       title_friends: Các nhật ký của bạn bè
@@ -387,8 +393,10 @@ vi:
     search_osm_nominatim:
       prefix:
         aerialway:
+          cable_car: Xe Cáp treo Lớn
           chair_lift: Ghế Cáp treo
           drag_lift: Thang kéo trên Mặt đất
+          gondola: Xe Cáp treo Nhỏ
           station: Trạm Cáp treo
         aeroway:
           aerodrome: Sân bay
@@ -399,11 +407,9 @@ vi:
           taxiway: Đường lăn
           terminal: Nhà ga Sân bay
         amenity:
-          airport: Sân bay
+          animal_shelter: Trạm Bảo vệ Động vật
           arts_centre: Trung tâm Nghệ thuật
-          artwork: Tác phẩm Nghệ thuật
           atm: Máy Rút tiền Tự động
-          auditorium: Phòng hội họp
           bank: Ngân hàng
           bar: Quán rượu
           bbq: Bếp Nướng Ngoài trời
@@ -411,6 +417,7 @@ vi:
           bicycle_parking: Chỗ Đậu Xe đạp
           bicycle_rental: Chỗ Mướn Xe đạp
           biergarten: Quán rượu Ngoài trời
+          boat_rental: Cho thuê Tàu
           brothel: Nhà chứa
           bureau_de_change: Tiệm Đổi tiền
           bus_station: Bến Xe buýt
@@ -420,9 +427,10 @@ vi:
           car_wash: Tiệm Rửa Xe
           casino: Sòng bạc
           charging_station: Trạm Sạc Pin
+          childcare: Nhà Giữ Trẻ
           cinema: Rạp phim
           clinic: Phòng khám
-          club: Câu lạc bộ
+          clock: Đồng hồ
           college: Trường Cao đẳng
           community_centre: Trung tâm Cộng đồng
           courthouse: Tòa
@@ -441,25 +449,25 @@ vi:
           food_court: Khu Ẩm thực
           fountain: Vòi nước
           fuel: Cây xăng
+          gambling: Xe Cáp treo Lớn
           grave_yard: Nghĩa địa
           gym: Nhà Thể dục
-          hall: Hội trường
           health_centre: Trung tâm Y tế
           hospital: Bệnh viện
-          hotel: Khách sạn
           hunting_stand: Ghế Dựng để Săn bắn
           ice_cream: Tiệm Kem
           kindergarten: Tiểu học
           library: Thư viện
           market: Chợ
           marketplace: Chợ phiên
-          mountain_rescue: Đội Cứu nạn Núi
+          monastery: Nhà tu
+          motorcycle_parking: Chỗ Đậu Xe máy
           nightclub: Câu lạc bộ Đêm
           nursery: Nhà trẻ
           nursing_home: Viện Dưỡng lão
           office: Văn phòng
-          park: Công viên
           parking: Chỗ Đậu xe
+          parking_entrance: Lối vào Bãi đậu xe
           pharmacy: Nhà thuốc
           place_of_worship: Nơi Thờ phụng
           police: Cảnh sát
@@ -469,7 +477,6 @@ vi:
           prison: Nhà tù
           pub: Quán rượu
           public_building: Tòa nhà Công cộng
-          public_market: Chợ phiên
           reception_area: Phòng Tiếp khách
           recycling: Trung tâm hoặc Thùng Tái sinh
           restaurant: Nhà hàng
@@ -478,13 +485,11 @@ vi:
           school: Trường học
           shelter: Nơi Trú ẩn
           shop: Tiệm
-          shopping: Tiệm
           shower: Vòi tắm
           social_centre: Hội trường
           social_club: Câu lạc bộ Xã hội
           social_facility: Cơ quan Xã hội
           studio: Studio
-          supermarket: Siêu thị
           swimming_pool: Hồ tắm
           taxi: Taxi
           telephone: Điện thoại Công cộng
@@ -496,8 +501,7 @@ vi:
           veterinary: Phẫu thuật Thú y
           village_hall: Trụ sở Làng
           waste_basket: Thùng rác
-          wifi: Điểm Truy cập Wi-Fi
-          WLAN: Điểm Truy cập Wi-Fi
+          waste_disposal: Thùng rác
           youth_centre: Trung tâm Thanh niên
         boundary:
           administrative: Biên giới Hành chính
@@ -512,22 +516,35 @@ vi:
           "yes": Cầu
         building:
           "yes": Tòa nhà
+        craft:
+          brewery: Nhà máy Bia
+          carpenter: Thợ Đóng Đồ Gỗ
+          electrician: Thợ Lắp điện
+          gardener: Thợ Làm vườn
+          painter: Thợ Sơn
+          photographer: Nhà Chụp hình
+          plumber: Thợ Sửa Ống nước
+          shoemaker: Thợ Đóng giày
+          tailor: Tiệm May
+          "yes": Doanh nghiệp Thủ công
         emergency:
-          fire_hydrant: Trụ Cứu hỏa
+          ambulance_station: Trạm Xe cứu thương
+          defibrillator: Máy Khử Rung Tim
+          landing_site: Nơi Hạ cánh Khẩn cấp
           phone: Điện thoại Khẩn cấp
         highway:
+          abandoned: Đường Bỏ hoang
           bridleway: Đường Cưỡi ngựa
           bus_guideway: Làn đường Dẫn Xe buýt
           bus_stop: Trạm Xe buýt
-          byway: Đường mòn Đa mốt
           construction: Đường Đang Xây
           cycleway: Đường Xe đạp
+          elevator: Thang máy
           emergency_access_point: Địa điểm Truy nhập Khẩn cấp
           footway: Đường Đi bộ
           ford: Khúc Sông Cạn
           living_street: Đường Hàng xóm
           milestone: Mốc
-          minor: Đường Nhỏ
           motorway: Đường Cao tốc
           motorway_junction: Ngã tư Đường Cao tốc
           motorway_link: Đường Cao tốc
@@ -548,37 +565,44 @@ vi:
           speed_camera: Máy chụp hình Tốc độ
           steps: Cầu thang
           street_lamp: Đèn Đường phố
-          stile: Cửa xoay
           tertiary: Phố
           tertiary_link: Phố
           track: Đường mòn
+          traffic_signals: Đèn Giao thông
           trail: Đường mòn
           trunk: Xa lộ
           trunk_link: Xa lộ
           unclassified: Ngõ
           unsurfaced: Đường Không Lát
+          "yes": Đường
         historic:
           archaeological_site: Khu vực Khảo cổ
           battlefield: Chiến trường
           boundary_stone: Mốc Biên giới
-          building: Tòa nhà
+          building: Tòa nhà Lịch sử
+          bunker: Boong ke
           castle: Lâu đài
           church: Nhà thờ
+          city_gate: Cổng Thành phố
           citywalls: Tường Thành phố
           fort: Pháo đài
+          heritage: Nơi Di sản
           house: Nhà ở
           icon: Thánh tượng
           manor: Trang viên
           memorial: Vật Tưởng niệm
           mine: Mỏ
           monument: Công trình Tưởng niệm
-          museum: Bảo tàng
+          roman_road: Đường La Mã
           ruins: Tàn tích
+          stone: Đá
           tomb: Mộ
           tower: Tháp
           wayside_cross: Thánh Giá Dọc đường
           wayside_shrine: Đền thánh Dọc đường
           wreck: Xác Tàu Đắm
+        junction:
+          "yes": Giao lộ
         landuse:
           allotments: Khu Vườn Gia đình
           basin: Lưu vực
@@ -600,9 +624,6 @@ vi:
           military: Khu vực Quân sự
           mine: Mỏ
           orchard: Vườn Cây
-          nature_reserve: Khu Bảo tồn Thiên niên
-          park: Công viên
-          piste: Đường Trượt tuyết
           quarry: Mỏ Đá
           railway: Đường sắt
           recreation_ground: Sân chơi
@@ -613,16 +634,19 @@ vi:
           road: Đất của con Đường
           village_green: Sân Làng
           vineyard: Vườn Nho
-          wetland: Đầm lầy
-          wood: Rừng
+          "yes": Sử dụng đất
         leisure:
           beach_resort: Khu Nghỉ mát Ven biển
           bird_hide: Căn nhà Quan sát Chim
+          club: Câu lạc bộ
           common: Đất Công
+          dog_park: Công viên Chó
           fishing: Hồ Đánh cá
+          fitness_centre: Trung tâm Thể dục
           fitness_station: Trạm Thể dục
           garden: Vườn
           golf_course: Sân Golf
+          horse_riding: Cưỡi Ngựa
           ice_rink: Sân băng
           marina: Bến tàu
           miniature_golf: Golf Nhỏ
@@ -631,6 +655,7 @@ vi:
           pitch: Sân cỏ
           playground: Sân chơi
           recreation_ground: Sân Giải trí
+          resort: Khu Nghỉ mát
           sauna: Nhà Tắm hơi
           slipway: Bến tàu
           sports_centre: Trung tâm Thể thao
@@ -638,6 +663,13 @@ vi:
           swimming_pool: Hồ Bơi
           track: Đường Chạy
           water_park: Công viên Nước
+          "yes": Giải trí
+        man_made:
+          lighthouse: Hải đăng
+          pipeline: Ống dẫn
+          tower: Tháp
+          works: Nhà máy
+          "yes": Nhân tạo
         military:
           airfield: Sân bay Không quân
           barracks: Trại Lính
@@ -649,16 +681,15 @@ vi:
           beach: Bãi biển
           cape: Mũi đất
           cave_entrance: Cửa vào Hang
-          channel: Eo biển
           cliff: Vách đá
           crater: Miệng Núi
           dune: Cồn cát
-          feature: Đối tượng Thiên nhiên
           fell: Đồi Cằn cỗi
           fjord: Vịnh hẹp
           forest: Rừng
           geyser: Mạch nước Phun
           glacier: Sông băng
+          grassland: Đồng cỏ
           heath: Bãi Hoang
           hill: Đồi
           island: Đảo
@@ -670,11 +701,11 @@ vi:
           point: Mũi đất
           reef: Rạn san hô
           ridge: Luống đất
-          river: Sông
           rock: Đá
+          saddle: Đèo
+          sand: Cát
           scree: Sườn Núi Đá
           scrub: Đất Bụi rậm
-          shoal: Bãi cạn
           spring: Suối
           stone: Đá
           strait: Eo biển
@@ -683,10 +714,10 @@ vi:
           volcano: Núi lửa
           water: Nước
           wetland: Đầm lầy
-          wetlands: Đầm lầy
           wood: Rừng
         office:
           accountant: Kế toán viên
+          administrative: Công sở
           architect: Kiến trúc sư
           company: Công ty
           employment_agency: Trung tâm Tuyển dụng
@@ -699,6 +730,8 @@ vi:
           travel_agent: Văn phòng Du lịch
           "yes": Văn phòng
         place:
+          allotments: Khu Vườn Gia đình
+          block: Khối phố
           airport: Sân bay
           city: Thành phố
           country: Quốc gia
@@ -723,6 +756,7 @@ vi:
           town: Thị xã/trấn
           unincorporated_area: Khu Chưa Hợp nhất
           village: Làng
+          "yes": Nơi
         railway:
           abandoned: Đường sắt Bỏ hoang
           construction: Đường sắt Đang Xây
@@ -743,14 +777,11 @@ vi:
           spur: Đường sắt Phụ
           station: Nhà ga
           stop: Chỗ Xe lửa Dừng lại
-          subway: Trạm Xe điện Ngầm
+          subway: Đường ngầm
           subway_entrance: Cửa vào Nhà ga Xe điện ngầm
           switch: Ghi Đường sắt
           tram: Đường Xe điện
           tram_stop: Ga Xép Điện
-          yard: Sân ga
-        route:
-          bus: Tuyến Xe buýt
         shop:
           alcohol: Tiệm Rượu
           antiques: Tiệm Đồ cổ
@@ -828,6 +859,7 @@ vi:
           "yes": Tiệm
         tourism:
           alpine_hut: Túp lều Trên Núi
+          apartment: Khu chung cư
           artwork: Tác phẩm Nghệ thuật
           attraction: Nơi Du lịch
           bed_and_breakfast: Nhà trọ
@@ -835,16 +867,15 @@ vi:
           camp_site: Nơi Cắm trại
           caravan_site: Bãi Đậu Nhà lưu động
           chalet: Nhà ván
+          gallery: Phòng Tranh
           guest_house: Nhà khách
           hostel: Nhà trọ
           hotel: Khách sạn
           information: Thông tin
-          lean_to: Nhà chái
           motel: Khách sạn Dọc đường
           museum: Bảo tàng
           picnic_site: Bàn ăn Ngoài trời
           theme_park: Công viên Giải trí
-          valley: Thung lũng
           viewpoint: Thắng cảnh
           zoo: Vườn thú
         tunnel:
@@ -854,7 +885,6 @@ vi:
           artificial: Dòng nước Nhân tạo
           boatyard: Bãi Thuyền
           canal: Kênh
-          connector: Đường thủy Nối
           dam: Đập
           derelict_canal: Kênh Bỏ rơi
           ditch: Mương
@@ -862,16 +892,14 @@ vi:
           drain: Cống
           lock: Âu tàu
           lock_gate: Âu tàu
-          mineral_spring: Suối Nước khoáng
           mooring: Cột neo tàu
           rapids: Thác ghềnh
           river: Sông
-          riverbank: Bờ sông
           stream: Dòng suối
           wadi: Dòng sông Vào mùa
           waterfall: Thác
-          water_point: Máy bơm nước
           weir: Đập Tràn
+          "yes": Đường thủy
       admin_levels:
         level2: Biên giới Quốc gia
         level4: Biên giới Tỉnh bang
@@ -892,19 +920,6 @@ vi:
     results:
       no_results: Không tìm thấy kết quả
       more_results: Thêm kết quả
-    distance:
-      one: khoảng 1 km
-      zero: không tới 1 km
-      other: khoảng %{count} km
-    direction:
-      south_west: tây nam
-      south: nam
-      south_east: đông nam
-      east: đông
-      north_east: đông bắc
-      north: bắc
-      north_west: tây bắc
-      west: tây
   layouts:
     logo:
       alt_text: Biểu trưng OpenStreetMap
@@ -970,9 +985,9 @@ vi:
     legal_babble:
       title_html: Bản quyền và Giấy phép
       intro_1_html: |-
-        OpenStreetMap là <i>dữ liệu mở</i> được phát hành theo <a
+        OpenStreetMap<sup><a href="#trademarks">&reg;</a></sup> là <i>dữ liệu mở</i> được phát hành theo <a
         href="http://opendatacommons.org/licenses/odbl/">Giấy phép Cơ sở dữ liệu Mở của Open Data
-        Commons</a> (ODbL).
+        Commons</a> (ODbL) bởi <a href="http://osmfoundation.org/">OpenStreetMap Foundation</a> (OSMF).
       intro_2_html: Bạn được tự do sao chép, phân phối, truyền, và tạo ra các tác
         phẩm phái sinh từ các dữ liệu của chúng ta, miễn là bạn ghi công OpenStreetMap
         và những người đóng góp vào nó. Nếu bạn sửa đổi hoặc tạo sản phẩm dựa trên
@@ -1003,9 +1018,9 @@ vi:
         alt: Ví dụ ghi công OpenStreetMap trên một trang Web
         title: Ví dụ ghi công
       more_title_html: Tìm hiểu thêm
-      more_1_html: Hãy đọc thêm chi tiết về việc sử dụng dữ liệu của chúng tôi và
-        cách ghi công chúng tôi trong <a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ?uselang=vi">Hỏi
-        đáp Pháp lý</a>.
+      more_1_html: |-
+        Hãy đọc thêm chi tiết về việc sử dụng dữ liệu của chúng tôi và cách ghi công chúng tôi tại <a href="http://osmfoundation.org/Licence">OSMF Licence page</a> and the community <a
+        <a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ?uselang=vi">Hỏi đáp Pháp lý</a>.
       more_2_html: Tuy OpenStreetMap là một nguồn dữ liệu mở, nhưng chúng tôi không
         thể cung cấp API miễn phí cho những nhà phát triển bên thứ ba truy cập bản
         đồ. Hãy xem <a href="http://wiki.openstreetmap.org/wiki/API_usage_policy?uselang=vi">Quy
@@ -1034,6 +1049,9 @@ vi:
         href="http://www.and.com">www.and.com</a>)'
       contributors_nz_html: '<strong>New Zealand</strong>: Bao gồm dữ liệu bắt nguồn
         từ Land Information New Zealand. Bản quyền Crown Copyright được bảo lưu.'
+      contributors_si_html: "<strong>Slovenia</strong>: Bao gồm dữ liệu từ \n<a href=\"http://www.gu.gov.si/en/\">Cơ
+        quan Khảo sát và Bản đồ</a> và\n<a href=\"http://www.mkgp.gov.si/en/\">Cục
+        Nông nghiệp, Lâm nghiệp, và Thức ăn</a>\n(thông tin công cộng của Slovenia)."
       contributors_za_html: '<strong>Nam Phi</strong>: Bao gồm dữ liệu từ <a href="http://www.ngi.gov.za/">Tổng
         cục: Thông tin Không gian địa lý Quốc gia</a>, bản quyền nhà nước được bảo
         lưu.'
@@ -1054,6 +1072,11 @@ vi:
         xin vui lòng tham khảo <a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure?uselang=vi">quá
         trình <i>takedown</i></a> hoặc nộp đơn trực tiếp tại <a href="http://dmca.openstreetmap.org/">trang
         khiếu nại trực tuyến</a> của chúng tôi.
+      trademarks_title_html: <span id="trademarks"></span>Nhãn hiệu
+      trademarks_1_html: OpenStreetMap và biểu trưng kính lúp đều là nhãn hiệu đăng
+        ký của Quỹ OpenStreetMap. Nếu bạn có thắc mắc về cách sử dụng các nhãn hiệu
+        này, xin vui lòng liên lạc với <a href="http://wiki.osmfoundation.org/wiki/Licensing_Working_Group?uselang=vi">Nhóm
+        làm việc Giấy phép</a>.
   welcome_page:
     title: Hoan nghênh!
     introduction_html: Chào mừng bạn đã đến OpenStreetMap, bản đồ thế giới có dữ liệu
@@ -1080,6 +1103,14 @@ vi:
         dòng nước, hồ nước, hoặc tòa nhà.
       tag_html: <strong>Thẻ</strong> là một chi tiết về một nốt hoặc lối, thí dụ tên
         của một nhà hàng hoặc tốc độ tối đa của một con đường.
+    rules:
+      title: Quy định!
+      paragraph_1_html: "OpenStreetMap có ít quy định chính thức, nhưng chúng ta mong
+        muốn tất cả mọi người tham gia mà cộng tác và giao thiệp với cộng đồng. Nếu
+        bạn tính hoạt động ngoài việc sửa đổi thủ công, xin vui lòng đọc và tuân theo
+        các hướng dẫn về việc <a href='http://wiki.openstreetmap.org/wiki/Import/Guidelines?uselang=vi'>nhập</a>
+        và \n<a href='http://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct?uselang=vi'>tự
+        động sửa đổi</a>."
     questions:
       title: Có thắc mắc?
       paragraph_1_html: |-
@@ -1120,11 +1151,29 @@ vi:
       url: /welcome
       title: Chào mừng đến với OSM
       description: Bắt đầu với cẩm nang các điều cơ bản OpenStreetMap.
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Vi:Beginners%27_guide
+      title: Hướng dẫn Bắt đầu
+      description: Hướng dẫn bắt đầu do cộng đồng biên tập.
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
       description: Hỏi hang hoặc tìm kiếm các câu trả lời tại trung tâm hỏi đáp của
         OSM.
+    mailing_lists:
+      title: Danh sách thư
+      description: Hỏi han hoặc thảo luận về các chuyện quan trọng trên nhiều danh
+        sách thư được sắp xếp theo chủ đề hoặc khu vực.
+    forums:
+      title: Diễn đàn
+      description: Hỏi han và thảo luận trong một giao diện bảng tin.
+    irc:
+      title: IRC
+      description: Trò chuyện tương tác trong nhiều ngôn ngữ về nhiều chủ đề.
+    switch2osm:
+      title: switch2osm
+      description: Trợ giúp cho những công ty và tổ chức muốn đổi qua các bản đồ và
+        dịch vụ dựa trên OpenStreetMap.
     wiki:
       url: http://wiki.openstreetmap.org/wiki/Vi:Main_Page?uselang=vi
       title: wiki.openstreetmap.org
@@ -1132,7 +1181,7 @@ vi:
   about_page:
     next: Tiếp
     copyright_html: <span>&copy;</span>những người<br>đóng góp vào<br>OpenStreetMap
-    used_by: '%{name} là nguồn dữ liệu bản đồ của hàng trăm trang Web, ứng dụng di
+    used_by: '%{name} là nguồn dữ liệu bản đồ của hàng ngàn trang Web, ứng dụng di
       động, và thiết bị phần cứng'
     lede_text: OpenStreetMap được xây dựng bởi cộng đồng những người đóng góp và bảo
       quản dữ liệu về đường sá, tòa nhà, quán cà phê, nhà ga, và đủ mọi thứ ở khắp
@@ -1154,6 +1203,11 @@ vi:
       theo một số cách nhất định, bạn chỉ được phép phân phối tác phẩm kết quả dưới
       cùng giấy phép này. Hãy xem chi tiết tại <a href=''%{copyright_path}''>trang
       Bản quyền và Giấy phép</a>.'
+    legal_title: Pháp luật
+    legal_html: |-
+      Trang Web này và nhiều dịch vụ có liên quan được hoạt động chính thức bởi <a href='http://osmfoundation.org/?uselang=vi'>Quỹ OpenStreetMap</a> (OSMF) thay mặt cho cộng đồng.
+      <br>
+      Xin vui lòng <a href='http://osmfoundation.org/Contact?uselang=vi'>liên lạc với OSMF</a> nếu bạn có thắc mắc về giấy phép, bản quyền, hoặc vấn đề pháp luật khác.
     partners_title: Nhà bảo trợ
   notifier:
     diary_comment_notification:
@@ -1371,6 +1425,10 @@ vi:
       close: Đóng
     search:
       search: Tìm kiếm
+      get_directions: Chỉ đường
+      get_directions_title: Chỉ đường từ một địa điểm tới địa điểm khác
+      from: Từ
+      to: Đến
       where_am_i: Tôi ở đâu?
       where_am_i_title: Miêu tả vị trí đang ở dùng máy tìm kiếm
       submit_text: Đi
@@ -1382,9 +1440,7 @@ vi:
           primary: Đường chính
           secondary: Đường lớn
           unclassified: Đường không phân loại
-          unsurfaced: Đường không lát
           track: Đường mòn
-          byway: Đường mòn đa mốt
           bridleway: Đường cưỡi ngựa
           cycleway: Đường xe đạp
           footway: Đường đi bộ
@@ -1408,7 +1464,6 @@ vi:
           golf: Sân golf
           park: Công viên
           resident: Khu vực nhà ở
-          tourist: Nơi du lịch
           common:
           - Đất công
           - bãi cỏ
@@ -1438,7 +1493,6 @@ vi:
           tunnel: Đường đứt nét = đường hầm
           bridge: Đường rắn = cầu
           private: Đường riêng
-          permissive: Đường cho phép
           destination: Chỉ giao thông địa phương
           construction: Đường đang xây
     richtext_area:
@@ -1597,6 +1651,7 @@ vi:
       allow_read_gpx: truy cập các tuyến đường GPS bí mật của bạn.
       allow_write_gpx: tải lên tuyến đường GPS.
       allow_write_notes: thay đổi ghi chú.
+      grant_access: Cấp phép Truy cập
     oauthorize_success:
       title: Yêu cầu cho phép được chấp nhận
       allowed: Bạn đã cho phép ứng dụng %{app_name} truy cập tài khoản của bạn.
@@ -1682,7 +1737,7 @@ vi:
       register now: Mở tài khoản ngay
       with username: 'Đã có tài khoản OpenStreetMap? Hãy đăng nhập với tên người dùng
         và mật khẩu của bạn:'
-      with openid: 'Hoặc đăng nhập dùng OpenID của bạn:'
+      with external: 'Hoặc đăng nhập qua dịch vụ bên thứ ba:'
       new to osm: Mới đến OpenStreetMap?
       to make changes: Bạn phải có tài khoản để thay đổi dữ liệu OpenStreetMap.
       create account minute: Chỉ mất một phút để mở tài khoản mới.
@@ -1694,26 +1749,29 @@ vi:
         bị nghi ngờ.<br />Xin vui lòng liên lạc với <a href="%{webmaster}">webmaster</a>
         để thảo luận về điều này.
       auth failure: Rất tiếc, không thể đăng nhập với những chi tiết đó.
-      openid missing provider: Rất tiếc, không thể kết nối với nhà cung cấp OpenID
-        của bạn
-      openid invalid: Rất tiếc, hình như OpenID của bạn không hợp lệ
       openid_logo_alt: Đăng nhập dùng OpenID
-      openid_providers:
+      auth_providers:
         openid:
-          title: Đăng nhập dùng OpenID
+          title: Đăng nhập qua OpenID
           alt: Đăng nhập dùng URL OpenID
         google:
-          title: Đăng nhập với Google
-          alt: Đăng nhập với OpenID của Google
+          title: Đăng nhập qua Google
+          alt: Đăng nhập dùng OpenID của Google
+        facebook:
+          title: Đăng nhập qua Facebook
+          alt: Đăng nhập dùng tài khoản Facebook
+        windowslive:
+          title: Đăng nhập qua Windows Live
+          alt: Đăng nhập dùng tài khoản Windows Live
         yahoo:
-          title: Đăng nhập với Yahoo!
-          alt: Đăng nhập với OpenID của Yahoo!
+          title: Đăng nhập qua Yahoo!
+          alt: Đăng nhập dùng OpenID của Yahoo!
         wordpress:
-          title: Đăng nhập với WordPress
-          alt: Đăng nhập với OpenID của WordPress
+          title: Đăng nhập qua WordPress
+          alt: Đăng nhập dùng OpenID của WordPress
         aol:
-          title: Đăng nhập với AOL
-          alt: Đăng nhập với OpenID của AOL
+          title: Đăng nhập qua AOL
+          alt: Đăng nhập dùng OpenID của AOL
     logout:
       title: Đăng xuất
       heading: Đăng xuất OpenStreetMap
@@ -1757,17 +1815,19 @@ vi:
       display name: 'Tên hiển thị:'
       display name description: Tên người dùng của bạn được hiển thị công khai. Bạn
         có thể thay đổi tên này về sau trong tùy chọn.
-      openid: '%{logo} OpenID:'
+      external auth: 'Xác minh qua Dịch vụ Bên thứ ba:'
       password: 'Mật khẩu:'
       confirm password: 'Xác nhận Mật khẩu:'
-      use openid: Hoặc đăng nhập dùng %{logo} OpenID
-      openid no password: Khi đăng nhập dùng OpenID, bạn sẽ không cần đưa vào mật
-        khẩu. Tuy nhiên, một số công cụ hoặc máy chủ phụ vẫn có thể cần mật khẩu.
-      openid association: |-
-        <p>OpenID của bạn chưa được nối với một tài khoản OpenStreetMap.</p>
+      use external auth: Hoặc đăng nhập qua dịch vụ bên thứ ba
+      auth no password: Nếu xác minh qua dịch vụ bên thứ ba, bạn không cần nhập mật
+        khẩu, nhưng một số công cụ hoặc máy chủ khác có thể vẫn yêu cầu mật khẩu.
+      auth association: |-
+        <p>ID của bạn chưa được liên kết với một tài khoản OpenStreetMap.</p>
         <ul>
-          <li>Nếu bạn mới đến OpenStreetMap, hãy mở tài khoản dùng biểu mẫu ở dưới.</li>
-          <li>Nếu đã có tài khoản, bạn có thể đăng nhập vào tài khoản của bạn dùng tên người dùng và một khẩu thường và nối tài khoản với OpenID của bạn tại trang tùy chọn.</li>
+          <li>Nếu bạn mới đến OpenStreetMap, xin vui lòng tạo tài khoản mới dùng biểu mẫu bên dưới.</li>
+          <li>
+            Nếu bạn đã có tài khoản, đăng nhập dùng tên người dùng và mật khẩu của bạn, rồi liên kết tài khoản với ID của bạn trong trang tùy chọn.
+          </li>
         </ul>
       continue: Mở tài khoản
       terms accepted: Cám ơn bạn đã chấp nhận các điều khoản đóng góp mới!
@@ -1879,8 +1939,8 @@ vi:
       current email address: 'Địa chỉ Thư điện tử Hiện tại:'
       new email address: 'Địa chỉ Thư điện tử Mới:'
       email never displayed publicly: (không lúc nào hiện công khai)
+      external auth: 'Xác minh Bên ngoài:'
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: đây là gì?
       public editing:
@@ -1940,6 +2000,7 @@ vi:
         tử để bắt đầu đóng góp vào bản đồ.
       press confirm button: Bấm nút Xác nhận ở dưới để xác nhận tài khoản.
       button: Xác nhận
+      success: Đã xác nhận tài khoản của bạn. Cám ơn bạn đã mở tài khoản!
       already active: Tài khoản này đã được xác nhận rồi.
       unknown token: Dấu hiệu xác nhận này đã hết hạn hoặc không tồn tại.
       reconfirm_html: <a href="%{reconfirm}">Nhấn vào đây</a> để gửi thư điện tử xác
@@ -1955,8 +2016,9 @@ vi:
       press confirm button: Bấm nút Xác nhận ở dưới để xác nhận địa chỉ thư điện tử
         mới.
       button: Xác nhận
-      success: Đã xác nhận địa chỉ thư điện tử mới. Cám ơn bạn đã mở tài khoản!
+      success: Đã xác nhận địa chỉ thư điện tử mới!
       failure: Một địa chỉ thư điện tử đã được xác nhận dùng dấu hiệu này.
+      unknown_token: Dấu hiệu xác nhận này đã hết hạn hoặc không tồn tại.
     set_home:
       flash success: Đã lưu vị trí nhà thành công
     go_public:
@@ -1998,6 +2060,12 @@ vi:
           Quyết định này sẽ được một quản lý viên xem lại không lâu.
           Có thể liên lạc với %{webmaster} để thảo luận về vụ cấm này.
         </p>
+    auth_failure:
+      connection_failed: Kết nối đến dịch vụ xác minh bị thất bại
+      invalid_credentials: Chứng nhận xác minh không hợp lệ
+      no_authorization_code: Không có mã cho phép
+      unknown_signature_algorithm: Thuật toán chữ ký không rõ
+      invalid_scope: Phạm vi không hợp lệ
   user_role:
     filter:
       not_an_administrator: Chỉ các quản lý viên có quyền quản lý quyền của người
@@ -2110,6 +2178,8 @@ vi:
       heading: '%{block_on} bị cấm bởi %{block_by}'
       time_future: Hết hạn %{time}
       time_past: Đã hết hạn cách đây %{time}
+      created: Tạo
+      ago: cách đây %{time}
       status: Trạng thái
       show: Hiện
       edit: Sửa đổi
@@ -2160,6 +2230,7 @@ vi:
       link: Liên kết hoặc HTML
       long_link: Liên kết
       short_link: Liên kết Ngắn gọn
+      geo_uri: URI geo
       embed: HTML
       custom_dimensions: Tùy biến kích thước
       format: 'Định dạng:'
@@ -2180,7 +2251,7 @@ vi:
         in: Phóng to
         out: Thu nhỏ
       locate:
-        title: Nhảy tới Vị trí của Tôi
+        title: Bay tới Vị trí của Tôi
         popup: Bạn hiện đang ở cách đây {distance} {unit}
       base:
         standard: Chuẩn
@@ -2229,6 +2300,41 @@ vi:
         comment: Bình luận
     edit_help: Di chuyển bản đồ và phóng to một vị trí mà bạn muốn sửa đổi, rồi nhấn
       chuột vào đây.
+    directions:
+      engines:
+        graphhopper_bicycle: Xe đạp (GraphHopper)
+        graphhopper_foot: Đi bộ (GraphHopper)
+        mapquest_bicycle: Xe đạp (MapQuest)
+        mapquest_car: Xe hơi (MapQuest)
+        mapquest_foot: Đi bộ (MapQuest)
+        osrm_car: Xe hơi (OSRM)
+      directions: Chỉ đường
+      distance: Tầm xa
+      errors:
+        no_route: Không tìm thấy tuyến đường giữa hai địa điểm này.
+        no_place: Rất tiếc, không tìm thấy địa điểm này.
+      instructions:
+        continue_without_exit: Chạy tiếp trên %{name}
+        slight_right_without_exit: Nghiêng về bên phải vào %{name}
+        turn_right_without_exit: Quẹo phải vào %{name}
+        sharp_right_without_exit: Quẹo gắt bên phải vào %{name}
+        uturn_without_exit: Quay trở lại vào %{name}
+        sharp_left_without_exit: Quẹo gắt bên trái vào %{name}
+        turn_left_without_exit: Quẹo trái vào %{name}
+        slight_left_without_exit: Nghiêng về bên trái vào %{name}
+        via_point_without_exit: (địa điểm trên đường)
+        follow_without_exit: Chạy theo %{name}
+        roundabout_without_exit: Tại bùng binh, đi ra tại %{name}
+        leave_roundabout_without_exit: Đi ra khỏi bùng binh – %{name}
+        stay_roundabout_without_exit: Chạy tiếp xung quanh bùng binh – %{name}
+        start_without_exit: Bắt đầu tại cuối %{name}
+        destination_without_exit: Tới nơi
+        against_oneway_without_exit: Chạy ngược chiều trên %{name}
+        end_oneway_without_exit: Kết thúc khúc một chiều trên %{name}
+        roundabout_with_exit: Tại bùng binh, đi ra tại đường thứ %{exit} tức %{name}
+        unnamed: không tên
+        courtesy: Chỉ đường do %{link} cung cấp
+      time: Thời gian
     query:
       node: Nốt
       way: Lối

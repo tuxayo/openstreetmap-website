@@ -1,10 +1,10 @@
 # Update and read user preferences, which are arbitrayr key/val pairs
 class UserPreferenceController < ApplicationController
-  skip_before_filter :verify_authenticity_token
-  before_filter :authorize
-  before_filter :require_allow_read_prefs, :only => [:read_one, :read]
-  before_filter :require_allow_write_prefs, :except => [:read_one, :read]
-  around_filter :api_call_handle_error
+  skip_before_action :verify_authenticity_token
+  before_action :authorize
+  before_action :require_allow_read_prefs, :only => [:read_one, :read]
+  before_action :require_allow_write_prefs, :except => [:read_one, :read]
+  around_action :api_call_handle_error
 
   ##
   # return all the preferences as an XML document
@@ -13,10 +13,10 @@ class UserPreferenceController < ApplicationController
 
     prefs = @user.preferences
 
-    el1 = XML::Node.new 'preferences'
+    el1 = XML::Node.new "preferences"
 
     prefs.each do |pref|
-      el1 <<  pref.to_xml_node
+      el1 << pref.to_xml_node
     end
 
     doc.root << el1
@@ -33,20 +33,19 @@ class UserPreferenceController < ApplicationController
 
   # update the entire set of preferences
   def update
-    old_preferences = @user.preferences.reduce({}) do |preferences,preference|
+    old_preferences = @user.preferences.each_with_object({}) do |preference, preferences|
       preferences[preference.k] = preference
-      preferences
     end
 
     new_preferences = {}
 
     doc = XML::Parser.string(request.raw_post).parse
 
-    doc.find('//preferences/preference').each do |pt|
+    doc.find("//preferences/preference").each do |pt|
       if preference = old_preferences.delete(pt["k"])
         preference.v = pt["v"]
       elsif new_preferences.include?(pt["k"])
-        raise OSM::APIDuplicatePreferenceError.new(pt["k"])
+        fail OSM::APIDuplicatePreferenceError.new(pt["k"])
       else
         preference = @user.preferences.build(:k => pt["k"], :v => pt["v"])
       end
@@ -54,13 +53,9 @@ class UserPreferenceController < ApplicationController
       new_preferences[preference.k] = preference
     end
 
-    old_preferences.each_value do |preference|
-      preference.delete
-    end
+    old_preferences.each_value(&:delete)
 
-    new_preferences.each_value do |preference|
-      preference.save!
-    end
+    new_preferences.each_value(&:save!)
 
     render :text => "", :content_type => "text/plain"
   end
@@ -70,7 +65,7 @@ class UserPreferenceController < ApplicationController
   def update_one
     begin
       pref = UserPreference.find([@user.id, params[:preference_key]])
-    rescue ActiveRecord::RecordNotFound 
+    rescue ActiveRecord::RecordNotFound
       pref = UserPreference.new
       pref.user = @user
       pref.k = params[:preference_key]

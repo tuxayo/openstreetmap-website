@@ -1,12 +1,14 @@
 # Messages for Serbian (Cyrillic script) (српски (ћирилица)‎)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Aktron
 # Author: Magnumns
 # Author: Milicevic01
 # Author: Nemo bis
 # Author: Nikola Smolenski
 # Author: Rancher
 # Author: Sawa
+# Author: Srdjan m
 # Author: Жељко Тодоровић
 # Author: Милан Јелисавчић
 # Author: Обрадовић Горан
@@ -122,11 +124,13 @@ sr:
       way_paginated: Путање (%{x}-%{y} од %{count})
       relation: Односи (%{count})
       relation_paginated: Односи (%{x}-%{y} од %{count})
+      comment: Коментари (%{count})
       changesetxml: XML скуп измена
       osmchangexml: osmChange XML
       feed:
         title: Скуп измена %{id}
         title_comment: Скуп измена %{id} – %{comment}
+      discussion: Разговор
     node:
       title: 'Чвор: %{name}'
       history_title: 'Историја чвора: %{name}'
@@ -185,7 +189,7 @@ sr:
     note:
       title: Белешкаː %{id}
       new_note: Нова белешка
-      description: 'Опис:'
+      description: Опис
       open_title: 'Нерешена белешка #%{note_name}'
       closed_title: 'Решена белешка #%{note_name}'
       hidden_title: 'Скривена белешка #%{note_name}'
@@ -361,6 +365,7 @@ sr:
       prefix_format: '%{name}'
       prefix:
         aerialway:
+          cable_car: Жичара
           chair_lift: Лифт столица
           drag_lift: Лифт који вуче
           station: Ваздушна станица
@@ -373,11 +378,8 @@ sr:
           taxiway: Рулна стаза
           terminal: Терминал
         amenity:
-          airport: Аеродром
           arts_centre: Уметнички центар
-          artwork: Уметничко дело
           atm: Банкомат
-          auditorium: Дворана
           bank: Банка
           bar: Бар
           bbq: Роштиљ
@@ -396,7 +398,6 @@ sr:
           charging_station: Напојна станица
           cinema: Биоскоп
           clinic: Клиника
-          club: Клуб
           college: Факултет
           community_centre: Друштвени центар
           courthouse: Суд
@@ -417,22 +418,18 @@ sr:
           fuel: Бензинска пумпа
           grave_yard: Гробље
           gym: Фитнес центар
-          hall: Сала
           health_centre: Дом здравља
           hospital: Болница
-          hotel: Хотел
           hunting_stand: Ловачки дом
           ice_cream: Продавница сладоледа
           kindergarten: Обданиште
           library: Библиотека
           market: Продавница
           marketplace: Пијаца
-          mountain_rescue: Горска служба
           nightclub: Ноћни клуб
           nursery: Јаслице
           nursing_home: Дом за негу
           office: Пословница
-          park: Парк
           parking: Паркинг
           pharmacy: Апотека
           place_of_worship: Место богослужења
@@ -443,7 +440,6 @@ sr:
           prison: Затвор
           pub: Паб
           public_building: Установа
-          public_market: Пијаца
           reception_area: Пријемно подручје
           recycling: Место за рециклажу
           restaurant: Ресторан
@@ -452,13 +448,11 @@ sr:
           school: Школа
           shelter: Склониште
           shop: Продавница
-          shopping: Трговачки центар
           shower: Туш
           social_centre: Друштвени центар
           social_club: Друштвени клуб
           social_facility: Социјална установа
           studio: Студио
-          supermarket: Супермаркет
           swimming_pool: Базен
           taxi: Такси
           telephone: Телефонска говорница
@@ -470,8 +464,6 @@ sr:
           veterinary: Ветеринарска хирургија
           village_hall: Сеоски дом
           waste_basket: Корпа за отпатке
-          wifi: Бежични интернет
-          WLAN: Бежични интернет
           youth_centre: Дом омладине
         boundary:
           administrative: Административна граница
@@ -487,13 +479,11 @@ sr:
         building:
           "yes": Зграда
         emergency:
-          fire_hydrant: Хидрант
           phone: Телефон за хитне случајеве
         highway:
           bridleway: Коњичка стаза
           bus_guideway: Аутобуска трака
           bus_stop: Аутобуска станица
-          byway: Пречица
           construction: Ауто-пут у изградњи
           cycleway: Бициклистичка стаза
           emergency_access_point: Приступ за случај опасности
@@ -501,7 +491,6 @@ sr:
           ford: Газ
           living_street: Улица смиреног промета
           milestone: Миљоказ
-          minor: Другоразредни пут
           motorway: Ауто-пут
           motorway_junction: Петља
           motorway_link: Мото-пут
@@ -522,7 +511,6 @@ sr:
           speed_camera: Фото-радар
           steps: Степенице
           street_lamp: Улична светиљка
-          stile: Прелаз преко ограде
           tertiary: Главна улица
           tertiary_link: Локални пут
           track: Макадам
@@ -546,7 +534,6 @@ sr:
           memorial: Споменик
           mine: Рудник
           monument: Споменик (монумент)
-          museum: Музеј
           ruins: Рушевине
           tomb: Гробница
           tower: Торањ
@@ -574,9 +561,6 @@ sr:
           military: Војно подручје
           mine: Рудник
           orchard: Воћњак
-          nature_reserve: Резерват природе
-          park: Парк
-          piste: Скијашка стаза
           quarry: Каменолом
           railway: Железничка пруга
           recreation_ground: Подручје за рекреацију
@@ -587,8 +571,6 @@ sr:
           road: Путно подручје
           village_green: Сеоско поље
           vineyard: Виноград
-          wetland: Мочвара
-          wood: Шума
         leisure:
           beach_resort: Одмаралиште на плажи
           bird_hide: Склониште за птице
@@ -623,11 +605,9 @@ sr:
           beach: Плажа
           cape: Рт
           cave_entrance: Улаз у пећину
-          channel: Канал
           cliff: Литица
           crater: Кратер
           dune: Дина
-          feature: Обележје
           fell: Брдо
           fjord: Фјорд
           forest: Шума
@@ -644,11 +624,9 @@ sr:
           point: Тачка
           reef: Гребен
           ridge: Гребен
-          river: Река
           rock: Стена
           scree: Осулина
           scrub: Гуштара
-          shoal: Спруд
           spring: Извор
           stone: Камен
           strait: Мореуз
@@ -657,7 +635,6 @@ sr:
           volcano: Вулкан
           water: Вода
           wetland: Мочвара
-          wetlands: Мочваре
           wood: Шума
         office:
           accountant: Рачуновођа
@@ -722,7 +699,6 @@ sr:
           switch: Скретница
           tram: Трамвај
           tram_stop: Трамвајско стајалиште
-          yard: Ранжирна станица
         shop:
           alcohol: Трговина пићем
           antiques: Антикварница
@@ -811,12 +787,10 @@ sr:
           hostel: Хостел
           hotel: Хотел
           information: Информације
-          lean_to: Склониште
           motel: Мотел
           museum: Музеј
           picnic_site: Место за пикник
           theme_park: Тематски парк
-          valley: Долина
           viewpoint: Видиковац
           zoo: Зоолошки врт
         tunnel:
@@ -826,7 +800,6 @@ sr:
           artificial: Вештачки водени пут
           boatyard: Бродоградилиште
           canal: Канал
-          connector: Спој водних путева
           dam: Брана
           derelict_canal: Одбачени канал
           ditch: Јарак
@@ -834,15 +807,12 @@ sr:
           drain: Одвод
           lock: Устава
           lock_gate: Поље уставе
-          mineral_spring: Минерални извор
           mooring: Сидриште
           rapids: Брзаци
           river: Река
-          riverbank: Речна обала
           stream: Поток
           wadi: Суво корито реке
           waterfall: Водопад
-          water_point: Тачка водотока
           weir: Брана
       admin_levels:
         level2: Државна граница
@@ -863,19 +833,6 @@ sr:
     results:
       no_results: Нема резултата
       more_results: Још резултата
-    distance:
-      one: око једног километра
-      zero: мање од једног километра
-      other: око %{count} километра
-    direction:
-      south_west: југозападно
-      south: јужно
-      south_east: југоисточно
-      east: источно
-      north_east: североисточно
-      north: северно
-      north_west: северозападно
-      west: западно
   layouts:
     project_name:
       title: OpenStreetMap
@@ -1173,6 +1130,10 @@ sr:
     note_comment_notification:
       anonymous: Анонимни корисник
       greeting: Поздрав,
+    changeset_comment_notification:
+      greeting: Поздрав,
+      commented:
+        partial_changeset_without_comment: без коментара
   message:
     inbox:
       title: Примљене
@@ -1291,9 +1252,7 @@ sr:
           primary: Магистрални пут
           secondary: Регионални пут
           unclassified: Некатегорисани пут
-          unsurfaced: Неасфалтирани пут
           track: Макадам
-          byway: Споредни пут
           bridleway: Коњичка стаза
           cycleway: Бициклистичка стаза
           footway: Пешачка стаза
@@ -1317,7 +1276,6 @@ sr:
           golf: Голф терен
           park: Парк
           resident: Стамбено подручје
-          tourist: Туристичка атракција
           common:
           - Пољана
           - ливада
@@ -1347,7 +1305,6 @@ sr:
           tunnel: Испрекидан оквир – тунел
           bridge: Црни оквир – мост
           private: Приватни посед
-          permissive: Приступ уз дозволу
           destination: Приступ одредишту
           construction: Путеви у изградњи
     richtext_area:
@@ -1567,7 +1524,6 @@ sr:
       login_button: Пријави ме
       register now: Отворите налог
       with username: 'Већ имате налог? Пријавите се с корисничким именом и лозинком:'
-      with openid: 'Резервни начин је да користите OpenID:'
       new to osm: Нови сте на сајту?
       to make changes: Да бисте правили измене, морате имати налог.
       create account minute: Отворите налог. Потребно је само неколико тренутака.
@@ -1579,25 +1535,7 @@ sr:
         />Обратите се <a href="%{webmaster}">администратору</a> ако желите да поразговарате
         о проблему.
       auth failure: Не могу да вас пријавим с унетим подацима.
-      openid missing provider: Не могу да се повежем с OpenID добављачем
-      openid invalid: Изгледа да OpenID није исправан
       openid_logo_alt: Пријавите се с OpenID-јем
-      openid_providers:
-        openid:
-          title: Пријава путем OpenID-ја
-          alt: Пријавите се с OpenID-јем
-        google:
-          title: Пријава путем Гугла
-          alt: Пријавите се преко Гугла
-        yahoo:
-          title: Пријава путем Јахуа
-          alt: Пријавите се преко Јахуа
-        wordpress:
-          title: Пријава путем Вордпреса
-          alt: Пријавите се преко Вордпреса
-        aol:
-          title: Пријава путем AOL-а
-          alt: Пријавите се преко AOL-а
     logout:
       title: Одјава
       heading: Одјава
@@ -1620,7 +1558,7 @@ sr:
       flash changed: Ваша лозинка је промењена.
       flash token bad: Такав новчић није пронађен. Проверите адресу.
     new:
-      title: Отварање налога
+      title: Пријави се
       no_auto_account_create: Нажалост, тренутно нисмо у могућности да отворимо нови
         налог.
       contact_webmaster: Контактирајте <a href="mailto:webmaster@openstreetmap.org">администратора</a>
@@ -1635,21 +1573,8 @@ sr:
       display name: 'Име приказа:'
       display name description: Јавно приказано корисничко име. Касније га можете
         променити у поставкама.
-      openid: '%{logo} OpenID:'
       password: 'Лозинка:'
       confirm password: 'Потврдите лозинку:'
-      use openid: Резервни начин је да користите %{logo} OpenID
-      openid no password: С OpenID-јем, лозинка није потребна, али неке додатне алатке
-        ипак захтевају лозинку.
-      openid association: |-
-        <p>Ваш OpenID није повезан с налогом на Опенстритмапу.</p>
-        <ul>
-          <li>Ако још увек немате налог, отворите га користећи образац испод.</li>
-          <li>
-            Ако имате налог, пријавите се са својим корисничким именом
-            и лозинком, па га онда повежите с OpenID-јем у поставкама.
-          </li>
-        </ul>
       continue: Пријави се
       terms accepted: Хвала вам што прихватате нове услове уређивања.
       terms declined: Жао нам је што сте одлучили да не прихватите нове услове уређивања.
@@ -1758,7 +1683,6 @@ sr:
       new email address: 'Нова е-адреса:'
       email never displayed publicly: (никада се не приказује јавно)
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: шта је ово?
       public editing:
@@ -1817,6 +1741,7 @@ sr:
         моћићеш да почнеш са цртањем карте.
       press confirm button: Притисните дугме за потврду да бисте активирали налог.
       button: Потврди
+      success: Ваш налог је потврђен. Хвала вам на упису!
       already active: Овај налог је већ потврђен.
       unknown token: Тај код за потврду је истекао или не постоји.
       reconfirm_html: Ако треба да нам поново пошаљеш е-писмо, <a href="%{reconfirm}">кликни
@@ -2078,6 +2003,11 @@ sr:
       createnote_disabled_tooltip: Увећај да додаш белешку на карту
       map_notes_zoom_in_tooltip: Увећај да видиш белешке на карти
       map_data_zoom_in_tooltip: Увећај да видиш податке са карте
+    changesets:
+      show:
+        comment: Коментар
+        hide_comment: сакриј
+        unhide_comment: прикажи
     notes:
       new:
         intro: Видиш грешку или недостатак? Обавести остале картографе. Помери ознаку

@@ -1,10 +1,9 @@
 module RichText
   def self.new(format, text)
     case format
-    when "html"; HTML.new(text || "")
-    when "markdown"; Markdown.new(text || "")
-    when "text"; Text.new(text || "")
-    else; nil
+    when "html" then HTML.new(text || "")
+    when "markdown" then Markdown.new(text || "")
+    when "text" then Text.new(text || "")
     end
   end
 
@@ -37,10 +36,10 @@ module RichText
         link_proportion = 0
       end
 
-      return [link_proportion - 0.2, 0.0].max * 200 + link_count * 40
+      [link_proportion - 0.2, 0.0].max * 200 + link_count * 40
     end
 
-  protected
+    protected
 
     def simple_format(text)
       SimpleFormat.new.simple_format(text)
@@ -61,10 +60,10 @@ module RichText
     end
 
     def to_text
-      self.to_s
+      to_s
     end
 
-  private
+    private
 
     def sanitize(text)
       Sanitize.clean(text, Sanitize::Config::OSM).html_safe
@@ -73,26 +72,23 @@ module RichText
 
   class Markdown < Base
     def to_html
-      html_parser.render(self).html_safe
+      Markdown.html_parser.render(self).html_safe
     end
 
     def to_text
-      self.to_s
+      to_s
     end
 
-  private
+    def self.html_renderer
+      @html_renderer ||= Renderer.new(:filter_html => true, :safe_links_only => true)
+    end
 
-    def html_parser
-      @@html_renderer ||= Renderer.new({
-        :filter_html => true, :safe_links_only => true
-      })
-      @@html_parser ||= Redcarpet::Markdown.new(@@html_renderer, {
-        :no_intra_emphasis => true, :autolink => true, :space_after_headers => true
-      })
+    def self.html_parser
+      @html_parser ||= Redcarpet::Markdown.new(html_renderer, :no_intra_emphasis => true, :autolink => true, :space_after_headers => true)
     end
 
     class Renderer < Redcarpet::Render::XHTML
-      def link(link, title, alt_text)
+      def link(link, _title, alt_text)
         "<a rel=\"nofollow\" href=\"#{link}\">#{alt_text}</a>"
       end
 
@@ -102,7 +98,7 @@ module RichText
         else
           "<a rel=\"nofollow\" href=\"#{link}\">#{link}</a>"
         end
-      end 
+      end
     end
   end
 
@@ -112,7 +108,7 @@ module RichText
     end
 
     def to_text
-      self.to_s
+      to_s
     end
   end
 end

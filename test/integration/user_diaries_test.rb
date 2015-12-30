@@ -1,19 +1,19 @@
-require 'test_helper'
+require "test_helper"
 
 class UserDiariesTest < ActionDispatch::IntegrationTest
   fixtures :users, :diary_entries
 
-  # Test the creation of a diary entry, making sure that you are redirected to 
+  # Test the creation of a diary entry, making sure that you are redirected to
   # login page when not logged in
   def test_showing_create_diary_entry
-    get_via_redirect '/diary/new'
+    get_via_redirect "/diary/new"
     # We should now be at the login page
     assert_response :success
-    assert_template 'user/login'
+    assert_template "user/login"
     # We can now login
-    post  '/login', {'username' => "test@openstreetmap.org", 'password' => "test", :referer => '/diary/new'}
+    post "/login", "username" => "test@openstreetmap.org", "password" => "test", :referer => "/diary/new"
     assert_response :redirect
-    #print @response.body
+    # print @response.body
     # Check that there is some payload alerting the user to the redirect
     # and allowing them to get to the page they are being directed to
     assert_select "html:root" do
@@ -25,13 +25,13 @@ class UserDiariesTest < ActionDispatch::IntegrationTest
     # http://markmail.org/message/wnslvi5xv5moqg7g
     @html_document = nil
     follow_redirect!
-    
-    assert_response :success
-    assert_template 'diary_entry/edit'
-    #print @response.body
-    #print @html_document.to_yaml
 
-    # We will make sure that the form exists here, full 
+    assert_response :success
+    assert_template "diary_entry/edit"
+    # print @response.body
+    # print @html_document.to_yaml
+
+    # We will make sure that the form exists here, full
     # assert testing of the full form should be done in the
     # functional tests rather than this integration test
     # There are some things that are specific to the integratio

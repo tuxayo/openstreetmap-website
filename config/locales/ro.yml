@@ -4,12 +4,17 @@
 # Author: EddyPetrisor
 # Author: McDutchie
 # Author: Minisarm
+# Author: Ruila
 # Author: Strainu
+# Author: Wintereu
 ---
 ro:
+  html:
+    dir: ltr
   time:
     formats:
       friendly: '%e %B %Y la %H:%M'
+      blog: '%e %B %Y'
   activerecord:
     models:
       acl: Lista de control al accesului
@@ -41,6 +46,7 @@ ro:
       tracetag: Etichetă înregistrare GPS
       user: Utilizator
       user_preference: Preferințe utilizator
+      user_token: Jeton utilizator
       way: Cale
       way_node: Nod cale
       way_tag: Etichetă cale
@@ -77,34 +83,79 @@ ro:
         description: Descriere
         languages: Limbi
         pass_crypt: Parolă
+  printable_name:
+    with_version: '%{id}, v%{version}'
+    with_name_html: '%{name} (%{id})'
   editor:
     default: Implicit (în prezent %{name})
     potlatch:
       name: Potlatch 1
       description: Potlatch 1 (editor înglobat în navigator)
+    id:
+      name: iD
+      description: iD (editor-în-navigator)
     potlatch2:
       name: Potlatch 2
       description: Potlatch 2 (editor înglobat în navigator)
     remote:
+      name: Control la distanță
       description: Control de la distanță (JOSM sau Merkaartor)
   browse:
+    created: Creat
+    closed: Închis
+    created_html: Creat <abbr title='%{title}'>cu %{time} în urmă</abbr>
+    closed_html: Închis <abbr title='%{title}'>cu %{time} în urmă</abbr>
+    created_by_html: Creat <abbr title='%{title}'>cu %{time} în urmă</abbr> de %{user}
+    deleted_by_html: Șters <abbr title='%{title}'>cu %{time} în urmă</abbr> de %{user}
+    edited_by_html: Modificat <abbr title='%{title}'>cu %{time} în urmă</abbr> de
+      %{user}
+    closed_by_html: Închis <abbr title='%{title}'>cu %{time} în urmă</abbr> de %{user}
     version: Versiune
     in_changeset: Set de modificări
     anonymous: anonim
     no_comment: (niciun comentariu)
+    part_of: Parte din
+    download_xml: Descarcă XML
+    view_history: Vezi istoric
+    view_details: Vezi detalii
+    location: 'Amplasament:'
     changeset:
       title: 'Set de modificări: %{id}'
       belongs_to: Autor
       node: Noduri (%{count})
       node_paginated: Noduri (%{x}-%{y} din %{count})
+      way: Căi (%{count})
+      way_paginated: Căi (%{x}-%{y} din %{count})
+      relation: Comunicații (%{count})
+      relation_paginated: Comunicații (%{x}-%{y} din %{count})
+      comment: Comentarii (%{count})
+      hidden_commented_by: Ascuns comentariu scris de %{user} <abbr title='%{exact_time}'>cu
+        %{when} în urmă</abbr>
+      commented_by: Comentariu scris de %{user} <abbr title='%{exact_time}'>cu %{when}
+        în urmă</abbr>
       changesetxml: Set de modificări XML
       osmchangexml: XML osmChange
       feed:
         title: 'Set de modificări: %{id}'
         title_comment: Set de modificări %{id} — %{comment}
+      join_discussion: Conectați-vă pentru a vă alătura discuției
+      discussion: Discuție
+    node:
+      title: 'Nod: %{name}'
+      history_title: 'Istoricul nodului: %{name}'
     way:
+      title: 'Cale: %{name}'
+      history_title: 'Istoricul căii: %{name}'
       nodes: Noduri
+      also_part_of:
+        one: parte a liniei de %{related_ways}
+        other: parte din liniile de %{related_ways}
+    relation:
+      title: 'Relație: %{name}'
+      history_title: 'Istoricul relației: %{name}'
+      members: Membri
     relation_member:
+      entry: '%{type} %{name}'
       entry_role: '%{type} %{name} ca %{role}'
       type:
         node: Nod
@@ -120,6 +171,7 @@ ro:
         way: drum
         relation: relație
         changeset: set de modificări
+        note: notă
     timeout:
       sorry: Ne pare rău, dar durata recepționării datelor pentru %{type} cu identificatorul
         %{id} a fost prea mare.
@@ -128,6 +180,7 @@ ro:
         way: calea
         relation: relația
         changeset: setul de schimbări
+        note: notă
     redacted:
       redaction: Redactarea %{id}
       message_html: Nu se poate afișa versiunea %{version} a acestui/acestei %{type}
@@ -138,6 +191,9 @@ ro:
         way: drum
         relation: relații
     start_rjs:
+      feature_warning: Se încarcă %{num_features} caracteristici, ceea care ar putea
+        încetini sau bloca navigatorul dumneavoastră. Sigur doriți afișarea acestor
+        date?
       load_data: Încărcare date
       loading: Se încarcă...
     tag_details:
@@ -145,9 +201,26 @@ ro:
       wiki_link:
         key: Pagina de pe wiki pentru tagul %{key}
         tag: Pagina de pe wiki pentru tagul %{key}=%{value}
+      wikidata_link: Elementul %{page} pe Wikidata
       wikipedia_link: Articolul %{page} pe Wikipedia
+      telephone_link: Sună %{phone_number}
     note:
       title: 'Notă: %{id}'
+      new_note: Notă nouă
+      description: Descriere
+      open_title: 'Notă nerezolvată #%{note_name}'
+      closed_title: 'Notă rezolvată #%{note_name}'
+      hidden_title: 'Notă ascunsă #%{note_name}'
+      open_by: Creat de %{user} <abbr title=cu '%{exact_time}'>%{when} în urmă</abbr>
+      open_by_anonymous: Creat de un utilizator anonim <abbr title=cu '%{exact_time}'>%{when}
+        în urmă</abbr>
+      commented_by: Comentariu scris de %{user} <abbr title='%{exact_time}'>cu %{when}
+        în urmă</abbr>
+      commented_by_anonymous: Comentariu scris de un utilizator anonim <abbr title=cu
+        '%{exact_time}'>%{when} în urmă</abbr>
+    query:
+      introduction: Dați clic pe hartă pentru a găsi obiectivele din apropiere.
+      nearby: Obiectivele din apropiere
   changeset:
     changeset_paging_nav:
       showing_page: Pagina %{page}
@@ -178,6 +251,10 @@ ro:
     timeout:
       sorry: Ne pare rău, preluarea listei de modificări pe care ați solicitat-o a
         durat prea mult.
+    rss:
+      commented_at_html: Actualizat acum %{when}
+      commented_at_by_html: Actualizat acum %{when} de %{user}
+      full: Discuție completă
   diary_entry:
     new:
       title: O nouă înregistrare în jurnal
@@ -264,6 +341,13 @@ ro:
       format_to_export: Format de exportat
       osm_xml_data: Date XML OpenStreetMap
       licence: Licență
+      too_large:
+        planet:
+          title: Planeta OSM
+        overpass:
+          title: Overpass API
+        other:
+          title: Alte surse
       options: Opțiuni
       format: Format
       scale: Scară
@@ -287,6 +371,7 @@ ro:
           Nominatim</a>
         geonames: Rezultate de la <a href="http://www.geonames.org/">GeoNames</a>
     search_osm_nominatim:
+      prefix_format: '%{name}'
       prefix:
         aeroway:
           aerodrome: Aerodrom
@@ -297,11 +382,8 @@ ro:
           taxiway: Pistă de manevră
           terminal: Terminal
         amenity:
-          airport: Aeroport
           arts_centre: Centru de arte
-          artwork: Operă de artă
           atm: Bancomat
-          auditorium: Auditoriu
           bank: Instituție bancară
           bar: Bar
           bbq: Grătar
@@ -319,7 +401,7 @@ ro:
           charging_station: Stație de taxare
           cinema: Cinematograf
           clinic: Clinică
-          club: Club
+          clock: Ceas
           college: Colegiu
           community_centre: Centru comunitar
           courthouse: Tribunal
@@ -339,32 +421,31 @@ ro:
           fuel: Benzinărie
           grave_yard: Cimitir
           gym: Sală de fitness / gimnastică
-          hall: Sală
           health_centre: Centru de sănătate
           hospital: Spital
-          hotel: Hotel
           hunting_stand: Stand de vânătoare
           ice_cream: Înghețată
           kindergarten: Grădiniță
           library: Bibliotecă
           market: Piață
           marketplace: Piață de mărfuri
-          mountain_rescue: Salvamont
+          monastery: Mănăstire
+          motorcycle_parking: Parcare pentru motociclete
           nightclub: Club de noapte
           nursery: Creșă
           nursing_home: Azil de bătrâni
           office: Birou
-          park: Parc
           parking: Parcare
+          parking_entrance: Intrare în parcare
           pharmacy: Farmacie
           place_of_worship: Lăcaș de cult
           police: Poliție
           post_box: Cutie poștală
           post_office: Oficiu poștal
+          preschool: Preșcolar
           prison: Închisoare
           pub: Pub
           public_building: Clădire publică
-          public_market: Piață publică
           reception_area: Zonă de recepție
           recycling: Punct de reciclare
           restaurant: Restaurant
@@ -373,12 +454,10 @@ ro:
           school: Școală
           shelter: Adăpost
           shop: Magazin
-          shopping: Cumpărături
           shower: Duș
           social_centre: Centru social
           social_club: Club social
           studio: Studio
-          supermarket: Supermarket
           swimming_pool: Bazin de înot
           taxi: Taxi
           telephone: Telefon public
@@ -390,8 +469,6 @@ ro:
           veterinary: Medic veterinar
           village_hall: Primărie comunală
           waste_basket: Coș de gunoi
-          wifi: Acces WiFi
-          WLAN: Acces WiFi
           youth_centre: Centru de tineret
         boundary:
           administrative: Graniță administrativă
@@ -405,19 +482,29 @@ ro:
           "yes": Pod
         building:
           "yes": Clădire
+        craft:
+          electrician: Electrician
+          gardener: Grădinar
+          painter: Pictor
+          photographer: Fotograf
+          plumber: Instalator
+          shoemaker: Cizmar
+          tailor: Croitor
+        emergency:
+          ambulance_station: Stație de ambulanță
+          defibrillator: Defibrilator
         highway:
           bridleway: Drum pentru călărie
           bus_guideway: Linie de autobuz ghidată
           bus_stop: Stație de autobuz
-          byway: Rută secundară
           construction: Drum în construcție
           cycleway: Pistă de biciclete
+          elevator: Lift
           emergency_access_point: Punct de acces de urgență
           footway: Cale pietonală
           ford: Vad
           living_street: Zonă pietonală
           milestone: Bornă kilometrică
-          minor: Drum minor
           motorway: Autostradă
           motorway_junction: Intersecție pe autostradă
           motorway_link: Autostradă
@@ -427,7 +514,7 @@ ro:
           primary: Drum principal
           primary_link: Drum principal
           raceway: Pistă
-          residential: Rezidențial
+          residential: Stradă rezidențială
           rest_area: Zonă pentru odihnă
           road: Drum
           secondary: Drum secundar
@@ -442,25 +529,34 @@ ro:
           trail: Potecă
           unclassified: Drum neclasificat
           unsurfaced: Drum neasfaltat
+          "yes": Drum
         historic:
           archaeological_site: Sit arheologic
           battlefield: Câmp de luptă
           boundary_stone: Bornă de graniță
-          building: Clădire
+          building: Clădire istorică
+          bunker: Buncăr
           castle: Castel
           church: Biserică
+          city_gate: Poarta orașului
+          citywalls: Zidurile orașului
           fort: Fort
           house: Casă
+          icon: Pictogramă
           manor: Conac
           memorial: Memorial
           mine: Mină
           monument: Monument
-          museum: Muzeu
+          roman_road: Drumul roman
           ruins: Ruine
+          stone: Piatră
+          tomb: Mormânt
           tower: Turn
           wayside_cross: Troiță
           wayside_shrine: Altar
           wreck: Epavă
+        junction:
+          "yes": Intersecție
         landuse:
           basin: Bazin
           cemetery: Cimitir
@@ -469,23 +565,22 @@ ro:
           farm: Fermă
           farmland: Teren agricol
           forest: Pădure
+          garages: Garaje
           grass: Iarbă
           industrial: Zonă industrială
           landfill: Groapă de gunoi
           meadow: Luncă
           military: Zonă militară
           mine: Mină
-          nature_reserve: Rezervație naturală
-          park: Parc
           quarry: Carieră
           railway: Cale ferată
           recreation_ground: Zonă de recreere
           reservoir: Rezervor
           residential: Zonă rezidențială
           vineyard: Podgorie
-          wood: Pădure
         leisure:
           beach_resort: Stațiune balneară
+          club: Club
           fishing: Zonă de pescuit
           garden: Grădină
           golf_course: Teren de golf
@@ -496,21 +591,35 @@ ro:
           pitch: Teren de sport
           playground: Loc de joacă
           recreation_ground: Zonă de recreere
+          sauna: Saună
+          sports_centre: Centru de sport
           stadium: Stadion
           swimming_pool: Bazin de înot
           track: Pistă de atletism
           water_park: Parc acvatic
+        man_made:
+          lighthouse: Far
+          pipeline: Conductă
+          tower: Turn
+          works: Fabrică
+        military:
+          barracks: Cazarme
+          bunker: Buncăr
+        mountain_pass:
+          "yes": Trecătoare prin munți
         natural:
           bay: Golf
           beach: Plajă
           cape: Cap
           cave_entrance: Intrare în peșteră
-          channel: Canal
           cliff: Stâncă
           crater: Crater
+          dune: Dune
           fjord: Fiord
+          forest: Pădure
           geyser: Gheizer
           glacier: Ghețar
+          heath: Căldură
           hill: Deal
           island: Insulă
           land: Teren
@@ -518,20 +627,22 @@ ro:
           moor: Baltă
           mud: Noroi
           peak: Vârf
+          point: Punct
           reef: Recif
           ridge: Creastă
-          river: Râu
           rock: Rocă
           scree: Grohotiș
           scrub: Tufăriș
-          shoal: Banc de nisip
           spring: Izvor
+          stone: Piatră
           strait: Strâmtoare
           tree: Copac
           valley: Vale
           volcano: Vulcan
           water: Apă
           wood: Pădure
+        office:
+          "yes": Birou
         place:
           airport: Aeroport
           city: Oraș
@@ -573,7 +684,6 @@ ro:
           subway_entrance: Intrare la metrou
           tram: Tramvai
           tram_stop: Stație de tramvai
-          yard: Depou
         shop:
           art: Magazin de artă
           bakery: Brutărie
@@ -627,7 +737,6 @@ ro:
           motel: Motel
           museum: Muzeu
           theme_park: Parc tematic
-          valley: Vale
           zoo: Gradină zoologică
         waterway:
           canal: Canal
@@ -649,23 +758,10 @@ ro:
     results:
       no_results: Niciun rezultat găsit
       more_results: Mai multe rezultate
-    distance:
-      one: circa 1 km
-      zero: mai puțin de 1 km
-      other: circa %{count} km
-    direction:
-      south_west: sud-vest
-      south: sud
-      south_east: sud-est
-      east: est
-      north_east: nord-est
-      north: nord
-      north_west: nord-vest
-      west: vest
   layouts:
     logo:
       alt_text: Logoul OpenStreetMap
-    home: acasă
+    home: Mergi la locul de reședință
     logout: Închide sesiunea
     log_in: Autentificare
     log_in_tooltip: Autentificare cu un cont existent
@@ -705,6 +801,9 @@ ro:
     how_to_help:
       join_the_community:
         title: Alăturați-vă comunității
+  help_page:
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Ro:Beginners%27_guide
   message:
     message_summary:
       delete_button: Şterge

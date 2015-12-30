@@ -98,9 +98,7 @@
         },
         "merge": {
             "title": "Knytt sammen",
-            "description": "Knytt disse linjene sammen.",
             "key": "C",
-            "annotation": "Knyttet {n} linjer sammen.",
             "incomplete_relation": "Disse funksjonene kan ikke bli knyttet sammen fordi hvertfall én av dem er ikke ferdig nedlastet."
         },
         "move": {
@@ -144,7 +142,6 @@
         "tooltip": "Omgjør: {action}",
         "nothing": "Ingen ting å gjøre tilbake."
     },
-    "browser_notice": "Denne editor er støttet i Firefox, Chrome, Safari, Opera og Internet Explorer 9 og høyere. Vennligst oppgrader din nettleser eller bruk Potlatch 2 for å redigere kartet.",
     "translate": {
         "translate": "Oversett",
         "localized_translation_language": "Velg språk",
@@ -152,11 +149,9 @@
     },
     "logout": "logg ut",
     "loading_auth": "Kobler til OpenStreetMap...",
-    "report_a_bug": "meld en programvarefeil",
     "commit": {
         "title": "Lagre endringer",
         "description_placeholder": "Kort beskrivelse av dine bidrag",
-        "message_label": "Lagre beskjed",
         "save": "Lagre",
         "cancel": "Avbryt",
         "warnings": "Advarsler",
@@ -202,7 +197,6 @@
         "title": "Lagre",
         "help": "Lagre endringene i OpenStreetMap, slik at de blir synlige for andre brukere.",
         "no_changes": "Ingen endringer å lagre.",
-        "error": "Det oppstod en feil ved forsøk på å lagre",
         "uploading": "Laster opp endringer til OpenStreetMap.",
         "unsaved_changes": "Du har ulagrede endringer"
     },
@@ -287,45 +281,43 @@
         },
         "fields": {
             "access": {
-                "label": "Tilgang",
-                "placeholder": "Ukjent",
-                "types": {
-                    "foot": "Fot",
-                    "motor_vehicle": "Motorkjøretøy",
-                    "bicycle": "Sykler",
-                    "horse": "Hester"
-                },
                 "options": {
-                    "yes": {
-                        "title": "Tillatt",
-                        "description": "Tilgang gitt av lov; fri tilgang"
-                    },
-                    "no": {
-                        "title": "Forbudt",
-                        "description": "Tilgang ikke tillatt for allmennheten"
-                    },
-                    "permissive": {
-                        "title": "Begrenset",
-                        "description": "Tilgang tillatt frem til eieren trekker tillatelsen tilbake"
-                    },
-                    "private": {
-                        "title": "Privat",
-                        "description": "Tilgang tillatt kun ved tillatelse fra eieren på individuell basis"
-                    },
                     "designated": {
                         "description": "Tilgang tillatt i henhold til skilt eller spesifike lokale lover"
                     },
                     "destination": {
-                        "title": "Mål",
-                        "description": "Tilgang kun tillatt for å nå et mål"
+                        "description": "Tilgang kun tillatt for å nå et mål",
+                        "title": "Mål"
+                    },
+                    "no": {
+                        "description": "Tilgang ikke tillatt for allmennheten",
+                        "title": "Forbudt"
+                    },
+                    "permissive": {
+                        "description": "Tilgang tillatt frem til eieren trekker tillatelsen tilbake",
+                        "title": "Begrenset"
+                    },
+                    "private": {
+                        "description": "Tilgang tillatt kun ved tillatelse fra eieren på individuell basis",
+                        "title": "Privat"
+                    },
+                    "yes": {
+                        "description": "Tilgang gitt av lov; fri tilgang",
+                        "title": "Tillatt"
                     }
+                },
+                "types": {
+                    "bicycle": "Sykler",
+                    "foot": "Fot",
+                    "horse": "Hester",
+                    "motor_vehicle": "Motorkjøretøy"
                 }
             },
             "address": {
                 "label": "Adresse",
                 "placeholders": {
-                    "street": "Gate",
-                    "city": "By"
+                    "city": "By",
+                    "street": "Gate"
                 }
             },
             "admin_level": {
@@ -378,8 +370,8 @@
             "clock_direction": {
                 "label": "Retning",
                 "options": {
-                    "clockwise": "Med klokken",
-                    "anticlockwise": "Mot klokken"
+                    "anticlockwise": "Mot klokken",
+                    "clockwise": "Med klokken"
                 }
             },
             "collection_times": {
@@ -452,9 +444,9 @@
             "internet_access": {
                 "label": "Internettilgang",
                 "options": {
-                    "wlan": "Trådløs",
+                    "terminal": "Terminal",
                     "wired": "Kablet",
-                    "terminal": "Terminal"
+                    "wlan": "Trådløs"
                 }
             },
             "landuse": {
@@ -569,11 +561,11 @@
             },
             "structure": {
                 "label": "Struktur",
-                "placeholder": "Ukjent",
                 "options": {
                     "bridge": "Bru",
                     "tunnel": "Tunnel"
-                }
+                },
+                "placeholder": "Ukjent"
             },
             "studio_type": {
                 "label": "Type"
@@ -586,9 +578,6 @@
             },
             "towertype": {
                 "label": "Tårntype"
-            },
-            "tree_type": {
-                "label": "Type"
             },
             "tunnel": {
                 "label": "Tunnel"
@@ -611,9 +600,6 @@
             },
             "wikipedia": {
                 "label": "Wikipedia"
-            },
-            "wood": {
-                "label": "Type"
             }
         },
         "presets": {
@@ -815,9 +801,6 @@
             "highway/bus_stop": {
                 "name": "Busstopp"
             },
-            "highway/crossing": {
-                "name": "Overgang"
-            },
             "highway/cycleway": {
                 "name": "Sykkelvei"
             },
@@ -838,9 +821,6 @@
             },
             "highway/path": {
                 "name": "Sti"
-            },
-            "highway/pedestrian": {
-                "name": "Gående"
             },
             "highway/primary": {
                 "name": "Primær hovedvei"
@@ -899,23 +879,11 @@
             "historic/ruins": {
                 "name": "Ruiner"
             },
-            "landuse": {
-                "name": "Arealbruk"
-            },
-            "landuse/allotments": {
-                "name": "Kolonihage"
-            },
             "landuse/cemetery": {
                 "name": "Kirkegård"
             },
-            "landuse/commercial": {
-                "name": "Kommersielt"
-            },
             "landuse/construction": {
                 "name": "Konstruksjon"
-            },
-            "landuse/farm": {
-                "name": "Gård"
             },
             "landuse/farmyard": {
                 "name": "Gårdsplass"
@@ -926,9 +894,6 @@
             "landuse/grass": {
                 "name": "Gress"
             },
-            "landuse/industrial": {
-                "name": "Industrielt"
-            },
             "landuse/meadow": {
                 "name": "Blomstereng"
             },
@@ -937,12 +902,6 @@
             },
             "landuse/quarry": {
                 "name": "Steinbrudd"
-            },
-            "landuse/residential": {
-                "name": "Boligområde"
-            },
-            "landuse/retail": {
-                "name": "Handel"
             },
             "landuse/vineyard": {
                 "name": "Vingård"
@@ -1108,9 +1067,6 @@
             },
             "railway": {
                 "name": "Jernbane"
-            },
-            "railway/level_crossing": {
-                "name": "Jernbaneovergang"
             },
             "railway/monorail": {
                 "name": "Monorail"

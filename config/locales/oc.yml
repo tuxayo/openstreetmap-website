@@ -116,11 +116,17 @@ oc:
       way_paginated: Camins (%{x} a %{y} sus %{count})
       relation: Relacions (%{count})
       relation_paginated: Relacions (%{x} a %{y} sus %{count})
+      comment: Comentaris (%{count})
+      hidden_commented_by: Comentari amagat de %{user} <abbr title='%{exact_time}'>i
+        a %{when}</abbr>
+      commented_by: Comentari de %{user} <abbr title='%{exact_time}'>i a %{when}</abbr>
       changesetxml: Grop de modificacions XML
       osmchangexml: osmChange XML
       feed:
         title: Grop de modificacions %{id}
         title_comment: Grop de modificacions %{id} – %{comment}
+      join_discussion: Se connectar per rejónher la discussion
+      discussion: Discussion
     node:
       title: 'Nosèl : %{name}'
       history_title: 'Istoric del nosèl : %{name}'
@@ -200,6 +206,11 @@ oc:
       reopened_by: Reactivat per %{user}  fa <abbr title='%{exact_time}'>%{when}</abbr>
       reopened_by_anonymous: Reactivat per un utilizaire anonim fa <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by: Amagat per %{user} <abbr title='%{exact_time}'>fa %{when}</abbr>
+    query:
+      title: Requèsta suls objèctes
+      introduction: Clicar sus la mapa per trobar los objèctes a proximitat.
+      nearby: Objèctes a proximitat
+      enclosing: Objèctes englobants
   changeset:
     changeset_paging_nav:
       showing_page: Pagina %{page}
@@ -230,6 +241,13 @@ oc:
     timeout:
       sorry: O planhèm, la lista dels gropes de modificacions qu'avètz demandada met
         tròp de temps per èsser recuperada.
+    rss:
+      title_all: Discussion sul grop de modificacions OpenStreetMap
+      title_particular: Discussion sul grop de modificacions OpenStreetMap nº %{changeset_id}
+      comment: Comentari novèl sul grop de modificacions nº %{changeset_id} per %{author}
+      commented_at_html: Mes a jorn fa %{when}
+      commented_at_by_html: Mes a jorn fa %{when} per %{user}
+      full: Discussion completa
   diary_entry:
     new:
       title: Novèla entrada del jornal
@@ -372,8 +390,10 @@ oc:
     search_osm_nominatim:
       prefix:
         aerialway:
+          cable_car: Teleferic
           chair_lift: Telesèti
           drag_lift: Telesquí
+          gondola: Telecabina
           station: Gara de telecabina
         aeroway:
           aerodrome: Aerodròm
@@ -384,11 +404,9 @@ oc:
           taxiway: Via de manòbra
           terminal: Terminal
         amenity:
-          airport: Aeropòrt
+          animal_shelter: Refugi per animals
           arts_centre: Centre artistic
-          artwork: Òbra d'art
           atm: Distribuidor automatic de bilhets
-          auditorium: Auditòrium
           bank: Banca
           bar: Bar
           bbq: Barbecue
@@ -396,6 +414,7 @@ oc:
           bicycle_parking: Parcatge per bicicletas
           bicycle_rental: Logason de bicicletas
           biergarten: Braçariá a l’aire liure
+          boat_rental: Logason de vaissèls
           brothel: Bordèl
           bureau_de_change: Burèu de cambi
           bus_station: Arrèst de bus
@@ -407,7 +426,7 @@ oc:
           charging_station: Estacion de recarga
           cinema: Cinèma
           clinic: Clinica
-          club: Club
+          clock: Relòtge
           college: Collègi
           community_centre: Sala polivalenta
           courthouse: Palais de justícia
@@ -426,24 +445,22 @@ oc:
           food_court: Airal de restauracion
           fountain: Font
           fuel: Carburant
+          gambling: Jòcs d'azard
           grave_yard: Cementèri
           gym: Fitness /gimnastica
-          hall: Sala
           health_centre: Centre de santat
           hospital: Espital
-          hotel: Ostalariá
           hunting_stand: Taulièr de tir
           ice_cream: Crema glaçada
           kindergarten: Jardin infantil
           library: Bibliotèca
           market: Mercat
           marketplace: Plaça del mercat
-          mountain_rescue: Secors en montanha
+          monastery: Mostièr
           nightclub: Discotèca
           nursery: Grépia
           nursing_home: Ostal de santat
           office: Burèu
-          park: Pargue
           parking: Parcatge
           pharmacy: Farmàcia
           place_of_worship: Luòc de culte
@@ -454,7 +471,6 @@ oc:
           prison: Preson
           pub: Bar
           public_building: Bastiment public
-          public_market: Mercat public
           reception_area: Zòna de recepcion
           recycling: Punt de reciclatge
           restaurant: Restaurant
@@ -463,13 +479,11 @@ oc:
           school: Escòla
           shelter: Refugi
           shop: Magazin
-          shopping: Comèrci
           shower: Docha
           social_centre: Centre social
           social_club: Club social
           social_facility: Servici social
           studio: Estúdio
-          supermarket: Supermercat
           swimming_pool: Piscina
           taxi: Taxi
           telephone: Telefòn public
@@ -481,8 +495,6 @@ oc:
           veterinary: Cirurgia veterinària
           village_hall: Sala comunala
           waste_basket: Escobilhièr
-          wifi: Accès WiFi
-          WLAN: Accès WiFi
           youth_centre: Centre per la joventud
         boundary:
           administrative: Limit administratiu
@@ -497,14 +509,21 @@ oc:
           "yes": Pont
         building:
           "yes": Bastiment
+        craft:
+          carpenter: Fustièr
+          electrician: Electrician
+          gardener: Jardinièr
+          painter: Pintre
+          photographer: Fotograf
+          plumber: Plombièr
+          shoemaker: Sabatièr
+          "yes": Botiga d'artesanat
         emergency:
-          fire_hydrant: Boca d'incendi
           phone: Telefòn d'urgéncia
         highway:
           bridleway: Camin per cavalièrs
           bus_guideway: Via de bus guidada
           bus_stop: Arrèst de bus
-          byway: Rota segondària
           construction: Autorota en construccion
           cycleway: Pista ciclabla
           emergency_access_point: Punt d'accès d'urgéncia
@@ -512,7 +531,6 @@ oc:
           ford: Ga
           living_street: Carrièra en zòna de rencontre
           milestone: Bòrna quilometrica
-          minor: Rota menora
           motorway: Autorota
           motorway_junction: Joncion d'autorota
           motorway_link: Rota autorotièra
@@ -533,7 +551,6 @@ oc:
           speed_camera: Radar de velocitat
           steps: Escalièr
           street_lamp: Lampadari
-          stile: Palenc
           tertiary: Rota terciària
           tertiary_link: Rota terciària
           track: Pista
@@ -546,7 +563,8 @@ oc:
           archaeological_site: Site arqueologic
           battlefield: Camp de batalha
           boundary_stone: Bòrna frontièra
-          building: Bastiment
+          building: Bastiment istoric
+          bunker: Bunker
           castle: Castèl
           church: Glèisa
           citywalls: Muralhas de la vila
@@ -557,7 +575,6 @@ oc:
           memorial: Memorial
           mine: Mina
           monument: Monument
-          museum: Musèu
           ruins: Roïnas
           tomb: Tombèl
           tower: Torre
@@ -585,9 +602,6 @@ oc:
           military: Zòna militara
           mine: Mina
           orchard: Vergièr
-          nature_reserve: Resèrva naturala
-          park: Pargue
-          piste: Pista
           quarry: Peirièra
           railway: Via ferrada
           recreation_ground: Airal de jòcs
@@ -598,8 +612,6 @@ oc:
           road: Zòna rotièra
           village_green: Zòna publica erborada
           vineyard: Vinhal
-          wetland: Zòna umida
-          wood: Bòsc
         leisure:
           beach_resort: Estacion belneara
           bird_hide: Obsevatòri ornitologic
@@ -634,11 +646,9 @@ oc:
           beach: Plaja
           cape: Cap
           cave_entrance: Entrada de cauna
-          channel: Canal
           cliff: Bauç
           crater: Cratèr
           dune: Duna
-          feature: Element
           fell: Lana
           fjord: Fjòrd
           forest: Bòsc
@@ -655,11 +665,9 @@ oc:
           point: Puncha
           reef: Estèu
           ridge: Cresta
-          river: Riu
           rock: Ròca
           scree: Esbudèl
           scrub: Boissa
-          shoal: Auçura
           spring: Font
           stone: Pèira
           strait: Estrech
@@ -668,7 +676,6 @@ oc:
           volcano: Volcan
           water: Aiga
           wetland: Zòna umida
-          wetlands: Zònas umidas
           wood: Bòsc
         office:
           accountant: Comptable
@@ -733,7 +740,6 @@ oc:
           switch: Agulhas
           tram: Tramvia
           tram_stop: Arrèst de tram
-          yard: Via de triatge
         shop:
           alcohol: Magazin oficial d'alcoòl
           antiques: Antiquari
@@ -822,12 +828,10 @@ oc:
           hostel: Albèrga
           hotel: Ostalariá
           information: Informacions
-          lean_to: Taulièr
           motel: Motèl
           museum: Musèu
           picnic_site: Site de picnic
           theme_park: Pargue a tèma
-          valley: Val
           viewpoint: Punt de vista
           zoo: Zoo
         tunnel:
@@ -837,7 +841,6 @@ oc:
           artificial: Riu artificial
           boatyard: Talhièr de construccion navala
           canal: Canal
-          connector: Connexion idrografica
           dam: Diga
           derelict_canal: Canal de deslaissament
           ditch: Valat
@@ -845,15 +848,12 @@ oc:
           drain: Toat
           lock: Esclusa
           lock_gate: Pòrta d'esclusa
-          mineral_spring: Font d'aiga minerala
           mooring: Ancoratge
           rapids: Raspas
           river: Riu
-          riverbank: Lièch de riu
           stream: Riuet
           wadi: Oèd
           waterfall: Cascada
-          water_point: Punt d'aiga
           weir: Barratge
       admin_levels:
         level2: Frontièra del país
@@ -875,19 +875,6 @@ oc:
     results:
       no_results: Cap de resultat es pas estat trobat
       more_results: Mai de resultats
-    distance:
-      one: environ 1 km
-      zero: mens d'1 km
-      other: environ %{count} km
-    direction:
-      south_west: sud-oèst
-      south: sud
-      south_east: sud-èst
-      east: èst
-      north_east: nòrd-èst
-      north: nòrd
-      north_west: nòrd-oèst
-      west: oèst
   layouts:
     logo:
       alt_text: Lògo d'OpenStreetMap
@@ -1240,9 +1227,7 @@ oc:
           primary: Rota principala
           secondary: Rota segondària
           unclassified: Rota pas classificada
-          unsurfaced: Rota sens revestiment
           track: Pista
-          byway: Camin
           bridleway: Camin per cavalièrs
           cycleway: Via ciclabla
           footway: Via pietonièra
@@ -1266,7 +1251,6 @@ oc:
           golf: Percors de gòlf
           park: Pargue
           resident: Zòna residenciala
-          tourist: Atraccion toristica
           common:
           - Espaci comun
           - prada
@@ -1296,7 +1280,6 @@ oc:
           tunnel: Bòrd en puntilhats = tunèl
           bridge: Bòrd negre = pont
           private: Accès privat
-          permissive: Accès tolerat
           destination: Reservat als ribairencs
           construction: Rotas en construccion
     richtext_area:
@@ -1517,7 +1500,6 @@ oc:
       lost password link: Avètz perdut vòstre senhal ?
       login_button: Se connectar
       register now: S'inscriure ara
-      with openid: 'Tanben podètz utilizar OpenID per vos connectar :'
       new to osm: Novèl sus OpenStreetMap ?
       to make changes: Per aportar de modificacions a las donadas OpenStreetMap, vos
         cal possedir un compte.
@@ -1525,26 +1507,7 @@ oc:
       no account: Avètz pas de compte ?
       auth failure: O planhèm, mas las informacions provesidas an pas permés de vos
         identificar.
-      openid missing provider: O planhèm, impossible de contactar vòstre provesidor
-        OpenID
-      openid invalid: O planhèm, vòstre OpenID sembla malformat
       openid_logo_alt: Se connectar amb un OpenID
-      openid_providers:
-        openid:
-          title: Connexion amb OpenID
-          alt: Connexion amb una URL OpenID
-        google:
-          title: Connexion amb Google
-          alt: Connexion amb un OpenID Google
-        yahoo:
-          title: Connexion amb Yahoo
-          alt: Connexion amb un OpenID Yahoo
-        wordpress:
-          title: Connexion amb Wordpress
-          alt: Connexion amb un OpenID Wordpress
-        aol:
-          title: Connexion amb AOL
-          alt: Connexion amb un OpenID AOL
     logout:
       title: Desconnexion
       heading: Desconnexion d'OpenStreetMap
@@ -1577,10 +1540,8 @@ oc:
       display name: 'Nom afichat :'
       display name description: Vòstre nom d'utilizaire afichat publicament. Podètz
         cambiar aquò ulteriorament dins las preferéncias.
-      openid: '%{logo} OpenID :'
       password: 'Senhal :'
       confirm password: 'Confirmatz lo senhal :'
-      use openid: Tanben podètz utilizar %{logo} OpenID per vos identificar
       continue: S’inscriure
       terms accepted: Mercé d’aver acceptat los novèls tèrmes del contributor !
     terms:
@@ -1674,7 +1635,6 @@ oc:
       new email address: 'Novèla adreça de corrièr electronic :'
       email never displayed publicly: (pas jamai afichat publicament)
       openid:
-        openid: 'OpenID :'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: qu’es aquò ?
       public editing:

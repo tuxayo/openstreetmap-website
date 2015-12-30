@@ -1,5 +1,5 @@
-require 'test_helper'
-require 'osm'
+require "test_helper"
+require "osm"
 
 class RedactionTest < ActiveSupport::TestCase
   api_fixtures
@@ -32,5 +32,4 @@ class RedactionTest < ActiveSupport::TestCase
     end
     assert_equal(true, n.redacted?, "Expected node to be redacted after redact! call.")
   end
-
 end

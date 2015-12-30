@@ -396,11 +396,8 @@ et:
           taxiway: Ruleerimisrada
           terminal: Terminal
         amenity:
-          airport: Lennujaam
           arts_centre: Kunstikeskus
-          artwork: Kunstiteos
           atm: Pangaautomaat
-          auditorium: Auditoorium
           bank: Pank
           bar: Baar
           bench: Pink
@@ -416,7 +413,6 @@ et:
           charging_station: Laadimisjaam
           cinema: Kino
           clinic: Kliinik
-          club: Klubi
           courthouse: Kohtuhoone
           crematorium: Krematoorium
           dentist: Hambaarst
@@ -433,21 +429,17 @@ et:
           fountain: Purskkaev
           fuel: Kütus
           grave_yard: Surnuaed
-          hall: Hall
           health_centre: Tervisekeskus
           hospital: Haigla
-          hotel: Hotell
           hunting_stand: Jahikantsel
           ice_cream: Jäätis
           kindergarten: Lasteaed
           library: Raamatukogu
           market: Turg
           marketplace: Turg
-          mountain_rescue: Mäepäästeteenistus
           nightclub: Ööklubi
           nursing_home: Hooldekodu
           office: Kontor
-          park: Park
           parking: Parkimisplats
           pharmacy: Apteek
           place_of_worship: Pühapaik
@@ -458,7 +450,6 @@ et:
           prison: Vangla
           pub: Pubi
           public_building: Ühiskondlik hoone
-          public_market: Turg
           reception_area: Vastuvõtt
           recycling: Jäätmekäitluspunkt
           restaurant: Restoran
@@ -468,7 +459,6 @@ et:
           shelter: Varjualune
           shop: Kauplus
           shower: Dušš
-          supermarket: Supermarket
           taxi: Takso
           telephone: Üldkasutatav telefon
           theatre: Teater
@@ -477,8 +467,6 @@ et:
           vending_machine: Müügiautomaat
           veterinary: Loomakliinik
           waste_basket: Prügikast
-          wifi: WiFi-ühendus
-          WLAN: WiFi-ühendus
           youth_centre: Noortekeskus
         boundary:
           administrative: Halduspiir
@@ -492,12 +480,10 @@ et:
         building:
           "yes": Hoone
         emergency:
-          fire_hydrant: Tuletõrjehüdrant
           phone: Hädaabi telefon
         highway:
           bridleway: Ratsatee
           bus_stop: Bussipeatus
-          byway: Kõrvaltee
           cycleway: Jalgrattatee
           emergency_access_point: Hädaabi punkt
           footway: Jalgrada
@@ -520,7 +506,7 @@ et:
         historic:
           battlefield: Lahinguväli
           boundary_stone: Piirikivi
-          building: Hoone
+          building: Ajalooline hoone
           castle: Kindlus
           church: Kirik
           citywalls: Linnamüürid
@@ -531,7 +517,6 @@ et:
           memorial: Memoriaal
           mine: Kaevandus
           monument: Mälestusmärk
-          museum: Muuseum
           ruins: Varemed
           tower: Torn
           wayside_cross: Teeäärne rist
@@ -547,16 +532,12 @@ et:
           meadow: Niit
           mine: Kaevandus
           orchard: Viljapuuaed
-          nature_reserve: Looduskaitseala
-          park: Park
           quarry: Karjäär
           railway: Raudtee
           recreation_ground: Puhkeala
           reservoir: Veehoidla
           residential: Elamurajoon
           vineyard: Viinamarjaistandus
-          wetland: Soo
-          wood: Mets
         leisure:
           fishing: Kalapüügipiirkond
           garden: Aed
@@ -574,6 +555,9 @@ et:
           swimming_pool: Ujula
           track: Jooksurada
           water_park: Veepark
+        man_made:
+          tower: Torn
+          works: Vabrik
         military:
           airfield: Sõjaväe lennuväli
           barracks: Kasarmud
@@ -585,7 +569,6 @@ et:
           beach: Rand
           cape: Neem
           cave_entrance: Koopa sissepääs
-          channel: Kanal
           cliff: Kalju
           crater: Kraater
           dune: Düün
@@ -602,9 +585,7 @@ et:
           peak: Mäetipp
           point: Neem
           reef: Riff
-          river: Jõgi
           rock: Kivi
-          shoal: Madalik
           spring: Allikas
           stone: Kivi
           strait: Väin
@@ -613,9 +594,9 @@ et:
           volcano: Vulkaan
           water: Vesi
           wetland: Märgala
-          wetlands: Soo
           wood: Mets
         office:
+          accountant: Raamatupidaja
           architect: Arhitekt
         place:
           airport: Lennujaam
@@ -727,7 +708,6 @@ et:
           museum: muuseum
           picnic_site: piknikuplats
           theme_park: Teemapark
-          valley: Org
           viewpoint: Vaatepunkt
           zoo: Loomaaed
         tunnel:
@@ -737,14 +717,11 @@ et:
           canal: Kanal
           dam: Tamm
           ditch: Kraav
-          mineral_spring: Mineraalvee allikas
           rapids: Kärestik
           river: Jõgi
-          riverbank: Jõekallas
           stream: Oja
           wadi: Vadi
           waterfall: Kosk
-          water_point: Veevõtukoht
           weir: Pais
       admin_levels:
         level2: Riigipiir
@@ -766,19 +743,6 @@ et:
     results:
       no_results: Ei leidnud midagi
       more_results: Veel tulemusi
-    distance:
-      one: umbes 1km
-      zero: vähem kui 1km
-      other: umbes %{count}km
-    direction:
-      south_west: edela
-      south: lõuna
-      south_east: kagu
-      east: ida
-      north_east: kirde
-      north: põhja
-      north_west: loode
-      west: lääne
   layouts:
     logo:
       alt_text: OpenStreetMapi logo
@@ -1009,10 +973,29 @@ et:
       url: /welcome
       title: Tere tulemast OSMi
       description: Alusta selle kiirjuhendiga, mis hõlmab OpenStreetMapi põhitõdesid.
+    beginners_guide:
+      url: http://wiki.openstreetmap.org/wiki/Et:Beginners%27_guide
+      title: Juhend algajatele
+      description: Kogukonna poolt loodud juhend algajatele.
     help:
       url: https://help.openstreetmap.org/
       title: help.openstreetmap.org
       description: Esita küsimus või otsi vastuseid OSMi küsimuste ja vastuste veebilehel.
+    mailing_lists:
+      title: Postiloendid
+      description: Esita küsimusi või arutle huvi pakkuvatel teemadel laias teemade
+        ringis või kohalikes postiloendites.
+    forums:
+      title: Foorumid
+      description: Küsimused ja arutelud nendele, kes eelistavad teadetetahvlile sarnanevat
+        kasutajaliidest.
+    irc:
+      title: IRC
+      description: Interaktiivne suhtluskanal paljudes keeltes ja paljudel teemadel.
+    switch2osm:
+      title: switch2osm
+      description: Abi ettevõtetele ja organisatsioonidele, kes plaanivad kasutusele
+        võtta OpenStreetMapil põhinevad kaardid ja muud teenused.
     wiki:
       url: http://wiki.openstreetmap.org/wiki/Et:Main_Page
       title: wiki.openstreetmap.org
@@ -1139,6 +1122,8 @@ et:
         commented_note: '%{commenter} on taasaktiveerinud märkuse, mida sa oled kommenteerinud.
           Märkus on %{place} lähedal.'
       details: Märkuse lisateavet leiad %{url}.
+    changeset_comment_notification:
+      greeting: Tere,
   message:
     inbox:
       title: Saabunud kirjad
@@ -1249,6 +1234,9 @@ et:
       close: Sulge
     search:
       search: Otsi
+      get_directions_title: Juhised liikumiseks kahe punkti vahel
+      from: Alguspunkt
+      to: Sihtpunkt
       where_am_i: Kus ma asun?
       where_am_i_title: Määra praegune asukoht otsimootori abil
       submit_text: Otsi
@@ -1260,7 +1248,6 @@ et:
           primary: Põhimaantee
           secondary: Tugimaantee
           unclassified: Klassifitseerimata tee
-          unsurfaced: Katteta tee
           track: Rada
           bridleway: Ratsatee
           cycleway: Jalgrattatee
@@ -1285,7 +1272,6 @@ et:
           golf: Golfiväljak
           park: Park
           resident: Elamurajoon
-          tourist: Turismimagnet
           common:
           - Heinamaa
           - luht
@@ -1315,7 +1301,6 @@ et:
           tunnel: Katkendlik ümbris = tunnel
           bridge: Must ümbris = sild
           private: Üksnes omanikule
-          permissive: Pääs ainult lubadega
           destination: Üksnes läbisõiduks
           construction: Ehitatavad teed
     richtext_area:
@@ -1530,7 +1515,7 @@ et:
       register now: 'Registreeru:'
       with username: Kas omad juba OpenStreetMap kasutajakontot? Palun logi sisse
         enda kasutajanime ja salasõnaga.
-      with openid: 'Või kasuta sisse logimiseks oma OpenID kasutajat:'
+      with external: 'Teise võimalusena võid sisse logida kolmanda osapoole kaudu:'
       new to osm: Oled uus OpenStreetMap kasutaja?
       to make changes: Muudatuste tegemiseks OpenStreetMap andmetes peab sul olema
         kasutajakonto.
@@ -1543,11 +1528,8 @@ et:
         tõttu.<br />Palun võta ühendust <a href="%{webmaster}">veebimeistriga</a>
         kui soovid sellel teemal arutleda.
       auth failure: Vabandust, kahjuks ei saa nende andmetega sisse.
-      openid missing provider: Vabandust, kahjuks ei õnnestu luua ühendust sinu OpenID
-        pakkujaga
-      openid invalid: Vabandust, sinu OpenID näib olevat vigane
       openid_logo_alt: Sisene OpenID tunnusega
-      openid_providers:
+      auth_providers:
         openid:
           title: Sisene OpenID tunnusega
           alt: Sisene OpenID URL abil
@@ -1606,22 +1588,9 @@ et:
       display name: 'Kuvatav nimi:'
       display name description: Avalikult kuvatud kasutajanimi. Seda saate muuta hiljem
         eelistustes.
-      openid: '%{logo} OpenID:'
       password: 'Uus parool:'
       confirm password: 'Kinnita parool:'
-      use openid: Teise võimalusena kasuta %{logo} OpenID sisselogimist
-      openid no password: OpenID kasutamisel ei ole parool kohustuslik, kuid mõned
-        eritööriistad või serverid nõuavad seda siiski.
-      openid association: |-
-        <p>Sinu OpenID ei ole seotud veel OpenStreetMapi kasutajakontoga.</p>
-        <ul>
-          <li>Kui oled uus OpenStreetMapi kasutaja, siia loo palun uus konto, kasutades alljärgnevat vormi.</li>
-          <li>
-            Kui sul juba on kasutajakonto, siis võid siseneda oma kontoga,
-            kasutades oma kasutajanime ja parooli ja seejärel siduda oma
-            kasutajakonto oma OpenID-ga kasutaja seadistuste all.
-          </li>
-        </ul>
+      use external auth: Teise võimalusena võid sisse logida kolmanda osapoole kaudu
       continue: Registreeru
       terms accepted: Täname, et nõustusid uute kaastöö tingimustega!
       terms declined: Meil on kahju, et otsustasid mitte nõustuda uute kaastöö tingimustega.
@@ -1727,8 +1696,8 @@ et:
       current email address: 'Praegune e-posti aadress:'
       new email address: 'Uus e-posti aadress:'
       email never displayed publicly: (ei näidata mitte kunagi avalikult)
+      external auth: 'Väline autentimine:'
       openid:
-        openid: 'OpenID:'
         link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: mis see on?
       public editing:
@@ -1788,6 +1757,7 @@ et:
       press confirm button: Vajuta allolevale kinnitamise nupule, et oma kasutajakonto
         aktiveerida.
       button: Kinnita
+      success: Sinu kasutajakonto on kinnitatud, täname registreerimast!
       already active: See konto on juba kinnitatud.
       unknown token: See kinnituskood on aegunud või seda pole olemas.
       reconfirm_html: Kui soovid, et saadaksime sulle uuesti kinnitusmeili, siis <a
@@ -1803,8 +1773,9 @@ et:
       heading: Kinnita e-posti aadressi muutmine
       press confirm button: Kliki nupul kinnita oma uue e-posti aadressi kinnitamiseks.
       button: Kinnita
-      success: Sinu eposti aadress on kinnitatud, tänan registreerimast!
+      success: Sinu eposti aadressi muudatus on kinnitatud, täname registreerimast!
       failure: E-posti aadress on juba antud pääsuloaga kinnitatud.
+      unknown_token: See kinnituskood on aegunud või seda pole olemas.
     set_home:
       flash success: Kodukoht edukalt salvestatud
     go_public:
@@ -2078,6 +2049,22 @@ et:
         comment: Kommenteeri
     edit_help: Nihuta kaarti ja suumi sisse asukohta mida soovid redigeerida ja seejärel
       kliki siia.
+    directions:
+      engines:
+        graphhopper_bicycle: Rattaga (GraphHopper)
+        graphhopper_foot: Jalgsi (GraphHopper)
+        mapquest_bicycle: Rattaga (MapQuest)
+        mapquest_car: Autoga (MapQuest)
+        mapquest_foot: Jalgsi (MapQuest)
+        osrm_car: Autoga (OSRM)
+      directions: Juhised
+      distance: Vahemaa
+      errors:
+        no_route: Ei suutnud leida teekonda nende kahe koha vahel.
+        no_place: Vabandust - ei suuda leida sellist kohta.
+      instructions:
+        unnamed: nimetu
+      time: Kestus
     query:
       node: Sõlm
       way: Joon

@@ -3,7 +3,7 @@
 These instructions are designed for setting up The Rails Port for development and testing.
 If you want to deploy the software for your own project, then see the notes at the end.
 
-You can install the software directly on your machine, which is the traditional and probably best-bupported approach. However, there is an alternative which may be easier: Vagrant. This installs the software into a virtual machine, which makes it easier to get a consistent development environment and may avoid installation difficulties. For Vagrant instructions, see [VAGRANT.md](VAGRANT.md).
+You can install the software directly on your machine, which is the traditional and probably best-supported approach. However, there is an alternative which may be easier: Vagrant. This installs the software into a virtual machine, which makes it easier to get a consistent development environment and may avoid installation difficulties. For Vagrant instructions, see [VAGRANT.md](VAGRANT.md).
 
 These instructions are based on Ubuntu 12.04 LTS, which is the platform used by the OSMF servers.
 The instructions also work, with only minor amendments, for all other current Ubuntu releases, Fedora and MacOSX
@@ -18,25 +18,23 @@ of packages required before you can get the various gems installed.
 
 ## Minimum requirements
 
-* Ruby 1.9.3
+* Ruby 2.0
 * RubyGems 1.3.1+
 * Postgres 8.3+
 * ImageMagick
 * Bundler
 * Javascript Runtime
 
-These can be installed on Ubuntu 10.10 or later with:
+These can be installed on Ubuntu 14.04 or later with:
 
 ```
-sudo apt-get install ruby1.9.1 libruby1.9.1 ruby1.9.1-dev ri1.9.1 \
+sudo apt-get install ruby2.0 libruby2.0 ruby2.0-dev \
                      libmagickwand-dev libxml2-dev libxslt1-dev nodejs \
                      apache2 apache2-threaded-dev build-essential git-core \
                      postgresql postgresql-contrib libpq-dev postgresql-server-dev-all \
                      libsasl2-dev
-sudo gem1.9.1 install bundler
+sudo gem2.0 install bundler
 ```
-
-Note that the "1.9.1" Ubuntu packages do in fact contain ruby 1.9.3.
 
 ### Alternative platforms
 
@@ -159,14 +157,6 @@ bundle exec rake db:create
 ### PostgreSQL Btree-gist Extension
 
 We need to load the btree-gist extension, which is needed for showing changesets on the history tab.
-
-For PostgreSQL < 9.1 (change the version number in the path as necessary):
-
-```
-psql -d openstreetmap < /usr/share/postgresql/9.0/contrib/btree_gist.sql
-```
-
-For PostgreSQL >= 9.1:
 
 ```
 psql -d openstreetmap -c "CREATE EXTENSION btree_gist"

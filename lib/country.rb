@@ -13,14 +13,12 @@ class Country
     countries[code]
   end
 
-private
-
   def self.countries
-    @@countries ||= load_countries
+    @countries ||= load_countries
   end
 
   def self.load_countries
-    countries = Hash.new
+    countries = {}
     xml = REXML::Document.new(File.read("config/countries.xml"))
 
     xml.elements.each("geonames/country") do |ele|

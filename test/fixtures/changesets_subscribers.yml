@@ -1,6 +1,22 @@
 t1:
   changeset_id: 8
   subscriber_id: 2
+<<<<<<< HEAD
 t2:
   changeset_id: 3
   subscriber_id: 1
+||||||| merged common ancestors
+=======
+
+t2:
+  changeset_id: 8
+  subscriber_id: 1
+
+t3:
+  changeset_id: 8
+  subscriber_id: 10
+
+t4:
+  changeset_id: 8
+  subscriber_id: 11
+>>>>>>> upstream/master

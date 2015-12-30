@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ChangesetCommentTest < ActiveSupport::TestCase
   fixtures :changesets, :changeset_comments
@@ -10,7 +10,7 @@ class ChangesetCommentTest < ActiveSupport::TestCase
   # validations
   def test_does_not_accept_invalid_author
     comment = changeset_comments(:normal_comment_1)
-    
+
     comment.author = nil
     assert !comment.valid?
 
@@ -36,6 +36,6 @@ class ChangesetCommentTest < ActiveSupport::TestCase
   end
 
   def test_comments_of_changeset_count
-    assert_equal 3, Changeset.find(changesets(:normal_user_closed_change)).comments.count
+    assert_equal 3, Changeset.find(changesets(:normal_user_closed_change).id).comments.count
   end
 end
